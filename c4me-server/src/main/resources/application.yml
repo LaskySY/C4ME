@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: c4me-server
+  jackson:
+    default-property-inclusion: always
+
+server:
+  port: 3000

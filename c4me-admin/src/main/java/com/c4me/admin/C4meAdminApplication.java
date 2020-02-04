@@ -1,15 +1,17 @@
-package com.c4me.server;
+package com.c4me.admin;
 
+import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
+@EnableAdminServer
 @SpringBootApplication
-public class C4meServerApplication {
+public class C4meAdminApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(C4meServerApplication.class, args);
+        SpringApplication.run(C4meAdminApplication.class, args);
     }
 
 }

@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: admin-server
+  boot:
+    admin:
+      client:
+        url: http://localhost:8060
+
+server:
+  port: 8060
+

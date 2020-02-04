@@ -10,6 +10,10 @@
 
     <modules>
         <module>c4me-server</module>
+        <module>c4me-system</module>
+        <module>c4me-eureka</module>
+        <module>c4me-zipkin</module>
+        <module>c4me-admin</module>
     </modules>
 
     <parent>
@@ -22,6 +26,8 @@
     <properties>
         <java.version>1.8</java.version>
         <hibernate.version>5.2.4.Final</hibernate.version>
+        <zipkin.version>2.12.9</zipkin.version>
+        <springboot-admin.version>2.2.1</springboot-admin.version>
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
     </properties>
 
@@ -68,7 +74,28 @@
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
             </dependency>
-
+            <!-- zipkin -->
+            <dependency>
+                <groupId>io.zipkin.java</groupId>
+                <artifactId>zipkin-server</artifactId>
+                <version>${zipkin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.zipkin.java</groupId>
+                <artifactId>zipkin-autoconfigure-ui</artifactId>
+                <version>${zipkin.version}</version>
+            </dependency>
+            <!-- Springboot Admin -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${springboot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${springboot-admin.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

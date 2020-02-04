@@ -18,4 +18,5 @@ public class UserServiceImpl implements UserService {
     public List<TestEntity> queryAll() {
         return userRepository.findAll();
     }
+
 }

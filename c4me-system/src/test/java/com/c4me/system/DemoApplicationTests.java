@@ -1,11 +1,10 @@
-package com.c4me.server;
-
+package com.c4me.system;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class C4meServerApplicationTests {
+class DemoApplicationTests {
 
     @Test
     void contextLoads() {

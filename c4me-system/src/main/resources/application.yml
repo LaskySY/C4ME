@@ -2,7 +2,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: c4me-server
+    name: c4me-system
   boot:
     admin:
       client:
@@ -14,4 +14,4 @@ eureka:
       defaultZone: http://127.0.0.1:8080/eureka
 
 server:
-  port: 3000
+  port: 3001

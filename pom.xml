@@ -12,7 +12,6 @@
         <module>c4me-server</module>
         <module>c4me-system</module>
         <module>c4me-eureka</module>
-        <module>c4me-zipkin</module>
         <module>c4me-admin</module>
     </modules>
 

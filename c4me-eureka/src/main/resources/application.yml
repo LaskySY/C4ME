@@ -3,6 +3,9 @@ server:
 
 spring:
   profiles: dev
+  devtools:
+    restart:
+      enabled: true
 
 eureka:
   client:

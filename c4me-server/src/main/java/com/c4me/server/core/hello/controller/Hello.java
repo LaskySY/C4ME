@@ -14,6 +14,6 @@ public class Hello {
     @RequestMapping("/")
     public String hello(){
         System.out.println(userService.queryAll().size());
-        return "Hello World";
+        return "Hello World----";
     }
 }

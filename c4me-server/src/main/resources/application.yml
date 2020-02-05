@@ -1,4 +1,7 @@
 spring:
+  devtools:
+    restart:
+      enabled: true
   profiles:
     active: dev
   application:
@@ -7,6 +10,12 @@ spring:
     admin:
       client:
         url: http://localhost:8060
+  zipkin:
+    base-url: http://localhost:9411/
+    enabled: true
+  sleuth:
+    sampler:
+      probability: 1.0
 
 eureka:
   client:

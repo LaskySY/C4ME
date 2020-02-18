@@ -6,10 +6,10 @@ spring:
     active: dev
   application:
     name: c4me-server
-  boot:
-    admin:
-      client:
-        url: http://localhost:8060
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:8060
   zipkin:
     base-url: http://localhost:9411/
     enabled: true
@@ -21,6 +21,9 @@ eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:8080/eureka
+jwt:
+  header: Authorization
+  secret: secret-key
 
 server:
-  port: 3000
+      port: 3000

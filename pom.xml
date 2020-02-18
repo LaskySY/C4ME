@@ -10,9 +10,7 @@
 
     <modules>
         <module>c4me-server</module>
-        <module>c4me-system</module>
         <module>c4me-eureka</module>
-        <module>c4me-admin</module>
     </modules>
 
     <parent>
@@ -60,6 +58,12 @@
                 <groupId>com.mchange</groupId>
                 <artifactId>c3p0</artifactId>
                 <version>0.9.5.2</version>
+            </dependency>
+            <!-- JWT -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>0.9.1</version>
             </dependency>
             <!-- orm -->
             <dependency>

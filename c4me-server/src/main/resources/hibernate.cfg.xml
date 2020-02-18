@@ -5,7 +5,7 @@
     <session-factory>
         <property name = "hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name = "hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name = "hibernate.connection.url">jdbc:mysql://localhost:3306/c4me</property>
+        <property name = "hibernate.connection.url">jdbc:mysql://mysql3.cs.stonybrook.edu:3306/siyoliu</property>
         <!--        <property name= "hibernate.format_sql">true</property>-->
         <property name= "hibernate.show_sql">true</property>
         <property name="hibernate.c3p0.min_size">5</property>
@@ -13,6 +13,6 @@
         <property name="hibernate.c3p0.timeout">300</property>
         <property name="hibernate.c3p0.max_statements">50</property>
         <property name="hibernate.c3p0.idle_test_period">3000</property>
-        <mapping class="com.c4me.server.entities.TestEntity"/>
+        <mapping class="com.c4me.server.entities.LogEntity"/>
     </session-factory>
 </hibernate-configuration>

@@ -20,13 +20,12 @@ public class Hello {
 
     @GetMapping("/get")
     @LogAndWrap(log="query all log")
-    public HashMap findAll(@RequestBody String str){
-        System.out.println(str);
-        List list = logService.queryAll();
-        System.out.println(list);
-        HashMap<String, String> map = new HashMap<String, String>(){
+    public HashMap findAll(@RequestBody HashMap body){
+        List logList = logService.queryAll();
+        HashMap<String, String> map = new HashMap(){
             {
-                put("email","123@123.com");
+                put("string",body.get("string"));
+                put("log size",String.valueOf(logList.size()));
             }
         };
         return map;

@@ -15,7 +15,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class BaseResult<T> implements Serializable {
+public class BaseResponse<T> implements Serializable {
+    @Builder.Default
     private Boolean success = true;
     private String message;
     private T data;

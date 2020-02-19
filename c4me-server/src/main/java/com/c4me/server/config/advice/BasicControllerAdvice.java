@@ -1,7 +1,7 @@
 package com.c4me.server.config.advice;
 
 import com.c4me.server.config.annotation.LogAndWrap;
-import com.c4me.server.domain.BaseResult;
+import com.c4me.server.domain.BaseResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -35,9 +35,9 @@ public class BasicControllerAdvice implements ResponseBodyAdvice {
     @Nullable
     @Override
     public Object beforeBodyWrite(@Nullable Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        if(!(body instanceof BaseResult)&&returnType.getMethodAnnotation(LogAndWrap.class)!=null){
+        if(!(body instanceof BaseResponse)&&returnType.getMethodAnnotation(LogAndWrap.class)!=null){
             try {
-                BaseResult<Object> result = BaseResult.builder()
+                BaseResponse<Object> result = BaseResponse.builder()
                         .message(returnType.getMethodAnnotation(LogAndWrap.class).log()+" success")
                         .success(true)
                         .data(body)

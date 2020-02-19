@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @ResponseBody
-public class Hello {
+public class LogController {
 
    @Autowired
    LogService logService;

@@ -54,17 +54,8 @@
                 <artifactId>hibernate-validator</artifactId>
                 <version>6.0.16.Final</version>
             </dependency>
-            <dependency>
-                <groupId>com.mchange</groupId>
-                <artifactId>c3p0</artifactId>
-                <version>0.9.5.2</version>
-            </dependency>
             <!-- JWT -->
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt</artifactId>
-                <version>0.9.1</version>
-            </dependency>
+
             <!-- orm -->
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -87,17 +78,6 @@
                 <groupId>io.zipkin.java</groupId>
                 <artifactId>zipkin-autoconfigure-ui</artifactId>
                 <version>${zipkin.version}</version>
-            </dependency>
-            <!-- Springboot Admin -->
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-starter-server</artifactId>
-                <version>${springboot-admin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-starter-client</artifactId>
-                <version>${springboot-admin.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

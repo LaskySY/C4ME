@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableDiscoveryClient
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = {"com.c4me.server.core.*.repository"})
-//@ComponentScan("com.c4me.server.config.interceptor")
 public class C4meServerApplication {
 
     public static void main(String[] args) {

@@ -25,7 +25,7 @@ public class LogEntity {
     private String userId;
     private String requestIp;
     private String userName;
-    private Integer userAuth;
+    private Integer userRole;
     private String type;
     private Date date;
     private String service;
@@ -75,13 +75,13 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "user_auth")
-    public Integer getUserAuth() {
-        return userAuth;
+    @Column(name = "user_role")
+    public Integer getUserRole() {
+        return userRole;
     }
 
-    public void setUserAuth(Integer userAuth) {
-        this.userAuth = userAuth;
+    public void setUserRole(Integer userAuth) {
+        this.userRole = userAuth;
     }
 
     @Basic

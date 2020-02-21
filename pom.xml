@@ -11,6 +11,7 @@
     <modules>
         <module>c4me-server</module>
         <module>c4me-eureka</module>
+        <module>c4me-credential</module>
     </modules>
 
     <parent>
@@ -55,7 +56,17 @@
                 <version>6.0.16.Final</version>
             </dependency>
             <!-- JWT -->
-
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>0.9.1</version>
+            </dependency>
+            <!-- JustAuth -->
+            <dependency>
+                <groupId>me.zhyd.oauth</groupId>
+                <artifactId>JustAuth</artifactId>
+                <version>1.13.1</version>
+            </dependency>
             <!-- orm -->
             <dependency>
                 <groupId>org.springframework</groupId>

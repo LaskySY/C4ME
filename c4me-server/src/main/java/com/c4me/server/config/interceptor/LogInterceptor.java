@@ -19,6 +19,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -44,8 +45,8 @@ public class LogInterceptor implements HandlerInterceptor {
         try{
             HandlerMethod m = (HandlerMethod) handler;
             String description = m.getMethodAnnotation(LogAndWrap.class) == null?
-                        null:m.getMethodAnnotation(LogAndWrap.class).log();
-            LogEntity log = new LogEntity().builder()
+                    null: Objects.requireNonNull(m.getMethodAnnotation(LogAndWrap.class)).log();
+            LogEntity log = LogEntity.builder()
                 .id(UUID.randomUUID())
                 .requestIp(LoggerUtils.getCliectIp(request))
                 .type("success")

@@ -9,9 +9,13 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import javax.sql.DataSource;
-
+/**
+ * @Description:
+ * @Author: Siyong Liu
+ * @CreateDate: 2-20-2020
+ */
 @Configuration
-public class Jpa {
+public class JpaConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();

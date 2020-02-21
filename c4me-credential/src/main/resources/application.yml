@@ -1,11 +1,9 @@
+
 spring:
-  devtools:
-    restart:
-      enabled: true
   profiles:
     active: dev
   application:
-    name: c4me-server
+    name: c4me-credential
   zipkin:
     base-url: http://localhost:9411/
     enabled: true
@@ -19,4 +17,4 @@ eureka:
       defaultZone: http://127.0.0.1:8080/eureka
 
 server:
-      port: 3000
+  port: 8000

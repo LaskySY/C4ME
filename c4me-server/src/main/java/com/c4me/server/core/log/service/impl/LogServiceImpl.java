@@ -7,7 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+/**
+ * @Description:
+ * @Author: Siyong Liu
+ * @CreateDate: 2-20-2020
+ */
 @Service
 public class LogServiceImpl implements LogService {
 

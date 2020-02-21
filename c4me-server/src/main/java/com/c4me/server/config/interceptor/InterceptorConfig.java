@@ -21,7 +21,7 @@ public class InterceptorConfig {
 
         @Override
         public void addInterceptors(InterceptorRegistry registry) {
-            registry.addInterceptor(myInterceptor()).addPathPatterns("/get");
+            registry.addInterceptor(myInterceptor()).addPathPatterns("/**");
         }
     }
 }

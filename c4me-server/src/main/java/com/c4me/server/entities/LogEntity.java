@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -96,6 +96,7 @@ public class LogEntity {
 
     @Basic
     @Column(name = "date")
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getDate() {
         return date;
     }

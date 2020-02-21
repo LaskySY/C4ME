@@ -18,7 +18,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 

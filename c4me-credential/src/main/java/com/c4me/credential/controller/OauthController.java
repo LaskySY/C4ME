@@ -111,7 +111,7 @@ public class OauthController {
                 break;
         }
         if (null == authRequest) {
-            throw new AuthException("未获取到有效的Auth配置");
+            throw new AuthException("JustOauth Config Error: authRequest is null");
         }
         return authRequest;
     }

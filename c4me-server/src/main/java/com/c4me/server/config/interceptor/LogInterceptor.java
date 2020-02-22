@@ -42,6 +42,7 @@ public class LogInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        System.out.println(handler);
         try{
             HandlerMethod m = (HandlerMethod) handler;
             String description = m.getMethodAnnotation(LogAndWrap.class) == null?
@@ -81,7 +82,5 @@ public class LogInterceptor implements HandlerInterceptor {
             logEntity.setExceptionDetail(e.getMessage());
             loginterceptor.logRepository.save(logEntity);
         }
-
-
     }
 }

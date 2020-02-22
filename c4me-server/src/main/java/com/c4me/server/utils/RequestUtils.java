@@ -31,7 +31,6 @@ public class RequestUtils {
                 HttpMethod.GET,
                 entity,
                 String.class);
-        System.out.println(response);
         return response.getBody();
     }
 }

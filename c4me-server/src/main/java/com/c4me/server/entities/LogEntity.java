@@ -3,6 +3,7 @@ package com.c4me.server.entities;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -30,7 +31,7 @@ public class LogEntity {
     private String exceptionDetail;
     private String description;
     private String params;
-    private Timestamp updatedTime;
+    private Timestamp time;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -44,7 +45,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "user_id", nullable = true, length = 10)
+    @Column(name = "user_id", length = 10)
     public String getUserId() {
         return userId;
     }
@@ -54,7 +55,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "request_ip", nullable = true, length = 15)
+    @Column(name = "request_ip", length = 15)
     public String getRequestIp() {
         return requestIp;
     }
@@ -64,7 +65,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "user_name", nullable = true, length = 32)
+    @Column(name = "user_name", length = 32)
     public String getUserName() {
         return userName;
     }
@@ -74,7 +75,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "user_role", nullable = true)
+    @Column(name = "user_role")
     public Integer getUserRole() {
         return userRole;
     }
@@ -84,7 +85,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "type", nullable = true, length = 32)
+    @Column(name = "type", length = 32)
     public String getType() {
         return type;
     }
@@ -94,7 +95,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "service", nullable = true, length = 32)
+    @Column(name = "service", length = 32)
     public String getService() {
         return service;
     }
@@ -104,7 +105,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "exception_code", nullable = true, length = 8)
+    @Column(name = "exception_code", length = 8)
     public String getExceptionCode() {
         return exceptionCode;
     }
@@ -114,7 +115,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "exception_detail", nullable = true, length = 255)
+    @Column(name = "exception_detail")
     public String getExceptionDetail() {
         return exceptionDetail;
     }
@@ -124,7 +125,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "description", nullable = true, length = 255)
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -134,7 +135,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "params", nullable = true, length = 255)
+    @Column(name = "params")
     public String getParams() {
         return params;
     }
@@ -144,13 +145,14 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "UPDATED_TIME", nullable = false)
+    @Column(name = "time")
+    @CreationTimestamp
     public Timestamp getUpdatedTime() {
-        return updatedTime;
+        return time;
     }
 
     public void setUpdatedTime(Timestamp updatedTime) {
-        this.updatedTime = updatedTime;
+        this.time = updatedTime;
     }
 
     @Override
@@ -169,11 +171,11 @@ public class LogEntity {
                 Objects.equals(exceptionDetail, logEntity.exceptionDetail) &&
                 Objects.equals(description, logEntity.description) &&
                 Objects.equals(params, logEntity.params) &&
-                Objects.equals(updatedTime, logEntity.updatedTime);
+                Objects.equals(time, logEntity.time);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, requestIp, userName, userRole, type, service, exceptionCode, exceptionDetail, description, params, updatedTime);
+        return Objects.hash(id, userId, requestIp, userName, userRole, type, service, exceptionCode, exceptionDetail, description, params, time);
     }
 }

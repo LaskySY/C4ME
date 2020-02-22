@@ -34,4 +34,10 @@ public class LogController {
         };
         return map;
     }
+
+    @GetMapping("/err")
+    @LogAndWrap(log = "test error")
+    public void testError() throws Exception {
+        throw new Exception("this is a exception");
+    }
 }

@@ -2,50 +2,49 @@ package com.c4me.server.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.UUID;
+import java.sql.Timestamp;
+import java.util.Objects;
 
 /**
  * @Description:
  * @Author: Siyong Liu
- * @CreateDate: 02-16-2020
+ * @CreateDate: 02-22-2020
  */
+@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
-@Entity
 @Table(name = "log", schema = "siyoliu")
 public class LogEntity {
-    private UUID id;
+    private Integer id;
     private String userId;
     private String requestIp;
     private String userName;
     private Integer userRole;
     private String type;
-    private Date date;
     private String service;
     private String exceptionCode;
     private String exceptionDetail;
     private String description;
     private String params;
+    private Timestamp updatedTime;
 
     @Id
-    @Column(name = "id")
-    public UUID getId() {
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     @Basic
-    @Column(name = "user_id")
+    @Column(name = "user_id", nullable = true, length = 10)
     public String getUserId() {
         return userId;
     }
@@ -55,7 +54,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "request_ip")
+    @Column(name = "request_ip", nullable = true, length = 15)
     public String getRequestIp() {
         return requestIp;
     }
@@ -65,7 +64,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "user_name")
+    @Column(name = "user_name", nullable = true, length = 32)
     public String getUserName() {
         return userName;
     }
@@ -75,17 +74,17 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "user_role")
+    @Column(name = "user_role", nullable = true)
     public Integer getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(Integer userAuth) {
-        this.userRole = userAuth;
+    public void setUserRole(Integer userRole) {
+        this.userRole = userRole;
     }
 
     @Basic
-    @Column(name = "type")
+    @Column(name = "type", nullable = true, length = 32)
     public String getType() {
         return type;
     }
@@ -95,18 +94,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "date")
-    @Temporal(TemporalType.TIMESTAMP)
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    @Basic
-    @Column(name = "service")
+    @Column(name = "service", nullable = true, length = 32)
     public String getService() {
         return service;
     }
@@ -116,7 +104,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "exception_code")
+    @Column(name = "exception_code", nullable = true, length = 8)
     public String getExceptionCode() {
         return exceptionCode;
     }
@@ -126,7 +114,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "exception_detail")
+    @Column(name = "exception_detail", nullable = true, length = 255)
     public String getExceptionDetail() {
         return exceptionDetail;
     }
@@ -136,7 +124,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "description")
+    @Column(name = "description", nullable = true, length = 255)
     public String getDescription() {
         return description;
     }
@@ -146,12 +134,46 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "params")
+    @Column(name = "params", nullable = true, length = 255)
     public String getParams() {
         return params;
     }
 
     public void setParams(String params) {
         this.params = params;
+    }
+
+    @Basic
+    @Column(name = "UPDATED_TIME", nullable = false)
+    public Timestamp getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(Timestamp updatedTime) {
+        this.updatedTime = updatedTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LogEntity logEntity = (LogEntity) o;
+        return Objects.equals(id, logEntity.id) &&
+                Objects.equals(userId, logEntity.userId) &&
+                Objects.equals(requestIp, logEntity.requestIp) &&
+                Objects.equals(userName, logEntity.userName) &&
+                Objects.equals(userRole, logEntity.userRole) &&
+                Objects.equals(type, logEntity.type) &&
+                Objects.equals(service, logEntity.service) &&
+                Objects.equals(exceptionCode, logEntity.exceptionCode) &&
+                Objects.equals(exceptionDetail, logEntity.exceptionDetail) &&
+                Objects.equals(description, logEntity.description) &&
+                Objects.equals(params, logEntity.params) &&
+                Objects.equals(updatedTime, logEntity.updatedTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userId, requestIp, userName, userRole, type, service, exceptionCode, exceptionDetail, description, params, updatedTime);
     }
 }

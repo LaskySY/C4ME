@@ -18,7 +18,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -48,11 +47,9 @@ public class LogInterceptor implements HandlerInterceptor {
             String description = m.getMethodAnnotation(LogAndWrap.class) == null?
                     null: Objects.requireNonNull(m.getMethodAnnotation(LogAndWrap.class)).log();
             LogEntity log = LogEntity.builder()
-                .id(UUID.randomUUID())
                 .requestIp(LoggerUtils.getCliectIp(request))
                 .type("success")
                 .description(description)
-                .date(new Date(System.currentTimeMillis()))
                 .service(m.getMethod().getName())
                 .params(null)
                 .build();
@@ -73,9 +70,9 @@ public class LogInterceptor implements HandlerInterceptor {
      */
     public synchronized static void logExceptionUnExpect(Throwable e){
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        String log = (String) request.getAttribute("logId");
+        Integer logId = (Integer) request.getAttribute("logId");
         request.removeAttribute("logId");
-        LogEntity logEntity = loginterceptor.logRepository.findById(UUID.fromString(log)).orElse(null);
+        LogEntity logEntity = loginterceptor.logRepository.findById(logId).orElse(null);
         if(logEntity!=null){
             logEntity.setType("fail");
             logEntity.setExceptionCode("500");

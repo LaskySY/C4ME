@@ -1,1 +1,0 @@
-package com.c4me.server.core.credential.repository;

@@ -1,9 +1,14 @@
 package com.c4me.server.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.UUID;
 
 /**
  * @Description:
@@ -11,15 +16,19 @@ import java.util.Objects;
  * @CreateDate: 02-21-2020
  */
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 @Table(name = "user", schema = "siyoliu")
 public class UserEntity {
 
-    private byte[] id;
+    private UUID id;
     private String username;
     private String password;
+    private Integer role;
     private String lastName;
     private String fistName;
-    private String email;
     private Timestamp updateTime;
     private Timestamp createTime;
 
@@ -36,11 +45,11 @@ public class UserEntity {
 
     @Id
     @Column(name = "id", nullable = false)
-    public byte[] getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(byte[] id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -52,6 +61,16 @@ public class UserEntity {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Basic
+    @Column(name = "role", nullable = false, length = 2)
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
     }
 
     @Basic
@@ -86,43 +105,12 @@ public class UserEntity {
 
     @Basic
     @Column(name = "create_time", nullable = false)
+    @CreationTimestamp
     public Timestamp getCreateTime() {
         return createTime;
     }
 
     public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;
-    }
-
-    @Basic
-    @Column(name = "email", nullable = true, length = 128)
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserEntity that = (UserEntity) o;
-        return Objects.equals(updateTime, that.updateTime) &&
-                Arrays.equals(id, that.id) &&
-                Objects.equals(lastName, that.lastName) &&
-                Objects.equals(fistName, that.fistName) &&
-                Objects.equals(username, that.username) &&
-                Objects.equals(password, that.password) &&
-                Objects.equals(createTime, that.createTime) &&
-                Objects.equals(email, that.email);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(updateTime, lastName, fistName, username, password, createTime, email);
-        result = 31 * result + Arrays.hashCode(id);
-        return result;
     }
 }

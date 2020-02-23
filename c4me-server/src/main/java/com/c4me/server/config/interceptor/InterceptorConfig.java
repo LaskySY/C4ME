@@ -11,17 +11,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @CreateDate: 02-16-2020
  */
 @Configuration
-public class InterceptorConfig {
-    public class InterceptorConfiguration implements WebMvcConfigurer {
+public class InterceptorConfig implements WebMvcConfigurer {
+    @Bean
+    public LogInterceptor myInterceptor(){
+        return new LogInterceptor();
+    }
 
-        @Bean
-        public LogInterceptor myInterceptor(){
-            return new LogInterceptor();
-        }
-
-        @Override
-        public void addInterceptors(InterceptorRegistry registry) {
-            registry.addInterceptor(myInterceptor()).addPathPatterns("/**");
-        }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(myInterceptor()).addPathPatterns("/**");
     }
 }

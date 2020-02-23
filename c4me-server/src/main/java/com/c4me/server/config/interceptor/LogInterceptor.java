@@ -63,7 +63,7 @@ public class LogInterceptor implements HandlerInterceptor {
                     .requestIp(LoggerUtils.getCliectIp(request))
                     .type("fail")
                     .description("Log cannot save")
-                    .exceptionDetail(e.getMessage())
+                    .exceptionDetail(e.getLocalizedMessage())
                     .service("Log interceptor")
                     .build();
             logRepository.save(log);

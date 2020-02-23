@@ -1,8 +1,10 @@
 package com.c4me.server.config.advice;
 
+import com.c4me.server.config.exception.DuplicateUsernameException;
 import com.c4me.server.config.interceptor.LogInterceptor;
 import com.c4me.server.domain.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -15,15 +17,37 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice(basePackages = "com.c4me.server")
 @Slf4j
 public class ErrorAdvice {
-    @ExceptionHandler({Exception.class})
+    @ExceptionHandler({BadCredentialsException.class})
     @ResponseBody
-    public Object ExceptionException(Exception exception) {
+    public Object AuthenticationException(BadCredentialsException exception) {
         LogInterceptor.logExceptionUnExpect(exception);
         exception.printStackTrace();
-        BaseResponse<Object> result = BaseResponse.builder()
-                .message("Error, please contact administrator")
+        return BaseResponse.builder()
+                .message(exception.getMessage())
                 .success(false)
                 .build();
-        return result;
     }
+
+    @ExceptionHandler({DuplicateUsernameException.class})
+    @ResponseBody
+    public Object DuplicateUsernameException(DuplicateUsernameException exception) {
+        LogInterceptor.logExceptionUnExpect(exception);
+        exception.printStackTrace();
+        return BaseResponse.builder()
+                .message("Username has been used")
+                .success(false)
+                .build();
+    }
+//
+//    @ExceptionHandler({Exception.class})
+//    @ResponseBody
+//    public Object ExceptionException(Exception exception) {
+//        LogInterceptor.logExceptionUnExpect(exception);
+//        exception.printStackTrace();
+//        BaseResponse<Object> result = BaseResponse.builder()54
+//                .message("Error, please contact administrator")
+//                .success(false)
+//                .build();
+//        return result;
+//    }
 }

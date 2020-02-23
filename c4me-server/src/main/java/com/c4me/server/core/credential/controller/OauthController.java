@@ -2,7 +2,6 @@ package com.c4me.server.core.credential.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.c4me.server.config.AuthStateRedisCache;
 import com.c4me.server.config.annotation.LogAndWrap;
 import com.c4me.server.core.credential.domain.GitHubUserInfoEntity;
 import com.c4me.server.core.credential.domain.GoogleUserInfoEntity;
@@ -19,7 +18,6 @@ import me.zhyd.oauth.request.AuthRequest;
 import me.zhyd.oauth.utils.AuthStateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.security.GeneralSecurityException;
 
 /**
  * <dl>
@@ -46,9 +43,6 @@ import java.security.GeneralSecurityException;
 public class OauthController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Autowired
-    private AuthStateRedisCache stateRedisCache;
-
     @RequestMapping("/render/{source}")
     @LogAndWrap(log = "Apply third-party token", wrap = false)
     public void renderAuth(@PathVariable("source") String source, HttpServletResponse response) throws IOException {
@@ -60,7 +54,7 @@ public class OauthController {
 
     @RequestMapping("/callback/{source}")
     @LogAndWrap(log = "Get third-party token", wrap = false)
-    public Object login(@PathVariable("source") String source, AuthCallback callback) throws GeneralSecurityException, IOException {
+    public Object login(@PathVariable("source") String source, AuthCallback callback) {
         logger.info("enter callback：" + source + " callback params：" + JSONObject.toJSONString(callback));
         AuthRequest authRequest = getAuthRequest(source);
         AuthResponse response = authRequest.login(callback);
@@ -70,7 +64,7 @@ public class OauthController {
 
     @RequestMapping("/revoke/{source}/{token}")
     @LogAndWrap(log = "Revoke third-party token", wrap = false)
-    public Object revokeAuth(@PathVariable("source") String source, @PathVariable("token") String token) throws IOException {
+    public Object revokeAuth(@PathVariable("source") String source, @PathVariable("token") String token) {
         AuthRequest authRequest = getAuthRequest(source);
         return authRequest.revoke(AuthToken.builder().accessToken(token).build());
     }
@@ -117,14 +111,14 @@ public class OauthController {
                         .clientId("892bd60532493d6165a6")
                         .clientSecret("d383bf40b22cc0658261ac873bebf8d3f32319d1")
                         .redirectUri("http://127.0.0.1:3000/oauth/callback/github")
-                        .build(), stateRedisCache);
+                        .build());
                 break;
             case "google":
                 authRequest = new AuthGoogleRequest(AuthConfig.builder()
                         .clientId("580576959354-nrf2camc0ho1tsagigb5dipbr5e3kn7h.apps.googleusercontent.com")
                         .clientSecret("upvSaAducHK1UznSL0b5FSIG")
                         .redirectUri("http://127.0.0.1:3000/oauth/callback/google")
-                        .build(), stateRedisCache);
+                        .build());
                 break;
             default:
                 break;

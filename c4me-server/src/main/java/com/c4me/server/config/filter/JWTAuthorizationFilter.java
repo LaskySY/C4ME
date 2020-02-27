@@ -47,7 +47,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
       SecurityContextHolder.getContext().setAuthentication(getAuthentication(tokenHeader));
     } catch (ExpiredJwtException e) {
       LoggerUtils
-          .saveLog(request, "JWTAuthorizationFilter", e.getMessage(), Const.Error.TOKEN_EXPIRED);
+          .saveFailLog(request, "JWTAuthorizationFilter", e.getMessage(), Const.Error.TOKEN_EXPIRED);
       logger.error(e.getMessage());
       response.setCharacterEncoding(Const.Header.CHARACTER_ENCODING);
       response.setContentType(Const.Header.CONTENT_TYPE);

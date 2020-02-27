@@ -51,7 +51,6 @@ public class BasicControllerAdvice implements ResponseBodyAdvice<Object> {
       try {
         BaseResponse<Object> result = BaseResponse.builder()
             .message(Objects.requireNonNull(returnType.getMethodAnnotation(LogAndWrap.class)).log())
-            .success(true)
             .data(body)
             .build();
         if (body instanceof String) {

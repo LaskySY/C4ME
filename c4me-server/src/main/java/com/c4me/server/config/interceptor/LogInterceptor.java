@@ -65,7 +65,6 @@ public class LogInterceptor implements HandlerInterceptor {
       logRepository = (LogRepository) factory.getBean("logRepository");
     }
     try {
-
       HandlerMethod m = (HandlerMethod) handler;
       String description = m.getMethodAnnotation(LogAndWrap.class) == null ?
           null : Objects.requireNonNull(m.getMethodAnnotation(LogAndWrap.class)).log();
@@ -80,6 +79,7 @@ public class LogInterceptor implements HandlerInterceptor {
         token = token.replace(TOKEN_PREFIX, "");
         log.setParams(token);
         if (JwtTokenUtils.checkJWT(token)) {
+          log.setUserId(JwtTokenUtils.getUserId(token));
           log.setUsername(JwtTokenUtils.getUsername(token));
           log.setUserRole(JwtTokenUtils.getUserRole(token).equals("ROLE_ADMIN") ? 1 : 0);
         }
@@ -89,7 +89,7 @@ public class LogInterceptor implements HandlerInterceptor {
       request.setAttribute("logId", log.getId());
     } catch (Exception e) {
       logger.error("Cannot save current Log." + e.getMessage());
-      LoggerUtils.saveLog(request, "Log", "Cannot save current Log.", Const.Error.LOG);
+      LoggerUtils.saveFailLog(request, "Log", "Cannot save current Log.", Const.Error.LOG);
     }
     return true;
   }

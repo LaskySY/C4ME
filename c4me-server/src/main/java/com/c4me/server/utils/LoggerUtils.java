@@ -1,7 +1,5 @@
 package com.c4me.server.utils;
 
-import static com.c4me.server.utils.JwtTokenUtils.TOKEN_PREFIX;
-
 import com.c4me.server.core.log.repository.LogRepository;
 import com.c4me.server.entities.LogEntity;
 import javax.servlet.http.HttpServletRequest;
@@ -16,16 +14,17 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  */
 public class LoggerUtils {
 
-    /**
-     * @Description: Force save to log
-     *
-     * @param request
-     * @param Service
-     * @param errorMessage
-     * @param errorCode
-     */
-  public static void saveLog(@NonNull HttpServletRequest request, String Service,
-      String errorMessage, String errorCode) {
+
+  /**
+   * @param request
+   * @param Service
+   * @param errorMessage
+   * @param errorCode
+   */
+  public static void saveFailLog(@NonNull HttpServletRequest request,
+      String Service,
+      String errorMessage,
+      String errorCode) {
 
     LogEntity log = new LogEntity();
     log.setType("fail");
@@ -36,7 +35,34 @@ public class LoggerUtils {
 
     String fullToken = request.getHeader(JwtTokenUtils.TOKEN_HEADER);
     if (fullToken != null) {
-      log.setParams(fullToken.replace(TOKEN_PREFIX, ""));
+      log.setParams(fullToken.replace(JwtTokenUtils.TOKEN_PREFIX, ""));
+    }
+    BeanFactory factory = WebApplicationContextUtils
+        .getRequiredWebApplicationContext(request.getServletContext());
+    LogRepository logRepository = (LogRepository) factory.getBean("logRepository");
+    logRepository.save(log);
+  }
+
+  public static void saveSuccessLog(@NonNull HttpServletRequest request,
+      String service,
+      String description) {
+
+    LogEntity log = new LogEntity();
+    log.setType("success");
+    log.setDescription(description);
+    log.setService(service);
+    log.setRequestIp(LoggerUtils.getCliectIp(request));
+
+    String fullToken = request.getHeader(JwtTokenUtils.TOKEN_HEADER);
+    if (fullToken != null) {
+      log.setParams(fullToken.replace(JwtTokenUtils.TOKEN_PREFIX, ""));
+    }
+    if (service.equals("successfulAuthentication")) {
+      log.setDescription("login");
+      log.setParams(description);
+      log.setUsername(JwtTokenUtils.getUsername(description));
+      log.setUserRole(JwtTokenUtils.getUserRole(description).equals("ROLE_ADMIN") ? 1 : 0);
+      log.setUserId(JwtTokenUtils.getUserId(description));
     }
     BeanFactory factory = WebApplicationContextUtils
         .getRequiredWebApplicationContext(request.getServletContext());
@@ -77,9 +103,9 @@ public class LoggerUtils {
    * is ajax request
    */
   public static boolean isAjaxRequest(HttpServletRequest request) {
-      return request.getHeader("accept").contains("application/json")
-          || (request.getHeader("X-Requested-With") != null && request.getHeader("X-Requested-With")
-          .equals(
-              "XMLHttpRequest"));
+    return request.getHeader("accept").contains("application/json")
+        || (request.getHeader("X-Requested-With") != null && request.getHeader("X-Requested-With")
+        .equals(
+            "XMLHttpRequest"));
   }
 }

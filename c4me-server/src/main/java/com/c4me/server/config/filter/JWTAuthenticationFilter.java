@@ -64,19 +64,18 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     JwtUser jwtUser = (JwtUser) authResult.getPrincipal();
     boolean isRemember = rememberMe.get();
 
-    String role = "";
     Collection<? extends GrantedAuthority> authorities = jwtUser.getAuthorities();
-    for (GrantedAuthority authority : authorities) {
-      role = authority.getAuthority();
-    }
-    String token = JwtTokenUtils.createToken(jwtUser.getUsername(), role, isRemember);
+    String token = JwtTokenUtils.createToken(jwtUser, isRemember);
     response.setHeader(Const.Header.TOKEN, JwtTokenUtils.TOKEN_PREFIX + token);
+
+    logger.info("login success");
+    LoggerUtils.saveSuccessLog(request,"successfulAuthentication",token);
   }
 
   @Override
   protected void unsuccessfulAuthentication(HttpServletRequest request,
       HttpServletResponse response, AuthenticationException failed) throws IOException {
-    LoggerUtils.saveLog(request, "JWTAuthenticationFilter", failed.getMessage(),
+    LoggerUtils.saveFailLog(request, "JWTAuthenticationFilter", failed.getMessage(),
         Const.Error.AUTHENTICATION);
     logger.error(failed.getMessage());
     response.getWriter().write(new ObjectMapper().writeValueAsString(

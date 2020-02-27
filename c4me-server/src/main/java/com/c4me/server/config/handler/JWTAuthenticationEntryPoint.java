@@ -26,7 +26,7 @@ public class JWTAuthenticationEntryPoint implements AuthenticationEntryPoint {
       HttpServletResponse response,
       AuthenticationException authException) throws IOException {
 
-    LoggerUtils.saveLog(request, "JWTAuthenticationEntryPoint", authException.getMessage(),
+    LoggerUtils.saveFailLog(request, "JWTAuthenticationEntryPoint", authException.getMessage(),
         Const.Error.MISS_TOKEN);
     logger.error(authException.getMessage());
 

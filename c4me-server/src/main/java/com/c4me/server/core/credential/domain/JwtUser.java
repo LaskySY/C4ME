@@ -17,8 +17,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Getter
 public class JwtUser implements UserDetails {
     private UUID id;
-    private String name;
-    private Integer role;
     private String username;
     private String password;
     private List<GrantedAuthority> authorities;
@@ -26,8 +24,6 @@ public class JwtUser implements UserDetails {
 
     public JwtUser(UserEntity user) {
         id = user.getId();
-        name = user.getName();
-        role = user.getRole();
         username = user.getUsername();
         password = user.getPassword();
         authorities = new ArrayList<GrantedAuthority>(){{

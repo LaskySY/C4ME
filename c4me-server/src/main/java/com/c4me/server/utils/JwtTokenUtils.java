@@ -4,9 +4,9 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-
 import java.util.Date;
 import java.util.HashMap;
+import javax.xml.bind.DatatypeConverter;
 
 /**
  * @Description:
@@ -45,6 +45,17 @@ public class JwtTokenUtils {
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expiration * 1000))
                 .compact();
+    }
+
+    public static Boolean checkJWT(String jsonWebToken){
+        try {
+            Jwts.parser()
+                .setSigningKey(DatatypeConverter.parseBase64Binary(SECRET))
+                .parseClaimsJws(jsonWebToken);
+        }catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
     // get username from token

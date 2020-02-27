@@ -1,22 +1,25 @@
 package com.c4me.server.config.filter;
 
+import com.c4me.server.config.constant.Const;
 import com.c4me.server.core.credential.domain.JwtUser;
-import com.c4me.server.domain.BaseResponse;
-import com.c4me.server.domain.LoginUser;
+import com.c4me.server.core.credential.domain.LoginUser;
+import com.c4me.server.domain.ErrorResponse;
 import com.c4me.server.utils.JwtTokenUtils;
+import com.c4me.server.utils.LoggerUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.util.Collection;
+import javax.servlet.FilterChain;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import javax.servlet.FilterChain;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.Collection;
 
 /**
  * @Description:
@@ -25,58 +28,62 @@ import java.util.Collection;
  */
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private ThreadLocal<Boolean> rememberMe = new ThreadLocal<>();
-    private AuthenticationManager authenticationManager;
+  private final Logger logger = LoggerFactory.getLogger(getClass());
+  private ThreadLocal<Boolean> rememberMe = new ThreadLocal<>();
+  private AuthenticationManager authenticationManager;
 
-    public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
-        this.authenticationManager = authenticationManager;
-        super.setFilterProcessesUrl("/auth/login");
+  public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
+    this.authenticationManager = authenticationManager;
+    super.setFilterProcessesUrl("/auth/login");
+  }
+
+  @Override
+  public Authentication attemptAuthentication(HttpServletRequest request,
+      HttpServletResponse response) throws AuthenticationException {
+    try {
+      LoginUser loginUser = new ObjectMapper()
+          .readValue(request.getInputStream(), LoginUser.class);
+      rememberMe.set(loginUser.getRememberMe());
+      return authenticationManager.authenticate(
+          new UsernamePasswordAuthenticationToken(
+              loginUser.getUsername(),
+              loginUser.getPassword())
+      );
+    } catch (IOException e) {
+      System.out.println(e.getMessage());
     }
+    return null;
+  }
 
-    @Override
-    public Authentication attemptAuthentication(HttpServletRequest request,
-                                                HttpServletResponse response) throws AuthenticationException {
-        try {
-            LoginUser loginUser = new ObjectMapper().readValue(request.getInputStream(), LoginUser.class);
-            rememberMe.set(loginUser.getRememberMe());
-            return authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            loginUser.getUsername(),
-                            loginUser.getPassword())
-            );
-        } catch (IOException e) {
-            return null;
-        }
+  @Override
+  protected void successfulAuthentication(HttpServletRequest request,
+      HttpServletResponse response,
+      FilterChain chain,
+      Authentication authResult) {
+
+    JwtUser jwtUser = (JwtUser) authResult.getPrincipal();
+    boolean isRemember = rememberMe.get();
+
+    String role = "";
+    Collection<? extends GrantedAuthority> authorities = jwtUser.getAuthorities();
+    for (GrantedAuthority authority : authorities) {
+      role = authority.getAuthority();
     }
+    String token = JwtTokenUtils.createToken(jwtUser.getUsername(), role, isRemember);
+    response.setHeader(Const.Header.TOKEN, JwtTokenUtils.TOKEN_PREFIX + token);
+  }
 
-    // authenticate success and return token
-    @Override
-    protected void successfulAuthentication(HttpServletRequest request,
-                                            HttpServletResponse response,
-                                            FilterChain chain,
-                                            Authentication authResult) {
-
-        JwtUser jwtUser = (JwtUser) authResult.getPrincipal();
-        boolean isRemember = rememberMe.get();
-
-        String role = "";
-        Collection<? extends GrantedAuthority> authorities = jwtUser.getAuthorities();
-        for (GrantedAuthority authority : authorities){
-             role = authority.getAuthority();
-        }
-        String token = JwtTokenUtils.createToken(jwtUser.getUsername(), role, isRemember);
-
-        response.setHeader("token", JwtTokenUtils.TOKEN_PREFIX + token);
-    }
-
-    // authenticate fail
-    @Override
-    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException {
-        response.getWriter().write(new ObjectMapper().writeValueAsString(
-                BaseResponse.builder()
-                        .success(false)
-                        .message(failed.getMessage())
-                        .build())
-        );
-    }
+  @Override
+  protected void unsuccessfulAuthentication(HttpServletRequest request,
+      HttpServletResponse response, AuthenticationException failed) throws IOException {
+    LoggerUtils.saveLog(request, "JWTAuthenticationFilter", failed.getMessage(),
+        Const.Error.AUTHENTICATION);
+    logger.error(failed.getMessage());
+    response.getWriter().write(new ObjectMapper().writeValueAsString(
+        ErrorResponse.builder()
+            .errorCode(Const.Error.AUTHENTICATION)
+            .message(failed.getMessage())
+            .build())
+    );
+  }
 }

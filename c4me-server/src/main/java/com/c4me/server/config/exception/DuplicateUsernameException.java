@@ -6,10 +6,11 @@ package com.c4me.server.config.exception;
  * @CreateDate: 02-23-2020
  */
 public class DuplicateUsernameException extends Exception {
-    public DuplicateUsernameException() {
-    }
 
-    public DuplicateUsernameException(String message) {
-        super(message);
-    }
+  public DuplicateUsernameException() {
+  }
+
+  public DuplicateUsernameException(String message) {
+    super(message);
+  }
 }

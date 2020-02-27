@@ -1,10 +1,12 @@
 package com.c4me.server.config.advice;
 
+import com.c4me.server.config.constant.Const;
 import com.c4me.server.config.exception.DuplicateUsernameException;
 import com.c4me.server.config.interceptor.LogInterceptor;
-import com.c4me.server.domain.BaseResponse;
+import com.c4me.server.domain.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -17,37 +19,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice(basePackages = "com.c4me.server")
 @Slf4j
 public class ErrorAdvice {
-    @ExceptionHandler({BadCredentialsException.class})
-    @ResponseBody
-    public Object AuthenticationException(BadCredentialsException exception) {
-        LogInterceptor.logExceptionUnExpect(exception);
-        exception.printStackTrace();
-        return BaseResponse.builder()
-                .message(exception.getMessage())
-                .success(false)
-                .build();
-    }
 
-    @ExceptionHandler({DuplicateUsernameException.class})
-    @ResponseBody
-    public Object DuplicateUsernameException(DuplicateUsernameException exception) {
-        LogInterceptor.logExceptionUnExpect(exception);
-        exception.printStackTrace();
-        return BaseResponse.builder()
-                .message("Username has been used")
-                .success(false)
-                .build();
-    }
-//
-//    @ExceptionHandler({Exception.class})
-//    @ResponseBody
-//    public Object ExceptionException(Exception exception) {
-//        LogInterceptor.logExceptionUnExpect(exception);
-//        exception.printStackTrace();
-//        BaseResponse<Object> result = BaseResponse.builder()54
-//                .message("Error, please contact administrator")
-//                .success(false)
-//                .build();
-//        return result;
-//    }
+  private final Logger logger = LoggerFactory.getLogger(getClass());
+
+  @ExceptionHandler({DuplicateUsernameException.class})
+  @ResponseBody
+  public Object DuplicateUsernameException(DuplicateUsernameException exception) {
+    LogInterceptor.logExceptionUnExpect(exception, Const.Error.DUPLICATE_USERNAME);
+    logger.error(exception.getMessage());
+    return ErrorResponse.builder()
+        .errorCode(Const.Error.DUPLICATE_USERNAME)
+        .message(exception.getMessage())
+        .build();
+  }
 }

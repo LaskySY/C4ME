@@ -1,6 +1,10 @@
 package com.c4me.server.config.annotation;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  * @Description:
@@ -11,6 +15,8 @@ import java.lang.annotation.*;
 @Target({ElementType.METHOD})
 @Documented
 public @interface LogAndWrap {
-    String log() default "" ;//description save in log
-    boolean wrap() default true ;//wrap data
+
+  String log() default "";//description save in log
+
+  boolean wrap() default true;//wrap data
 }

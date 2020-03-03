@@ -1,2 +1,2 @@
 # C4ME
-Colleges info app for high-school student
+This is C4Me backend

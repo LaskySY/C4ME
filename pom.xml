@@ -85,16 +85,16 @@
                 <version>4.12</version>
             </dependency>
             <!-- zipkin -->
-            <dependency>
-                <groupId>io.zipkin.java</groupId>
-                <artifactId>zipkin-server</artifactId>
-                <version>${zipkin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.zipkin.java</groupId>
-                <artifactId>zipkin-autoconfigure-ui</artifactId>
-                <version>${zipkin.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>io.zipkin.java</groupId>-->
+<!--                <artifactId>zipkin-server</artifactId>-->
+<!--                <version>${zipkin.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>io.zipkin.java</groupId>-->
+<!--                <artifactId>zipkin-autoconfigure-ui</artifactId>-->
+<!--                <version>${zipkin.version}</version>-->
+<!--            </dependency>-->
         </dependencies>
     </dependencyManagement>
 

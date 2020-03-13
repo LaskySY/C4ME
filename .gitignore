@@ -30,4 +30,4 @@ build/
 ### VS Code ###
 .vscode/
 
-*/JpaConfig.java
+c4me-server/src/main/java/com/c4me/server/config/JpaConfig.java

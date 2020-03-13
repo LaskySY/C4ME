@@ -1,109 +1,101 @@
 package com.c4me.server.entities;
 
-import java.sql.Timestamp;
-import java.util.UUID;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-/**
- * @Description:
- * @Author: Siyong Liu
- * @CreateDate: 02-26-2020
- */
-@Entity
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Objects;
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
-@Table(name = "user", schema = "siyoliu")
+@Entity
+@Table(name = "User", schema = "siyoliu")
 public class UserEntity {
+    private String username;
+    private String name;
+    private String password;
+    private Integer role;
+    private Timestamp createTime;
+    private Timestamp updateTime;
 
-  private Timestamp updateTime;
-  private UUID id;
-  private String name;
-  private String username;
-  private String password;
-  private Timestamp createTime;
-  private Integer role;
+    @Id
+    @Column(name = "username")
+    public String getUsername() {
+        return username;
+    }
 
-  @Basic
-  @Column(name = "update_time")
-  @UpdateTimestamp
-  public Timestamp getUpdateTime() {
-    return updateTime;
-  }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-  public void setUpdateTime(Timestamp updateTime) {
-    this.updateTime = updateTime;
-  }
+    @Basic
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
 
-  @Id
-  @Column(name = "id")
-  public UUID getId() {
-    return id;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public void setId(UUID id) {
-    this.id = id;
-  }
+    @Basic
+    @Column(name = "password")
+    public String getPassword() {
+        return password;
+    }
 
-  @Basic
-  @Column(name = "name")
-  public String getName() {
-    return name;
-  }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    @Basic
+    @Column(name = "role")
+    public Integer getRole() {
+        return role;
+    }
 
-  @Basic
-  @Column(name = "username")
-  public String getUsername() {
-    return username;
-  }
+    public void setRole(Integer role) {
+        this.role = role;
+    }
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+    @Basic
+    @Column(name = "create_time")
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
 
-  @Basic
-  @Column(name = "password")
-  public String getPassword() {
-    return password;
-  }
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
 
-  public void setPassword(String password) {
-    this.password = password;
-  }
+    @Basic
+    @Column(name = "update_time")
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
 
-  @Basic
-  @Column(name = "create_time")
-  @CreationTimestamp
-  public Timestamp getCreateTime() {
-    return createTime;
-  }
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
 
-  public void setCreateTime(Timestamp createTime) {
-    this.createTime = createTime;
-  }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserEntity that = (UserEntity) o;
+        return Objects.equals(username, that.username) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(password, that.password) &&
+                Objects.equals(role, that.role) &&
+                Objects.equals(createTime, that.createTime) &&
+                Objects.equals(updateTime, that.updateTime);
+    }
 
-  @Basic
-  @Column(name = "role")
-  public Integer getRole() {
-    return role;
-  }
-
-  public void setRole(Integer role) {
-    this.role = role;
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, name, password, role, createTime, updateTime);
+    }
 }

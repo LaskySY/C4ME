@@ -15,5 +15,9 @@
         <property name="hibernate.c3p0.idle_test_period">3000</property>
         <mapping class="com.c4me.server.entities.LogEntity"/>
         <mapping class="com.c4me.server.entities.UserEntity"/>
+        <mapping class="com.c4me.server.entities.CollegeEntity"/>
+        <mapping class="com.c4me.server.entities.HighschoolMajorAssociationEntity"/>
+        <mapping class="com.c4me.server.entities.MajorEntity"/>
+        <mapping class="com.c4me.server.entities.ProfileEntity"/>
     </session-factory>
 </hibernate-configuration>

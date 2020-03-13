@@ -4,7 +4,7 @@ c4me-server/src/main/java/com/c4me/server/config/JpaConfig.java
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
+#!**/src/main/**
 !**/src/test/**
 
 ### STS ###

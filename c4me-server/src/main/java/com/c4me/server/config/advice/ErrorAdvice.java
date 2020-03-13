@@ -3,7 +3,7 @@ package com.c4me.server.config.advice;
 import com.c4me.server.config.constant.Const;
 import com.c4me.server.config.exception.DuplicateUsernameException;
 import com.c4me.server.config.interceptor.LogInterceptor;
-import com.c4me.server.domain.ErrorResponse;
+import com.c4me.server.domain.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,8 +27,8 @@ public class ErrorAdvice {
   public Object DuplicateUsernameException(DuplicateUsernameException exception) {
     LogInterceptor.logExceptionUnExpect(exception, Const.Error.DUPLICATE_USERNAME);
     logger.error(exception.getMessage());
-    return ErrorResponse.builder()
-        .errorCode(Const.Error.DUPLICATE_USERNAME)
+    return BaseResponse.builder()
+        .code(Const.Error.DUPLICATE_USERNAME)
         .message(exception.getMessage())
         .build();
   }

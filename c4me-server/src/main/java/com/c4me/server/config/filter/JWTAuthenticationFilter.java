@@ -3,7 +3,7 @@ package com.c4me.server.config.filter;
 import com.c4me.server.config.constant.Const;
 import com.c4me.server.core.credential.domain.JwtUser;
 import com.c4me.server.core.credential.domain.LoginUser;
-import com.c4me.server.domain.ErrorResponse;
+import com.c4me.server.domain.BaseResponse;
 import com.c4me.server.utils.JwtTokenUtils;
 import com.c4me.server.utils.LoggerUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -79,8 +79,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         Const.Error.AUTHENTICATION);
     logger.error(failed.getMessage());
     response.getWriter().write(new ObjectMapper().writeValueAsString(
-        ErrorResponse.builder()
-            .errorCode(Const.Error.AUTHENTICATION)
+        BaseResponse.builder()
+            .code(Const.Error.AUTHENTICATION)
             .message(failed.getMessage())
             .build())
     );

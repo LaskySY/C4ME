@@ -23,7 +23,6 @@ public class JwtUser implements UserDetails {
 
 
     public JwtUser(UserEntity user) {
-        id = user.getId();
         username = user.getUsername();
         password = user.getPassword();
         authorities = new ArrayList<GrantedAuthority>(){{

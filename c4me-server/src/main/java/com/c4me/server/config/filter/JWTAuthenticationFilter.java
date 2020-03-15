@@ -10,6 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.HashMap;
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -67,13 +68,15 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     Collection<? extends GrantedAuthority> authorities = jwtUser.getAuthorities();
     String token = JwtTokenUtils.createToken(jwtUser, isRemember);
-    response.setHeader(Const.Header.TOKEN, JwtTokenUtils.TOKEN_PREFIX + token);
+    //response.setHeader(Const.Header.TOKEN, JwtTokenUtils.TOKEN_PREFIX + token);
 
+    HashMap<String, String> tokenMap = new HashMap<>();
+    tokenMap.put("token", JwtTokenUtils.TOKEN_PREFIX + token);
     response.getWriter().write(new ObjectMapper().writeValueAsString(
             BaseResponse.builder()
             .code("success")
-            .message("login successful")
-            .data(JwtTokenUtils.TOKEN_PREFIX + token)
+            .message("")
+            .data(tokenMap)
             .build()));
 
     logger.info("login success");

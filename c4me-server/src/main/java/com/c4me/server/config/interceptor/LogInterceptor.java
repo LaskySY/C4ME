@@ -79,7 +79,6 @@ public class LogInterceptor implements HandlerInterceptor {
         token = token.replace(TOKEN_PREFIX, "");
         log.setParams(token);
         if (JwtTokenUtils.checkJWT(token)) {
-          log.setUserId(JwtTokenUtils.getUserId(token));
           log.setUsername(JwtTokenUtils.getUsername(token));
           log.setUserRole(JwtTokenUtils.getUserRole(token).equals("ROLE_ADMIN") ? 1 : 0);
         }

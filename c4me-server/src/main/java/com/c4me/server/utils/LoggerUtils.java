@@ -62,7 +62,6 @@ public class LoggerUtils {
       log.setParams(description);
       log.setUsername(JwtTokenUtils.getUsername(description));
       log.setUserRole(JwtTokenUtils.getUserRole(description).equals("ROLE_ADMIN") ? 1 : 0);
-      log.setUserId(JwtTokenUtils.getUserId(description));
     }
     BeanFactory factory = WebApplicationContextUtils
         .getRequiredWebApplicationContext(request.getServletContext());

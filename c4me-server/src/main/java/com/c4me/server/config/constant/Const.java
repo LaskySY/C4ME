@@ -19,7 +19,7 @@ public final class Const {
 
   public final static class Error {
 
-    public static final String DUPLICATE_USERNAME = "511";
+    public static final String DUPLICATE_USERNAME = "duplicateUsername";
     public static final String LOG = "512";
     public static final String AUTHENTICATION = "513";
     public static final String MISS_TOKEN = "514";

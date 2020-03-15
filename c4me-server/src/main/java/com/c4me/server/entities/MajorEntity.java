@@ -6,13 +6,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
 
+/**
+ * @Description:
+ * @Author: Maciej Wlodek
+ * @CreateDate: 03-15-2020
+ */
+
 @Entity
 @Table(name = "Major", schema = "siyoliu")
 public class MajorEntity {
     private String name;
 
     @Id
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 45)
     public String getName() {
         return name;
     }

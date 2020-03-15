@@ -10,22 +10,22 @@ import java.util.Objects;
  */
 
 @Entity
-@Table(name = "Highschool_major_association", schema = "siyoliu")
-@IdClass(HighschoolMajorAssociationEntityPK.class)
-public class HighschoolMajorAssociationEntity {
-    private int highschoolId;
+@Table(name = "College_major_association", schema = "siyoliu")
+@IdClass(CollegeMajorAssociationEntityPK.class)
+public class CollegeMajorAssociationEntity {
+    private int collegeId;
     private String majorName;
-    private HighschoolEntity highschoolByHighschoolId;
+    private CollegeEntity collegeByCollegeId;
     private MajorEntity majorByMajorName;
 
     @Id
-    @Column(name = "highschool_id", nullable = false)
-    public int getHighschoolId() {
-        return highschoolId;
+    @Column(name = "college_id", nullable = false)
+    public int getCollegeId() {
+        return collegeId;
     }
 
-    public void setHighschoolId(int highschoolId) {
-        this.highschoolId = highschoolId;
+    public void setCollegeId(int collegeId) {
+        this.collegeId = collegeId;
     }
 
     @Id
@@ -42,24 +42,24 @@ public class HighschoolMajorAssociationEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        HighschoolMajorAssociationEntity that = (HighschoolMajorAssociationEntity) o;
-        return highschoolId == that.highschoolId &&
+        CollegeMajorAssociationEntity that = (CollegeMajorAssociationEntity) o;
+        return collegeId == that.collegeId &&
                 Objects.equals(majorName, that.majorName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(highschoolId, majorName);
+        return Objects.hash(collegeId, majorName);
     }
 
     @ManyToOne
-    @JoinColumn(name = "highschool_id", referencedColumnName = "school_id", nullable = false)
-    public HighschoolEntity getHighschoolByHighschoolId() {
-        return highschoolByHighschoolId;
+    @JoinColumn(name = "college_id", referencedColumnName = "id", nullable = false)
+    public CollegeEntity getCollegeByCollegeId() {
+        return collegeByCollegeId;
     }
 
-    public void setHighschoolByHighschoolId(HighschoolEntity highschoolByHighschoolId) {
-        this.highschoolByHighschoolId = highschoolByHighschoolId;
+    public void setCollegeByCollegeId(CollegeEntity collegeByCollegeId) {
+        this.collegeByCollegeId = collegeByCollegeId;
     }
 
     @ManyToOne

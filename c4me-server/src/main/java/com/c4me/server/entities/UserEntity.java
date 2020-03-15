@@ -2,16 +2,25 @@ package com.c4me.server.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * @Description:
+ * @Author: Maciej Wlodek
+ * @CreateDate: 03-15-2020
+ */
+
+@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@EqualsAndHashCode
 @Table(name = "User", schema = "siyoliu")
 public class UserEntity {
     private String username;
@@ -20,9 +29,11 @@ public class UserEntity {
     private Integer role;
     private Timestamp createTime;
     private Timestamp updateTime;
+    private ProfileEntity profileByUsername;
+    private Collection<StudentApplicationEntity> studentApplicationsByUsername;
 
     @Id
-    @Column(name = "username")
+    @Column(name = "username", nullable = false, length = 255)
     public String getUsername() {
         return username;
     }
@@ -32,7 +43,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = true, length = 255)
     public String getName() {
         return name;
     }
@@ -42,7 +53,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "password")
+    @Column(name = "password", nullable = true, length = 255)
     public String getPassword() {
         return password;
     }
@@ -52,7 +63,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "role")
+    @Column(name = "role", nullable = true)
     public Integer getRole() {
         return role;
     }
@@ -62,7 +73,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "create_time")
+    @Column(name = "create_time", nullable = true)
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -72,7 +83,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "update_time")
+    @Column(name = "update_time", nullable = true)
     public Timestamp getUpdateTime() {
         return updateTime;
     }
@@ -97,5 +108,23 @@ public class UserEntity {
     @Override
     public int hashCode() {
         return Objects.hash(username, name, password, role, createTime, updateTime);
+    }
+
+    @OneToOne(mappedBy = "userByUsername")
+    public ProfileEntity getProfileByUsername() {
+        return profileByUsername;
+    }
+
+    public void setProfileByUsername(ProfileEntity profileByUsername) {
+        this.profileByUsername = profileByUsername;
+    }
+
+    @OneToMany(mappedBy = "userByUsername")
+    public Collection<StudentApplicationEntity> getStudentApplicationsByUsername() {
+        return studentApplicationsByUsername;
+    }
+
+    public void setStudentApplicationsByUsername(Collection<StudentApplicationEntity> studentApplicationsByUsername) {
+        this.studentApplicationsByUsername = studentApplicationsByUsername;
     }
 }

@@ -4,7 +4,6 @@ import com.c4me.server.config.exception.DuplicateUsernameException;
 import com.c4me.server.core.credential.domain.JwtUser;
 import com.c4me.server.core.credential.domain.RegisterUser;
 import com.c4me.server.core.credential.repository.UserRepository;
-import java.util.UUID;
 
 import com.c4me.server.entities.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;

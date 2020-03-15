@@ -1,10 +1,25 @@
 package com.c4me.server.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
+/**
+ * @Description:
+ * @Author: Maciej Wlodek
+ * @CreateDate: 03-15-2020
+ */
+
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 @Table(name = "Log", schema = "siyoliu")
 public class LogEntity {
     private int id;
@@ -20,7 +35,7 @@ public class LogEntity {
     private String username;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -30,7 +45,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "create_time")
+    @Column(name = "create_time", nullable = true)
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -40,7 +55,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "description")
+    @Column(name = "description", nullable = true, length = 255)
     public String getDescription() {
         return description;
     }
@@ -50,7 +65,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "exception_code")
+    @Column(name = "exception_code", nullable = true, length = 255)
     public String getExceptionCode() {
         return exceptionCode;
     }
@@ -60,7 +75,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "exception_detail")
+    @Column(name = "exception_detail", nullable = true, length = 255)
     public String getExceptionDetail() {
         return exceptionDetail;
     }
@@ -70,7 +85,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "params")
+    @Column(name = "params", nullable = true, length = 255)
     public String getParams() {
         return params;
     }
@@ -80,7 +95,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "request_ip")
+    @Column(name = "request_ip", nullable = true, length = 255)
     public String getRequestIp() {
         return requestIp;
     }
@@ -90,7 +105,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "service")
+    @Column(name = "service", nullable = true, length = 255)
     public String getService() {
         return service;
     }
@@ -100,7 +115,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "type")
+    @Column(name = "type", nullable = true, length = 255)
     public String getType() {
         return type;
     }
@@ -110,7 +125,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "user_role")
+    @Column(name = "user_role", nullable = true)
     public Integer getUserRole() {
         return userRole;
     }
@@ -120,7 +135,7 @@ public class LogEntity {
     }
 
     @Basic
-    @Column(name = "username")
+    @Column(name = "username", nullable = true, length = 255)
     public String getUsername() {
         return username;
     }

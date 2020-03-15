@@ -2,7 +2,14 @@ package com.c4me.server.entities;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.Objects;
+
+/**
+ * @Description:
+ * @Author: Maciej Wlodek
+ * @CreateDate: 03-15-2020
+ */
 
 @Entity
 @Table(name = "College", schema = "siyoliu")
@@ -47,9 +54,11 @@ public class CollegeEntity {
     private Integer actScience50;
     private Integer actScience75;
     private Integer actComposite;
+    private Collection<CollegeMajorAssociationEntity> collegeMajorAssociationsById;
+    private Collection<StudentApplicationEntity> studentApplicationsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -59,7 +68,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 128)
     public String getName() {
         return name;
     }
@@ -69,7 +78,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "type")
+    @Column(name = "type", nullable = true, length = 45)
     public String getType() {
         return type;
     }
@@ -79,7 +88,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "average_gpa")
+    @Column(name = "average_gpa", nullable = true, precision = 0)
     public Double getAverageGpa() {
         return averageGpa;
     }
@@ -89,7 +98,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "admission_rate")
+    @Column(name = "admission_rate", nullable = true, precision = 0)
     public Double getAdmissionRate() {
         return admissionRate;
     }
@@ -99,7 +108,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "city")
+    @Column(name = "city", nullable = true, length = 45)
     public String getCity() {
         return city;
     }
@@ -109,7 +118,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "state")
+    @Column(name = "state", nullable = true, length = 45)
     public String getState() {
         return state;
     }
@@ -119,7 +128,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "webpage")
+    @Column(name = "webpage", nullable = true, length = 512)
     public String getWebpage() {
         return webpage;
     }
@@ -129,7 +138,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "latitude")
+    @Column(name = "latitude", nullable = true, precision = 0)
     public Double getLatitude() {
         return latitude;
     }
@@ -139,7 +148,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "longitude")
+    @Column(name = "longitude", nullable = true, precision = 0)
     public Double getLongitude() {
         return longitude;
     }
@@ -149,7 +158,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "instate_tuition")
+    @Column(name = "instate_tuition", nullable = true)
     public Integer getInstateTuition() {
         return instateTuition;
     }
@@ -159,7 +168,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "outstate_tuition")
+    @Column(name = "outstate_tuition", nullable = true)
     public Integer getOutstateTuition() {
         return outstateTuition;
     }
@@ -169,7 +178,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "net_price")
+    @Column(name = "net_price", nullable = true, precision = 0)
     public Double getNetPrice() {
         return netPrice;
     }
@@ -179,7 +188,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "median_debt")
+    @Column(name = "median_debt", nullable = true, precision = 0)
     public Double getMedianDebt() {
         return medianDebt;
     }
@@ -189,7 +198,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "num_students_enrolled")
+    @Column(name = "num_students_enrolled", nullable = true)
     public Integer getNumStudentsEnrolled() {
         return numStudentsEnrolled;
     }
@@ -199,7 +208,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "retention_rate")
+    @Column(name = "retention_rate", nullable = true, precision = 0)
     public Double getRetentionRate() {
         return retentionRate;
     }
@@ -209,7 +218,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "completion_rate")
+    @Column(name = "completion_rate", nullable = true, precision = 0)
     public Double getCompletionRate() {
         return completionRate;
     }
@@ -219,7 +228,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "mean_earnings")
+    @Column(name = "mean_earnings", nullable = true, precision = 0)
     public Double getMeanEarnings() {
         return meanEarnings;
     }
@@ -229,7 +238,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "updated_time")
+    @Column(name = "updated_time", nullable = true)
     public Timestamp getUpdatedTime() {
         return updatedTime;
     }
@@ -239,7 +248,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ranking")
+    @Column(name = "ranking", nullable = true)
     public Integer getRanking() {
         return ranking;
     }
@@ -249,7 +258,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "SAT_math25")
+    @Column(name = "SAT_math25", nullable = true)
     public Integer getSatMath25() {
         return satMath25;
     }
@@ -259,7 +268,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "SAT_math50")
+    @Column(name = "SAT_math50", nullable = true)
     public Integer getSatMath50() {
         return satMath50;
     }
@@ -269,7 +278,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "SAT_math75")
+    @Column(name = "SAT_math75", nullable = true)
     public Integer getSatMath75() {
         return satMath75;
     }
@@ -279,7 +288,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "SAT_EBRW25")
+    @Column(name = "SAT_EBRW25", nullable = true)
     public Integer getSatEbrw25() {
         return satEbrw25;
     }
@@ -289,7 +298,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "SAT_EBRW50")
+    @Column(name = "SAT_EBRW50", nullable = true)
     public Integer getSatEbrw50() {
         return satEbrw50;
     }
@@ -299,7 +308,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "SAT_EBRW75")
+    @Column(name = "SAT_EBRW75", nullable = true)
     public Integer getSatEbrw75() {
         return satEbrw75;
     }
@@ -309,7 +318,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "SAT_overall")
+    @Column(name = "SAT_overall", nullable = true)
     public Integer getSatOverall() {
         return satOverall;
     }
@@ -319,7 +328,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ACT_math25")
+    @Column(name = "ACT_math25", nullable = true)
     public Integer getActMath25() {
         return actMath25;
     }
@@ -329,7 +338,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ACT_math50")
+    @Column(name = "ACT_math50", nullable = true)
     public Integer getActMath50() {
         return actMath50;
     }
@@ -339,7 +348,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ACT_math75")
+    @Column(name = "ACT_math75", nullable = true)
     public Integer getActMath75() {
         return actMath75;
     }
@@ -349,7 +358,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ACT_english25")
+    @Column(name = "ACT_english25", nullable = true)
     public Integer getActEnglish25() {
         return actEnglish25;
     }
@@ -359,7 +368,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ACT_english50")
+    @Column(name = "ACT_english50", nullable = true)
     public Integer getActEnglish50() {
         return actEnglish50;
     }
@@ -369,7 +378,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ACT_english75")
+    @Column(name = "ACT_english75", nullable = true)
     public Integer getActEnglish75() {
         return actEnglish75;
     }
@@ -379,7 +388,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ACT_reading25")
+    @Column(name = "ACT_reading25", nullable = true)
     public Integer getActReading25() {
         return actReading25;
     }
@@ -389,7 +398,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ACT_reading50")
+    @Column(name = "ACT_reading50", nullable = true)
     public Integer getActReading50() {
         return actReading50;
     }
@@ -399,7 +408,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ACT_reading75")
+    @Column(name = "ACT_reading75", nullable = true)
     public Integer getActReading75() {
         return actReading75;
     }
@@ -409,7 +418,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ACT_science25")
+    @Column(name = "ACT_science25", nullable = true)
     public Integer getActScience25() {
         return actScience25;
     }
@@ -419,7 +428,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ACT_science50")
+    @Column(name = "ACT_science50", nullable = true)
     public Integer getActScience50() {
         return actScience50;
     }
@@ -429,7 +438,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ACT_science75")
+    @Column(name = "ACT_science75", nullable = true)
     public Integer getActScience75() {
         return actScience75;
     }
@@ -439,7 +448,7 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "ACT_composite")
+    @Column(name = "ACT_composite", nullable = true)
     public Integer getActComposite() {
         return actComposite;
     }
@@ -498,5 +507,23 @@ public class CollegeEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, type, averageGpa, admissionRate, city, state, webpage, latitude, longitude, instateTuition, outstateTuition, netPrice, medianDebt, numStudentsEnrolled, retentionRate, completionRate, meanEarnings, updatedTime, ranking, satMath25, satMath50, satMath75, satEbrw25, satEbrw50, satEbrw75, satOverall, actMath25, actMath50, actMath75, actEnglish25, actEnglish50, actEnglish75, actReading25, actReading50, actReading75, actScience25, actScience50, actScience75, actComposite);
+    }
+
+    @OneToMany(mappedBy = "collegeByCollegeId")
+    public Collection<CollegeMajorAssociationEntity> getCollegeMajorAssociationsById() {
+        return collegeMajorAssociationsById;
+    }
+
+    public void setCollegeMajorAssociationsById(Collection<CollegeMajorAssociationEntity> collegeMajorAssociationsById) {
+        this.collegeMajorAssociationsById = collegeMajorAssociationsById;
+    }
+
+    @OneToMany(mappedBy = "collegeByCollegeId")
+    public Collection<StudentApplicationEntity> getStudentApplicationsById() {
+        return studentApplicationsById;
+    }
+
+    public void setStudentApplicationsById(Collection<StudentApplicationEntity> studentApplicationsById) {
+        this.studentApplicationsById = studentApplicationsById;
     }
 }

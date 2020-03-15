@@ -11,18 +11,18 @@ import java.util.Objects;
  * @CreateDate: 03-15-2020
  */
 
-public class HighschoolMajorAssociationEntityPK implements Serializable {
-    private int highschoolId;
+public class CollegeMajorAssociationEntityPK implements Serializable {
+    private int collegeId;
     private String majorName;
 
-    @Column(name = "highschool_id", nullable = false)
+    @Column(name = "college_id", nullable = false)
     @Id
-    public int getHighschoolId() {
-        return highschoolId;
+    public int getCollegeId() {
+        return collegeId;
     }
 
-    public void setHighschoolId(int highschoolId) {
-        this.highschoolId = highschoolId;
+    public void setCollegeId(int collegeId) {
+        this.collegeId = collegeId;
     }
 
     @Column(name = "major_name", nullable = false, length = 45)
@@ -39,13 +39,13 @@ public class HighschoolMajorAssociationEntityPK implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        HighschoolMajorAssociationEntityPK that = (HighschoolMajorAssociationEntityPK) o;
-        return highschoolId == that.highschoolId &&
+        CollegeMajorAssociationEntityPK that = (CollegeMajorAssociationEntityPK) o;
+        return collegeId == that.collegeId &&
                 Objects.equals(majorName, that.majorName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(highschoolId, majorName);
+        return Objects.hash(collegeId, majorName);
     }
 }

@@ -1,8 +1,10 @@
 package com.c4me.server.utils;
 
 import com.c4me.server.core.log.repository.LogRepository;
-import com.c4me.server.entities.LogEntity;
+
 import javax.servlet.http.HttpServletRequest;
+
+import com.c4me.server.entities.LogEntity;
 import lombok.NonNull;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.web.context.support.WebApplicationContextUtils;

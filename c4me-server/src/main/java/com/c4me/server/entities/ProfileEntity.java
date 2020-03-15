@@ -4,11 +4,18 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 
+/**
+ * @Description:
+ * @Author: Maciej Wlodek
+ * @CreateDate: 03-15-2020
+ */
+
 @Entity
 @Table(name = "Profile", schema = "siyoliu")
 public class ProfileEntity {
     private String username;
     private Integer schoolYear;
+    private Integer schoolId;
     private Integer numApCourses;
     private Double gpa;
     private Integer satMath;
@@ -27,11 +34,17 @@ public class ProfileEntity {
     private Integer satMolBio;
     private Integer satChemistry;
     private Integer satPhysics;
+    private String major1;
+    private String major2;
     private Timestamp createTime;
     private Timestamp updateTime;
+    private UserEntity userByUsername;
+    private HighschoolEntity highschoolBySchoolId;
+    private MajorEntity majorByMajor1;
+    private MajorEntity majorByMajor2;
 
     @Id
-    @Column(name = "username")
+    @Column(name = "username", nullable = false, length = 255)
     public String getUsername() {
         return username;
     }
@@ -41,7 +54,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "school_year")
+    @Column(name = "school_year", nullable = true)
     public Integer getSchoolYear() {
         return schoolYear;
     }
@@ -51,7 +64,17 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "num_ap_courses")
+    @Column(name = "school_id", nullable = true)
+    public Integer getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(Integer schoolId) {
+        this.schoolId = schoolId;
+    }
+
+    @Basic
+    @Column(name = "num_ap_courses", nullable = true)
     public Integer getNumApCourses() {
         return numApCourses;
     }
@@ -61,7 +84,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "gpa")
+    @Column(name = "gpa", nullable = true, precision = 0)
     public Double getGpa() {
         return gpa;
     }
@@ -71,7 +94,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "SAT_math")
+    @Column(name = "SAT_math", nullable = true)
     public Integer getSatMath() {
         return satMath;
     }
@@ -81,7 +104,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "SAT_EBRW")
+    @Column(name = "SAT_EBRW", nullable = true)
     public Integer getSatEbrw() {
         return satEbrw;
     }
@@ -91,7 +114,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "ACT_math")
+    @Column(name = "ACT_math", nullable = true)
     public Integer getActMath() {
         return actMath;
     }
@@ -101,7 +124,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "ACT_english")
+    @Column(name = "ACT_english", nullable = true)
     public Integer getActEnglish() {
         return actEnglish;
     }
@@ -111,7 +134,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "ACT_reading")
+    @Column(name = "ACT_reading", nullable = true)
     public Integer getActReading() {
         return actReading;
     }
@@ -121,7 +144,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "ACT_science")
+    @Column(name = "ACT_science", nullable = true)
     public Integer getActScience() {
         return actScience;
     }
@@ -131,7 +154,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "ACT_composite")
+    @Column(name = "ACT_composite", nullable = true)
     public Integer getActComposite() {
         return actComposite;
     }
@@ -141,7 +164,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "SAT_literature")
+    @Column(name = "SAT_literature", nullable = true)
     public Integer getSatLiterature() {
         return satLiterature;
     }
@@ -151,7 +174,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "SAT_US_hist")
+    @Column(name = "SAT_US_hist", nullable = true)
     public Integer getSatUsHist() {
         return satUsHist;
     }
@@ -161,7 +184,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "SAT_world_hist")
+    @Column(name = "SAT_world_hist", nullable = true)
     public Integer getSatWorldHist() {
         return satWorldHist;
     }
@@ -171,7 +194,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "SAT_math_I")
+    @Column(name = "SAT_math_I", nullable = true)
     public Integer getSatMathI() {
         return satMathI;
     }
@@ -181,7 +204,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "SAT_math_II")
+    @Column(name = "SAT_math_II", nullable = true)
     public Integer getSatMathIi() {
         return satMathIi;
     }
@@ -191,7 +214,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "SAT_eco_bio")
+    @Column(name = "SAT_eco_bio", nullable = true)
     public Integer getSatEcoBio() {
         return satEcoBio;
     }
@@ -201,7 +224,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "SAT_mol_bio")
+    @Column(name = "SAT_mol_bio", nullable = true)
     public Integer getSatMolBio() {
         return satMolBio;
     }
@@ -211,7 +234,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "SAT_chemistry")
+    @Column(name = "SAT_chemistry", nullable = true)
     public Integer getSatChemistry() {
         return satChemistry;
     }
@@ -221,7 +244,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "SAT_physics")
+    @Column(name = "SAT_physics", nullable = true)
     public Integer getSatPhysics() {
         return satPhysics;
     }
@@ -231,7 +254,27 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "create_time")
+    @Column(name = "major1", nullable = true, length = 45)
+    public String getMajor1() {
+        return major1;
+    }
+
+    public void setMajor1(String major1) {
+        this.major1 = major1;
+    }
+
+    @Basic
+    @Column(name = "major2", nullable = true, length = 45)
+    public String getMajor2() {
+        return major2;
+    }
+
+    public void setMajor2(String major2) {
+        this.major2 = major2;
+    }
+
+    @Basic
+    @Column(name = "create_time", nullable = true)
     public Timestamp getCreateTime() {
         return createTime;
     }
@@ -241,7 +284,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "update_time")
+    @Column(name = "update_time", nullable = true)
     public Timestamp getUpdateTime() {
         return updateTime;
     }
@@ -257,6 +300,7 @@ public class ProfileEntity {
         ProfileEntity that = (ProfileEntity) o;
         return Objects.equals(username, that.username) &&
                 Objects.equals(schoolYear, that.schoolYear) &&
+                Objects.equals(schoolId, that.schoolId) &&
                 Objects.equals(numApCourses, that.numApCourses) &&
                 Objects.equals(gpa, that.gpa) &&
                 Objects.equals(satMath, that.satMath) &&
@@ -275,12 +319,54 @@ public class ProfileEntity {
                 Objects.equals(satMolBio, that.satMolBio) &&
                 Objects.equals(satChemistry, that.satChemistry) &&
                 Objects.equals(satPhysics, that.satPhysics) &&
+                Objects.equals(major1, that.major1) &&
+                Objects.equals(major2, that.major2) &&
                 Objects.equals(createTime, that.createTime) &&
                 Objects.equals(updateTime, that.updateTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, schoolYear, numApCourses, gpa, satMath, satEbrw, actMath, actEnglish, actReading, actScience, actComposite, satLiterature, satUsHist, satWorldHist, satMathI, satMathIi, satEcoBio, satMolBio, satChemistry, satPhysics, createTime, updateTime);
+        return Objects.hash(username, schoolYear, schoolId, numApCourses, gpa, satMath, satEbrw, actMath, actEnglish, actReading, actScience, actComposite, satLiterature, satUsHist, satWorldHist, satMathI, satMathIi, satEcoBio, satMolBio, satChemistry, satPhysics, major1, major2, createTime, updateTime);
+    }
+
+    @OneToOne
+    @JoinColumn(name = "username", referencedColumnName = "username", nullable = false)
+    public UserEntity getUserByUsername() {
+        return userByUsername;
+    }
+
+    public void setUserByUsername(UserEntity userByUsername) {
+        this.userByUsername = userByUsername;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "school_id", referencedColumnName = "school_id")
+    public HighschoolEntity getHighschoolBySchoolId() {
+        return highschoolBySchoolId;
+    }
+
+    public void setHighschoolBySchoolId(HighschoolEntity highschoolBySchoolId) {
+        this.highschoolBySchoolId = highschoolBySchoolId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "major1", referencedColumnName = "name")
+    public MajorEntity getMajorByMajor1() {
+        return majorByMajor1;
+    }
+
+    public void setMajorByMajor1(MajorEntity majorByMajor1) {
+        this.majorByMajor1 = majorByMajor1;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "major2", referencedColumnName = "name")
+    public MajorEntity getMajorByMajor2() {
+        return majorByMajor2;
+    }
+
+    public void setMajorByMajor2(MajorEntity majorByMajor2) {
+        this.majorByMajor2 = majorByMajor2;
     }
 }

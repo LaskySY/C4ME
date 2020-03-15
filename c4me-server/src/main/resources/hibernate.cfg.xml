@@ -19,5 +19,9 @@
         <mapping class="com.c4me.server.entities.HighschoolMajorAssociationEntity"/>
         <mapping class="com.c4me.server.entities.MajorEntity"/>
         <mapping class="com.c4me.server.entities.ProfileEntity"/>
+        <mapping class="com.c4me.server.entities.CollegeHighschoolAssociationEntity"/>
+        <mapping class="com.c4me.server.entities.CollegeMajorAssociationEntity"/>
+        <mapping class="com.c4me.server.entities.HighschoolEntity"/>
+        <mapping class="com.c4me.server.entities.StudentApplicationEntity"/>
     </session-factory>
 </hibernate-configuration>

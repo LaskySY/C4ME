@@ -6,6 +6,7 @@ import com.c4me.server.core.credential.domain.LoginUser;
 import com.c4me.server.domain.BaseResponse;
 import com.c4me.server.utils.JwtTokenUtils;
 import com.c4me.server.utils.LoggerUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.Collection;
@@ -59,7 +60,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
   protected void successfulAuthentication(HttpServletRequest request,
       HttpServletResponse response,
       FilterChain chain,
-      Authentication authResult) {
+      Authentication authResult) throws IOException {
 
     JwtUser jwtUser = (JwtUser) authResult.getPrincipal();
     boolean isRemember = rememberMe.get();
@@ -67,6 +68,13 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     Collection<? extends GrantedAuthority> authorities = jwtUser.getAuthorities();
     String token = JwtTokenUtils.createToken(jwtUser, isRemember);
     response.setHeader(Const.Header.TOKEN, JwtTokenUtils.TOKEN_PREFIX + token);
+
+    response.getWriter().write(new ObjectMapper().writeValueAsString(
+            BaseResponse.builder()
+            .code("success")
+            .message("login successful")
+            .data(JwtTokenUtils.TOKEN_PREFIX + token)
+            .build()));
 
     logger.info("login success");
     LoggerUtils.saveSuccessLog(request,"successfulAuthentication",token);

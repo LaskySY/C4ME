@@ -11,35 +11,41 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Student_application", schema = "siyoliu")
-@IdClass(StudentApplicationEntityPK.class)
+//@IdClass(StudentApplicationEntityPK.class)
 public class StudentApplicationEntity {
-    private String username;
-    private int collegeId;
+//    private String username;
+//    private int collegeId;
     private String admissionTerm;
     private Integer status;
     private Byte questionable;
+    @ManyToOne
+    @JoinColumn(name = "username", referencedColumnName = "username", nullable = false, insertable = false, updatable = false)
     private UserEntity userByUsername;
+    @ManyToOne
+    @JoinColumn(name = "college_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private CollegeEntity collegeByCollegeId;
+    @EmbeddedId
+    private StudentApplicationEntityPK studentApplicationEntityPK;
 
-    @Id
-    @Column(name = "username", nullable = false, length = 255)
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    @Id
-    @Column(name = "college_id", nullable = false)
-    public int getCollegeId() {
-        return collegeId;
-    }
-
-    public void setCollegeId(int collegeId) {
-        this.collegeId = collegeId;
-    }
+//    @Id
+//    @Column(name = "username", nullable = false, length = 255)
+//    public String getUsername() {
+//        return username;
+//    }
+//
+//    public void setUsername(String username) {
+//        this.username = username;
+//    }
+//
+//    @Id
+//    @Column(name = "college_id", nullable = false, insertable = "false", update = "false")
+//    public int getCollegeId() {
+//        return collegeId;
+//    }
+//
+//    public void setCollegeId(int collegeId) {
+//        this.collegeId = collegeId;
+//    }
 
     @Basic
     @Column(name = "admission_term", nullable = true, length = 45)
@@ -76,8 +82,8 @@ public class StudentApplicationEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StudentApplicationEntity that = (StudentApplicationEntity) o;
-        return collegeId == that.collegeId &&
-                Objects.equals(username, that.username) &&
+        return
+                Objects.equals(studentApplicationEntityPK, that.studentApplicationEntityPK) &&
                 Objects.equals(admissionTerm, that.admissionTerm) &&
                 Objects.equals(status, that.status) &&
                 Objects.equals(questionable, that.questionable);
@@ -85,11 +91,10 @@ public class StudentApplicationEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, collegeId, admissionTerm, status, questionable);
+        return Objects.hash(studentApplicationEntityPK, admissionTerm, status, questionable);
     }
 
-    @ManyToOne
-    @JoinColumn(name = "username", referencedColumnName = "username", nullable = false)
+
     public UserEntity getUserByUsername() {
         return userByUsername;
     }
@@ -98,8 +103,7 @@ public class StudentApplicationEntity {
         this.userByUsername = userByUsername;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "college_id", referencedColumnName = "id", nullable = false)
+
     public CollegeEntity getCollegeByCollegeId() {
         return collegeByCollegeId;
     }

@@ -1,6 +1,7 @@
 package com.c4me.server.entities;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
@@ -11,12 +12,14 @@ import java.util.Objects;
  * @CreateDate: 03-15-2020
  */
 
+
+@Embeddable
 public class StudentApplicationEntityPK implements Serializable {
+    @Column(name = "username", nullable = false, length = 255)
     private String username;
+    @Column(name = "college_id", nullable = false)
     private int collegeId;
 
-    @Column(name = "username", nullable = false, length = 255)
-    @Id
     public String getUsername() {
         return username;
     }
@@ -25,8 +28,6 @@ public class StudentApplicationEntityPK implements Serializable {
         this.username = username;
     }
 
-    @Column(name = "college_id", nullable = false)
-    @Id
     public int getCollegeId() {
         return collegeId;
     }

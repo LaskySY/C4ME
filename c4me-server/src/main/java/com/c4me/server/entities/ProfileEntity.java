@@ -64,7 +64,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "school_id", nullable = true)
+    @Column(name = "school_id", nullable = true, insertable = false, updatable = false)
     public Integer getSchoolId() {
         return schoolId;
     }
@@ -254,7 +254,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "major1", nullable = true, length = 45)
+    @Column(name = "major1", nullable = true, length = 45, insertable = false, updatable = false)
     public String getMajor1() {
         return major1;
     }
@@ -264,7 +264,7 @@ public class ProfileEntity {
     }
 
     @Basic
-    @Column(name = "major2", nullable = true, length = 45)
+    @Column(name = "major2", nullable = true, length = 45, insertable = false, updatable = false)
     public String getMajor2() {
         return major2;
     }

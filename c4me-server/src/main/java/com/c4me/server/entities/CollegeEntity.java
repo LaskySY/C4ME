@@ -54,6 +54,7 @@ public class CollegeEntity {
     private Integer actScience50;
     private Integer actScience75;
     private Integer actComposite;
+    private Collection<CollegeHighschoolAssociationEntity> collegeHighschoolAssociationsById;
     private Collection<CollegeMajorAssociationEntity> collegeMajorAssociationsById;
     private Collection<StudentApplicationEntity> studentApplicationsById;
 
@@ -507,6 +508,15 @@ public class CollegeEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, type, averageGpa, admissionRate, city, state, webpage, latitude, longitude, instateTuition, outstateTuition, netPrice, medianDebt, numStudentsEnrolled, retentionRate, completionRate, meanEarnings, updatedTime, ranking, satMath25, satMath50, satMath75, satEbrw25, satEbrw50, satEbrw75, satOverall, actMath25, actMath50, actMath75, actEnglish25, actEnglish50, actEnglish75, actReading25, actReading50, actReading75, actScience25, actScience50, actScience75, actComposite);
+    }
+
+    @OneToMany(mappedBy = "collegeByCollegeId")
+    public Collection<CollegeHighschoolAssociationEntity> getCollegeHighschoolAssociationsById() {
+        return collegeHighschoolAssociationsById;
+    }
+
+    public void setCollegeHighschoolAssociationsById(Collection<CollegeHighschoolAssociationEntity> collegeHighschoolAssociationsById) {
+        this.collegeHighschoolAssociationsById = collegeHighschoolAssociationsById;
     }
 
     @OneToMany(mappedBy = "collegeByCollegeId")

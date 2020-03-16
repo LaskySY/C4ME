@@ -11,49 +11,54 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Highschool_major_association", schema = "siyoliu")
-@IdClass(HighschoolMajorAssociationEntityPK.class)
+//@IdClass(HighschoolMajorAssociationEntityPK.class)
 public class HighschoolMajorAssociationEntity {
-    private int highschoolId;
-    private String majorName;
+//    private int highschoolId;
+//    private String majorName;
+    @ManyToOne
+    @JoinColumn(name = "highschool_id", referencedColumnName = "school_id", nullable = false, insertable = false, updatable = false)
     private HighschoolEntity highschoolByHighschoolId;
+    @ManyToOne
+    @JoinColumn(name = "major_name", referencedColumnName = "name", nullable = false, insertable = false, updatable = false)
     private MajorEntity majorByMajorName;
+    @EmbeddedId
+    private HighschoolMajorAssociationEntityPK highschoolMajorAssociationEntityPK;
 
-    @Id
-    @Column(name = "highschool_id", nullable = false)
-    public int getHighschoolId() {
-        return highschoolId;
-    }
-
-    public void setHighschoolId(int highschoolId) {
-        this.highschoolId = highschoolId;
-    }
-
-    @Id
-    @Column(name = "major_name", nullable = false, length = 45)
-    public String getMajorName() {
-        return majorName;
-    }
-
-    public void setMajorName(String majorName) {
-        this.majorName = majorName;
-    }
+//    @Id
+//    @Column(name = "highschool_id", nullable = false)
+//    public int getHighschoolId() {
+//        return highschoolId;
+//    }
+//
+//    public void setHighschoolId(int highschoolId) {
+//        this.highschoolId = highschoolId;
+//    }
+//
+//    @Id
+//    @Column(name = "major_name", nullable = false, length = 45)
+//    public String getMajorName() {
+//        return majorName;
+//    }
+//
+//    public void setMajorName(String majorName) {
+//        this.majorName = majorName;
+//    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HighschoolMajorAssociationEntity that = (HighschoolMajorAssociationEntity) o;
-        return highschoolId == that.highschoolId &&
-                Objects.equals(majorName, that.majorName);
+        return
+                Objects.equals(highschoolMajorAssociationEntityPK, that.highschoolMajorAssociationEntityPK);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(highschoolId, majorName);
+        return Objects.hash(highschoolMajorAssociationEntityPK);
     }
 
-    @ManyToOne
-    @JoinColumn(name = "highschool_id", referencedColumnName = "school_id", nullable = false)
+
     public HighschoolEntity getHighschoolByHighschoolId() {
         return highschoolByHighschoolId;
     }
@@ -62,8 +67,7 @@ public class HighschoolMajorAssociationEntity {
         this.highschoolByHighschoolId = highschoolByHighschoolId;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "major_name", referencedColumnName = "name", nullable = false)
+
     public MajorEntity getMajorByMajorName() {
         return majorByMajorName;
     }

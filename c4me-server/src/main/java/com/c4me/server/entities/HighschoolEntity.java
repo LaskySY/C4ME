@@ -29,6 +29,7 @@ public class HighschoolEntity {
     private Integer actComposite;
     private Collection<CollegeHighschoolAssociationEntity> collegeHighschoolAssociationsBySchoolId;
     private Collection<HighschoolMajorAssociationEntity> highschoolMajorAssociationsBySchoolId;
+    private Collection<ProfileEntity> profilesBySchoolId;
 
     @Id
     @Column(name = "school_id", nullable = false)
@@ -212,5 +213,14 @@ public class HighschoolEntity {
 
     public void setHighschoolMajorAssociationsBySchoolId(Collection<HighschoolMajorAssociationEntity> highschoolMajorAssociationsBySchoolId) {
         this.highschoolMajorAssociationsBySchoolId = highschoolMajorAssociationsBySchoolId;
+    }
+
+    @OneToMany(mappedBy = "highschoolBySchoolId")
+    public Collection<ProfileEntity> getProfilesBySchoolId() {
+        return profilesBySchoolId;
+    }
+
+    public void setProfilesBySchoolId(Collection<ProfileEntity> profilesBySchoolId) {
+        this.profilesBySchoolId = profilesBySchoolId;
     }
 }

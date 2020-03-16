@@ -1,9 +1,7 @@
 package com.c4me.server.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -16,6 +14,10 @@ import java.util.Objects;
 @Table(name = "Major", schema = "siyoliu")
 public class MajorEntity {
     private String name;
+    private Collection<CollegeMajorAssociationEntity> collegeMajorAssociationsByName;
+    private Collection<HighschoolMajorAssociationEntity> highschoolMajorAssociationsByName;
+    private Collection<ProfileEntity> profilesByName;
+    private Collection<ProfileEntity> profilesByName_0;
 
     @Id
     @Column(name = "name", nullable = false, length = 45)
@@ -38,5 +40,41 @@ public class MajorEntity {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @OneToMany(mappedBy = "majorByMajorName")
+    public Collection<CollegeMajorAssociationEntity> getCollegeMajorAssociationsByName() {
+        return collegeMajorAssociationsByName;
+    }
+
+    public void setCollegeMajorAssociationsByName(Collection<CollegeMajorAssociationEntity> collegeMajorAssociationsByName) {
+        this.collegeMajorAssociationsByName = collegeMajorAssociationsByName;
+    }
+
+    @OneToMany(mappedBy = "majorByMajorName")
+    public Collection<HighschoolMajorAssociationEntity> getHighschoolMajorAssociationsByName() {
+        return highschoolMajorAssociationsByName;
+    }
+
+    public void setHighschoolMajorAssociationsByName(Collection<HighschoolMajorAssociationEntity> highschoolMajorAssociationsByName) {
+        this.highschoolMajorAssociationsByName = highschoolMajorAssociationsByName;
+    }
+
+    @OneToMany(mappedBy = "majorByMajor1")
+    public Collection<ProfileEntity> getProfilesByName() {
+        return profilesByName;
+    }
+
+    public void setProfilesByName(Collection<ProfileEntity> profilesByName) {
+        this.profilesByName = profilesByName;
+    }
+
+    @OneToMany(mappedBy = "majorByMajor2")
+    public Collection<ProfileEntity> getProfilesByName_0() {
+        return profilesByName_0;
+    }
+
+    public void setProfilesByName_0(Collection<ProfileEntity> profilesByName_0) {
+        this.profilesByName_0 = profilesByName_0;
     }
 }

@@ -2,6 +2,7 @@ package com.c4me.server.config.advice;
 
 import com.c4me.server.config.constant.Const;
 import com.c4me.server.config.exception.DuplicateUsernameException;
+import com.c4me.server.config.exception.UserDoesNotExistException;
 import com.c4me.server.config.interceptor.LogInterceptor;
 import com.c4me.server.domain.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -32,4 +33,17 @@ public class ErrorAdvice {
         .message(exception.getMessage())
         .build();
   }
+
+  @ExceptionHandler({UserDoesNotExistException.class})
+  @ResponseBody
+  public Object UserDoesNotExistException(UserDoesNotExistException exception) {
+    LogInterceptor.logExceptionUnExpect(exception, Const.Error.USER_NOT_FOUND);
+    logger.error(exception.getMessage());
+    return BaseResponse.builder()
+            .code(Const.Error.USER_NOT_FOUND)
+            .message(exception.getMessage())
+            .build();
+  }
+
+
 }

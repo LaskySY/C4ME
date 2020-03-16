@@ -25,6 +25,7 @@ public final class Const {
     public static final String MISS_TOKEN = "514";
     public static final String TOKEN_EXPIRED = "515";
     public static final String ACCESS_DENIED = "516";
+    public static final String USER_NOT_FOUND = "userNotExist";
   }
 
   public final static class Role {

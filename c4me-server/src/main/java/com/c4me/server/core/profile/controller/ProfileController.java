@@ -9,10 +9,7 @@ import com.c4me.server.domain.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Description:
@@ -21,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/profile/getUserInfo")
+@RequestMapping("/profile")
 public class ProfileController {
 
     @Autowired
@@ -38,6 +35,18 @@ public class ProfileController {
                 .message("")
                 .data(pi)
                 .build();
+    }
+
+    @PutMapping
+    public BaseResponse setUserInfo(@RequestBody ProfileInfo profileInfo) throws UserDoesNotExistException {
+        profileService.setProfileInfo(profileInfo);
+
+        return BaseResponse.builder()
+                .code("success")
+                .message("")
+                .data(null)
+                .build();
+
     }
 
 }

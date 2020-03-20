@@ -19,4 +19,6 @@ public interface StudentApplicationRepository extends JpaRepository<StudentAppli
     public StudentApplicationEntity findByUserByUsername(UserEntity userEntity);
 
     public void deleteByStudentApplicationEntityPK(StudentApplicationEntityPK studentApplicationEntityPK);
+
+    public Long countByCollegeByCollegeId(CollegeEntity collegeEntity);
 }

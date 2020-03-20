@@ -1,9 +1,7 @@
 package com.c4me.server.config.advice;
 
 import com.c4me.server.config.constant.Const;
-import com.c4me.server.config.exception.CollegeDoesNotExistException;
-import com.c4me.server.config.exception.DuplicateUsernameException;
-import com.c4me.server.config.exception.UserDoesNotExistException;
+import com.c4me.server.config.exception.*;
 import com.c4me.server.config.interceptor.LogInterceptor;
 import com.c4me.server.domain.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -55,6 +53,39 @@ public class ErrorAdvice {
               .code(Const.Error.COLLEGE_NOT_FOUND)
               .message(exception.getMessage())
               .build();
+  }
+
+  @ExceptionHandler({NoCollegeScorecardException.class})
+  @ResponseBody
+  public Object NoCollegeScorecardException(NoCollegeScorecardException exception) {
+    LogInterceptor.logExceptionUnExpect(exception, Const.Error.COLLEGE_SCORECARD_NOT_FOUND);
+    logger.error(exception.getMessage());
+    return BaseResponse.builder()
+            .code(Const.Error.COLLEGE_SCORECARD_NOT_FOUND)
+            .message(exception.getMessage())
+            .build();
+  }
+
+  @ExceptionHandler({InvalidCollegeScorecardException.class})
+  @ResponseBody
+  public Object InvalidCollegeScorecardException(InvalidCollegeScorecardException exception) {
+    LogInterceptor.logExceptionUnExpect(exception, Const.Error.INVALID_COLLEGE_SCORECARD);
+    logger.error(exception.getMessage());
+    return BaseResponse.builder()
+            .code(Const.Error.INVALID_COLLEGE_SCORECARD)
+            .message(exception.getMessage())
+            .build();
+  }
+
+  @ExceptionHandler({NoCollegeTxtException.class})
+  @ResponseBody
+  public Object NoCollegeTxtException(NoCollegeTxtException exception) {
+    LogInterceptor.logExceptionUnExpect(exception, Const.Error.COLLEGE_TXT_NOT_FOUND);
+    logger.error(exception.getMessage());
+    return BaseResponse.builder()
+            .code(Const.Error.COLLEGE_TXT_NOT_FOUND)
+            .message(exception.getMessage())
+            .build();
   }
 
 

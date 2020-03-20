@@ -1,5 +1,9 @@
 package com.c4me.server.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Id;
@@ -14,6 +18,9 @@ import java.util.Objects;
 
 
 @Embeddable
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class StudentApplicationEntityPK implements Serializable {
     @Column(name = "username", nullable = false, length = 255)
     private String username;

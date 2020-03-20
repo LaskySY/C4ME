@@ -1,5 +1,9 @@
 package com.c4me.server.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -10,12 +14,15 @@ import java.util.Objects;
  */
 
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "Student_application", schema = "siyoliu")
 //@IdClass(StudentApplicationEntityPK.class)
 public class StudentApplicationEntity {
 //    private String username;
 //    private int collegeId;
-    private String admissionTerm;
+    private String admission_term;
     private Integer status;
     private Byte questionable;
     @ManyToOne
@@ -49,12 +56,12 @@ public class StudentApplicationEntity {
 
     @Basic
     @Column(name = "admission_term", nullable = true, length = 45)
-    public String getAdmissionTerm() {
-        return admissionTerm;
+    public String getAdmission_term() {
+        return admission_term;
     }
 
-    public void setAdmissionTerm(String admissionTerm) {
-        this.admissionTerm = admissionTerm;
+    public void setAdmission_term(String admissionTerm) {
+        this.admission_term = admissionTerm;
     }
 
     @Basic
@@ -84,14 +91,14 @@ public class StudentApplicationEntity {
         StudentApplicationEntity that = (StudentApplicationEntity) o;
         return
                 Objects.equals(studentApplicationEntityPK, that.studentApplicationEntityPK) &&
-                Objects.equals(admissionTerm, that.admissionTerm) &&
+                Objects.equals(admission_term, that.admission_term) &&
                 Objects.equals(status, that.status) &&
                 Objects.equals(questionable, that.questionable);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(studentApplicationEntityPK, admissionTerm, status, questionable);
+        return Objects.hash(studentApplicationEntityPK, admission_term, status, questionable);
     }
 
 

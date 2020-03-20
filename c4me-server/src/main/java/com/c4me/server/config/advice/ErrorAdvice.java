@@ -1,6 +1,7 @@
 package com.c4me.server.config.advice;
 
 import com.c4me.server.config.constant.Const;
+import com.c4me.server.config.exception.CollegeDoesNotExistException;
 import com.c4me.server.config.exception.DuplicateUsernameException;
 import com.c4me.server.config.exception.UserDoesNotExistException;
 import com.c4me.server.config.interceptor.LogInterceptor;
@@ -43,6 +44,17 @@ public class ErrorAdvice {
             .code(Const.Error.USER_NOT_FOUND)
             .message(exception.getMessage())
             .build();
+  }
+
+  @ExceptionHandler({CollegeDoesNotExistException.class})
+  @ResponseBody
+  public Object CollegeDoesNotExistException(CollegeDoesNotExistException exception) {
+      LogInterceptor.logExceptionUnExpect(exception, Const.Error.USER_NOT_FOUND);
+      logger.error(exception.getMessage());
+      return BaseResponse.builder()
+              .code(Const.Error.COLLEGE_NOT_FOUND)
+              .message(exception.getMessage())
+              .build();
   }
 
 

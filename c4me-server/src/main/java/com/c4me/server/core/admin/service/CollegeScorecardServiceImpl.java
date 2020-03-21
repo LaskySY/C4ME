@@ -4,12 +4,18 @@ import com.c4me.server.config.exception.InvalidCollegeScorecardException;
 import com.c4me.server.config.exception.NoCollegeScorecardException;
 import com.c4me.server.core.profile.repository.CollegeRepository;
 import com.c4me.server.entities.CollegeEntity;
+//import org.apache.commons.beanutils.BeanUtils;
+//import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.*;
@@ -122,6 +128,8 @@ public class CollegeScorecardServiceImpl {
         Reader in = new FileReader(filename);
         Iterable<CSVRecord> records = CSVFormat.EXCEL.withHeader().parse(in);
 
+        List<CollegeEntity> currentEntities = collegeRepository.findAll();
+
         int counter = 0;
         int saveCounter = 0;
         for (CSVRecord record : records) { //TODO: transpose the iteration -- right now we can potentially get more than one record per college (aliases might not be unique)
@@ -133,7 +141,32 @@ public class CollegeScorecardServiceImpl {
                 //System.out.println("name is in colleges");
                 CollegeEntity collegeEntity = recordToEntity(record);
                 if(collegeEntity == null) throw new InvalidCollegeScorecardException("invalid college scorecard file");
-                else collegeRepository.save(collegeEntity);
+                else {
+                    boolean found = false;
+                    for(CollegeEntity ce: currentEntities) {
+                        if(ce.getName().equals(name)) { //TODO: check alias as well
+                            BeanUtils.copyProperties(collegeEntity, ce, getNullPropertyNames(collegeEntity));
+//                            try {
+//                                System.out.println(name + "was found - attempting to copy properties");
+//                                System.out.println("new ranking = " + collegeEntity.getRanking());
+//                                System.out.println("old ranking = " + ce.getRanking());
+//                                BeanUtilsBean.getInstance().getConvertUtils().register(false, false, 0);
+//                                BeanUtils.copyProperties(ce, collegeEntity);
+//                                System.out.println("it shouldn't have updated old ranking, but it is now " + ce.getRanking());
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                            }
+//                            System.out.println("and now? : " + ce.getRanking());
+                            collegeRepository.save(ce);
+                            found = true;
+                            break;
+                        }
+                    }
+                    if(!found) {
+                        System.out.println(name + " not found");
+                        collegeRepository.save(collegeEntity);
+                    }
+                }
                 saveCounter++;
             }
             counter++;
@@ -144,4 +177,19 @@ public class CollegeScorecardServiceImpl {
     }
 
 
+
+    //this method is from https://stackoverflow.com/questions/19737626/how-to-ignore-null-values-using-springframework-beanutils-copyproperties
+    public static String[] getNullPropertyNames (Object source) {
+        final BeanWrapper src = new BeanWrapperImpl(source);
+        java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();
+
+        Set<String> emptyNames = new HashSet<String>();
+        for(java.beans.PropertyDescriptor pd : pds) {
+            Object srcValue = src.getPropertyValue(pd.getName());
+            if (srcValue == null) emptyNames.add(pd.getName());
+        }
+
+        String[] result = new String[emptyNames.size()];
+        return emptyNames.toArray(result);
+    }
 }

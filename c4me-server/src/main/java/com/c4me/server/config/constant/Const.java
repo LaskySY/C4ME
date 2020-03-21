@@ -77,6 +77,9 @@ public final class Const {
   public final static class Filenames {
     public static final String COLLEGE_SCORECARD_FILE = "Most-Recent-Cohorts-All-Data-Elements.csv";
     public static final String COLLEGES = "colleges.txt";
+
+    public static final String THE_RANKINGS_JSON_URL = "https://www.timeshighereducation.com/sites/default/files/the_data_rankings/united_states_rankings_2020_limit0_25839923f8b1714cf54659d4e4af6c3b.json";
+    //public static final String THE_RANKINGS_JSON_URL = "http://allv22.all.cs.stonybrook.edu/~stoller/cse416/WSJ_THE/united_states_rankings_2020_limit0_25839923f8b1714cf54659d4e4af6c3b.json";
   }
 
   public final static class CollegeScorecardHeaders {
@@ -145,6 +148,7 @@ public final class Const {
             ACTM75,
             ACT_OVERALL
     };
+
 
   }
 

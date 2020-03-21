@@ -90,7 +90,7 @@ public class ApplicationServiceImpl {
 
     }
 
-    public void putStudentApplication(StudentApplication studentApplication) throws UserDoesNotExistException, CollegeDoesNotExistException {
+    public void putStudentApplication(StudentApplication studentApplication) throws UserDoesNotExistException, CollegeDoesNotExistException { //TODO: should we copy bean properties instead?
         UserEntity ue = userRepository.findByUsername(studentApplication.getUsername());
         CollegeEntity ce = collegeRepository.findByName(studentApplication.getCollegeName());
 

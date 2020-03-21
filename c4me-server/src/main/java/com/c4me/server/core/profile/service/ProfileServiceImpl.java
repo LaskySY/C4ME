@@ -38,7 +38,7 @@ public class ProfileServiceImpl {
     }
 
 
-    public void setProfileInfo(ProfileInfo profileInfo) throws UserDoesNotExistException {
+    public void setProfileInfo(ProfileInfo profileInfo) throws UserDoesNotExistException { //TODO: maybe just copy non-null bean properties instead
         boolean exists = profileRepository.existsById(profileInfo.getUsername());
         if (!exists) throw new UserDoesNotExistException("cannot find user to update profile");
 //        ProfileEntity pe = profileRepository.findByUsername(profileInfo.getUsername());

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @Description:
@@ -25,14 +26,17 @@ public class ApplicationController {
     ApplicationServiceImpl applicationService;
 
     @GetMapping
-    public BaseResponse<ArrayList<StudentApplication>> getStudentApplicationsByProfile(@RequestBody ProfileRequest profileRequest) throws UserDoesNotExistException {
+    public BaseResponse<HashMap<String, ArrayList<StudentApplication>>> getStudentApplicationsByProfile(@RequestBody ProfileRequest profileRequest) throws UserDoesNotExistException {
         String username = profileRequest.getUsername();
         ArrayList<StudentApplication> applications = applicationService.getStudentApplications(username);
 
-        return BaseResponse.<ArrayList<StudentApplication>>builder()
+        HashMap<String, ArrayList<StudentApplication>> responseMap = new HashMap<>();
+        responseMap.put("applications", applications);
+
+        return BaseResponse.<HashMap<String, ArrayList<StudentApplication>>>builder()
                 .code("success")
                 .message("")
-                .data(applications)
+                .data(responseMap)
                 .build();
     }
 

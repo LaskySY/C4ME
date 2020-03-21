@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+
 /**
  * @Description:
  * @Author: Maciej Wlodek
@@ -25,15 +27,18 @@ public class ProfileController {
     ProfileServiceImpl profileService;
 
     @GetMapping
-    public BaseResponse<ProfileInfo> getUserInfo(@RequestBody ProfileRequest profileRequest) throws UserDoesNotExistException {
+    public BaseResponse<HashMap<String, ProfileInfo>> getUserInfo(@RequestBody ProfileRequest profileRequest) throws UserDoesNotExistException {
         //profileService.register(profileRequest);
         ProfileInfo pi = profileService.getInfoByUsername(profileRequest.getUsername());
         //ResponseEntity<ProfileInfo> re = new ResponseEntity<ProfileInfo>(pi, null, HttpStatus.OK);
 
-        return BaseResponse.<ProfileInfo>builder()
+        HashMap<String, ProfileInfo> responseMap = new HashMap<>();
+        responseMap.put("education", pi);
+
+        return BaseResponse.<HashMap<String, ProfileInfo>>builder()
                 .code("success")
                 .message("")
-                .data(pi)
+                .data(responseMap)
                 .build();
     }
 

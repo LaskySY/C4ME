@@ -50,7 +50,7 @@ public class ProfileInfo {
         this.name = pe.getUserByUsername().getName();
         this.schoolYear = pe.getSchoolYear();
         if(pe.getHighschoolBySchoolId() == null) {
-            this.schoolName = "";
+            this.schoolName = null;
         }
         else {
             this.schoolName = pe.getHighschoolBySchoolId().getName();
@@ -74,6 +74,6 @@ public class ProfileInfo {
         this.satChemistry = pe.getSatChemistry();
         this.satPhysics = pe.getSatPhysics();
         this.major1 = pe.getMajor1();
-        this.major1 = pe.getMajor2();
+        this.major2 = pe.getMajor2();
     }
 }

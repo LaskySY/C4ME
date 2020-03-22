@@ -26,8 +26,8 @@ public class ApplicationController {
     ApplicationServiceImpl applicationService;
 
     @GetMapping
-    public BaseResponse<HashMap<String, ArrayList<StudentApplication>>> getStudentApplicationsByProfile(@RequestBody ProfileRequest profileRequest) throws UserDoesNotExistException {
-        String username = profileRequest.getUsername();
+    public BaseResponse<HashMap<String, ArrayList<StudentApplication>>> getStudentApplicationsByProfile(@RequestParam String username) throws UserDoesNotExistException {
+        //String user = username.getUsername();
         ArrayList<StudentApplication> applications = applicationService.getStudentApplications(username);
 
         HashMap<String, ArrayList<StudentApplication>> responseMap = new HashMap<>();

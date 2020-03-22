@@ -27,13 +27,13 @@ public class ProfileController {
     ProfileServiceImpl profileService;
 
     @GetMapping
-    public BaseResponse<HashMap<String, ProfileInfo>> getUserInfo(@RequestBody ProfileRequest profileRequest) throws UserDoesNotExistException {
-        //profileService.register(profileRequest);
-        ProfileInfo pi = profileService.getInfoByUsername(profileRequest.getUsername());
+    public BaseResponse<HashMap<String, ProfileInfo>> getUserInfo(@RequestParam String username) throws UserDoesNotExistException {
+        //profileService.register(username);
+        ProfileInfo pi = profileService.getInfoByUsername(username);
         //ResponseEntity<ProfileInfo> re = new ResponseEntity<ProfileInfo>(pi, null, HttpStatus.OK);
 
         HashMap<String, ProfileInfo> responseMap = new HashMap<>();
-        responseMap.put("education", pi);
+        responseMap.put("profile", pi);
 
         return BaseResponse.<HashMap<String, ProfileInfo>>builder()
                 .code("success")
@@ -42,8 +42,12 @@ public class ProfileController {
                 .build();
     }
 
-    @PutMapping
+    @RequestMapping(method = RequestMethod.POST, path = "/update")
+    //@PostMapping
     public BaseResponse setUserInfo(@RequestBody ProfileInfo profileInfo) throws UserDoesNotExistException {
+
+        System.out.println("Test set user info");
+
         profileService.setProfileInfo(profileInfo);
 
         return BaseResponse.builder()
@@ -53,5 +57,16 @@ public class ProfileController {
                 .build();
 
     }
+
+    @RequestMapping(method = RequestMethod.OPTIONS)
+    public BaseResponse setUserInfo() {
+        System.out.println("got OPTIONS request");
+        return BaseResponse.builder()
+                .code("success")
+                .message("")
+                .data(null)
+                .build();
+    }
+
 
 }

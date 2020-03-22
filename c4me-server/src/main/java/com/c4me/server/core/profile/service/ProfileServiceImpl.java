@@ -6,6 +6,8 @@ import com.c4me.server.core.profile.domain.ProfileInfo;
 import com.c4me.server.core.profile.repository.ProfileRepository;
 import com.c4me.server.entities.HighschoolEntity;
 import com.c4me.server.entities.ProfileEntity;
+import com.c4me.server.utils.CopyUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,25 +39,8 @@ public class ProfileServiceImpl {
         return pi;
     }
 
+    public ProfileEntity entityFromDomain(ProfileInfo profileInfo, HighschoolEntity he) {
 
-    public void setProfileInfo(ProfileInfo profileInfo) throws UserDoesNotExistException { //TODO: maybe just copy non-null bean properties instead
-        boolean exists = profileRepository.existsById(profileInfo.getUsername());
-        if (!exists) throw new UserDoesNotExistException("cannot find user to update profile");
-//        ProfileEntity pe = profileRepository.findByUsername(profileInfo.getUsername());
-//        if(pe == null) {
-//            throw new UserDoesNotExistException("cannot find user");
-//        }
-
-        HighschoolEntity he = highschoolRepository.findByName(profileInfo.getSchoolName());
-        if(he != null) {
-            System.out.println("found highschool "  + profileInfo.getSchoolName());
-        }
-        else {
-            System.out.println("could not find highschool " + profileInfo.getSchoolName());
-            //TODO: have to scrape hs website (unless profileInfo.getName() == null)
-        }
-        //TODO: Fix major 1 and major 2 - should be querying major and majorAlias tables to check if it's a proper major name; then set majorByMajor1 and majorByMajor2 of pe
-        //TODO: Either create a major doesn't exist exception, or make a getAllMajors request --> dropdown to choose major.
 
         ProfileEntity pe = ProfileEntity.builder()
                 .username(profileInfo.getUsername())
@@ -83,7 +68,68 @@ public class ProfileServiceImpl {
                 .major1(profileInfo.getMajor1())
                 .major2(profileInfo.getMajor2()).build();
 
-        profileRepository.save(pe);
+        return pe;
+    }
+
+    public void setProfileInfo(ProfileInfo profileInfo) throws UserDoesNotExistException { //TODO: maybe just copy non-null bean properties instead
+        boolean exists = profileInfo.getUsername() != null && profileRepository.existsById(profileInfo.getUsername());
+        if (!exists) throw new UserDoesNotExistException("cannot find user to update profile");
+
+        ProfileEntity existingEntity = profileRepository.findByUsername(profileInfo.getUsername());
+//        if(pe == null) {
+//            throw new UserDoesNotExistException("cannot find user");
+//        }
+
+        HighschoolEntity he = null;
+        if(profileInfo.getSchoolName() != null) {
+            System.out.println("searching for school " + profileInfo.getSchoolName());
+            he = highschoolRepository.findByName(profileInfo.getSchoolName());
+        }
+        if(he != null) {
+            System.out.println("found highschool "  + profileInfo.getSchoolName());
+        }
+        else {
+            System.out.println("could not find highschool " + profileInfo.getSchoolName());
+            //TODO: have to scrape hs website (unless profileInfo.getName() == null)
+        }
+        //TODO: Fix major 1 and major 2 - should be querying major and majorAlias tables to check if it's a proper major name; then set majorByMajor1 and majorByMajor2 of pe
+        //TODO: Either create a major doesn't exist exception, or make a getAllMajors request --> dropdown to choose major.
+
+        ProfileEntity pe = entityFromDomain(profileInfo, he);
+
+        System.out.println("old school year = " + existingEntity.getSchoolYear());
+        System.out.println("new school year = " + pe.getSchoolYear());
+        BeanUtils.copyProperties(pe, existingEntity, CopyUtils.getNullPropertyNames(pe));
+        System.out.println("now old school year = " + existingEntity.getSchoolYear());
+        System.out.println("now new school year = " + pe.getSchoolYear());
+
+//        ProfileEntity pe = ProfileEntity.builder()
+//                .username(profileInfo.getUsername())
+//                .schoolYear(profileInfo.getSchoolYear())
+//                //.schoolId(hs_id)
+//                .highschoolBySchoolId(he)
+//                .numApCourses(profileInfo.getNumApCourses())
+//                .gpa(profileInfo.getGpa())
+//                .satMath(profileInfo.getSatMath())
+//                .satEbrw(profileInfo.getSatEbrw())
+//                .actMath(profileInfo.getActMath())
+//                .actEnglish(profileInfo.getActEnglish())
+//                .actReading(profileInfo.getActReading())
+//                .actScience(profileInfo.getActScience())
+//                .actComposite(profileInfo.getActComposite())
+//                .satLiterature(profileInfo.getSatLiterature())
+//                .satUsHist(profileInfo.getSatUsHist())
+//                .satWorldHist(profileInfo.getSatWorldHist())
+//                .satMathI(profileInfo.getSatMathI())
+//                .satMathIi(profileInfo.getSatMathIi())
+//                .satEcoBio(profileInfo.getSatEcoBio())
+//                .satMolBio(profileInfo.getSatMolBio())
+//                .satChemistry(profileInfo.getSatChemistry())
+//                .satPhysics(profileInfo.getSatPhysics())
+//                .major1(profileInfo.getMajor1())
+//                .major2(profileInfo.getMajor2()).build();
+
+        profileRepository.save(existingEntity);
 
 
     }

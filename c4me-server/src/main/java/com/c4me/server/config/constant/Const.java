@@ -80,6 +80,19 @@ public final class Const {
 
     public static final String THE_RANKINGS_JSON_URL = "https://www.timeshighereducation.com/sites/default/files/the_data_rankings/united_states_rankings_2020_limit0_25839923f8b1714cf54659d4e4af6c3b.json";
     //public static final String THE_RANKINGS_JSON_URL = "http://allv22.all.cs.stonybrook.edu/~stoller/cse416/WSJ_THE/united_states_rankings_2020_limit0_25839923f8b1714cf54659d4e4af6c3b.json";
+
+    public static final String FIRST_NAMES_URL = "https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.txt";
+    public static final String LAST_NAMES_URL = "https://raw.githubusercontent.com/dominictarr/random-name/master/names.txt";
+
+    public static final String FIRST_NAMES_FILE = "firstNames.txt";
+    public static final String LAST_NAMES_FILE = "lastNames.txt";
+
+    public static final String SEP = File.separator;
+    public static final String DATA_DIR = "c4me-server" + SEP + "src" + SEP + "data" + SEP;
+
+    public static final String TEST_HIGH_SCHOOL_URL = "https://www.niche.com/k12/east-islip-high-school-islip-terrace-ny/";
+    //public static final String TEST_HIGH_SCHOOL_SEARCH_URL = "https://www.niche.com/search/?q=east%20islip%20high%20school";
+    public static final String TEST_HIGH_SCHOOL_SEARCH_URL = "https://www.google.com/search?q=site%3Awww.niche.com+east+islip+high+school";
   }
 
   public final static class CollegeScorecardHeaders {

@@ -14,14 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.util.Pair;
 
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static com.c4me.server.config.constant.Const.Filenames.*;
 
@@ -50,7 +48,7 @@ public class TestingDataUtils {
         }
         return new Integer((int) score);
     }
-    private static StudentCSVRecord generateStudent(List<String> firstNames, List<String> lastNames, List<String> highschools) {
+    private static Pair<StudentCSVRecord, Double> generateStudent(List<String> firstNames, List<String> lastNames, List<String> highschools) {
         int firstNameIndex = r.nextInt(firstNames.size());
         int lastNameIndex = r.nextInt(lastNames.size());
         String firstName = firstNames.get(firstNameIndex);
@@ -72,8 +70,9 @@ public class TestingDataUtils {
         String hsName = split[0];
         String hsCity = split[1];
 
-        return new StudentCSVRecord(username, username, "NY", hsName, hsCity, "NY", t(0, g, gs)/10.0, 2024, "", "", t(1,s,ss), t(1,s,ss), t(2,a,as),t(2,a,as), t(2,a,as),t(2,a,as),t(2,a,as), t(1,s,ss),t(1,s,ss),t(1,s,ss), t(1,s,ss), t(1,s,ss), t(1,s,ss),t(1,s,ss), t(1,s,ss), t(1,s,ss), r.nextInt(10));
+        return Pair.of(new StudentCSVRecord(username, username, "NY", hsName, hsCity, "NY", t(0, g, gs)/10.0, 2024, "", "", t(1,s,ss), t(1,s,ss), t(2,a,as),t(2,a,as), t(2,a,as),t(2,a,as),t(2,a,as), t(1,s,ss),t(1,s,ss),t(1,s,ss), t(1,s,ss), t(1,s,ss), t(1,s,ss),t(1,s,ss), t(1,s,ss), t(1,s,ss), r.nextInt(10)), strength);
     }
+
     public static List<String> readFile(File file) throws IOException {
         Reader in = new FileReader(file);
         BufferedReader  br = new BufferedReader(in);
@@ -125,7 +124,7 @@ public class TestingDataUtils {
         }
     }
 
-    public static void generateStudents(int numStudents, String filename) {
+    public static HashMap<String, Double> generateStudents(int numStudents, String filename) {
         File firstNamesFile = findFile(FIRST_NAMES_FILE);
         File lastNamesFile = findFile(LAST_NAMES_FILE);
         File highschoolFile = findFile(TEST_HIGH_SCHOOL_FILE);
@@ -148,6 +147,8 @@ public class TestingDataUtils {
             List<String> lastNames = readFile(lastNamesFile);
             List<String> highSchools = readFile(highschoolFile);
 
+            HashMap<String, Double> students = new HashMap<>();
+
             File outputFile = new File(filename);
             outputFile.createNewFile();
             FileWriter fw = new FileWriter(outputFile);
@@ -155,8 +156,43 @@ public class TestingDataUtils {
             CSVPrinter printer = new CSVPrinter(bw, CSVFormat.EXCEL);
             printer.printRecord("userid", "password","residence_state", "high_school_name", "high_school_city", "high_school_state","GPA", "college_class","major_1","major_2", "SAT_math", "SAT_EBRW", "ACT_English", "ACT_math", "ACT_reading", "ACT_science", "ACT_composite", "SAT_literature", "SAT_US_hist", "SAT_world_hist", "SAT_math_I", "SAT_math_II", "SAT_eco_bio", "SAT_mol_bio", "SAT_chemistry", "SAT_physics","num_AP_passed");
             for(int i=0; i<numStudents; i++) {
-                StudentCSVRecord record = generateStudent(firstNames, lastNames, highSchools);
+                Pair<StudentCSVRecord, Double> student = generateStudent(firstNames, lastNames, highSchools);
+                StudentCSVRecord record = student.getFirst();
                 printer.printRecord(record.userid, record.password,record.residence_state, record.high_school_name, record.high_school_city, record.high_school_state,record.GPA, record.college_class,record.major_1,record.major_2, record.SAT_math, record.SAT_EBRW, record.ACT_English, record.ACT_math, record.ACT_reading, record.ACT_science, record.ACT_composite, record.SAT_literature, record.SAT_US_hist, record.SAT_world_hist, record.SAT_math_I, record.SAT_math_II, record.SAT_eco_bio, record.SAT_mol_bio, record.SAT_chemistry, record.SAT_physics, record.num_AP_passed);
+                students.put(record.userid, student.getSecond());
+            }
+            printer.close();
+            bw.close();
+            fw.close();
+
+            return students;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private static void generateStudentApplications(HashMap<String, Double> students, int appsPerStudent, String filename)  {
+        File collegesFile = findFile(COLLEGES);
+        try {
+            List<String> collegeNames = readFile(collegesFile);
+            String[] status = {"pending", "accepted", "denied", "wait-listed"};
+            File outputFile = new File(filename);
+            outputFile.createNewFile();
+            FileWriter fw = new FileWriter(outputFile);
+            BufferedWriter bw = new BufferedWriter(fw);
+            CSVPrinter printer = new CSVPrinter(bw, CSVFormat.EXCEL);
+            printer.printRecord("userid", "college", "status");
+            for(String user : students.keySet()) {
+                int nApps = r.nextInt(2 * appsPerStudent);
+                nApps = Math.min(nApps, collegeNames.size());
+                Collections.shuffle(collegeNames);
+                for(int j=0; j<nApps; j++) {
+                    int rand = r.nextInt(4);
+                    printer.printRecord(user, collegeNames.get(j), status[rand]);
+                    //StudentApplicationCSVRecord record = generateStudentApplication(user, students.get(user));
+                    //printer.printRecord();
+                }
             }
             printer.close();
             bw.close();
@@ -164,5 +200,11 @@ public class TestingDataUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public static void generateStudentsAndApplications(int numStudents, int averageNumberApplicationsPerStudent, String studentsFilename, String applicationsFilename) {
+        HashMap<String, Double> students = generateStudents(numStudents, studentsFilename);
+        generateStudentApplications(students, averageNumberApplicationsPerStudent, applicationsFilename);
     }
 }

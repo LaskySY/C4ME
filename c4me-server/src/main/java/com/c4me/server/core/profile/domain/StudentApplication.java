@@ -19,11 +19,13 @@ public class StudentApplication {
     private String collegeName;
     private String admissionTerm;
     private Integer status;
+    private Byte questionable;
 
     public StudentApplication(StudentApplicationEntity sae) {
         this.username = sae.getUserByUsername().getUsername();
         this.collegeName = sae.getCollegeByCollegeId().getName();
         this.admissionTerm = sae.getAdmission_term();
         this.status = sae.getStatus();
+        this.questionable = sae.getQuestionable();
     }
 }

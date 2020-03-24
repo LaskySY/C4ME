@@ -5,6 +5,8 @@ import com.c4me.server.core.credential.domain.JwtUser;
 import com.c4me.server.core.credential.domain.RegisterUser;
 import com.c4me.server.core.credential.repository.UserRepository;
 
+import com.c4me.server.core.profile.repository.ProfileRepository;
+import com.c4me.server.entities.ProfileEntity;
 import com.c4me.server.entities.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -26,6 +28,9 @@ public class userDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Autowired
+    ProfileRepository profileRepository;
+
     public void register(RegisterUser user) throws DuplicateUsernameException {
         UserEntity userEntity = UserEntity.builder()
                 .name(user.getName())
@@ -37,6 +42,8 @@ public class userDetailsServiceImpl implements UserDetailsService {
             throw(new DuplicateUsernameException("Username has been used"));
         }
         userRepository.save(userEntity);
+        ProfileEntity profileEntity = ProfileEntity.builder().username(user.getUsername()).userByUsername(userEntity).build();
+        profileRepository.save(profileEntity);
     }
 
     @Override

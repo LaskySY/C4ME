@@ -71,14 +71,11 @@ public class ProfileServiceImpl {
         return pe;
     }
 
-    public void setProfileInfo(ProfileInfo profileInfo) throws UserDoesNotExistException { //TODO: maybe just copy non-null bean properties instead
+    public void setProfileInfo(ProfileInfo profileInfo) throws UserDoesNotExistException {
         boolean exists = profileInfo.getUsername() != null && profileRepository.existsById(profileInfo.getUsername());
         if (!exists) throw new UserDoesNotExistException("cannot find user to update profile");
 
         ProfileEntity existingEntity = profileRepository.findByUsername(profileInfo.getUsername());
-//        if(pe == null) {
-//            throw new UserDoesNotExistException("cannot find user");
-//        }
 
         HighschoolEntity he = null;
         if(profileInfo.getSchoolName() != null) {
@@ -89,19 +86,19 @@ public class ProfileServiceImpl {
             System.out.println("found highschool "  + profileInfo.getSchoolName());
         }
         else {
-            System.out.println("could not find highschool " + profileInfo.getSchoolName());
-            //TODO: have to scrape hs website (unless profileInfo.getName() == null)
+            System.out.println("could not find highschool " + profileInfo.getSchoolName() + " in database");
+            /*TODO: have to scrape hs website (unless profileInfo.getName() == null)
+                First, try to match the input hsname to a niche url from all_highschools.txt
+                Then, scrape that url to get HS data including college associations and major associations.
+             */
+
         }
         //TODO: Fix major 1 and major 2 - should be querying major and majorAlias tables to check if it's a proper major name; then set majorByMajor1 and majorByMajor2 of pe
         //TODO: Either create a major doesn't exist exception, or make a getAllMajors request --> dropdown to choose major.
 
         ProfileEntity pe = entityFromDomain(profileInfo, he);
 
-        System.out.println("old school year = " + existingEntity.getSchoolYear());
-        System.out.println("new school year = " + pe.getSchoolYear());
         BeanUtils.copyProperties(pe, existingEntity, CopyUtils.getNullPropertyNames(pe));
-        System.out.println("now old school year = " + existingEntity.getSchoolYear());
-        System.out.println("now new school year = " + pe.getSchoolYear());
 
 //        ProfileEntity pe = ProfileEntity.builder()
 //                .username(profileInfo.getUsername())

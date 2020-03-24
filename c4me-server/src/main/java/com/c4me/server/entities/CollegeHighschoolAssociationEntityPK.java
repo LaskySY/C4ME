@@ -1,5 +1,9 @@
 package com.c4me.server.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Id;
@@ -13,28 +17,31 @@ import java.util.Objects;
  */
 
 @Embeddable
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CollegeHighschoolAssociationEntityPK implements Serializable {
-    private int collegeId;
-    private int highschoolId;
+    private int college_id;
+    private int highschool_id;
 
     @Column(name = "college_id", nullable = false)
     @Id
-    public int getCollegeId() {
-        return collegeId;
+    public int getCollege_id() {
+        return college_id;
     }
 
-    public void setCollegeId(int collegeId) {
-        this.collegeId = collegeId;
+    public void setCollege_id(int collegeId) {
+        this.college_id = collegeId;
     }
 
     @Column(name = "highschool_id", nullable = false)
     @Id
-    public int getHighschoolId() {
-        return highschoolId;
+    public int getHighschool_id() {
+        return highschool_id;
     }
 
-    public void setHighschoolId(int highschoolId) {
-        this.highschoolId = highschoolId;
+    public void setHighschool_id(int highschoolId) {
+        this.highschool_id = highschoolId;
     }
 
     @Override
@@ -42,12 +49,12 @@ public class CollegeHighschoolAssociationEntityPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CollegeHighschoolAssociationEntityPK that = (CollegeHighschoolAssociationEntityPK) o;
-        return collegeId == that.collegeId &&
-                highschoolId == that.highschoolId;
+        return college_id == that.college_id &&
+                highschool_id == that.highschool_id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(collegeId, highschoolId);
+        return Objects.hash(college_id, highschool_id);
     }
 }

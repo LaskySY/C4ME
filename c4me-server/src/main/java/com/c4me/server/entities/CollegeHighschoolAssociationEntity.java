@@ -1,5 +1,9 @@
 package com.c4me.server.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -10,6 +14,9 @@ import java.util.Objects;
  */
 
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "College_highschool_association", schema = "siyoliu")
 //@IdClass(CollegeHighschoolAssociationEntityPK.class)
 public class CollegeHighschoolAssociationEntity {

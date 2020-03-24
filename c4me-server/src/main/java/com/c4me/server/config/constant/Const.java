@@ -1,9 +1,7 @@
 package com.c4me.server.config.constant;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @Description:
@@ -26,7 +24,7 @@ public final class Const {
 
     public static final String DUPLICATE_USERNAME = "duplicateUsername";
     public static final String LOG = "512";
-    public static final String AUTHENTICATION = "513";
+    public static final String AUTHENTICATION = "badCredential";
     public static final String MISS_TOKEN = "514";
     public static final String TOKEN_EXPIRED = "515";
     public static final String ACCESS_DENIED = "516";
@@ -56,6 +54,8 @@ public final class Const {
     public static final Integer MAX_SAT = 800;
     public static final Integer MIN_ACT = 1;
     public static final Integer MAX_ACT = 36;
+
+    public static final Integer MAX_QUERY_SIZE = 128;
   }
 
   public final static class Types {
@@ -90,9 +90,16 @@ public final class Const {
     public static final String SEP = File.separator;
     public static final String DATA_DIR = "c4me-server" + SEP + "src" + SEP + "data" + SEP;
 
-    public static final String TEST_HIGH_SCHOOL_URL = "https://www.niche.com/k12/east-islip-high-school-islip-terrace-ny/";
-    //public static final String TEST_HIGH_SCHOOL_SEARCH_URL = "https://www.niche.com/search/?q=east%20islip%20high%20school";
-    public static final String TEST_HIGH_SCHOOL_SEARCH_URL = "https://www.google.com/search?q=site%3Awww.niche.com+east+islip+high+school";
+    public static final String TEST_HIGH_SCHOOL_URL = "https://www.niche.com/k12/east-islip-high-school-islip-terrace-ny";
+    public static final String TEST_HIGH_SCHOOL_SEARCH_URL = "https://www.niche.com/search/?q=east%20islip%20high%20school";
+    //public static final String TEST_HIGH_SCHOOL_SEARCH_URL = "https://www.google.com/search?q=site%3Awww.niche.com+east+islip+high+school";
+
+    public static final String TEST_HIGH_SCHOOL_FILE = "suffolkHighSchools.txt";
+    //public static final String TEST_SUFFOLK_HIGH_SCHOOLS = "https://en.wikipedia.org/wiki/List_of_high_schools_in_New_York";
+
+    public static final String ALL_HIGH_SCHOOLS_FILE = "all_highschools.txt";
+
+    public static final String NICHE_PREFIX = "https://www.niche.com/k12/";
   }
 
   public final static class CollegeScorecardHeaders {
@@ -161,8 +168,63 @@ public final class Const {
             ACTM75,
             ACT_OVERALL
     };
+  }
 
-
+  public final static class STATES {
+    public static final String[] STATES = {
+            "AL",
+            "AK",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "DC",
+            "FL",
+            "GA",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "OH",
+            "OK",
+            "OR",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"
+    };
+    public static final List<String> STATES_LIST = Arrays.asList(STATES);
   }
 
 }

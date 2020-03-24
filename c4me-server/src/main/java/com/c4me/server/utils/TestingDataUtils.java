@@ -33,33 +33,24 @@ import static com.c4me.server.config.constant.Const.Filenames.*;
 
 public class TestingDataUtils {
 
-    @Autowired
-    static HighschoolRepository highschoolRepository;
 
     private static Random r = new Random(System.currentTimeMillis());
 
 
     private static String generateUsername(String firstName, String lastName) {
-        String username = firstName.toLowerCase();
-        username += lastName;
-        int rand3 = r.nextInt(10000);
-        username += rand3+"";
-        return username;
+        return firstName.toLowerCase() + lastName + r.nextInt(10000);
     }
     private static Integer t(int type, double mean, double sigma) {
-        double include = r.nextDouble();
-        if(include < 0.1) return null;
-
         double nextG = r.nextGaussian();
         double score = nextG * sigma + mean;
         switch(type) {
             case 0: score = Math.max(Math.min(40, score), 10); break;
-            case 1: score = Math.max(Math.min(800, score), 200); break;
+            case 1: score = 10 * ((int) (Math.max(Math.min(800, score), 200)/10)); break;
             case 2: score = Math.max(Math.min(36, score), 1); break;
         }
         return new Integer((int) score);
     }
-    private static StudentCSVRecord generateStudent(List<String> firstNames, List<String> lastNames, Page<HighschoolEntity> highSchools) {
+    private static StudentCSVRecord generateStudent(List<String> firstNames, List<String> lastNames, List<String> highschools) {
         int firstNameIndex = r.nextInt(firstNames.size());
         int lastNameIndex = r.nextInt(lastNames.size());
         String firstName = firstNames.get(firstNameIndex);
@@ -75,13 +66,15 @@ public class TestingDataUtils {
         int as = 3;
         int gs = 2;
 
+        int hsIndex = r.nextInt(highschools.size()-1) + 1;
+        String hsEntry = highschools.get(hsIndex);
+        String[] split = hsEntry.split(", ");
+        String hsName = split[0];
+        String hsCity = split[1];
 
-
-
-
-        return new StudentCSVRecord(username, username, "NY", "", "", "NY", t(0, g, gs)/10.0, 2024, "", "", t(1,s,ss), t(1,s,ss), t(2,a,as),t(2,a,as), t(2,a,as),t(2,a,as),t(2,a,as), t(1,s,ss),t(1,s,ss),t(1,s,ss), t(1,s,ss), t(1,s,ss), t(1,s,ss),t(1,s,ss), t(1,s,ss), t(1,s,ss), r.nextInt(10));
+        return new StudentCSVRecord(username, username, "NY", hsName, hsCity, "NY", t(0, g, gs)/10.0, 2024, "", "", t(1,s,ss), t(1,s,ss), t(2,a,as),t(2,a,as), t(2,a,as),t(2,a,as),t(2,a,as), t(1,s,ss),t(1,s,ss),t(1,s,ss), t(1,s,ss), t(1,s,ss), t(1,s,ss),t(1,s,ss), t(1,s,ss), t(1,s,ss), r.nextInt(10));
     }
-    private static List<String> readFile(File file) throws IOException {
+    public static List<String> readFile(File file) throws IOException {
         Reader in = new FileReader(file);
         BufferedReader  br = new BufferedReader(in);
         ArrayList<String> lines = new ArrayList<String>();
@@ -91,8 +84,7 @@ public class TestingDataUtils {
         }
         return lines;
     }
-    private static File findFile(String filename) {
-
+    public static File findFile(String filename) {
         File topDir = new File(System.getProperty("user.dir"));
         Iterator<File> files = FileUtils.iterateFiles(topDir, new String[] {"txt"}, true);
 
@@ -107,20 +99,36 @@ public class TestingDataUtils {
         }
         return outFile;
     }
-    private static void downloadFile(File file, String webpage) {
+    public static File findFile(String filename, String extension) {
+        File topDir = new File(System.getProperty("user.dir"));
+        Iterator<File> files = FileUtils.iterateFiles(topDir, new String[] {extension}, true);
+
+        File outFile = null;
+
+        while(files.hasNext()) {
+            File f = files.next();
+            if(f.getName().equals(filename)) {
+                outFile = f;
+                break;
+            }
+        }
+        return outFile;
+    }
+    public static void downloadFile(File file, String webpage) {
         try {
             URL url = new URL(webpage);
             FileUtils.copyURLToFile(url, file);
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     public static void generateStudents(int numStudents, String filename) {
         File firstNamesFile = findFile(FIRST_NAMES_FILE);
         File lastNamesFile = findFile(LAST_NAMES_FILE);
+        File highschoolFile = findFile(TEST_HIGH_SCHOOL_FILE);
         try {
 //            firstNamesFile = File.createTempFile("firstNames", "txt");
 //            lastNamesFile = File.createTempFile("lastNames", "txt");
@@ -138,9 +146,7 @@ public class TestingDataUtils {
             }
             List<String> firstNames = readFile(firstNamesFile);
             List<String> lastNames = readFile(lastNamesFile);
-
-            Pageable request = PageRequest.of(0, 50);
-            Page<HighschoolEntity> highschoolEntities = highschoolRepository.findAll(request);
+            List<String> highSchools = readFile(highschoolFile);
 
             File outputFile = new File(filename);
             outputFile.createNewFile();
@@ -149,19 +155,14 @@ public class TestingDataUtils {
             CSVPrinter printer = new CSVPrinter(bw, CSVFormat.EXCEL);
             printer.printRecord("userid", "password","residence_state", "high_school_name", "high_school_city", "high_school_state","GPA", "college_class","major_1","major_2", "SAT_math", "SAT_EBRW", "ACT_English", "ACT_math", "ACT_reading", "ACT_science", "ACT_composite", "SAT_literature", "SAT_US_hist", "SAT_world_hist", "SAT_math_I", "SAT_math_II", "SAT_eco_bio", "SAT_mol_bio", "SAT_chemistry", "SAT_physics","num_AP_passed");
             for(int i=0; i<numStudents; i++) {
-                StudentCSVRecord record = generateStudent(firstNames, lastNames, highschoolEntities);
-                printer.printRecord(record.userid, record.password,record.residence_state, record.high_school_name, record.high_school_city, record.high_school_state,record.GPA, null,record.major_1,record.major_2, record.SAT_math, record.SAT_EBRW, record.ACT_English, record.ACT_math, record.ACT_reading, record.ACT_science, record.ACT_composite, record.SAT_literature, record.SAT_US_hist, record.SAT_world_hist, record.SAT_math_I, record.SAT_math_II, record.SAT_eco_bio, record.SAT_mol_bio, record.SAT_chemistry, record.SAT_physics, record.num_AP_passed);
+                StudentCSVRecord record = generateStudent(firstNames, lastNames, highSchools);
+                printer.printRecord(record.userid, record.password,record.residence_state, record.high_school_name, record.high_school_city, record.high_school_state,record.GPA, record.college_class,record.major_1,record.major_2, record.SAT_math, record.SAT_EBRW, record.ACT_English, record.ACT_math, record.ACT_reading, record.ACT_science, record.ACT_composite, record.SAT_literature, record.SAT_US_hist, record.SAT_world_hist, record.SAT_math_I, record.SAT_math_II, record.SAT_eco_bio, record.SAT_mol_bio, record.SAT_chemistry, record.SAT_physics, record.num_AP_passed);
             }
-
             printer.close();
             bw.close();
             fw.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
-
 }

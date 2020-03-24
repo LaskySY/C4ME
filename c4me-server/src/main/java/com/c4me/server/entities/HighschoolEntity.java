@@ -1,5 +1,9 @@
 package com.c4me.server.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -11,6 +15,9 @@ import java.util.Objects;
  */
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name = "Highschool", schema = "siyoliu")
 public class HighschoolEntity {
     private int schoolId;
@@ -31,7 +38,8 @@ public class HighschoolEntity {
     private Collection<HighschoolMajorAssociationEntity> highschoolMajorAssociationsBySchoolId;
     private Collection<ProfileEntity> profilesBySchoolId;
 
-    @Id
+//    @Id
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "school_id", nullable = false)
     public int getSchoolId() {
         return schoolId;

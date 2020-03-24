@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface HighschoolRepository extends JpaRepository<HighschoolEntity, Integer> {
     HighschoolEntity findByName(String name);
+    Boolean existsByName(String name);
 }

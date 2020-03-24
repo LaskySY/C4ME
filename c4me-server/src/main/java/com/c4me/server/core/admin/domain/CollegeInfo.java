@@ -38,7 +38,7 @@ public class CollegeInfo {
     private Double retentionRate;
     private Double completionRate;
     private Double meanEarnings;
-    private String updatedTime; //TODO: can you send timestamp directly?
+    private String updatedTime;
     private Integer ranking;
     private Integer satMath25;
     private Integer satMath50;

@@ -114,8 +114,8 @@ public final class Const {
     public static final String LONGITUDE                = "LONGITUDE";
     public static final String IN_STATE_TUITION         = "TUITIONFEE_IN";
     public static final String OUT_STATE_TUITION        = "TUITIONFEE_OUT";
-    public static final String MEDIAN_DEBT              = "DEBT_MDN"; //TODO: maybe GRAD_DEBT_MDN instead?
-    public static final String NUM_STUDENTS_ENROLLED    = "UGDS"; //TODO: maybe UG instead?
+    public static final String MEDIAN_DEBT              = "DEBT_MDN";
+    public static final String NUM_STUDENTS_ENROLLED    = "UGDS";
     public static final String RETENTION_RATE           = "RET_FT4";
     public static final String COMPLETION_RATE          = "C150_4";
     public static final String MEAN_EARNINGS            = "MN_EARN_WNE_P10";

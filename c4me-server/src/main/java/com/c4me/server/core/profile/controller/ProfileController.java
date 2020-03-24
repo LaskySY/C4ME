@@ -42,8 +42,8 @@ public class ProfileController {
                 .build();
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/update")
-    //@PostMapping
+//    @RequestMapping(method = RequestMethod.POST, path = "/update")
+    @PostMapping
     public BaseResponse setUserInfo(@RequestBody ProfileInfo profileInfo) throws UserDoesNotExistException {
 
         System.out.println("Test set user info");

@@ -44,10 +44,10 @@ public class ProfileController {
 
 //    @RequestMapping(method = RequestMethod.POST, path = "/update")
     @PostMapping
-    public BaseResponse setUserInfo(@RequestBody ProfileInfo profileInfo) throws UserDoesNotExistException {
+    public BaseResponse setUserInfo(@RequestParam String username, @RequestBody ProfileInfo profileInfo) throws UserDoesNotExistException {
 
         System.out.println("Test set user info");
-
+        profileInfo.setUsername(username);
         profileService.setProfileInfo(profileInfo);
 
         return BaseResponse.builder()

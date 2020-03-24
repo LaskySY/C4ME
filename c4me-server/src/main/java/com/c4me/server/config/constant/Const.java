@@ -47,6 +47,11 @@ public final class Const {
     public static final Integer WAITLISTED = 4;
   }
 
+  public final static class Questionable {
+    public static final Byte OK = 0;
+    public static final Byte QUESTIONABLE = 1;
+  }
+
   public final static class Ranges {
     public static final Double MIN_ZSCORE_FOR_QUESTIONABLE = 1.645;
     public static final Integer MIN_STUDENTS_FOR_STDDEV = 10;

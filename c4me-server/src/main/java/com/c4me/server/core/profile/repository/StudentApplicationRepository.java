@@ -21,4 +21,6 @@ public interface StudentApplicationRepository extends JpaRepository<StudentAppli
     public void deleteByStudentApplicationEntityPK(StudentApplicationEntityPK studentApplicationEntityPK);
 
     public Long countByCollegeByCollegeId(CollegeEntity collegeEntity);
+
+    public List<StudentApplicationEntity> findAllByQuestionable(Byte questionable);
 }

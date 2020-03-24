@@ -16,6 +16,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.c4me.server.config.constant.Const.Questionable.*;
 import static com.c4me.server.config.constant.Const.Ranges.MIN_STUDENTS_FOR_STDDEV;
 import static com.c4me.server.config.constant.Const.Ranges.MIN_ZSCORE_FOR_QUESTIONABLE;
 import static com.c4me.server.config.constant.Const.Status.*;
@@ -109,7 +110,8 @@ public class ApplicationServiceImpl {
                 .collegeByCollegeId(ce)
                 .userByUsername(ue)
                 .studentApplicationEntityPK(studentApplicationEntityPK)
-                .questionable(questionable? new Byte((byte) 1) : new Byte((byte) 0))
+                //.questionable(questionable? new Byte((byte) 1) : new Byte((byte) 0))
+                .questionable(questionable? QUESTIONABLE : OK)
                 .build();
 
         studentApplicationRepository.save(studentApplicationEntity);

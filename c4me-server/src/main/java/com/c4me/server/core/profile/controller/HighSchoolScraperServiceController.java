@@ -1,5 +1,6 @@
 package com.c4me.server.core.profile.controller;
 
+import com.c4me.server.config.exception.HighSchoolDoesNotExistException;
 import com.c4me.server.core.profile.service.HighSchoolScraperServiceImpl;
 import com.c4me.server.domain.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class HighSchoolScraperServiceController {
 
     // this request is for testing purposes only
     @PostMapping("/testHighSchoolScrape")
-    public BaseResponse scrapeHighSchool(@RequestParam String hsQuery) throws IOException {
+    public BaseResponse scrapeHighSchool(@RequestParam String hsQuery) throws IOException, HighSchoolDoesNotExistException {
         if(hsQuery == null || hsQuery.equals("")) {
             return BaseResponse.builder().code("failure").message("empty query").data(null).build();
         }

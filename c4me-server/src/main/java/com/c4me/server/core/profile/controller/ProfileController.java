@@ -1,6 +1,7 @@
 package com.c4me.server.core.profile.controller;
 
 import com.c4me.server.config.exception.DuplicateUsernameException;
+import com.c4me.server.config.exception.HighSchoolDoesNotExistException;
 import com.c4me.server.config.exception.UserDoesNotExistException;
 import com.c4me.server.core.profile.domain.ProfileInfo;
 import com.c4me.server.core.profile.domain.ProfileRequest;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -44,7 +46,7 @@ public class ProfileController {
 
 //    @RequestMapping(method = RequestMethod.POST, path = "/update")
     @PostMapping
-    public BaseResponse setUserInfo(@RequestParam String username, @RequestBody ProfileInfo profileInfo) throws UserDoesNotExistException {
+    public BaseResponse setUserInfo(@RequestParam String username, @RequestBody ProfileInfo profileInfo) throws UserDoesNotExistException, IOException, HighSchoolDoesNotExistException {
 
         System.out.println("Test set user info");
         profileInfo.setUsername(username);

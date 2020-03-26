@@ -8,6 +8,7 @@ import com.c4me.server.domain.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -24,9 +25,12 @@ public class QuestionableDecisionsController {
     QuestionableDecisionsServiceImpl questionableDecisionsService;
 
     @GetMapping
-    public BaseResponse<List<StudentApplication>> getQuestionableDecisions() {
+    public BaseResponse<HashMap<String, List<StudentApplication>>> getQuestionableDecisions() {
         List<StudentApplication> questionableApplications = questionableDecisionsService.getQuestionableDecisions();
-        return BaseResponse.<List<StudentApplication>>builder().code("success").message("").data(questionableApplications).build();
+        HashMap<String, List<StudentApplication>> map = new HashMap<>();
+        map.put("applications", questionableApplications);
+
+        return BaseResponse.<HashMap<String, List<StudentApplication>>>builder().code("success").message("").data(map).build();
     }
 
     @PostMapping

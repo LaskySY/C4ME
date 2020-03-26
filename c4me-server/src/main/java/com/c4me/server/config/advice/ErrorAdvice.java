@@ -88,5 +88,16 @@ public class ErrorAdvice {
             .build();
   }
 
+  @ExceptionHandler({HighSchoolDoesNotExistException.class})
+  @ResponseBody
+  public Object HighSchoolDoesNotExistException(HighSchoolDoesNotExistException exception) {
+    LogInterceptor.logExceptionUnExpect(exception, Const.Error.HIGHSCHOOL_NOT_FOUND);
+    logger.error(exception.getMessage());
+    return BaseResponse.builder()
+            .code(Const.Error.HIGHSCHOOL_NOT_FOUND)
+            .message(exception.getMessage())
+            .build();
+  }
+
 
 }

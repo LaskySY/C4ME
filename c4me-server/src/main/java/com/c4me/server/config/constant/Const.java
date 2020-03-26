@@ -33,6 +33,7 @@ public final class Const {
     public static final String COLLEGE_SCORECARD_NOT_FOUND = "fail";
     public static final String COLLEGE_TXT_NOT_FOUND = "collegeTxtNotFound";
     public static final String INVALID_COLLEGE_SCORECARD = "invalidScorecardFile";
+    public static final String HIGHSCHOOL_NOT_FOUND = "highSchoolNotFound";
   }
 
   public final static class Role {
@@ -50,6 +51,7 @@ public final class Const {
   public final static class Questionable {
     public static final Byte OK = 0;
     public static final Byte QUESTIONABLE = 1;
+    public static final Byte DISHONEST = 2;
   }
 
   public final static class Ranges {

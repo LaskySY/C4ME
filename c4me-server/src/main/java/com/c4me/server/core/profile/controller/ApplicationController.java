@@ -40,8 +40,10 @@ public class ApplicationController {
                 .build();
     }
 
-    @PutMapping
-    public BaseResponse updateStudentApplication(@RequestBody StudentApplication studentApplication) throws UserDoesNotExistException, CollegeDoesNotExistException {
+    @PostMapping
+    public BaseResponse updateStudentApplication(@RequestParam String username, @RequestBody StudentApplication studentApplication) throws UserDoesNotExistException, CollegeDoesNotExistException {
+        studentApplication.setUsername(username);
+        System.out.println("username = " + username + ", college = " + studentApplication.getCollegeName());
         applicationService.putStudentApplication(studentApplication);
         return BaseResponse.builder()
                 .code("success")
@@ -49,6 +51,8 @@ public class ApplicationController {
                 .data(null)
                 .build();
     }
+
+
 
     @DeleteMapping
     public BaseResponse deleteStudentApplication(@RequestBody StudentApplication studentApplication) throws UserDoesNotExistException, CollegeDoesNotExistException {

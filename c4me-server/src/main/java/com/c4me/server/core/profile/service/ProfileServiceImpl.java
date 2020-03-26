@@ -1,5 +1,6 @@
 package com.c4me.server.core.profile.service;
 
+import com.c4me.server.config.exception.HighSchoolDoesNotExistException;
 import com.c4me.server.config.exception.UserDoesNotExistException;
 import com.c4me.server.core.credential.repository.HighschoolRepository;
 import com.c4me.server.core.profile.domain.ProfileInfo;
@@ -10,6 +11,8 @@ import com.c4me.server.utils.CopyUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.io.IOException;
 
 /**
  * @Description:
@@ -24,6 +27,8 @@ public class ProfileServiceImpl {
     ProfileRepository profileRepository;
     @Autowired
     HighschoolRepository highschoolRepository;
+    @Autowired
+    HighSchoolScraperServiceImpl highSchoolScraperService;
 
     public ProfileInfo getInfoByUsername(String username) throws UserDoesNotExistException {
         ProfileEntity pe = profileRepository.findByUsername(username);
@@ -71,7 +76,7 @@ public class ProfileServiceImpl {
         return pe;
     }
 
-    public void setProfileInfo(ProfileInfo profileInfo) throws UserDoesNotExistException {
+    public void setProfileInfo(ProfileInfo profileInfo) throws UserDoesNotExistException, IOException, HighSchoolDoesNotExistException {
         boolean exists = profileInfo.getUsername() != null && profileRepository.existsById(profileInfo.getUsername());
         if (!exists) throw new UserDoesNotExistException("cannot find user to update profile");
 
@@ -85,13 +90,9 @@ public class ProfileServiceImpl {
         if(he != null) {
             System.out.println("found highschool "  + profileInfo.getSchoolName());
         }
-        else {
-            System.out.println("could not find highschool " + profileInfo.getSchoolName() + " in database");
-            /*TODO: have to scrape hs website (unless profileInfo.getName() == null)
-                First, try to match the input hsname to a niche url from all_highschools.txt
-                Then, scrape that url to get HS data including college associations and major associations.
-             */
-
+        else if(profileInfo.getSchoolName() != null) {
+                System.out.println("could not find highschool " + profileInfo.getSchoolName() + " in database; scraping from niche.com");
+                he = highSchoolScraperService.scrapeHighSchool(profileInfo.getSchoolName());
         }
         //TODO: Fix major 1 and major 2 - should be querying major and majorAlias tables to check if it's a proper major name; then set majorByMajor1 and majorByMajor2 of pe
         //TODO: Either create a major doesn't exist exception, or make a getAllMajors request --> dropdown to choose major.

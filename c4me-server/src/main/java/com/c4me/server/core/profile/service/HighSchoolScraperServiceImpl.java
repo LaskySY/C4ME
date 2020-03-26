@@ -1,5 +1,6 @@
 package com.c4me.server.core.profile.service;
 
+import com.c4me.server.config.exception.HighSchoolDoesNotExistException;
 import com.c4me.server.core.credential.repository.HighschoolRepository;
 import com.c4me.server.core.profile.repository.CollegeHighSchoolAssociationRepository;
 import com.c4me.server.core.profile.repository.CollegeRepository;
@@ -57,13 +58,13 @@ public class HighSchoolScraperServiceImpl {
 
         Element nameHeader = nicheBaseDoc.selectFirst("h1.postcard__title");
         if(nameHeader == null) return false;
-        highschoolEntity.setName(nameHeader.text());
+        highschoolEntity.setName(nameHeader.ownText());
 
 
         Element attributesElement = nicheBaseDoc.selectFirst("ul.postcard__attrs");
         Elements attributeFacts = attributesElement.select("li.postcard__attr.postcard-fact");
         for(Element e : attributeFacts) {
-            String text = e.text();
+            String text = e.ownText();
             if(text.contains(PUBLIC_STR)) {
                 System.out.println("Public HS");
                 highschoolEntity.setType(PUBLIC_STR);
@@ -132,19 +133,19 @@ public class HighSchoolScraperServiceImpl {
         Elements scalars = scoresElement.select("div.scalar__label");
         for(Element scalar : scalars) {
             for(Element c : scalar.children()) {
-                if(c.text().contains("SAT")) {
+                if(c.ownText().contains("SAT")) {
                     Integer score = getScore(scalar);
                     if(!(score == -1 || score < 400 || score > 1600)) {
                         highschoolEntity.setSatOverall(score);
                     }
                 }
-                else if (c.text().contains("ACT")) {
+                else if (c.ownText().contains("ACT")) {
                     Integer score = getScore(scalar);
                     if(!(score == -1 || score < 1 || score > 36)) {
                         highschoolEntity.setActComposite(score);
                     }
                 }
-                else if (c.text().contains("Math")) {
+                else if (c.ownText().contains("Math")) {
                     Integer score = getScore(scalar);
                     if(!(score == -1 || score < 400 || score > 1600)) {
                         highschoolEntity.setSatMath(score);
@@ -153,25 +154,25 @@ public class HighSchoolScraperServiceImpl {
                         highschoolEntity.setActMath(score);
                     }
                 }
-                else if (c.text().contains("Verbal")) {
+                else if (c.ownText().contains("Verbal")) {
                     Integer score = getScore(scalar);
                     if(!(score == -1 || score < 400 || score > 1600)) {
                         highschoolEntity.setSatEbrw(score);
                     }
                 }
-                else if (c.text().contains("English")) {
+                else if (c.ownText().contains("English")) {
                     Integer score = getScore(scalar);
                     if (!(score == -1 || score < 1 || score > 36)) {
                         highschoolEntity.setActEnglish(score);
                     }
                 }
-                else if (c.text().contains("Reading")) {
+                else if (c.ownText().contains("Reading")) {
                     Integer score = getScore(scalar);
                     if (!(score == -1 || score < 1 || score > 36)) {
                         highschoolEntity.setActReading(score);
                     }
                 }
-                else if (c.text().contains("Science")) {
+                else if (c.ownText().contains("Science")) {
                     Integer score = getScore(scalar);
                     if (!(score == -1 || score < 1 || score > 36)) {
                         highschoolEntity.setActScience(score);
@@ -244,11 +245,13 @@ public class HighSchoolScraperServiceImpl {
         if(!url.endsWith("/")) url += "/";
         return url;
     }
-    public void scrapeHighSchool(String query) throws IOException {
+    public HighschoolEntity scrapeHighSchool(String query) throws IOException, HighSchoolDoesNotExistException {
         System.out.println("trying to find niche url");
         HashMap<String, Integer> matches =  SearchHSUtils.searchForNicheUrl(query);
         String bestMatch = getBestMatch(matches);
         System.out.println("best match = " + bestMatch);
+
+        if(bestMatch == null) throw new HighSchoolDoesNotExistException("could not find high school");
 
         System.out.println("trying to scrape niche.com");
         HighschoolEntity entity = new HighschoolEntity();
@@ -284,6 +287,8 @@ public class HighSchoolScraperServiceImpl {
         }
 
         //TODO: save high school major associations as well
+
+        return entity;
     }
 
     //TODO: we need to improve this method (maybe use college aliases etc.)

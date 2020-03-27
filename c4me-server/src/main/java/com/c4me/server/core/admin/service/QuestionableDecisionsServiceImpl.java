@@ -44,7 +44,7 @@ public class QuestionableDecisionsServiceImpl {
 
     public void changeQuestionableDecision(StudentApplication studentApplication) throws UserDoesNotExistException, CollegeDoesNotExistException {
         UserEntity ue = userRepository.findByUsername(studentApplication.getUsername());
-        CollegeEntity ce = collegeRepository.findByName(studentApplication.getCollegeName());
+        CollegeEntity ce = collegeRepository.findById(studentApplication.getCollege().getValue()).get();
 
         if(ue == null) throw new UserDoesNotExistException("user does not exist");
         if(ce == null) throw new CollegeDoesNotExistException("college does not exist");

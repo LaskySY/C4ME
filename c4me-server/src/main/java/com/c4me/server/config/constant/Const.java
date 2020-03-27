@@ -104,7 +104,8 @@ public final class Const {
     public static final String TEST_HIGH_SCHOOL_FILE = "suffolkHighSchools.txt";
     //public static final String TEST_SUFFOLK_HIGH_SCHOOLS = "https://en.wikipedia.org/wiki/List_of_high_schools_in_New_York";
 
-    public static final String ALL_HIGH_SCHOOLS_FILE = "all_highschools.txt";
+//    public static final String ALL_HIGH_SCHOOLS_FILE = "all_highschools.txt";
+    public static final String ALL_HIGH_SCHOOLS_FILE = "all_highschools_sorted.txt";
 
     public static final String NICHE_PREFIX = "https://www.niche.com/k12/";
   }
@@ -232,6 +233,50 @@ public final class Const {
             "WY"
     };
     public static final List<String> STATES_LIST = Arrays.asList(STATES);
+  }
+
+  public final static class ProfilePropertyClasses {
+    public static final String EDUCATION = "education";
+    public static final String SAT = "sat";
+    public static final String ACT = "act";
+    public static final String NONE = "none";
+
+    public static final String[] EDUCATIONPROPERTIES = {
+            "gpa",
+            "highschoolBySchoolId",
+            "major1",
+            "major2",
+            "majorByMajor1",
+            "majorByMajor2",
+            "numApCourses",
+            "schoolId",
+            "schoolYear",
+    };
+    public static final String[] SATPROPERTIES = {
+            "satMath",
+            "satMathI",
+            "satMathIi",
+            "satMolBio",
+            "satPhysics",
+            "satUsHist",
+            "satWorldHist",
+    };
+    public static final String[] ACTPROPERTIES = {
+            "actComposite",
+            "actEnglish",
+            "actMath",
+            "actReading",
+            "actScience"
+    };
+    public static final String[] NOPROPERTIES = {};
+    public static final HashMap<String, String[]> PROPERTIES_MAP = new HashMap<String, String[]>() {
+      {
+        put(EDUCATION, EDUCATIONPROPERTIES);
+        put(SAT, SATPROPERTIES);
+        put(ACT, ACTPROPERTIES);
+        put(NONE, NOPROPERTIES);
+      }
+    };
   }
 
 }

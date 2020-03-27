@@ -43,7 +43,7 @@ public class ApplicationController {
     @PostMapping
     public BaseResponse updateStudentApplication(@RequestParam String username, @RequestBody StudentApplication studentApplication) throws UserDoesNotExistException, CollegeDoesNotExistException {
         studentApplication.setUsername(username);
-        System.out.println("username = " + username + ", college = " + studentApplication.getCollegeName());
+        System.out.println("username = " + username + ", college = " + studentApplication.getCollegeId());
         applicationService.putStudentApplication(studentApplication);
         return BaseResponse.builder()
                 .code("success")

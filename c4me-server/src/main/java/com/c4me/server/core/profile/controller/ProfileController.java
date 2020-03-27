@@ -46,11 +46,11 @@ public class ProfileController {
 
 //    @RequestMapping(method = RequestMethod.POST, path = "/update")
     @PostMapping
-    public BaseResponse setUserInfo(@RequestParam String username, @RequestBody ProfileInfo profileInfo) throws UserDoesNotExistException, IOException, HighSchoolDoesNotExistException {
+    public BaseResponse setUserInfo(@RequestParam String username, @RequestParam String field, @RequestBody ProfileInfo profileInfo) throws UserDoesNotExistException, IOException, HighSchoolDoesNotExistException {
 
         System.out.println("Test set user info");
         profileInfo.setUsername(username);
-        profileService.setProfileInfo(profileInfo);
+        profileService.setProfileInfo(profileInfo, field);
 
         return BaseResponse.builder()
                 .code("success")

@@ -56,9 +56,9 @@ public class HighSchoolScraperServiceImpl {
 
         //TODO: select for class li.search-tags__wrap__list__tag and check that High School tag exists (otherwise we've accidentally found a middle or elementary school)
 
-        Element nameHeader = nicheBaseDoc.selectFirst("h1.postcard__title");
-        if(nameHeader == null) return false;
-        highschoolEntity.setName(nameHeader.ownText());
+//        Element nameHeader = nicheBaseDoc.selectFirst("h1.postcard__title");
+//        if(nameHeader == null) return false;
+//        highschoolEntity.setName(nameHeader.ownText());
 
 
         Element attributesElement = nicheBaseDoc.selectFirst("ul.postcard__attrs");
@@ -245,6 +245,25 @@ public class HighSchoolScraperServiceImpl {
         if(!url.endsWith("/")) url += "/";
         return url;
     }
+    private String parseHSName(String name) {
+        String[] words = name.split("-");
+        StringBuilder builder = new StringBuilder();
+        for(int i=0; i<words.length; i++) {
+            String word = words[i];
+            if(i < words.length-1) {
+                if(word.length() > 0) {
+                    word = word.substring(0,1).toUpperCase() + word.substring(1);
+                }
+                builder.append(word+" ");
+            }
+            if(i == words.length-1) {
+                word = word.substring(0, word.length()-1);
+                word=word.toUpperCase();
+                builder.append(word);
+            }
+        }
+        return builder.toString();
+    }
     public HighschoolEntity scrapeHighSchool(String query) throws IOException, HighSchoolDoesNotExistException {
         System.out.println("trying to find niche url");
         HashMap<String, Integer> matches =  SearchHSUtils.searchForNicheUrl(query);
@@ -255,6 +274,7 @@ public class HighSchoolScraperServiceImpl {
 
         System.out.println("trying to scrape niche.com");
         HighschoolEntity entity = new HighschoolEntity();
+        entity.setName(parseHSName(bestMatch));
         String url = buildUrl(bestMatch);
         scrapeBaseSite(url, entity);
         HashMap<String, List<String>> result = scrapeAcademicsSite(url, entity);

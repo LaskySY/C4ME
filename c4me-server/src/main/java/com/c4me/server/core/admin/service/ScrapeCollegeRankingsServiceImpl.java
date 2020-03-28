@@ -7,6 +7,10 @@ import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.text.similarity.FuzzyScore;
+import org.apache.commons.text.similarity.JaccardDistance;
+import org.apache.commons.text.similarity.JaccardSimilarity;
+import org.apache.commons.text.similarity.LevenshteinDistance;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +22,7 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.c4me.server.config.constant.Const.Filenames.*;
 
@@ -71,41 +72,44 @@ public class ScrapeCollegeRankingsServiceImpl {
         HashMap<String, Integer> rankingsMap = readJsonRankings(tmpJson);
         tmpJson.delete();
 
-        //TODO: Should we read colleges.txt to filter?
-//        File topDir = new File(System.getProperty("user.dir"));
-//        Iterator<File> files = FileUtils.iterateFiles(topDir, new String[] {"txt"}, true);
-//        String collegesFilename = "";
-//
-//        while(files.hasNext()) {
-//            File f = files.next();
-//            String extension = FilenameUtils.getExtension(f.getAbsolutePath());
-//            if (f.getName().equals(COLLEGES)) {
-//                collegesFilename = f.getAbsolutePath();
-//                break;
-//            }
-//        }
-//        if(collegesFilename.equals("")) throw new NoCollegeTxtException("college.txt not found");
-//        List<String> colleges = collegeScorecardService.readCollegesTxt(collegesFilename);
 
         List<CollegeEntity> collegeEntities = collegeRepository.findAll();
-        for(String s : rankingsMap.keySet()) {
-            System.out.println("key = " + s + ", val = " + rankingsMap.get(s));
-            for(CollegeEntity entity : collegeEntities) {
-                if(entity.getName().equals(s)) {       //TODO: need to implement college aliases --> find by alias
-                    entity.setRanking(rankingsMap.get(s));
-                    entity.setUpdatedTime(Timestamp.from(Instant.now()));
-                    collegeRepository.save(entity);
+        for(CollegeEntity entity : collegeEntities) {
+            String name = entity.getName();
+            System.out.println(name);
+            String processedName = name.replaceAll("[^A-Za-z ]", " ").replaceAll(" +", " ").trim();
+            int max = -1;
+//            int min = Integer.MAX_VALUE;
+            String bestMatch = null;
+//            String bestMatch2 = null;
+            FuzzyScore fs = new FuzzyScore(Locale.US);
+//            LevenshteinDistance ldist = new LevenshteinDistance();
+            for(String s : rankingsMap.keySet()) {
+                String processedS = s.replaceAll("[^A-Za-z ]", " ").replaceAll(" +", " ").trim();
+                if(processedS.equals(processedName)) {
+                    bestMatch = s;
                     break;
                 }
+                int dist = fs.fuzzyScore(processedName, processedS);
+//                int dist2 = ldist.apply(processedName, processedS);
+//                if(processedName.equals("University of Houston")) System.out.println("ldist between " + processedName + " and " + processedS + " is " + dist2);
+                if(dist > max) {
+                    max = dist;
+                    bestMatch = s;
+                }
+//                if (dist2 < min) {
+//                    min = dist2;
+//                    bestMatch2 = s;
+//                }
             }
-//            CollegeEntity collegeEntity = collegeRepository.findByName(s);
-//            if(collegeEntity == null) continue;
-//            else {
-//                collegeEntity.setRanking(rankingsMap.get(s));
-//                collegeRepository.save(collegeEntity);
-//            }
+            System.out.println(bestMatch);
+//            System.out.println("leven = " + bestMatch2);
+            System.out.println(rankingsMap.get(bestMatch));
+            entity.setRanking(rankingsMap.get(bestMatch));
+            entity.setUpdatedTime(Timestamp.from(Instant.now()));
+            collegeRepository.save(entity);
+            //rankingsMap.remove(bestMatch);
         }
-
     }
 
 

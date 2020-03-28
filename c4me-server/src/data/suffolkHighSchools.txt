@@ -1,0 +1,64 @@
+School, City
+Amityville Memorial High School, Amityville
+Babylon Junior Senior High School, Babylon
+Bay Shore Senior High School, Bay Shore
+Bayport Blue Point High School, Bayport
+Bellport Senior High School, Brookhaven
+Brentwood High School, Brentwood
+Bridgehampton School, Bridgehampton
+Center Moriches High School, Center Moriches
+Centereach High School, Centereach
+Central Islip Senior High School, Central Islip
+Cold Spring Harbor High School, Cold Spring Harbor
+Commack High School, Commack
+Comsewogue High School, Port Jefferson Sta
+Connetquot High School, Bohemia
+Deer Park High School, Deer Park
+East Hampton High School, East Hampton
+East Islip High School, Islip Terrace
+Eastport South Manor Junior Senior High School, Manorville
+John H Glenn High School, Elwood
+Greenport High School, Greenport
+Half Hollow Hills High School East, Dix Hills
+Half Hollow Hills High School West, Dix Hills
+Hampton Bays High School, Hampton Bays
+Harborfields High School, Greenlawn
+Hauppauge High School, Hauppauge
+Huntington High School, Huntington
+Islip High School, Islip
+Kings Park High School, Kings Park
+The Knox School, St James
+Lindenhurst Senior High School, Lindenhurst
+Longwood High School, Middle Island
+Mattituck Junior Senior High School, Mattituck
+Miller Place High School, Miller Place
+Mount Sinai High School, Mount Sinai
+Newfield High School, Selden
+North Babylon High School, North Babylon
+Northport Senior High School, Northport
+Patchogue Medford High School, Medford
+Pierson Middle High School, Sag Harbor
+Riverhead Senior High School, Riverhead
+Rocky Point High School, Rocky Point
+Ross School, East Hampton
+Sachem High School East, Farmingville
+Sachem High School North, Lake Ronkonkoma
+Saint Anthonys High School, Huntington Station
+St John the Baptist Diocesan High School, West Islip
+Sayville High School, West Sayville
+Shoreham Wading River High School, Shoreham
+Smithtown Christian School, Smithtown
+Smithtown High School   Western Campus, Smithtown
+Smithtown High School East, Saint James
+Southampton High School, Southampton
+Southold Junior Senior High School, Southold
+The Stony Brook School, Stony Brook
+Earl L Vandermeulen High School, Port Jefferson
+Walter G Oconnell Copiague High School, Copiague
+Ward Melville Senior High School, East Setauket
+West Babylon Senior High School, West Babylon
+West Islip Senior High School, West Islip
+Westhampton Beach Senior High School, Westhampton Beach
+Walt Whitman High School, Huntington Station
+William Floyd High School, Mastic Beach
+Wyandanch Memorial High School, Wyandanch

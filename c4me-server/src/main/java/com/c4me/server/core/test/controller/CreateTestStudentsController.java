@@ -1,8 +1,13 @@
 package com.c4me.server.core.test.controller;
 
+import com.c4me.server.core.profile.repository.CollegeRepository;
 import com.c4me.server.domain.BaseResponse;
+import com.c4me.server.entities.CollegeEntity;
 import com.c4me.server.utils.TestingDataUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import static com.c4me.server.config.constant.Const.Filenames.DATA_DIR;
 
@@ -16,6 +21,9 @@ import static com.c4me.server.config.constant.Const.Filenames.DATA_DIR;
 @RequestMapping("/createTestStudentsCSV")
 public class CreateTestStudentsController {
 
+    @Autowired
+    CollegeRepository collegeRepository;
+
     @PostMapping
     public BaseResponse generateCSV(@RequestParam Integer numStudents) {
         TestingDataUtils.generateStudents(numStudents, DATA_DIR + "students-random.csv");
@@ -24,7 +32,8 @@ public class CreateTestStudentsController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/createStudentsAndApplicationsCSV")
     public BaseResponse generateStudentsAndAppsCSV(@RequestParam Integer numStudents, @RequestParam Integer numAppsPerStudent) {
-        TestingDataUtils.generateStudentsAndApplications(numStudents, numAppsPerStudent, DATA_DIR + "students-random.csv", DATA_DIR + "applications-random.csv");
+        List<CollegeEntity> collegeEntities = collegeRepository.findAll();
+        TestingDataUtils.generateStudentsAndApplications(numStudents, numAppsPerStudent, collegeEntities, DATA_DIR + "students-random.csv", DATA_DIR + "applications-random.csv");
         return BaseResponse.builder().code("success").message("").data(null).build();
     }
 

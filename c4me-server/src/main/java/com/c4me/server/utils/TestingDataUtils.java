@@ -2,6 +2,8 @@ package com.c4me.server.utils;
 
 import com.c4me.server.config.constant.Const;
 import com.c4me.server.core.credential.repository.HighschoolRepository;
+import com.c4me.server.core.profile.repository.CollegeRepository;
+import com.c4me.server.entities.CollegeEntity;
 import com.c4me.server.entities.HighschoolEntity;
 import com.c4me.server.entities.StudentApplicationEntity;
 import org.apache.commons.csv.CSVFormat;
@@ -15,11 +17,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.util.Pair;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.c4me.server.config.constant.Const.Filenames.*;
 
@@ -31,9 +35,12 @@ import static com.c4me.server.config.constant.Const.Filenames.*;
 
 public class TestingDataUtils {
 
+    @Autowired
+    CollegeRepository collegeRepository;
 
     private static Random r = new Random(System.currentTimeMillis());
-
+    private static String[] majors = {"Computer Science", "Mathematics", "Biology", "Chemistry", "Physics", "Music Theory", "Art History", "Political Science", "History", "Geology"};
+    private static List<String> majorsList = Arrays.asList(majors);
 
     private static String generateUsername(String firstName, String lastName) {
         return firstName.toLowerCase() + lastName + r.nextInt(10000);
@@ -70,7 +77,9 @@ public class TestingDataUtils {
         String hsName = split[0];
         String hsCity = split[1];
 
-        return Pair.of(new StudentCSVRecord(username, username, "NY", hsName, hsCity, "NY", t(0, g, gs)/10.0, 2024, "", "", t(1,s,ss), t(1,s,ss), t(2,a,as),t(2,a,as), t(2,a,as),t(2,a,as),t(2,a,as), t(1,s,ss),t(1,s,ss),t(1,s,ss), t(1,s,ss), t(1,s,ss), t(1,s,ss),t(1,s,ss), t(1,s,ss), t(1,s,ss), r.nextInt(10)), strength);
+        Collections.shuffle(majorsList);
+
+        return Pair.of(new StudentCSVRecord(username, username, "NY", hsName, hsCity, "NY", t(0, g, gs)/10.0, 2024, majorsList.get(0), majorsList.get(1), t(1,s,ss), t(1,s,ss), t(2,a,as),t(2,a,as), t(2,a,as),t(2,a,as),t(2,a,as), t(1,s,ss),t(1,s,ss),t(1,s,ss), t(1,s,ss), t(1,s,ss), t(1,s,ss),t(1,s,ss), t(1,s,ss), t(1,s,ss), r.nextInt(10)), strength);
     }
 
     public static List<String> readFile(File file) throws IOException {
@@ -172,10 +181,10 @@ public class TestingDataUtils {
         return null;
     }
 
-    private static void generateStudentApplications(HashMap<String, Double> students, int appsPerStudent, String filename)  {
-        File collegesFile = findFile(COLLEGES);
+    private static void generateStudentApplications(HashMap<String, Double> students, List<CollegeEntity> collegeEntities, int appsPerStudent, String filename)  {
+        //File collegesFile = findFile(COLLEGES);
         try {
-            List<String> collegeNames = readFile(collegesFile);
+            //List<String> collegeNames = readFile(collegesFile);
             String[] status = {"pending", "accepted", "denied", "wait-listed"};
             File outputFile = new File(filename);
             outputFile.createNewFile();
@@ -185,11 +194,27 @@ public class TestingDataUtils {
             printer.printRecord("userid", "college", "status");
             for(String user : students.keySet()) {
                 int nApps = r.nextInt(2 * appsPerStudent);
-                nApps = Math.min(nApps, collegeNames.size());
-                Collections.shuffle(collegeNames);
+                nApps = Math.min(nApps, collegeEntities.size());
+                Collections.shuffle(collegeEntities);
                 for(int j=0; j<nApps; j++) {
-                    int rand = r.nextInt(4);
-                    printer.printRecord(user, collegeNames.get(j), status[rand]);
+                    int s = 0;
+                    int rand = r.nextInt(2);
+                    if(rand == 1) {
+                        Double strength = students.get(user);
+                        Double admissionRate = collegeEntities.get(j).getAdmissionRate();
+                        Double rejectionRate = 1-admissionRate;
+                        Double y = strength > rejectionRate? admissionRate + Math.pow(strength-rejectionRate,1.5) : admissionRate - Math.pow(rejectionRate-strength, 1.5);
+                        Double x = r.nextDouble();
+                        if(x < y) {
+                            if(r.nextDouble() < 0.2) s = 3;
+                            else s=1;
+                        }
+                        else {
+                            if(r.nextDouble() < 0.1) s=3;
+                            else s=2;
+                        }
+                    }
+                    printer.printRecord(user, collegeEntities.get(j).getName(), status[s]);
                     //StudentApplicationCSVRecord record = generateStudentApplication(user, students.get(user));
                     //printer.printRecord();
                 }
@@ -203,8 +228,8 @@ public class TestingDataUtils {
 
     }
 
-    public static void generateStudentsAndApplications(int numStudents, int averageNumberApplicationsPerStudent, String studentsFilename, String applicationsFilename) {
+    public static void generateStudentsAndApplications(int numStudents, int averageNumberApplicationsPerStudent, List<CollegeEntity> collegeEntities, String studentsFilename, String applicationsFilename) {
         HashMap<String, Double> students = generateStudents(numStudents, studentsFilename);
-        generateStudentApplications(students, averageNumberApplicationsPerStudent, applicationsFilename);
+        generateStudentApplications(students, collegeEntities, averageNumberApplicationsPerStudent, applicationsFilename);
     }
 }

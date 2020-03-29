@@ -103,7 +103,7 @@ public class ProfileServiceImpl {
                 System.out.println("found highschool " + profileInfo.getSchoolName());
             } else if (profileInfo.getSchoolName() != null) {
                 System.out.println("could not find highschool " + profileInfo.getSchoolName() + " in database; scraping from niche.com");
-                he = highSchoolScraperService.scrapeHighSchool(profileInfo.getSchoolName());
+                he = highSchoolScraperService.scrapeHighSchool(profileInfo.getSchoolName(), false);
             }
             /*
              TODO: Fix major 1 and major 2 - should be querying major and majorAlias tables to check if it's a proper major name; then set majorByMajor1 and majorByMajor2 of pe

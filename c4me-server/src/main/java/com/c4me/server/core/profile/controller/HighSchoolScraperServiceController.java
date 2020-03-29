@@ -3,6 +3,7 @@ package com.c4me.server.core.profile.controller;
 import com.c4me.server.config.exception.HighSchoolDoesNotExistException;
 import com.c4me.server.core.profile.service.HighSchoolScraperServiceImpl;
 import com.c4me.server.domain.BaseResponse;
+import com.c4me.server.utils.SearchHSUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,7 @@ public class HighSchoolScraperServiceController {
         if(hsQuery == null || hsQuery.equals("")) {
             return BaseResponse.builder().code("failure").message("empty query").data(null).build();
         }
-        highSchoolScraperService.scrapeHighSchool(hsQuery);
+        highSchoolScraperService.scrapeHighSchool(hsQuery, true);
         return BaseResponse.builder()
                 .code("success")
                 .message("")
@@ -43,14 +44,15 @@ public class HighSchoolScraperServiceController {
 
     //this request is for testing purposes only
     @PostMapping("/testFindHighSchoolURL")
-    public BaseResponse<List<String>> findHighSchoolUrls(@RequestParam String hsQuery) throws IOException {
+    public BaseResponse<String> findHighSchoolUrls(@RequestParam String hsQuery) throws IOException {
         if(hsQuery == null || hsQuery.equals("")) {
-            return BaseResponse.<List<String>>builder().code("failure").message("empty query").data(null).build();
+            return BaseResponse.<String>builder().code("failure").message("empty query").data(null).build();
         }
-        List<String> matches = highSchoolScraperService.findMatches(hsQuery);
-        return BaseResponse.<List<String>>builder()
+//        List<String> matches = highSchoolScraperService.findMatches(hsQuery);
+        String match = SearchHSUtils.searchForNicheUrl(hsQuery);
+        return BaseResponse.<String>builder()
                 .code("success")
                 .message("")
-                .data(matches).build();
+                .data(match).build();
     }
 }

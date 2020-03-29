@@ -111,6 +111,7 @@ public class HighSchoolScraperServiceImpl {
     }
 
     public List<String> getPopularColleges(Element collegesElement) {
+        if(collegesElement == null) return new ArrayList<String>();
         List<String> popularColleges = new ArrayList<>();
         Elements colleges = collegesElement.select("h6.popular-entity__name");
         for(Element college : colleges) {
@@ -120,6 +121,7 @@ public class HighSchoolScraperServiceImpl {
         return popularColleges;
     }
     public List<String> getPopularMajors(Element majorsElement) {
+        if(majorsElement == null) return new ArrayList<>();
         List<String> popularMajors = new ArrayList<>();
         Elements majors = majorsElement.select("h6.popular-entity__name");
         for(Element major : majors) {
@@ -130,6 +132,7 @@ public class HighSchoolScraperServiceImpl {
     }
 
     public void getAllScores(Element scoresElement, HighschoolEntity highschoolEntity) {
+        if(scoresElement == null || highschoolEntity == null) return;
         Elements scalars = scoresElement.select("div.scalar__label");
         for(Element scalar : scalars) {
             for(Element c : scalar.children()) {
@@ -183,7 +186,7 @@ public class HighSchoolScraperServiceImpl {
     }
 
     public Integer getScore(Element scalarLabel) {
-        if(scalarLabel.siblingElements().size() == 0) return -1;
+        if(scalarLabel == null || scalarLabel.siblingElements().size() == 0) return -1;
         Element parent = scalarLabel.parent();
         Elements values = parent.select("div.scalar__value");
         if(values.size() != 1) return -1;
@@ -235,10 +238,10 @@ public class HighSchoolScraperServiceImpl {
         return bestMatch;
     }
 
-    public List<String> findMatches(String query) throws IOException {
-        HashMap<String, Integer> matches =  SearchHSUtils.searchForNicheUrl(query);
-        return matches.keySet().stream().collect(Collectors.toList());
-    }
+//    public List<String> findMatches(String query) throws IOException {
+//        HashMap<String, Integer> matches =  SearchHSUtils.searchForNicheUrl(query);
+//        return matches.keySet().stream().collect(Collectors.toList());
+//    }
 
     public String buildUrl(String match) {
         String url = NICHE_PREFIX + match;
@@ -264,17 +267,35 @@ public class HighSchoolScraperServiceImpl {
         }
         return builder.toString();
     }
+
     public HighschoolEntity scrapeHighSchool(String query) throws IOException, HighSchoolDoesNotExistException {
+        return scrapeHighSchool(query, true);
+    }
+    public HighschoolEntity scrapeHighSchool(String query, boolean scrapeEvenIfFound) throws IOException, HighSchoolDoesNotExistException {
         System.out.println("trying to find niche url");
-        HashMap<String, Integer> matches =  SearchHSUtils.searchForNicheUrl(query);
-        String bestMatch = getBestMatch(matches);
+//        HashMap<String, Integer> matches =  SearchHSUtils.searchForNicheUrl(query);
+//        String bestMatch = getBestMatch(matches);
+
+        String bestMatch = SearchHSUtils.searchForNicheUrl(query);
         System.out.println("best match = " + bestMatch);
 
         if(bestMatch == null) throw new HighSchoolDoesNotExistException("could not find high school");
 
+        String parsedName = parseHSName(bestMatch);
+        HighschoolEntity entity = highschoolRepository.findByName(parsedName);
+        if(entity == null) {
+            entity = new HighschoolEntity();
+            entity.setName(parsedName);
+        }
+        else {
+            if(!scrapeEvenIfFound) {
+                System.out.println("hs already exists -- returning existing entity");
+                return entity;
+            }
+            else System.out.println("hs already exists, scraping to update info");
+        }
+
         System.out.println("trying to scrape niche.com");
-        HighschoolEntity entity = new HighschoolEntity();
-        entity.setName(parseHSName(bestMatch));
         String url = buildUrl(bestMatch);
         scrapeBaseSite(url, entity);
         HashMap<String, List<String>> result = scrapeAcademicsSite(url, entity);

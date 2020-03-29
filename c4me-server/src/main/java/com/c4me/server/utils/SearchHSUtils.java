@@ -1,5 +1,8 @@
 package com.c4me.server.utils;
 
+import com.c4me.server.config.constant.Const;
+import org.apache.commons.text.similarity.FuzzyScore;
+import org.apache.commons.text.similarity.JaccardSimilarity;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -9,11 +12,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import static com.c4me.server.config.constant.Const.Filenames.ALL_HIGH_SCHOOLS_FILE;
 import static com.c4me.server.config.constant.Const.Filenames.TEST_HIGH_SCHOOL_SEARCH_URL;
-import static com.c4me.server.config.constant.Const.Ranges.MAX_QUERY_SIZE;
 import static com.c4me.server.config.constant.Const.STATES.STATES_LIST;
 
 /**
@@ -89,76 +92,65 @@ public class SearchHSUtils {
 //        return matchingUrls.get(0); // return the top matching result
 //    }
 
+    public static String preprocess(String line) {
+        String newLine = line.replace("-", " ");
+        newLine = newLine.replaceAll(" +", " ");
+        newLine = newLine.trim();
+        newLine = newLine.replaceAll("[^A-Za-z0-9 ]", "");
+        return newLine.toLowerCase();
+    }
+    private static String getState(String processedLine) {
+        String[] words = processedLine.split(" ");
+        if(words.length == 0) return null;
+        return words[words.length-1];
+    }
+    private static boolean isValidState(String state) {
+        if(STATES_LIST.contains(state.toUpperCase())) return true;
+        return false;
+    }
+
+
+
     // scraping google results is effective, but dangerous (we don't want to get blacklisted by google)
     // so, we will search through niche's sitemap.xml instead (preprocessed to only contain high school pages)
-    /* TODO: this is a bit ad-hoc. I don't know how to do it properly, with actually searching for relevance etc.
-        Probably should use Levenshtein metric on substrings or something like that
-     */
-    public static HashMap<String, Integer> searchForNicheUrl(String query) throws IOException {
-        query = parseQuery(query);
+    public static String searchForNicheUrl(String query) throws IOException {
+        return searchForNicheUrl(query, true);
+    }
+
+
+    public static String searchForNicheUrl(String query, boolean requireStateMatch) throws IOException {
+//        query = parseQuery(query);
+        String processedQuery = preprocess(query);
+        String state = getState(processedQuery);
+        boolean validState = isValidState(state);
+
         File all_hs = TestingDataUtils.findFile(ALL_HIGH_SCHOOLS_FILE);
-        HashMap<String, Integer> matches = new HashMap<>();
+
+        FuzzyScore fuzzyScore = new FuzzyScore(Locale.US);
+
+        Integer maxScore = Integer.MIN_VALUE;
+        String bestMatch = null;
         if(all_hs != null) {
             System.out.println("found hs file");
             List<String> lines = TestingDataUtils.readFile(all_hs);
             for(String line : lines) {
-                if(line.contains(query)) {
-                    System.out.println(line);
-                    matches.put(line, line.indexOf(query));
+                String processedLine = preprocess(line);
+                if(processedLine.equals(processedQuery)) {
+                    return line;
+                }
+                String theirState = getState(processedLine);
+                if(requireStateMatch && validState && !(state.equals(theirState))) continue;
+
+                Integer score = fuzzyScore.fuzzyScore(processedLine, processedQuery);
+//                System.out.println("pl = " + processedLine + ", pq = " + processedQuery + ", score = " + score);
+                if(score > maxScore) {
+                    maxScore = score;
+                    bestMatch = line;
                 }
             }
-
-            //if no matches found, we will try to match just the longest word of the query
-            if(matches.size() == 0) {
-                String[] words = query.split("-");
-                if(words.length > 1) {
-                    String longest = words[0];
-                    int longest_len = words[0].length();
-                    for(String w : words) {
-                        if(w.length() > longest_len) {
-                            longest_len = w.length();
-                            longest = w;
-                        }
-                    }
-                    if(!(longest.equals("school") || longest.equals("high") || longest.equals("academy"))) {
-                        for (String line : lines) {
-                            if (line.contains(longest)) {
-                                System.out.println(line);
-                                matches.put(line, line.indexOf(longest));
-                            }
-                        }
-                    }
-                }
-            }
-
-            //if still no matches found, try removing "high school" from the end of the query
-            if(matches.size() == 0) {
-                String old = query;
-                if(query.endsWith("high-school")) {
-                    query = query.substring(0, query.lastIndexOf("high-school"));
-                }
-                else if (query.endsWith("school")) {
-                    query = query.substring(0, query.lastIndexOf("school"));
-                }
-                else if(query.endsWith("hs")) {
-                    query = query.substring(0, query.lastIndexOf("hs"));
-                }
-                if(!old.equals(query)) {
-                    for (String line : lines) {
-                        if (line.contains(query)) {
-                            System.out.println(line);
-                            matches.put(line, line.indexOf(query));
-                        }
-                    }
-                }
-            }
-
-            // give up. just return null
-            if(matches.size() == 0) return null;
-
-            return matches;
         }
-        return null;
+//        System.out.println("bestMatch = " + bestMatch);
+        return bestMatch;
     }
 
     private static String parseQuery(String query) {

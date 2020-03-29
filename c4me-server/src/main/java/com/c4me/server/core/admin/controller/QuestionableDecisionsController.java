@@ -34,7 +34,16 @@ public class QuestionableDecisionsController {
     }
 
     @PostMapping
-    public BaseResponse changeQuestionableDecision(@RequestBody StudentApplication studentApplication) throws UserDoesNotExistException, CollegeDoesNotExistException {
+    public BaseResponse changeQuestionableDecision(@RequestParam String username, @RequestParam Integer collegeId, @RequestParam Byte questionable) throws UserDoesNotExistException, CollegeDoesNotExistException {
+        StudentApplication studentApplication = new StudentApplication();
+        System.out.println("test");
+        System.out.println(studentApplication.getUsername());
+        System.out.println(username);
+        System.out.println(collegeId);
+
+        studentApplication.setUsername(username);
+        studentApplication.setCollegeId(collegeId);
+        studentApplication.setQuestionable(questionable);
         questionableDecisionsService.changeQuestionableDecision(studentApplication);
         return BaseResponse.builder().code("success").message("").data(null).build();
     }

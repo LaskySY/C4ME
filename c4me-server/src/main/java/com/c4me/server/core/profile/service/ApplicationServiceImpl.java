@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static com.c4me.server.config.constant.Const.Questionable.*;
 import static com.c4me.server.config.constant.Const.Ranges.MIN_STUDENTS_FOR_STDDEV;
@@ -63,8 +64,8 @@ public class ApplicationServiceImpl {
         return (studentScore - mean)/(sigma);
     }
 
-    public boolean computeQuestionable(UserEntity ue, CollegeEntity ce, int status) {
-        if(status != ACCEPTED && status != DENIED) return false; //only acceptances or rejections can be questionable
+    public boolean computeQuestionable(UserEntity ue, CollegeEntity ce, Integer status) {
+        if(status == null || (status != ACCEPTED && status != DENIED)) return false; //only acceptances or rejections can be questionable
         Long numApplications = studentApplicationRepository.countByCollegeByCollegeId(ce);
 
         ProfileEntity pe = profileRepository.findByUsername(ue.getUsername());
@@ -98,6 +99,7 @@ public class ApplicationServiceImpl {
         if(ue == null) throw new UserDoesNotExistException("user does not exist");
         if(ce == null) throw new CollegeDoesNotExistException("college does not exist");
 
+
         //TODO: Compute questionable if status is either accepted or denied
         boolean questionable = computeQuestionable(ue, ce, studentApplication.getStatus());
 
@@ -118,11 +120,19 @@ public class ApplicationServiceImpl {
     }
 
     public void deleteStudentApplication(StudentApplication studentApplication) throws UserDoesNotExistException, CollegeDoesNotExistException {
+        System.out.println("deleting request");
+
         UserEntity ue = userRepository.findByUsername(studentApplication.getUsername());
-        CollegeEntity ce = collegeRepository.findById(studentApplication.getCollege().getValue()).get();
+        Optional<CollegeEntity> ce_opt = collegeRepository.findById(studentApplication.getCollegeId());
+
+        //System.out.println("ue = " + ue.getName() + ", ce = " + ce.getName());
 
         if(ue == null) throw new UserDoesNotExistException("user does not exist");
-        if(ce == null) throw new CollegeDoesNotExistException("college does not exist");
+        if(!ce_opt.isPresent()) throw new CollegeDoesNotExistException("college does not exist");
+
+        CollegeEntity ce = ce_opt.get();
+
+        System.out.println("ue = " + ue.getName() + ", ce = " + ce.getName());
 
         StudentApplicationEntityPK studentApplicationEntityPK = StudentApplicationEntityPK.builder()
                 .username(ue.getUsername())

@@ -258,9 +258,13 @@ public final class Const {
             "satMathI",
             "satMathIi",
             "satMolBio",
+            "satEcoBio",
             "satPhysics",
             "satUsHist",
             "satWorldHist",
+            "satChemistry",
+            "satEbrw",
+            "satLiterature"
     };
     public static final String[] ACTPROPERTIES = {
             "actComposite",

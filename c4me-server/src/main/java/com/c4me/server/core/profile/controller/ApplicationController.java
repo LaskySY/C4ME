@@ -54,8 +54,9 @@ public class ApplicationController {
 
 
 
-    @DeleteMapping
-    public BaseResponse deleteStudentApplication(@RequestBody StudentApplication studentApplication) throws UserDoesNotExistException, CollegeDoesNotExistException {
+    @PostMapping("/delete")
+    public BaseResponse deleteStudentApplication(@RequestParam String username, @RequestBody StudentApplication studentApplication) throws UserDoesNotExistException, CollegeDoesNotExistException {
+        studentApplication.setUsername(username);
         applicationService.deleteStudentApplication(studentApplication);
         return BaseResponse.builder()
                 .code("success")

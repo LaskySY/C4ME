@@ -33,6 +33,7 @@ public final class Const {
     public static final String COLLEGE_SCORECARD_NOT_FOUND = "fail";
     public static final String COLLEGE_TXT_NOT_FOUND = "collegeTxtNotFound";
     public static final String INVALID_COLLEGE_SCORECARD = "invalidScorecardFile";
+    public static final String HIGHSCHOOL_NOT_FOUND = "highSchoolNotFound";
   }
 
   public final static class Role {
@@ -83,7 +84,8 @@ public final class Const {
     public static final String COLLEGE_SCORECARD_FILE = "Most-Recent-Cohorts-All-Data-Elements.csv";
     public static final String COLLEGES = "colleges.txt";
     public static final String COLLEGEDATATXT = "college_data_colleges.txt";
-    public static final String STUDENT_PROFILES_FILE = "students-1.csv";
+    public static final String STUDENT_PROFILES_FILE = "students-2.csv";
+    public static final String STUDENT_APPLICATIONS_FILE = "applications-1.csv";
 
     public static final String THE_RANKINGS_JSON_URL = "https://www.timeshighereducation.com/sites/default/files/the_data_rankings/united_states_rankings_2020_limit0_25839923f8b1714cf54659d4e4af6c3b.json";
     //public static final String THE_RANKINGS_JSON_URL = "http://allv22.all.cs.stonybrook.edu/~stoller/cse416/WSJ_THE/united_states_rankings_2020_limit0_25839923f8b1714cf54659d4e4af6c3b.json";
@@ -242,6 +244,23 @@ public final class Const {
   }
 
 
+  public static final class ApplicationFileHeaders {
+    public static final String APP_USER_ID                  = "userid";
+    public static final String APP_COLLEGE                  = "college";
+    public static final String APP_STATUS                   = "status";
+
+    public static final String[] APP_HEADERS = new String[] {
+        APP_USER_ID,
+        APP_COLLEGE,
+        APP_STATUS
+    };
+
+
+  }
+
+
+
+
 
   public final static class STATES {
     public static final String[] STATES = {
@@ -299,5 +318,54 @@ public final class Const {
     };
     public static final List<String> STATES_LIST = Arrays.asList(STATES);
   }
+
+  public final static class ProfilePropertyClasses {
+    public static final String EDUCATION = "education";
+    public static final String SAT = "sat";
+    public static final String ACT = "act";
+    public static final String NONE = "none";
+
+    public static final String[] EDUCATIONPROPERTIES = {
+        "gpa",
+        "highschoolBySchoolId",
+        "major1",
+        "major2",
+        "majorByMajor1",
+        "majorByMajor2",
+        "numApCourses",
+        "schoolId",
+        "schoolYear",
+    };
+    public static final String[] SATPROPERTIES = {
+        "satMath",
+        "satMathI",
+        "satMathIi",
+        "satMolBio",
+        "satEcoBio",
+        "satPhysics",
+        "satUsHist",
+        "satWorldHist",
+        "satChemistry",
+        "satEbrw",
+        "satLiterature"
+    };
+    public static final String[] ACTPROPERTIES = {
+        "actComposite",
+        "actEnglish",
+        "actMath",
+        "actReading",
+        "actScience"
+    };
+    public static final String[] NOPROPERTIES = {};
+    public static final HashMap<String, String[]> PROPERTIES_MAP = new HashMap<String, String[]>() {
+      {
+        put(EDUCATION, EDUCATIONPROPERTIES);
+        put(SAT, SATPROPERTIES);
+        put(ACT, ACTPROPERTIES);
+        put(NONE, NOPROPERTIES);
+      }
+    };
+  }
+
 
 }

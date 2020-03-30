@@ -215,8 +215,12 @@ public class ImportStudentProfileServiceImpl {
 
         String username = record.get(USER_ID);
         String highschoolname = record.get(HS_NAME);
+        String highschoolcity = record.get(HS_CITY);
+        String highschoolstate = record.get(HS_STATE);
         username = username.trim();
         highschoolname = highschoolname.trim();
+        highschoolcity.trim();
+        highschoolstate.trim();
         //check if user with that username exists
         for(UserEntity user : currentUsers){
           if(user.getUsername().equals(username)){
@@ -247,46 +251,55 @@ public class ImportStudentProfileServiceImpl {
 
         //if it doesn't exist create it and scrape it's info from niche site
         if(!highschoolExists){
-          newHS = highSchoolScraperService.scrapeHighSchool(highschoolname);
+          String hsquery = highschoolname + " " + highschoolcity + " " + highschoolstate;
+          newHS = highSchoolScraperService.scrapeHighSchool(hsquery);
         }
 
         //check applications csv and if it contains any applications from that user then we add them to his profile
+        //dont do it if it's new user because there wont be any application
 
-        //get the applications file
-        File topDir = new File(System.getProperty("user.dir"));
-        Iterator<File> files = FileUtils.iterateFiles(topDir, new String[] {"csv"}, true);
+        if(userExists) {
 
-        String studentApplicationsFilename = "";
-        boolean b1 = false, b2 = false;
-        while(files.hasNext()) {
-          File f = files.next();
-          String extension = FilenameUtils.getExtension(f.getAbsolutePath());
-          if (f.getName().equals(STUDENT_APPLICATIONS_FILE) && extension.equals("csv")) {
-            studentApplicationsFilename = f.getAbsolutePath();
-            b1 = true;
-            if (b2)
-              break;
-          }
-        }
+          //get the applications file
+          File topDir = new File(System.getProperty("user.dir"));
+          Iterator<File> files = FileUtils.iterateFiles(topDir, new String[]{"csv"}, true);
 
-        if(studentApplicationsFilename.equals("")) throw new NoStudentApplicationCSVException("Student applications file you requested was not found");
-
-        Reader applicationReader = new FileReader(studentApplicationsFilename);
-        Iterable<CSVRecord> appRecords = CSVFormat.EXCEL.withHeader().parse(in);
-        for(CSVRecord appRecord : appRecords){
-
-          StudentApplicationEntity applicationEntity = recordApplicationEntity(appRecord);
-          if(applicationEntity == null) throw new InvalidStudentApplicationException("invalid student applications file");
-          else{
-            if(existingUser.equals(applicationEntity.getUserByUsername())){
-              //then add the application to theirs
-              existingUser.getStudentApplicationsByUsername().add(applicationEntity);
+          String studentApplicationsFilename = "";
+          boolean b1 = false, b2 = false;
+          while (files.hasNext()) {
+            File f = files.next();
+            String extension = FilenameUtils.getExtension(f.getAbsolutePath());
+            if (f.getName().equals(STUDENT_APPLICATIONS_FILE) && extension.equals("csv")) {
+              studentApplicationsFilename = f.getAbsolutePath();
+              b1 = true;
+              if (b2)
+                break;
             }
           }
 
+          if (studentApplicationsFilename.equals(""))
+            throw new NoStudentApplicationCSVException(
+                "Student applications file you requested was not found");
+
+          Reader applicationReader = new FileReader(studentApplicationsFilename);
+          Iterable<CSVRecord> appRecords = CSVFormat.EXCEL.withHeader().parse(applicationReader);
+          for (CSVRecord appRecord : appRecords) {
+
+            StudentApplicationEntity applicationEntity = recordApplicationEntity(appRecord);
+            if (applicationEntity == null)
+              throw new InvalidStudentApplicationException("invalid student applications file");
+            else {
+              if (existingUser.equals(applicationEntity.getUserByUsername())) {
+                //then add the application to theirs
+                existingUser.getStudentApplicationsByUsername().add(applicationEntity);
+              }
+            }
+
+          }
+//          applicationReader.close();
         }
 
-        applicationReader.close();
+
 
         //save everything
 
@@ -304,9 +317,11 @@ public class ImportStudentProfileServiceImpl {
 
 
         profileRepository.save(profileEntity);
+
+
       }
 
-      in.close();
+//      in.close();
 
 
     }

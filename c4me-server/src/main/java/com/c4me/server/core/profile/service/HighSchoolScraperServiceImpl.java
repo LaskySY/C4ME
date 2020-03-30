@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.c4me.server.config.constant.Const.Filenames.*;
+import static com.c4me.server.config.constant.Const.Ranges.*;
 import static com.c4me.server.config.constant.Const.STATES.STATES_LIST;
 import static com.c4me.server.config.constant.Const.Types.*;
 
@@ -133,46 +134,46 @@ public class HighSchoolScraperServiceImpl {
             for(Element c : scalar.children()) {
                 if(c.ownText().contains("SAT")) {
                     Integer score = getScore(scalar);
-                    if(!(score == -1 || score < 400 || score > 1600)) {
+                    if(!(score == -1 || score < MIN_SAT_OVERALL || score > MAX_SAT_OVERALL)) {
                         highschoolEntity.setSatOverall(score);
                     }
                 }
                 else if (c.ownText().contains("ACT")) {
                     Integer score = getScore(scalar);
-                    if(!(score == -1 || score < 1 || score > 36)) {
+                    if(!(score == -1 || score < MIN_ACT || score > MAX_ACT)) {
                         highschoolEntity.setActComposite(score);
                     }
                 }
                 else if (c.ownText().contains("Math")) {
                     Integer score = getScore(scalar);
-                    if(!(score == -1 || score < 200 || score > 800)) {
+                    if(!(score == -1 || score < MIN_SAT || score > MAX_SAT)) {
                         highschoolEntity.setSatMath(score);
                     }
-                    else if (!(score == -1 || score < 1 || score > 36)) {
+                    else if (!(score == -1 || score < MIN_ACT || score > MAX_ACT)) {
                         highschoolEntity.setActMath(score);
                     }
                 }
                 else if (c.ownText().contains("Verbal")) {
                     Integer score = getScore(scalar);
-                    if(!(score == -1 || score < 200 || score > 800)) {
+                    if(!(score == -1 || score < MIN_SAT || score > MAX_SAT)) {
                         highschoolEntity.setSatEbrw(score);
                     }
                 }
                 else if (c.ownText().contains("English")) {
                     Integer score = getScore(scalar);
-                    if (!(score == -1 || score < 1 || score > 36)) {
+                    if (!(score == -1 || score < MIN_ACT || score > MAX_ACT)) {
                         highschoolEntity.setActEnglish(score);
                     }
                 }
                 else if (c.ownText().contains("Reading")) {
                     Integer score = getScore(scalar);
-                    if (!(score == -1 || score < 1 || score > 36)) {
+                    if (!(score == -1 || score < MIN_ACT || score > MAX_ACT)) {
                         highschoolEntity.setActReading(score);
                     }
                 }
                 else if (c.ownText().contains("Science")) {
                     Integer score = getScore(scalar);
-                    if (!(score == -1 || score < 1 || score > 36)) {
+                    if (!(score == -1 || score < MIN_ACT || score > MAX_ACT)) {
                         highschoolEntity.setActScience(score);
                     }
                 }

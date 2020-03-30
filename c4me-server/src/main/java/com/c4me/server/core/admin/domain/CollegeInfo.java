@@ -1,5 +1,6 @@
 package com.c4me.server.core.admin.domain;
 
+import com.c4me.server.config.constant.Const;
 import com.c4me.server.entities.CollegeEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -61,6 +62,8 @@ public class CollegeInfo {
     private Integer actScience75;
     private Integer actComposite;
 
+    private String typeString;
+
     public CollegeInfo(CollegeEntity collegeEntity) {
         name = collegeEntity.getName();
         type = TYPES_MAP.entrySet().stream().filter(e -> e.getValue().equals(collegeEntity.getType())).collect(Collectors.toList()).get(0).getKey();
@@ -101,6 +104,8 @@ public class CollegeInfo {
         actScience50 = collegeEntity.getActScience50();
         actScience75 = collegeEntity.getActScience75();
         actComposite = collegeEntity.getActComposite();
+
+        typeString = TYPES_MAP.get(type);
     }
 
 

@@ -42,15 +42,31 @@ public final class Const {
   }
 
   public final static class Status {
-    public static final Integer PENDING = 1;
-    public static final Integer ACCEPTED = 2;
-    public static final Integer DENIED = 3;
-    public static final Integer WAITLISTED = 4;
+    public static final Integer PENDING = 0;
+    public static final Integer ACCEPTED = 1;
+    public static final Integer DENIED = 2;
+    public static final Integer WAITLISTED = 3;
+
+    public static final String PENDING_STR = "Pending";
+    public static final String ACCEPTED_STR = "Accepted";
+    public static final String DENIED_STR = "Denied";
+    public static final String WAITLISTED_STR = "Waitlisted";
+
+    public static final Map<Integer, String> STATUS_MAP = new HashMap<Integer, String>() {
+      {
+        put(PENDING, PENDING_STR);
+        put(ACCEPTED, ACCEPTED_STR);
+        put(DENIED, DENIED_STR);
+        put(WAITLISTED, WAITLISTED_STR);
+      }
+    };
+
   }
 
   public final static class Questionable {
     public static final Byte OK = 0;
     public static final Byte QUESTIONABLE = 1;
+    public static final Byte DISHONEST = 2;
   }
 
   public final static class Ranges {
@@ -60,6 +76,9 @@ public final class Const {
     public static final Integer MAX_SAT = 800;
     public static final Integer MIN_ACT = 1;
     public static final Integer MAX_ACT = 36;
+
+    public static final Integer MIN_SAT_OVERALL = 400;
+    public static final Integer MAX_SAT_OVERALL = 1600;
 
     public static final Integer MAX_QUERY_SIZE = 128;
   }
@@ -87,7 +106,7 @@ public final class Const {
     public static final String STUDENT_PROFILES_FILE = "students-2.csv";
     public static final String STUDENT_APPLICATIONS_FILE = "applications-1.csv";
 
-    public static final String THE_RANKINGS_JSON_URL = "https://www.timeshighereducation.com/sites/default/files/the_data_rankings/united_states_rankings_2020_limit0_25839923f8b1714cf54659d4e4af6c3b.json";
+    public static final String THE_RANKINGS_JSON_URL = "https://www.timeshighereducation.com/sites/default/files/the_data_rankings/united_states_rankings_2020_0__fe9db1a86587c174feb9fd3820701c93.json";
     //public static final String THE_RANKINGS_JSON_URL = "http://allv22.all.cs.stonybrook.edu/~stoller/cse416/WSJ_THE/united_states_rankings_2020_limit0_25839923f8b1714cf54659d4e4af6c3b.json";
 
     public static final String FIRST_NAMES_URL = "https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.txt";

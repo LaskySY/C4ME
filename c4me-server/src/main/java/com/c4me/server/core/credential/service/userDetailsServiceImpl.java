@@ -31,7 +31,7 @@ public class userDetailsServiceImpl implements UserDetailsService {
     @Autowired
     ProfileRepository profileRepository;
 
-    public void register(RegisterUser user) throws DuplicateUsernameException {
+    public UserEntity register(RegisterUser user) throws DuplicateUsernameException {
         UserEntity userEntity = UserEntity.builder()
                 .name(user.getName())
                 .username(user.getUsername())
@@ -44,6 +44,8 @@ public class userDetailsServiceImpl implements UserDetailsService {
         userRepository.save(userEntity);
         ProfileEntity profileEntity = ProfileEntity.builder().username(user.getUsername()).userByUsername(userEntity).build();
         profileRepository.save(profileEntity);
+
+        return userEntity;
     }
 
     @Override

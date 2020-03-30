@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import static com.c4me.server.config.constant.Const.Status.STATUS_MAP;
+
 /**
  * @Description:
  * @Author: Maciej Wlodek
@@ -22,6 +24,7 @@ public class StudentApplication {
     private String admissionTerm;
     private Integer status;
     private Byte questionable;
+    private String statusString;
 
     public StudentApplication(StudentApplicationEntity sae) {
         this.username = sae.getUserByUsername().getUsername();
@@ -31,5 +34,6 @@ public class StudentApplication {
         this.admissionTerm = sae.getAdmission_term();
         this.status = sae.getStatus();
         this.questionable = sae.getQuestionable();
+        this.statusString = sae.getStatus() == null ? "null" : STATUS_MAP.get(sae.getStatus());
     }
 }

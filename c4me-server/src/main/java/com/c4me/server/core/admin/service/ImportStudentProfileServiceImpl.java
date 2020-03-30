@@ -7,15 +7,11 @@ import static com.c4me.server.config.constant.Const.StudentProfileHeaders.*;
 import static com.c4me.server.config.constant.Const.ApplicationFileHeaders.*;
 
 
-import com.c4me.server.config.exception.HighSchoolDoesNotExistException;
-import com.c4me.server.config.exception.InvalidCollegeScorecardException;
-import com.c4me.server.config.exception.InvalidStudentApplicationException;
-import com.c4me.server.config.exception.InvalidStudentProfileException;
-import com.c4me.server.config.exception.NoCollegeScorecardException;
-import com.c4me.server.config.exception.NoStudentApplicationCSVException;
-import com.c4me.server.config.exception.NoStudentProfileCSVException;
+import com.c4me.server.config.exception.*;
+import com.c4me.server.core.credential.domain.RegisterUser;
 import com.c4me.server.core.credential.repository.HighschoolRepository;
 import com.c4me.server.core.credential.repository.UserRepository;
+import com.c4me.server.core.credential.service.userDetailsServiceImpl;
 import com.c4me.server.core.profile.repository.CollegeRepository;
 import com.c4me.server.core.profile.repository.ProfileRepository;
 import com.c4me.server.entities.CollegeEntity;
@@ -69,6 +65,9 @@ public class ImportStudentProfileServiceImpl {
 
   @Autowired
   HighSchoolScraperServiceImpl highSchoolScraperService;
+
+  @Autowired
+  userDetailsServiceImpl userDetailsService;
 
 
   public Integer parseInt(String s) {
@@ -139,6 +138,7 @@ public class ImportStudentProfileServiceImpl {
           .numApCourses(parseInt(record.get(NUM_AP_PASSED)))
 //          .createTime(Timestamp.from(Instant.now()))
           .updateTime(Timestamp.from(Instant.now()))
+          .schoolYear(parseInt(record.get(COLLEGE_CLASS)))
           .build();
     }
 
@@ -190,7 +190,7 @@ public class ImportStudentProfileServiceImpl {
 
 
   public void importStudentProfileCsv(String filename)
-      throws IOException, NoStudentProfileCSVException, InvalidStudentProfileException, HighSchoolDoesNotExistException, InvalidStudentApplicationException, NoStudentApplicationCSVException {
+          throws IOException, NoStudentProfileCSVException, InvalidStudentProfileException, HighSchoolDoesNotExistException, InvalidStudentApplicationException, NoStudentApplicationCSVException, DuplicateUsernameException {
     System.out.println("Importing");
 
     if(filename.equals("")) throw new NoStudentProfileCSVException("student profile file not found");
@@ -202,6 +202,8 @@ public class ImportStudentProfileServiceImpl {
     List<HighschoolEntity> currentHighSchools = highschoolRepository.findAll();
 
     for (CSVRecord record : records) {
+
+
 
       Boolean userExists = false;
       Boolean highschoolExists = false;
@@ -231,15 +233,18 @@ public class ImportStudentProfileServiceImpl {
 
         //if it doesn't exist create it
         if(!userExists){
-          newUser = UserEntity.builder()
-              .username(username)
-              .name(username)
-              .password(record.get(PASSWORD))
-              .role(0)
-              .profileByUsername(profileEntity)
-              .createTime(Timestamp.from(Instant.now()))
-              .updateTime(Timestamp.from(Instant.now()))
-              .build();
+          RegisterUser registerUser = new RegisterUser(username, record.get(PASSWORD), username);
+          newUser = userDetailsService.register(registerUser);
+
+//          newUser = UserEntity.builder()
+//              .username(username)
+//              .name(username)
+//              .password(record.get(PASSWORD))
+//              .role(0)
+//              .profileByUsername(profileEntity)
+//              .createTime(Timestamp.from(Instant.now()))
+//              .updateTime(Timestamp.from(Instant.now()))
+//              .build();
         }
 
         //check if highschool exists
@@ -252,7 +257,7 @@ public class ImportStudentProfileServiceImpl {
         //if it doesn't exist create it and scrape it's info from niche site
         if(!highschoolExists){
           String hsquery = highschoolname + " " + highschoolcity + " " + highschoolstate;
-          newHS = highSchoolScraperService.scrapeHighSchool(hsquery);
+          newHS = highSchoolScraperService.scrapeHighSchool(hsquery, false);
         }
 
         //check applications csv and if it contains any applications from that user then we add them to his profile

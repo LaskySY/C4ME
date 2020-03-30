@@ -1,12 +1,7 @@
 package com.c4me.server.core.admin.controller;
 
 
-import com.c4me.server.config.exception.HighSchoolDoesNotExistException;
-import com.c4me.server.config.exception.InvalidStudentApplicationException;
-import com.c4me.server.config.exception.InvalidStudentProfileException;
-import com.c4me.server.config.exception.NoCollegeTxtException;
-import com.c4me.server.config.exception.NoStudentApplicationCSVException;
-import com.c4me.server.config.exception.NoStudentProfileCSVException;
+import com.c4me.server.config.exception.*;
 import com.c4me.server.core.admin.service.ImportStudentProfileServiceImpl;
 import com.c4me.server.domain.BaseResponse;
 import java.util.Iterator;
@@ -36,7 +31,7 @@ public class ImportStudentProfileController {
 
   @PostMapping
   public BaseResponse importStudentProfile()
-      throws IOException, NoStudentProfileCSVException, InvalidStudentProfileException, HighSchoolDoesNotExistException, InvalidStudentApplicationException, NoStudentApplicationCSVException {
+          throws IOException, NoStudentProfileCSVException, InvalidStudentProfileException, HighSchoolDoesNotExistException, InvalidStudentApplicationException, NoStudentApplicationCSVException, DuplicateUsernameException {
 
     System.out.println("current dir = " + System.getProperty("user.dir"));
 

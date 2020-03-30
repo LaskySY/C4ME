@@ -98,13 +98,14 @@ public class ProfileServiceImpl {
             if (profileInfo.getSchoolName() != null) {
                 System.out.println("searching for school " + profileInfo.getSchoolName());
                 he = highschoolRepository.findByName(profileInfo.getSchoolName());
+                if (he != null) {
+                    System.out.println("found highschool " + profileInfo.getSchoolName());
+                } else  {
+                    System.out.println("could not find highschool " + profileInfo.getSchoolName() + " in database; scraping from niche.com");
+                    he = highSchoolScraperService.scrapeHighSchool(profileInfo.getSchoolName(), false);
+                }
             }
-            if (he != null) {
-                System.out.println("found highschool " + profileInfo.getSchoolName());
-            } else if (profileInfo.getSchoolName() != null) {
-                System.out.println("could not find highschool " + profileInfo.getSchoolName() + " in database; scraping from niche.com");
-                he = highSchoolScraperService.scrapeHighSchool(profileInfo.getSchoolName(), false);
-            }
+
             /*
              TODO: Fix major 1 and major 2 - should be querying major and majorAlias tables to check if it's a proper major name; then set majorByMajor1 and majorByMajor2 of pe
               Either create a major doesn't exist exception, or make a getAllMajors request --> dropdown to choose major.

@@ -9,9 +9,6 @@ import com.c4me.server.entities.CollegeHighschoolAssociationEntity;
 import com.c4me.server.entities.CollegeHighschoolAssociationEntityPK;
 import com.c4me.server.entities.HighschoolEntity;
 import com.c4me.server.utils.SearchHSUtils;
-import com.c4me.server.utils.TestingDataUtils;
-import org.apache.commons.io.FileUtils;
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -20,8 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -150,7 +145,7 @@ public class HighSchoolScraperServiceImpl {
                 }
                 else if (c.ownText().contains("Math")) {
                     Integer score = getScore(scalar);
-                    if(!(score == -1 || score < 400 || score > 1600)) {
+                    if(!(score == -1 || score < 200 || score > 800)) {
                         highschoolEntity.setSatMath(score);
                     }
                     else if (!(score == -1 || score < 1 || score > 36)) {
@@ -159,7 +154,7 @@ public class HighSchoolScraperServiceImpl {
                 }
                 else if (c.ownText().contains("Verbal")) {
                     Integer score = getScore(scalar);
-                    if(!(score == -1 || score < 400 || score > 1600)) {
+                    if(!(score == -1 || score < 200 || score > 800)) {
                         highschoolEntity.setSatEbrw(score);
                     }
                 }
@@ -332,7 +327,7 @@ public class HighSchoolScraperServiceImpl {
         return entity;
     }
 
-    //TODO: we need to improve this method (maybe use college aliases etc.)
+    //TODO: we need to improve this method (use fuzzy search)
     private int matchCollege(String collegeString, List<String> allColleges) {
         for(int i=0; i < allColleges.size(); i++) {
             String collegeI = allColleges.get(i);

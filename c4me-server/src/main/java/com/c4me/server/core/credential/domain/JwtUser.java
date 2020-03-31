@@ -1,9 +1,10 @@
 package com.c4me.server.core.credential.domain;
 
-import com.c4me.server.entities.UserEntity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import com.c4me.server.entities.UserEntity;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,7 +24,6 @@ public class JwtUser implements UserDetails {
 
 
     public JwtUser(UserEntity user) {
-        id = user.getId();
         username = user.getUsername();
         password = user.getPassword();
         authorities = new ArrayList<GrantedAuthority>(){{

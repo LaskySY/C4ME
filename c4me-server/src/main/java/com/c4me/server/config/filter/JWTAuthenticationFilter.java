@@ -3,12 +3,14 @@ package com.c4me.server.config.filter;
 import com.c4me.server.config.constant.Const;
 import com.c4me.server.core.credential.domain.JwtUser;
 import com.c4me.server.core.credential.domain.LoginUser;
-import com.c4me.server.domain.ErrorResponse;
+import com.c4me.server.domain.BaseResponse;
 import com.c4me.server.utils.JwtTokenUtils;
 import com.c4me.server.utils.LoggerUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.HashMap;
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -59,14 +61,23 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
   protected void successfulAuthentication(HttpServletRequest request,
       HttpServletResponse response,
       FilterChain chain,
-      Authentication authResult) {
+      Authentication authResult) throws IOException {
 
     JwtUser jwtUser = (JwtUser) authResult.getPrincipal();
     boolean isRemember = rememberMe.get();
 
     Collection<? extends GrantedAuthority> authorities = jwtUser.getAuthorities();
     String token = JwtTokenUtils.createToken(jwtUser, isRemember);
-    response.setHeader(Const.Header.TOKEN, JwtTokenUtils.TOKEN_PREFIX + token);
+    //response.setHeader(Const.Header.TOKEN, JwtTokenUtils.TOKEN_PREFIX + token);
+
+    HashMap<String, String> tokenMap = new HashMap<>();
+    tokenMap.put("token", JwtTokenUtils.TOKEN_PREFIX + token);
+    response.getWriter().write(new ObjectMapper().writeValueAsString(
+            BaseResponse.builder()
+            .code("success")
+            .message("")
+            .data(tokenMap)
+            .build()));
 
     logger.info("login success");
     LoggerUtils.saveSuccessLog(request,"successfulAuthentication",token);
@@ -79,8 +90,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         Const.Error.AUTHENTICATION);
     logger.error(failed.getMessage());
     response.getWriter().write(new ObjectMapper().writeValueAsString(
-        ErrorResponse.builder()
-            .errorCode(Const.Error.AUTHENTICATION)
+        BaseResponse.builder()
+            .code(Const.Error.AUTHENTICATION)
             .message(failed.getMessage())
             .build())
     );

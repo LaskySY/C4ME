@@ -2,7 +2,7 @@ package com.c4me.server.config.handler;
 
 import com.c4me.server.config.constant.Const;
 import com.c4me.server.config.interceptor.LogInterceptor;
-import com.c4me.server.domain.ErrorResponse;
+import com.c4me.server.domain.BaseResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
@@ -32,8 +32,8 @@ public class JWTAccessDeniedHandler implements AccessDeniedHandler {
     httpServletResponse.setContentType(Const.Header.CONTENT_TYPE);
     httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
     httpServletResponse.getWriter().write(new ObjectMapper().writeValueAsString(
-        ErrorResponse.builder()
-            .errorCode(Const.Error.ACCESS_DENIED)
+        BaseResponse.builder()
+            .code(Const.Error.ACCESS_DENIED)
             .message(e.getMessage())
             .build())
     );

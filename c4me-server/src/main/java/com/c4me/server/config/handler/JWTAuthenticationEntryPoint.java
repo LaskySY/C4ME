@@ -1,7 +1,7 @@
 package com.c4me.server.config.handler;
 
 import com.c4me.server.config.constant.Const;
-import com.c4me.server.domain.ErrorResponse;
+import com.c4me.server.domain.BaseResponse;
 import com.c4me.server.utils.LoggerUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
@@ -34,8 +34,8 @@ public class JWTAuthenticationEntryPoint implements AuthenticationEntryPoint {
     response.setContentType(Const.Header.CONTENT_TYPE);
     response.setStatus(HttpServletResponse.SC_FORBIDDEN);
     response.getWriter().write(new ObjectMapper().writeValueAsString(
-        ErrorResponse.builder()
-            .errorCode(Const.Error.MISS_TOKEN)
+        BaseResponse.builder()
+            .code(Const.Error.MISS_TOKEN)
             .message(authException.getMessage())
             .build())
     );

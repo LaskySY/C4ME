@@ -1,7 +1,7 @@
 package com.c4me.server.config.filter;
 
 import com.c4me.server.config.constant.Const;
-import com.c4me.server.domain.ErrorResponse;
+import com.c4me.server.domain.BaseResponse;
 import com.c4me.server.utils.JwtTokenUtils;
 import com.c4me.server.utils.LoggerUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -53,8 +53,8 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
       response.setContentType(Const.Header.CONTENT_TYPE);
       response.setStatus(HttpServletResponse.SC_FORBIDDEN);
       response.getWriter().write(new ObjectMapper().writeValueAsString(
-          ErrorResponse.builder()
-              .errorCode(Const.Error.TOKEN_EXPIRED)
+          BaseResponse.builder()
+              .code(Const.Error.TOKEN_EXPIRED)
               .message(e.getMessage())
               .build())
       );

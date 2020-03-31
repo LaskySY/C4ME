@@ -25,6 +25,7 @@ public class AuthController {
     @RequestMapping("/register")
     @LogAndWrap(log = "register account")
     public Map<String, String> register(@RequestBody RegisterUser registerUser) throws DuplicateUsernameException {
+        //TODO: create empty profile for new user
         authService.register(registerUser);
         return null;
     }

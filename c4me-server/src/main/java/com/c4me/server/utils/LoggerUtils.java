@@ -1,8 +1,10 @@
 package com.c4me.server.utils;
 
 import com.c4me.server.core.log.repository.LogRepository;
-import com.c4me.server.entities.LogEntity;
+
 import javax.servlet.http.HttpServletRequest;
+
+import com.c4me.server.entities.LogEntity;
 import lombok.NonNull;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -62,7 +64,6 @@ public class LoggerUtils {
       log.setParams(description);
       log.setUsername(JwtTokenUtils.getUsername(description));
       log.setUserRole(JwtTokenUtils.getUserRole(description).equals("ROLE_ADMIN") ? 1 : 0);
-      log.setUserId(JwtTokenUtils.getUserId(description));
     }
     BeanFactory factory = WebApplicationContextUtils
         .getRequiredWebApplicationContext(request.getServletContext());

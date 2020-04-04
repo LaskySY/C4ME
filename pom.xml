@@ -10,7 +10,6 @@
 
     <modules>
         <module>c4me-server</module>
-        <module>c4me-eureka</module>
     </modules>
 
     <parent>

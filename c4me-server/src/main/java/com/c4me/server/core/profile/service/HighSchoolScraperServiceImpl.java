@@ -9,6 +9,7 @@ import com.c4me.server.entities.CollegeHighschoolAssociationEntity;
 import com.c4me.server.entities.CollegeHighschoolAssociationEntityPK;
 import com.c4me.server.entities.HighschoolEntity;
 import com.c4me.server.utils.SearchHSUtils;
+import com.c4me.server.utils.TestingDataUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -22,6 +23,7 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import static com.c4me.server.config.constant.Const.Filenames.*;
@@ -44,6 +46,8 @@ public class HighSchoolScraperServiceImpl {
     CollegeRepository collegeRepository;
     @Autowired
     CollegeHighSchoolAssociationRepository collegeHighSchoolAssociationRepository;
+
+    Random random = new Random(System.currentTimeMillis());
 
     public boolean scrapeBaseSite(String webpage, HighschoolEntity highschoolEntity) throws IOException {
         URL url = new URL(webpage);
@@ -197,7 +201,21 @@ public class HighSchoolScraperServiceImpl {
 
     public Document openWebpage(URL url) throws IOException {
         URLConnection conn = url.openConnection();
-        conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0"); //TODO: do we need to cycle user-agents?
+        System.out.println(conn.getRequestProperties());
+
+        File userAgentsFile = TestingDataUtils.findFile(USER_AGENTS, "txt");
+        List<String> userAgents = TestingDataUtils.readFile(userAgentsFile);
+        String userAgent = userAgents.get(random.nextInt(userAgents.size()));
+
+        //Jsoup.connect().
+
+        //conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0");
+        //conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 OPR/67.0.3575.115");
+        conn.setRequestProperty("User-Agent", userAgent);
+        //conn.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+
+        System.out.println(conn.getRequestProperties());
+
         String line = null;
         StringBuilder tmp = new StringBuilder();
         BufferedReader buf = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -291,9 +309,22 @@ public class HighSchoolScraperServiceImpl {
             else System.out.println("hs already exists, scraping to update info");
         }
 
-        System.out.println("trying to scrape niche.com");
+//        try {
+//            System.out.println("timeout before next scrape");
+//            Thread.sleep(10000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+        System.out.println("trying to scrape niche.com for " + bestMatch);
         String url = buildUrl(bestMatch);
         scrapeBaseSite(url, entity);
+//        try {
+//            System.out.println("timeout before next scrape");
+//            Thread.sleep(10000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         HashMap<String, List<String>> result = scrapeAcademicsSite(url, entity);
 
         if(!highschoolRepository.existsByName(entity.getName())) { //final check to make sure the high school doesn't yet exist

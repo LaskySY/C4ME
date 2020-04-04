@@ -103,8 +103,10 @@ public final class Const {
     public static final String COLLEGE_SCORECARD_FILE = "Most-Recent-Cohorts-All-Data-Elements.csv";
     public static final String COLLEGES = "colleges.txt";
     public static final String COLLEGEDATATXT = "college_data_colleges.txt";
-    public static final String STUDENT_PROFILES_FILE = "students-2.csv";
-    public static final String STUDENT_APPLICATIONS_FILE = "applications-1.csv";
+    public static final String STUDENT_PROFILES_FILE = "students-random.csv";
+    public static final String STUDENT_APPLICATIONS_FILE = "applications-random.csv";
+
+    public static final String USER_AGENTS = "user-agents-small.txt";
 
     public static final String THE_RANKINGS_JSON_URL = "https://www.timeshighereducation.com/sites/default/files/the_data_rankings/united_states_rankings_2020_0__fe9db1a86587c174feb9fd3820701c93.json";
     //public static final String THE_RANKINGS_JSON_URL = "http://allv22.all.cs.stonybrook.edu/~stoller/cse416/WSJ_THE/united_states_rankings_2020_limit0_25839923f8b1714cf54659d4e4af6c3b.json";
@@ -125,7 +127,7 @@ public final class Const {
     public static final String TEST_HIGH_SCHOOL_FILE = "suffolkHighSchools.txt";
     //public static final String TEST_SUFFOLK_HIGH_SCHOOLS = "https://en.wikipedia.org/wiki/List_of_high_schools_in_New_York";
 
-    public static final String ALL_HIGH_SCHOOLS_FILE = "all_highschools.txt";
+    public static final String ALL_HIGH_SCHOOLS_FILE = "all_highschools_sorted.txt";
 
     public static final String NICHE_PREFIX = "https://www.niche.com/k12/";
   }

@@ -4,7 +4,7 @@ import com.c4me.server.entities.CollegeEntity;
 import com.c4me.server.entities.StudentApplicationEntity;
 import com.c4me.server.entities.StudentApplicationEntityPK;
 import com.c4me.server.entities.UserEntity;
-import org.apache.catalina.User;
+//import org.apache.catalina.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

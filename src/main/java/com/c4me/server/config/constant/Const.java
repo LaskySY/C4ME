@@ -116,7 +116,7 @@ public final class Const {
     public static final String LAST_NAMES_FILE = "lastNames.txt";
 
     public static final String SEP = File.separator;
-    public static final String DATA_DIR = "c4me-server" + SEP + "src" + SEP + "data" + SEP;
+    public static final String DATA_DIR = "c4me" + SEP + "src" + SEP + "data" + SEP;
 
     public static final String TEST_HIGH_SCHOOL_URL = "https://www.niche.com/k12/east-islip-high-school-islip-terrace-ny";
     public static final String TEST_HIGH_SCHOOL_SEARCH_URL = "https://www.niche.com/search/?q=east%20islip%20high%20school";

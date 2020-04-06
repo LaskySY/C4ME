@@ -8,7 +8,7 @@ import com.c4me.server.core.profile.repository.CollegeRepository;
 import com.c4me.server.core.profile.repository.ProfileRepository;
 import com.c4me.server.core.profile.repository.StudentApplicationRepository;
 import com.c4me.server.entities.*;
-import org.apache.catalina.User;
+//import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

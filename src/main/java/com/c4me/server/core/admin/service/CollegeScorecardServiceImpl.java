@@ -4,8 +4,6 @@ import com.c4me.server.config.exception.InvalidCollegeScorecardException;
 import com.c4me.server.config.exception.NoCollegeScorecardException;
 import com.c4me.server.core.profile.repository.CollegeRepository;
 import com.c4me.server.entities.CollegeEntity;
-//import org.apache.commons.beanutils.BeanUtils;
-//import org.apache.commons.beanutils.BeanUtilsBean;
 import com.c4me.server.utils.CopyUtils;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;

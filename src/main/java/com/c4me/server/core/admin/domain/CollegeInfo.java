@@ -82,7 +82,7 @@ public class CollegeInfo {
         retentionRate = collegeEntity.getRetentionRate();
         completionRate = collegeEntity.getCompletionRate();
         meanEarnings = collegeEntity.getMeanEarnings();
-        updatedTime = collegeEntity.getUpdatedTime().toString();
+        updatedTime = collegeEntity.getUpdateTime().toString();
         ranking = collegeEntity.getRanking();
         satMath25 = collegeEntity.getSatMath25();
         satMath50 = collegeEntity.getSatMath50();

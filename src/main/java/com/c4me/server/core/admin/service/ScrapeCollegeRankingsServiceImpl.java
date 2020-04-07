@@ -106,7 +106,6 @@ public class ScrapeCollegeRankingsServiceImpl {
 //            System.out.println("leven = " + bestMatch2);
             System.out.println(rankingsMap.get(bestMatch));
             entity.setRanking(rankingsMap.get(bestMatch));
-            entity.setUpdatedTime(Timestamp.from(Instant.now()));
             collegeRepository.save(entity);
             //rankingsMap.remove(bestMatch);
         }

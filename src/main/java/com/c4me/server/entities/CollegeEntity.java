@@ -3,6 +3,8 @@ package com.c4me.server.entities;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -39,7 +41,8 @@ public class CollegeEntity {
     private Double retentionRate;
     private Double completionRate;
     private Double meanEarnings;
-    private Timestamp updatedTime;
+    private Timestamp updateTime;
+    private Timestamp createTime;
     private Integer ranking;
     private Integer satMath25;
     private Integer satMath50;
@@ -246,13 +249,25 @@ public class CollegeEntity {
     }
 
     @Basic
-    @Column(name = "updated_time", nullable = true)
-    public Timestamp getUpdatedTime() {
-        return updatedTime;
+    @UpdateTimestamp
+    @Column(name = "update_time", nullable = true)
+    public Timestamp getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatedTime(Timestamp updatedTime) {
-        this.updatedTime = updatedTime;
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    @Basic
+    @CreationTimestamp
+    @Column(name = "create_time", nullable = true)
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
     @Basic
@@ -488,7 +503,7 @@ public class CollegeEntity {
                 Objects.equals(retentionRate, that.retentionRate) &&
                 Objects.equals(completionRate, that.completionRate) &&
                 Objects.equals(meanEarnings, that.meanEarnings) &&
-                Objects.equals(updatedTime, that.updatedTime) &&
+                Objects.equals(updateTime, that.updateTime) &&
                 Objects.equals(ranking, that.ranking) &&
                 Objects.equals(satMath25, that.satMath25) &&
                 Objects.equals(satMath50, that.satMath50) &&
@@ -514,7 +529,7 @@ public class CollegeEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, type, averageGpa, admissionRate, city, state, webpage, latitude, longitude, instateTuition, outstateTuition, netPrice, medianDebt, numStudentsEnrolled, retentionRate, completionRate, meanEarnings, updatedTime, ranking, satMath25, satMath50, satMath75, satEbrw25, satEbrw50, satEbrw75, satOverall, actMath25, actMath50, actMath75, actEnglish25, actEnglish50, actEnglish75, actReading25, actReading50, actReading75, actScience25, actScience50, actScience75, actComposite);
+        return Objects.hash(id, name, type, averageGpa, admissionRate, city, state, webpage, latitude, longitude, instateTuition, outstateTuition, netPrice, medianDebt, numStudentsEnrolled, retentionRate, completionRate, meanEarnings, updateTime, ranking, satMath25, satMath50, satMath75, satEbrw25, satEbrw50, satEbrw75, satOverall, actMath25, actMath50, actMath75, actEnglish25, actEnglish50, actEnglish75, actReading25, actReading50, actReading75, actScience25, actScience50, actScience75, actComposite);
     }
 
     @OneToMany(mappedBy = "collegeByCollegeId")

@@ -3,6 +3,7 @@ package com.c4me.server.entities;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -43,6 +44,7 @@ public class LogEntity {
     }
 
     @Basic
+    @CreationTimestamp
     @Column(name = "create_time", nullable = true)
     public Timestamp getCreateTime() {
         return createTime;

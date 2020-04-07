@@ -8,13 +8,10 @@ import com.c4me.server.utils.CopyUtils;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.BeanWrapper;
-import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.*;
@@ -102,7 +99,7 @@ public class CollegeScorecardServiceImpl {
                     .retentionRate(parseDouble(record.get(RETENTION_RATE)))
                     .completionRate(parseDouble(record.get(COMPLETION_RATE)))
                     .meanEarnings(parseDouble(record.get(MEAN_EARNINGS)))
-                    .updatedTime(Timestamp.from(Instant.now()))
+                    .updateTime(Timestamp.from(Instant.now()))
                     .satMath25(parseInt(record.get(SATM25)))
                     .satMath50(parseInt(record.get(SATM50)))
                     .satMath75(parseInt(record.get(SATM75)))

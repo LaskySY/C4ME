@@ -3,8 +3,11 @@ package com.c4me.server.entities;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -34,6 +37,8 @@ public class HighschoolEntity {
     private Integer actReading;
     private Integer actScience;
     private Integer actComposite;
+    private Timestamp createTime;
+    private Timestamp updateTime;
     private Collection<CollegeHighschoolAssociationEntity> collegeHighschoolAssociationsBySchoolId;
     private Collection<HighschoolMajorAssociationEntity> highschoolMajorAssociationsBySchoolId;
     private Collection<ProfileEntity> profilesBySchoolId;
@@ -178,6 +183,29 @@ public class HighschoolEntity {
     public void setActComposite(Integer actComposite) {
         this.actComposite = actComposite;
     }
+
+    @Basic
+    @UpdateTimestamp
+    @Column(name = "update_time", nullable = true)
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    @Basic
+    @CreationTimestamp
+    @Column(name = "create_time", nullable = true)
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
 
     @Override
     public boolean equals(Object o) {

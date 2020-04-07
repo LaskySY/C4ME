@@ -1,5 +1,8 @@
 package com.c4me.server.config.constant;
 
+import com.c4me.server.entities.CollegeEntity;
+import com.c4me.server.entities.CollegeEntity_;
+
 import java.io.File;
 import java.util.*;
 
@@ -104,6 +107,37 @@ public final class Const {
     public static final String SORT_BY_ADM_RATE = "admissionRate";
     public static final String SORT_BY_COST = "costOfAttendance";
     public static final String SORT_BY_RANKING = "ranking";
+  }
+  public final static class FilterOptions {
+    public static final String[] SUPPORTED_RANGE_FILTERS = {
+            CollegeEntity_.SAT_MATH50,
+            CollegeEntity_.SAT_EBRW50,
+            CollegeEntity_.ACT_COMPOSITE,
+            CollegeEntity_.ADMISSION_RATE,
+            CollegeEntity_.RANKING,
+            CollegeEntity_.NUM_STUDENTS_ENROLLED,
+    };
+    //Special filters must be handled separately since they aren't actual columns
+    public static final String[] SPECIAL_RANGE_FILTERS = {
+            "costOfAttendance"
+    };
+    public static final String[] SUPPORTED_MATCH_FILTERS = {
+            CollegeEntity_.NAME
+    };
+    public static final Map<String, String> SUPPORTED_IN_FILTERS = new HashMap<String, String>() {
+      {
+        put(CollegeEntity_.STATE, "states");
+      }
+    };
+    public static final String[] SUPPORTED_SORT_FILTERS = {
+            CollegeEntity_.NAME,
+            CollegeEntity_.ADMISSION_RATE,
+            CollegeEntity_.RANKING
+    };
+    //Special filters must be handled separately since they aren't actual columns
+    public static final String[] SPECIAL_SORT_FILTERS = {
+            "costOfAttendance"
+    };
   }
 
   public final static class Filenames {

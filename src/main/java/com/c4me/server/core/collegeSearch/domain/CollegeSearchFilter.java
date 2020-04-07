@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @Description:
+ * @Description: IMPORTANT: each supported range filter name should be min___ and max___, with the appropriate CollegeEntity property name (except for special filters)
  * @Author: Maciej Wlodek
  * @CreateDate: 04-06-2020
  */
@@ -35,14 +35,14 @@ public class CollegeSearchFilter {
     private Integer minRanking;
     private Integer maxRanking;
 
-    private Integer minNumberOfStudents;
-    private Integer maxNumberOfStudents;
+    private Integer minNumStudentsEnrolled;
+    private Integer maxNumStudentsEnrolled;
 
-    private Integer minSatMath;
-    private Integer maxSatMath;
+    private Integer minSatMath50;
+    private Integer maxSatMath50;
 
-    private Integer minSatEbrw;
-    private Integer maxSatEbrw;
+    private Integer minSatEbrw50;
+    private Integer maxSatEbrw50;
 
     private Integer minActComposite;
     private Integer maxActComposite;

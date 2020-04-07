@@ -2,14 +2,18 @@ package com.c4me.server.core.collegeSearch.service;
 
 import com.c4me.server.core.admin.domain.CollegeInfo;
 import com.c4me.server.core.collegeSearch.domain.CollegeSearchFilter;
+import com.c4me.server.core.collegeSearch.specifications.CollegeSearchFilterSpecification;
 import com.c4me.server.core.credential.repository.HighschoolRepository;
+import com.c4me.server.core.profile.repository.CollegeRepository;
 import com.c4me.server.core.profile.repository.ProfileRepository;
+import com.c4me.server.entities.CollegeEntity;
 import com.c4me.server.entities.HighschoolEntity;
 import com.c4me.server.entities.ProfileEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Description:
@@ -22,6 +26,8 @@ public class CollegeSearchServiceImpl {
 
     @Autowired
     ProfileRepository profileRepository;
+    @Autowired
+    CollegeRepository collegeRepository;
 
 
     //use the home state if sorting by cost (for in-state vs out of state)
@@ -39,15 +45,17 @@ public class CollegeSearchServiceImpl {
     }
     public List<CollegeInfo> getSearchResults(String username, CollegeSearchFilter filter) {
         String homeState = getHomeState(username);
+        System.out.println(homeState);
 
         /*TODO: to order conditionally, try:
         SELECT ... FROM ... ORDER BY (CASE WHEN (outStateTuition is NULL OR (State == homeState AND Type == PUBLIC)) THEN inStateTuition ELSE outStateTuition END)
          */
 
+        final CollegeSearchFilterSpecification specification = new CollegeSearchFilterSpecification(filter);
+        List<CollegeEntity> results = collegeRepository.findAll(specification);
 
-
-
-        return null;
+        List<CollegeInfo> resultsInfo = results.stream().map(CollegeInfo::new).collect(Collectors.toList());
+        return resultsInfo;
     }
 
 }

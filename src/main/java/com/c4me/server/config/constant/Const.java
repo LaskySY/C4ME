@@ -99,6 +99,13 @@ public final class Const {
     };
   }
 
+  public final static class SortOptions {
+    public static final String SORT_BY_NAME = "name";
+    public static final String SORT_BY_ADM_RATE = "admissionRate";
+    public static final String SORT_BY_COST = "costOfAttendance";
+    public static final String SORT_BY_RANKING = "ranking";
+  }
+
   public final static class Filenames {
     public static final String COLLEGE_SCORECARD_FILE = "Most-Recent-Cohorts-All-Data-Elements.csv";
     public static final String COLLEGES = "colleges.txt";
@@ -283,7 +290,7 @@ public final class Const {
 
 
 
-  public final static class STATES {
+  public final static class States {
     public static final String[] STATES = {
             "AL",
             "AK",
@@ -305,6 +312,12 @@ public final class Const {
             "KY",
             "LA",
             "ME",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
             "MT",
             "NE",
             "NV",
@@ -317,12 +330,6 @@ public final class Const {
             "OH",
             "OK",
             "OR",
-            "MD",
-            "MA",
-            "MI",
-            "MN",
-            "MS",
-            "MO",
             "PA",
             "RI",
             "SC",
@@ -338,6 +345,82 @@ public final class Const {
             "WY"
     };
     public static final List<String> STATES_LIST = Arrays.asList(STATES);
+    public static final String[] NORTHEAST = {
+            "CT",
+            "MA",
+            "ME",
+            "NH",
+            "NJ",
+            "NY",
+            "PA",
+            "RI",
+            "VT"
+    };
+    public static final String[] MIDWEST = {
+            "IA",
+            "IL",
+            "IN",
+            "KS",
+            "MI",
+            "MN",
+            "MO",
+            "ND",
+            "NE",
+            "OH",
+            "SD",
+            "WI"
+    };
+    public static final String[] SOUTH = {
+            "AL",
+            "AR",
+            "DC",
+            "DE",
+            "FL",
+            "GA",
+            "KY",
+            "LA",
+            "MD",
+            "MS",
+            "NC",
+            "OK",
+            "SC",
+            "TN",
+            "TX",
+            "VA",
+            "WV"
+    };
+    public static final String[] WEST = {
+            "AK",
+            "AZ",
+            "CA",
+            "CO",
+            "HI",
+            "ID",
+            "MT",
+            "NM",
+            "NV",
+            "OR",
+            "UT",
+            "WA",
+            "WY"
+    };
+    public static final String NORTHEAST_STR = "Northeast";
+    public static final String MIDWEST_STR = "Midwest";
+    public static final String SOUTH_STR = "South";
+    public static final String WEST_STR = "West";
+    public static final List<String> NORTHEAST_LIST = Arrays.asList(NORTHEAST);
+    public static final List<String> MIDWEST_LIST = Arrays.asList(MIDWEST);
+    public static final List<String> SOUTH_LIST = Arrays.asList(SOUTH);
+    public static final List<String> WEST_LIST = Arrays.asList(WEST);
+
+    public static final HashMap<String, List<String>> REGIONS_MAP = new HashMap<String, List<String>>() {
+      {
+        put(NORTHEAST_STR, NORTHEAST_LIST);
+        put(MIDWEST_STR, MIDWEST_LIST);
+        put(SOUTH_STR, SOUTH_LIST);
+        put(WEST_STR, WEST_LIST);
+      }
+    };
   }
 
   public final static class ProfilePropertyClasses {

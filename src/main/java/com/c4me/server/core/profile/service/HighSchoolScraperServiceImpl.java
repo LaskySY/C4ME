@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 
 import static com.c4me.server.config.constant.Const.Filenames.*;
 import static com.c4me.server.config.constant.Const.Ranges.*;
-import static com.c4me.server.config.constant.Const.STATES.STATES_LIST;
+import static com.c4me.server.config.constant.Const.States.STATES_LIST;
 import static com.c4me.server.config.constant.Const.Types.*;
 
 /**

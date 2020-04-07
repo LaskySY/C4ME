@@ -1,5 +1,6 @@
 package com.c4me.server.core.admin.controller;
 
+import com.c4me.server.config.annotation.LogAndWrap;
 import com.c4me.server.core.admin.domain.CollegeInfo;
 import com.c4me.server.core.admin.service.GetCollegeServiceImpl;
 import com.c4me.server.domain.BaseResponse;
@@ -26,6 +27,7 @@ public class GetCollegeController {
     GetCollegeServiceImpl getCollegeService;
 
     @GetMapping
+    @LogAndWrap(log = "get all college info", wrap = false)
     public BaseResponse<HashMap<String, ArrayList<CollegeInfo>>> getCollegeInfo() {
         ArrayList<CollegeInfo> colleges = getCollegeService.getColleges();
 

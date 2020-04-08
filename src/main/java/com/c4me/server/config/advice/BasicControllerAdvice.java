@@ -50,6 +50,7 @@ public class BasicControllerAdvice implements ResponseBodyAdvice<Object> {
         && returnType.getMethodAnnotation(LogAndWrap.class) != null) {
       try {
         BaseResponse<Object> result = BaseResponse.builder()
+            .code("success")
             .message(Objects.requireNonNull(returnType.getMethodAnnotation(LogAndWrap.class)).log())
             .data(body)
             .build();

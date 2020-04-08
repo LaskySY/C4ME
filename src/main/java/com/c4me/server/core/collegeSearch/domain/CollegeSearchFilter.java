@@ -29,7 +29,7 @@ public class CollegeSearchFilter {
     private Integer minCostOfAttendance;
     private Integer maxCostOfAttendance;
 
-    private List<String> regions; //TODO: are we using regions or states?
+    private List<String> regions;
     private List<String> states;
 
     private String major1;
@@ -61,7 +61,6 @@ public class CollegeSearchFilter {
     public void setRegions(List<String> regions) {
         this.regions = regions;
         loadStatesFromRegions();
-        System.out.println("hi + " + states);
     }
     public void loadStatesFromRegions() {
         if(states == null) {

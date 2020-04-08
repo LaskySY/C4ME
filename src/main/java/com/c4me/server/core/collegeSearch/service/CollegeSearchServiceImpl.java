@@ -47,11 +47,7 @@ public class CollegeSearchServiceImpl {
         String homeState = getHomeState(username);
         System.out.println(homeState);
 
-        /*TODO: to order conditionally, try:
-        SELECT ... FROM ... ORDER BY (CASE WHEN (outStateTuition is NULL OR (State == homeState AND Type == PUBLIC)) THEN inStateTuition ELSE outStateTuition END)
-         */
-
-        final CollegeSearchFilterSpecification specification = new CollegeSearchFilterSpecification(filter);
+        final CollegeSearchFilterSpecification specification = new CollegeSearchFilterSpecification(filter, homeState);
         List<CollegeEntity> results = collegeRepository.findAll(specification);
 
         List<CollegeInfo> resultsInfo = results.stream().map(CollegeInfo::new).collect(Collectors.toList());

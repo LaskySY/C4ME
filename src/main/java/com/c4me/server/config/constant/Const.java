@@ -121,8 +121,10 @@ public final class Const {
     public static final String[] SPECIAL_RANGE_FILTERS = {
             "costOfAttendance"
     };
+
     public static final String[] SUPPORTED_MATCH_FILTERS = {
             CollegeEntity_.NAME
+            //major1, major2
     };
     public static final Map<String, String> SUPPORTED_IN_FILTERS = new HashMap<String, String>() {
       {
@@ -138,6 +140,7 @@ public final class Const {
     public static final String[] SPECIAL_SORT_FILTERS = {
             "costOfAttendance"
     };
+
   }
 
   public final static class Filenames {

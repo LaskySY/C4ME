@@ -45,7 +45,6 @@ public class CollegeSearchServiceImpl {
     }
     public List<CollegeInfo> getSearchResults(String username, CollegeSearchFilter filter) {
         String homeState = getHomeState(username);
-        System.out.println(homeState);
 
         final CollegeSearchFilterSpecification specification = new CollegeSearchFilterSpecification(filter, homeState);
         List<CollegeEntity> results = collegeRepository.findAll(specification);

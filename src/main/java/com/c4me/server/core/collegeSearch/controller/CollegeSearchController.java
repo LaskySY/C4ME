@@ -26,8 +26,6 @@ public class CollegeSearchController {
     @GetMapping
     @LogAndWrap(log="search for colleges", wrap=true)
     public List<CollegeInfo> searchForColleges(@RequestParam String username, @RequestBody CollegeSearchFilter filter) {
-        System.out.println(username);
-        System.out.println(filter);
         return collegeSearchService.getSearchResults(username, filter);
     }
 }

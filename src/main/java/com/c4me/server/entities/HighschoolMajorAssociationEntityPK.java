@@ -1,5 +1,9 @@
 package com.c4me.server.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Id;
@@ -13,28 +17,31 @@ import java.util.Objects;
  */
 
 @Embeddable
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class HighschoolMajorAssociationEntityPK implements Serializable {
-    private int highschoolId;
-    private String majorName;
+    private int highschool_id;
+    private String major_name;
 
     @Column(name = "highschool_id", nullable = false)
     @Id
-    public int getHighschoolId() {
-        return highschoolId;
+    public int getHighschool_id() {
+        return highschool_id;
     }
 
-    public void setHighschoolId(int highschoolId) {
-        this.highschoolId = highschoolId;
+    public void setHighschool_id(int highschoolId) {
+        this.highschool_id = highschoolId;
     }
 
     @Column(name = "major_name", nullable = false, length = 45)
     @Id
-    public String getMajorName() {
-        return majorName;
+    public String getMajor_name() {
+        return major_name;
     }
 
-    public void setMajorName(String majorName) {
-        this.majorName = majorName;
+    public void setMajor_name(String majorName) {
+        this.major_name = majorName;
     }
 
     @Override
@@ -42,12 +49,12 @@ public class HighschoolMajorAssociationEntityPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HighschoolMajorAssociationEntityPK that = (HighschoolMajorAssociationEntityPK) o;
-        return highschoolId == that.highschoolId &&
-                Objects.equals(majorName, that.majorName);
+        return highschool_id == that.highschool_id &&
+                Objects.equals(major_name, that.major_name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(highschoolId, majorName);
+        return Objects.hash(highschool_id, major_name);
     }
 }

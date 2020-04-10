@@ -4,10 +4,9 @@ import com.c4me.server.config.exception.HighSchoolDoesNotExistException;
 import com.c4me.server.core.credential.repository.HighschoolRepository;
 import com.c4me.server.core.profile.repository.CollegeHighSchoolAssociationRepository;
 import com.c4me.server.core.profile.repository.CollegeRepository;
-import com.c4me.server.entities.CollegeEntity;
-import com.c4me.server.entities.CollegeHighschoolAssociationEntity;
-import com.c4me.server.entities.CollegeHighschoolAssociationEntityPK;
-import com.c4me.server.entities.HighschoolEntity;
+import com.c4me.server.core.profile.repository.HighschoolMajorAssociationRepository;
+import com.c4me.server.core.profile.repository.MajorRepository;
+import com.c4me.server.entities.*;
 import com.c4me.server.utils.SearchHSUtils;
 import com.c4me.server.utils.TestingDataUtils;
 import org.jsoup.Jsoup;
@@ -46,6 +45,10 @@ public class HighSchoolScraperServiceImpl {
     CollegeRepository collegeRepository;
     @Autowired
     CollegeHighSchoolAssociationRepository collegeHighSchoolAssociationRepository;
+    @Autowired
+    MajorRepository majorRepository;
+    @Autowired
+    HighschoolMajorAssociationRepository highschoolMajorAssociationRepository;
 
     Random random = new Random(System.currentTimeMillis());
 
@@ -354,7 +357,29 @@ public class HighSchoolScraperServiceImpl {
             }
         }
 
-        //TODO: save high school major associations as well
+        List<MajorEntity> majorEntities = majorRepository.findAll();
+        List<String> majorsInDatabase = majorEntities.stream().map(MajorEntity::getName).collect(Collectors.toList());
+        for(String major : majors) {
+            major = truncateMajor(major);
+            int index = matchMajor(major, majorsInDatabase);
+            MajorEntity majorEntity;
+            if(index == -1) {
+                majorEntity = MajorEntity.builder()
+                        .name(major).build();
+                majorRepository.save(majorEntity);
+            }
+            else {
+                majorEntity = majorEntities.get(index);
+            }
+            HighschoolMajorAssociationEntityPK hm_pk = HighschoolMajorAssociationEntityPK.builder()
+                    .highschool_id(entity.getSchoolId())
+                    .major_name(majorEntity.getName()).build();
+            HighschoolMajorAssociationEntity hm = HighschoolMajorAssociationEntity.builder()
+                    .highschoolByHighschoolId(entity)
+                    .majorByMajorName(majorEntity)
+                    .highschoolMajorAssociationEntityPK(hm_pk).build();
+            highschoolMajorAssociationRepository.save(hm);
+        }
 
         return entity;
     }
@@ -368,5 +393,18 @@ public class HighSchoolScraperServiceImpl {
         return -1;
     }
 
+    private int matchMajor(String major, List<String> majorsInDatabase) {
+        for(int i=0; i < majorsInDatabase.size(); i++) {
+            String majorI = majorsInDatabase.get(i);
+            if(majorI.contains(major) || major.contains(majorI)) return i;
+        }
+        return -1;
+    }
+
+    private String truncateMajor(String major) {
+        if(major.length() < 45) return major;
+        if(!major.contains(" ")) return major.substring(0,44);
+        else return truncateMajor(major.substring(0, major.lastIndexOf(" ")));
+    }
 
 }

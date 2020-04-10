@@ -1,7 +1,6 @@
 package com.c4me.server.config.constant;
 
-import com.c4me.server.entities.CollegeEntity;
-import com.c4me.server.entities.CollegeEntity_;
+import com.c4me.server.entities.*;
 
 import java.io.File;
 import java.util.*;
@@ -84,6 +83,48 @@ public final class Const {
     public static final Integer MAX_SAT_OVERALL = 1600;
 
     public static final Integer MAX_QUERY_SIZE = 128;
+  }
+
+  public final static class SimilarHS {
+    public static final Integer MAX_SCHOOLS = 10;
+    public static final Integer RANGE = 10;
+
+    public static final Map<String, Double> TEST_WEIGHTS = new HashMap<String, Double>(){
+      {
+        put(HighschoolEntity_.SAT_MATH, 1.0);
+        put(HighschoolEntity_.SAT_EBRW, 1.0);
+        put(HighschoolEntity_.ACT_ENGLISH, 0.5);   //act tests have half weight since there are twice as many
+        put(HighschoolEntity_.ACT_MATH, 0.5);
+        put(HighschoolEntity_.ACT_READING, 0.5);
+        put(HighschoolEntity_.ACT_SCIENCE, 0.5);
+      }
+    };
+
+    public static final Double TEST_FACTOR_WEIGHT = 0.9;
+    public static final Double STUDENT_FACTOR_WEIGHT = 0.1;
+
+    public static final Double MISSING_TEST_PENALTY = 0.1;
+    public static final Double MISSING_STUDENT_PENALTY = 0.03;
+  }
+
+  public final static class AcademicQuality {
+    public static final Map<String, Integer> LETTER_TO_NUMBER_GRADE = new HashMap<String, Integer>() {
+      {
+        put("A+", 12);
+        put("A", 11);
+        put("A-", 11);
+        put("B+", 10);
+        put("B", 9);
+        put("B-", 8);
+        put("C+", 7);
+        put("C", 6);
+        put("C-", 5);
+        put("D+", 4);
+        put("D", 3);
+        put("D-", 2);
+        put("F", 1);
+      }
+    };
   }
 
   public final static class Types {

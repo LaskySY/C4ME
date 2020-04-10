@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import static com.c4me.server.config.constant.Const.AcademicQuality.LETTER_TO_NUMBER_GRADE;
 import static com.c4me.server.config.constant.Const.Filenames.*;
 import static com.c4me.server.config.constant.Const.Ranges.*;
 import static com.c4me.server.config.constant.Const.States.STATES_LIST;
@@ -65,6 +66,16 @@ public class HighSchoolScraperServiceImpl {
 
 
         Element attributesElement = nicheBaseDoc.selectFirst("ul.postcard__attrs");
+        Elements gradeAttribute = attributesElement.select("li.postcard__attr.postcard__attr--has-grade");
+        if(gradeAttribute.size() >= 1) {
+            Element grade = gradeAttribute.first();
+            String nicheGrade = grade.select("div").text();
+            System.out.println("nicheGrade = " + nicheGrade);
+            if(LETTER_TO_NUMBER_GRADE.containsKey(nicheGrade)) {
+                highschoolEntity.setAcademicQuality(nicheGrade);
+            }
+        }
+
         Elements attributeFacts = attributesElement.select("li.postcard__attr.postcard-fact");
         for(Element e : attributeFacts) {
             String text = e.ownText();

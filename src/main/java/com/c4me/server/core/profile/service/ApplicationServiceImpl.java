@@ -65,13 +65,16 @@ public class ApplicationServiceImpl {
     }
 
     public boolean computeQuestionable(UserEntity ue, CollegeEntity ce, Integer status) {
-        if(status == null || (status != ACCEPTED && status != DENIED)) return false; //only acceptances or rejections can be questionable
-        Long numApplications = studentApplicationRepository.countByCollegeByCollegeId(ce);
+        System.out.println("Computing questionable");
+        if(status == null || (!status.equals(ACCEPTED) && !status.equals(DENIED))) {
+            System.out.println("incorrect status");
+            return false; //only acceptances or rejections can be questionable
+        }
 
         ProfileEntity pe = profileRepository.findByUsername(ue.getUsername());
         if(pe == null) return false;
 
-        boolean firstCheck = true;
+        boolean questionable = false;
         double mathZ = computeZScore(pe.getSatMath(), ce.getSatMath25(), ce.getSatMath50(), ce.getSatMath75());
         double ebrwZ = computeZScore(pe.getSatEbrw(), ce.getSatEbrw25(), ce.getSatEbrw50(), ce.getSatEbrw75());
         double actMZ = computeZScore(pe.getActMath(), ce.getActMath25(), ce.getActMath50(), ce.getActMath75());
@@ -80,27 +83,23 @@ public class ApplicationServiceImpl {
         double actSZ = computeZScore(pe.getActScience(), ce.getActScience25(), ce.getActScience50(), ce.getActScience75());
         double[] scores = {mathZ, ebrwZ, actMZ, actEZ, actRZ, actSZ};
         for(double score : scores) {
-            if(status == ACCEPTED && score > -MIN_ZSCORE_FOR_QUESTIONABLE) firstCheck = false;
-            else if (status == DENIED && score < MIN_ZSCORE_FOR_QUESTIONABLE) firstCheck = false;
+            System.out.println("score = " + score);
+            if(status.equals(ACCEPTED) && score < MIN_ZSCORE_FOR_QUESTIONABLE) questionable = true;
+            else if (status.equals(DENIED) && score > -MIN_ZSCORE_FOR_QUESTIONABLE) questionable = true;
         }
 
-        if(firstCheck == false || numApplications < MIN_STUDENTS_FOR_STDDEV) return false;
-
-
-        //TODO: for second check, get list of students accepted (or denied) to this college, and compare scores
-        return true;
-
+        return questionable;
     }
 
     public void putStudentApplication(StudentApplication studentApplication) throws UserDoesNotExistException, CollegeDoesNotExistException { //TODO: should we copy bean properties instead?
         UserEntity ue = userRepository.findByUsername(studentApplication.getUsername());
-        CollegeEntity ce = collegeRepository.findById(studentApplication.getCollegeId()).get();
+        Optional<CollegeEntity> ce_opt = collegeRepository.findById(studentApplication.getCollegeId());
 
         if(ue == null) throw new UserDoesNotExistException("user does not exist");
-        if(ce == null) throw new CollegeDoesNotExistException("college does not exist");
+        if(!ce_opt.isPresent()) throw new CollegeDoesNotExistException("college does not exist");
 
+        CollegeEntity ce = ce_opt.get();
 
-        //TODO: Compute questionable if status is either accepted or denied
         boolean questionable = computeQuestionable(ue, ce, studentApplication.getStatus());
 
         StudentApplicationEntityPK studentApplicationEntityPK = StudentApplicationEntityPK.builder()

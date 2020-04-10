@@ -73,7 +73,7 @@ public final class Const {
   }
 
   public final static class Ranges {
-    public static final Double MIN_ZSCORE_FOR_QUESTIONABLE = 1.645;
+    public static final Double MIN_ZSCORE_FOR_QUESTIONABLE = 2.5;
     public static final Integer MIN_STUDENTS_FOR_STDDEV = 10;
     public static final Integer MIN_SAT = 200;
     public static final Integer MAX_SAT = 800;

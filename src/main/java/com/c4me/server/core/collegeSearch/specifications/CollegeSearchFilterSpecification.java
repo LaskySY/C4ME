@@ -1,17 +1,13 @@
 package com.c4me.server.core.collegeSearch.specifications;
 
 import com.c4me.server.core.collegeSearch.domain.CollegeSearchFilter;
-import com.c4me.server.entities.CollegeEntity;
-import com.c4me.server.entities.CollegeEntity_;
+import com.c4me.server.entities.*;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static com.c4me.server.config.constant.Const.FilterOptions.*;
 
@@ -107,7 +103,7 @@ public class CollegeSearchFilterSpecification implements Specification<CollegeEn
 
         Predicate predicate = criteriaBuilder.conjunction();
 
-        Expression costOfAttendanceExpression = getCostOfAttendanceExpression(root, criteriaQuery, criteriaBuilder);
+        Expression<Integer> costOfAttendanceExpression = getCostOfAttendanceExpression(root, criteriaQuery, criteriaBuilder);
         Predicate requireNonNull = criteriaBuilder.isNotNull(costOfAttendanceExpression);
         Predicate requireNull = criteriaBuilder.isNull(costOfAttendanceExpression);
         if(minVal == null && maxVal == null) return predicate;
@@ -125,20 +121,24 @@ public class CollegeSearchFilterSpecification implements Specification<CollegeEn
         else       return criteriaBuilder.or(requireNull, predicate);
     }
 
-//    private Predicate generateOffersMajorPredicate(String major, Root<CollegeEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-//        //Some join table condition with collegeMajorAssociation
-//    }
+    private Predicate generateOffersMajorPredicate(String major, Root<CollegeEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+        if(major == null) return criteriaBuilder.conjunction();
+        Join<CollegeEntity, CollegeMajorAssociationEntity> join = root.join(CollegeEntity_.collegeMajorAssociationsById);
+        Expression<String> collegeMajors = join.get(CollegeMajorAssociationEntity_.majorByMajorName).get(MajorEntity_.name);
+        return criteriaBuilder.like(collegeMajors, generateLikeString(major));
+    }
 
     private Predicate generateSpecialPredicates(Root<CollegeEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
         Predicate costOfAttendancePredicate = generateCostOfAttendancePredicate(root, criteriaQuery, criteriaBuilder);
-        // maybe some more added later
-        //Predicate major1Predicate = generateOffersMajorPredicate(filter.getMajor1(), root, criteriaQuery, criteriaBuilder);
-        //Predicate major2Predicate = generateOffersMajorPredicate(filter.getMajor2(), root, criteriaQuery, criteriaBuilder);
-        return costOfAttendancePredicate;
+        Predicate major1Predicate = generateOffersMajorPredicate(filter.getMajor1(), root, criteriaQuery, criteriaBuilder);
+        Predicate major2Predicate = generateOffersMajorPredicate(filter.getMajor2(), root, criteriaQuery, criteriaBuilder);
+
+        Predicate[] specialPredicates = {costOfAttendancePredicate, major1Predicate, major2Predicate};
+        return criteriaBuilder.and(specialPredicates);
     }
 
-    private Expression<Object> getCostOfAttendanceExpression(Root<CollegeEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-        Expression<Object> selectInOrOutState = criteriaBuilder.selectCase(root.get(CollegeEntity_.state)).when(homeState, root.get(CollegeEntity_.instateTuition)).otherwise(root.get(CollegeEntity_.outstateTuition));
+    private Expression<Integer> getCostOfAttendanceExpression(Root<CollegeEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+        Expression<Integer> selectInOrOutState = criteriaBuilder.selectCase(root.get(CollegeEntity_.state)).when(homeState, root.get(CollegeEntity_.instateTuition)).otherwise(root.get(CollegeEntity_.outstateTuition)).as(Integer.class);
         return selectInOrOutState;
     }
 
@@ -176,7 +176,6 @@ public class CollegeSearchFilterSpecification implements Specification<CollegeEn
             String filterName = entry.getValue();
             predicates.add(generateInPredicate(paramName, filterName, root, criteriaQuery, criteriaBuilder));
         }
-        //TODO: add predicate for major searches
         predicates.add(generateSpecialPredicates(root, criteriaQuery, criteriaBuilder));
 
         Predicate finalPredicate =  criteriaBuilder.and(predicates.toArray(new Predicate[0]));

@@ -131,7 +131,7 @@ public class CollegeScorecardServiceImpl {
         for (CSVRecord record : records) { //TODO: transpose the iteration -- right now we can potentially get more than one record per college (aliases might not be unique)
             String name = record.get(NAME);
             String[] aliases = parseAlias(record.get(ALIAS));
-            List<String> aliasesList = Arrays.asList(aliases); //TODO: shouldn't we save these in the database?
+            List<String> aliasesList = Arrays.asList(aliases);
 
             if(colleges.contains(name) || aliasesList.stream().anyMatch(s -> colleges.contains(s))) {
                 //System.out.println("name is in colleges");
@@ -140,19 +140,8 @@ public class CollegeScorecardServiceImpl {
                 else {
                     boolean found = false;
                     for(CollegeEntity ce: currentEntities) {
-                        if(ce.getName().equals(name)) { //TODO: check alias as well
+                        if(ce.getName().equals(name)) {
                             BeanUtils.copyProperties(collegeEntity, ce, CopyUtils.getNullPropertyNames(collegeEntity));
-//                            try {
-//                                System.out.println(name + "was found - attempting to copy properties");
-//                                System.out.println("new ranking = " + collegeEntity.getRanking());
-//                                System.out.println("old ranking = " + ce.getRanking());
-//                                BeanUtilsBean.getInstance().getConvertUtils().register(false, false, 0);
-//                                BeanUtils.copyProperties(ce, collegeEntity);
-//                                System.out.println("it shouldn't have updated old ranking, but it is now " + ce.getRanking());
-//                            } catch (Exception e) {
-//                                e.printStackTrace();
-//                            }
-//                            System.out.println("and now? : " + ce.getRanking());
                             collegeRepository.save(ce);
                             found = true;
                             break;

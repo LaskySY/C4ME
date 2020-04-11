@@ -13,7 +13,6 @@ import java.util.List;
 
 @Repository
 public interface StudentApplicationRepository extends JpaRepository<StudentApplicationEntity, StudentApplicationEntityPK>, JpaSpecificationExecutor<StudentApplicationEntity> {
-    //TODO: find applications for a college and for a student
     //public StudentApplicationEntity findByCollegeByCollegeId(CollegeEntity collegeEntity);
     public List<StudentApplicationEntity> findAllByUserByUsername(UserEntity userEntity);
 

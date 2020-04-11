@@ -58,7 +58,6 @@ public class HighSchoolScraperServiceImpl {
         Document nicheBaseDoc = openWebpage(url);
         //Document nicheBaseDoc = openWebpage("base_page_test.html");
 
-        //TODO: select for class li.search-tags__wrap__list__tag and check that High School tag exists (otherwise we've accidentally found a middle or elementary school)
 
 //        Element nameHeader = nicheBaseDoc.selectFirst("h1.postcard__title");
 //        if(nameHeader == null) return false;

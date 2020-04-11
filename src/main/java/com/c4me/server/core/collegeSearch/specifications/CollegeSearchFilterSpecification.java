@@ -130,10 +130,22 @@ public class CollegeSearchFilterSpecification implements Specification<CollegeEn
 
     private Predicate generateSpecialPredicates(Root<CollegeEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
         Predicate costOfAttendancePredicate = generateCostOfAttendancePredicate(root, criteriaQuery, criteriaBuilder);
-        Predicate major1Predicate = generateOffersMajorPredicate(filter.getMajor1(), root, criteriaQuery, criteriaBuilder);
-        Predicate major2Predicate = generateOffersMajorPredicate(filter.getMajor2(), root, criteriaQuery, criteriaBuilder);
+//        Predicate major1Predicate = generateOffersMajorPredicate(filter.getMajor1(), root, criteriaQuery, criteriaBuilder);
+//        Predicate major2Predicate = generateOffersMajorPredicate(filter.getMajor2(), root, criteriaQuery, criteriaBuilder);
+        String[] majors = filter.getMajors();
+        Predicate allMajorsPredicate;
+        if(majors != null && majors.length > 0) {
+            Predicate[] majorPredicates = new Predicate[majors.length];
+            for (int i = 0; i < majorPredicates.length; i++) {
+                majorPredicates[i] = generateOffersMajorPredicate(majors[i], root, criteriaQuery, criteriaBuilder);
+            }
+            allMajorsPredicate = criteriaBuilder.and(majorPredicates);
+        }
+        else {
+            allMajorsPredicate = criteriaBuilder.conjunction();
+        }
 
-        Predicate[] specialPredicates = {costOfAttendancePredicate, major1Predicate, major2Predicate};
+        Predicate[] specialPredicates = {costOfAttendancePredicate, allMajorsPredicate};
         return criteriaBuilder.and(specialPredicates);
     }
 

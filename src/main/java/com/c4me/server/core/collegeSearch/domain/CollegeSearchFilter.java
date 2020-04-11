@@ -32,8 +32,9 @@ public class CollegeSearchFilter {
     private List<String> regions;
     private List<String> states;
 
-    private String major1;
-    private String major2;
+//    private String major1;
+//    private String major2;
+    private String[] majors;
 
     private Integer minRanking;
     private Integer maxRanking;

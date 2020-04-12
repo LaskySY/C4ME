@@ -4,8 +4,9 @@ import com.c4me.server.core.profile.service.CollegeRecommenderServiceImpl;
 import com.c4me.server.domain.BaseResponse;
 import com.c4me.server.entities.CollegeEntity;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,11 +28,11 @@ public class CollegeRecommenderController {
   @Autowired
   CollegeRecommenderServiceImpl collegeRecommenderService;
 
-  @GetMapping
-  public BaseResponse recommendColleges(@RequestParam String username) throws IOException {
+  @PostMapping
+  public BaseResponse recommendColleges(@RequestParam String username, List<String> colleges) throws IOException {
     System.out.println("mapping works");
 
-    List<CollegeEntity> recommended = collegeRecommenderService.recommendColleges(username);
+    Map<String, String> recommended = collegeRecommenderService.recommendColleges(username, colleges);
 
 
     return BaseResponse.builder()

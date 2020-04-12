@@ -4,8 +4,8 @@ import com.c4me.server.core.profile.repository.CollegeRepository;
 import com.c4me.server.core.profile.repository.ProfileRepository;
 import com.c4me.server.entities.CollegeEntity;
 import com.c4me.server.entities.ProfileEntity;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,20 +28,10 @@ public class CollegeRecommenderServiceImpl {
     return (attr - attr_min)/(attr_max - attr_min);
   }
 
-  public List<CollegeEntity> getCollegeZScores(){
-    List<CollegeEntity> colleges = collegeRepository.findAll();
-
-
-    List<CollegeEntity> myList = colleges.subList(0, 4);
-
-
-    return myList;
-  }
 
 
 
-
-  public List<CollegeEntity> recommendColleges(String username){
+  public Map<String, String> recommendColleges(String username, List<String> colleges){
 //    System.out.println(username);
 
     ProfileEntity thisUser = profileRepository.findByUsername(username);
@@ -85,6 +75,20 @@ public class CollegeRecommenderServiceImpl {
 
     float studentZScore = (satMath + satEbrw + actMath + actEng + actRead + actSci + actComp)/7;
 
+    List<CollegeEntity> collegeEntities = null;
+    for(String c: colleges){
+      CollegeEntity ce = collegeRepository.findByName(c);
+      collegeEntities.add(ce);
+    }
+
+    Map<String, String> dataset = null;
+
+
+    for(CollegeEntity c : collegeEntities){
+
+      dataset.put(c.getName(), String.valueOf(Math.random()));
+
+    }
 
 
 
@@ -93,8 +97,7 @@ public class CollegeRecommenderServiceImpl {
 
 
 
-
-    return getCollegeZScores();
+    return dataset;
 
 
   }

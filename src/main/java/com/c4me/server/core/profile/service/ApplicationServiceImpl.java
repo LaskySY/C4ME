@@ -84,8 +84,8 @@ public class ApplicationServiceImpl {
         double[] scores = {mathZ, ebrwZ, actMZ, actEZ, actRZ, actSZ};
         for(double score : scores) {
             System.out.println("score = " + score);
-            if(status.equals(ACCEPTED) && score < MIN_ZSCORE_FOR_QUESTIONABLE) questionable = true;
-            else if (status.equals(DENIED) && score > -MIN_ZSCORE_FOR_QUESTIONABLE) questionable = true;
+            if(status.equals(ACCEPTED) && score < -MIN_ZSCORE_FOR_QUESTIONABLE) questionable = true;
+            else if (status.equals(DENIED) && score > MIN_ZSCORE_FOR_QUESTIONABLE) questionable = true;
         }
 
         return questionable;

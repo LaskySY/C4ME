@@ -56,7 +56,8 @@ public class SimilarHighSchoolServiceImpl {
 
     private Double computeSimilarityScore(HighschoolEntity h1, HighschoolEntity h2) {
         Double testDistance = computeTestSimilarityDistance(h1, h2);
-        Double studentDistance = computeStudentSimilarityDistance(h1, h2);
+        //Double studentDistance = computeStudentSimilarityDistance(h1, h2);
+        Double studentDistance = null;   // the student distance metric is too time-consuming
         Double academicDistance = computeAcademicQualityDistance(h1, h2);
         System.out.println("test = " + testDistance);
         System.out.println("student = " + studentDistance);
@@ -66,12 +67,6 @@ public class SimilarHighSchoolServiceImpl {
         score += (studentDistance == null)? MISSING_STUDENT_PENALTY * STUDENT_FACTOR_WEIGHT : studentDistance * STUDENT_FACTOR_WEIGHT;
         score += (academicDistance == null)? MISSING_ACADEMIC_PENALTY * ACADEMIC_FACTOR_WEIGHT : academicDistance * ACADEMIC_FACTOR_WEIGHT;
         return score;
-//        if(testDistance == null && studentDistance == null && ) return 1.0;
-//        else if (testDistance == null) return MISSING_TEST_PENALTY + studentDistance;
-//        else if (studentDistance == null) return MISSING_STUDENT_PENALTY + testDistance;
-//        else {
-//            return testDistance * TEST_FACTOR_WEIGHT + studentDistance * STUDENT_FACTOR_WEIGHT;
-//        }
     }
 
     private Double computeAcademicQualityDistance(HighschoolEntity h1, HighschoolEntity h2) {
@@ -141,7 +136,7 @@ public class SimilarHighSchoolServiceImpl {
             return 1.0;
         }
         else {
-            return score / weightSum;
+            return Math.sqrt(score / weightSum);
         }
     }
 

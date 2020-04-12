@@ -20,7 +20,7 @@ COLLEGES = colleges.txt
 COLLEGEDATATXT = college_data_colleges.txt
 
 # this is the file containing student profiles to import
-STUDENT_PROFILES_FILE = students-1.csv
+STUDENT_PROFILES_FILE = students-random.csv
 
 # this is the file containing student applications to import
-STUDENT_APPLICATIONS_FILE = applications-1.csv
+STUDENT_APPLICATIONS_FILE = applications-random.csv

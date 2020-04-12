@@ -35,6 +35,10 @@ public class SimilarHighSchoolServiceImpl {
     @Autowired
     HighSchoolScraperServiceImpl highSchoolScraperService;
 
+    boolean debug = false;
+
+    private void debug(String arg) { if(debug) System.out.println(arg); }
+
     public List<HighschoolEntity> getSimilarHighSchools(String highschoolName) throws IOException, HighSchoolDoesNotExistException {
         HighschoolEntity highschoolEntity = highschoolRepository.findByName(highschoolName);
         if(highschoolEntity == null) { //if it's not in the database, try to scrape it
@@ -45,7 +49,7 @@ public class SimilarHighSchoolServiceImpl {
         List<HighschoolEntity> allHighschools = highschoolRepository.findAll();
         Map<HighschoolEntity, Double> distances = new HashMap<>();
         for(HighschoolEntity highschoolEntity1 : allHighschools) {
-            System.out.println("dist between " + highschoolEntity.getName() + ", and " + highschoolEntity1.getName());
+            debug("dist between " + highschoolEntity.getName() + ", and " + highschoolEntity1.getName());
             distances.put(highschoolEntity1, computeSimilarityScore(highschoolEntity, highschoolEntity1));
         }
         List<Map.Entry<HighschoolEntity, Double>> sortedDistances = new ArrayList<>(distances.entrySet());
@@ -57,11 +61,11 @@ public class SimilarHighSchoolServiceImpl {
     private Double computeSimilarityScore(HighschoolEntity h1, HighschoolEntity h2) {
         Double testDistance = computeTestSimilarityDistance(h1, h2);
         //Double studentDistance = computeStudentSimilarityDistance(h1, h2);
-        Double studentDistance = null;   // the student distance metric is too time-consuming
+        Double studentDistance = null;   // the student distance metric is too time-consuming; esp since used for college recommendation
         Double academicDistance = computeAcademicQualityDistance(h1, h2);
-        System.out.println("test = " + testDistance);
-        System.out.println("student = " + studentDistance);
-        System.out.println("academic = " + academicDistance);
+        debug("test = " + testDistance);
+        debug("student = " + studentDistance);
+        debug("academic = " + academicDistance);
         Double score = 0.0;
         score += (testDistance == null)? MISSING_TEST_PENALTY * TEST_FACTOR_WEIGHT : testDistance * TEST_FACTOR_WEIGHT;
         score += (studentDistance == null)? MISSING_STUDENT_PENALTY * STUDENT_FACTOR_WEIGHT : studentDistance * STUDENT_FACTOR_WEIGHT;
@@ -111,7 +115,7 @@ public class SimilarHighSchoolServiceImpl {
         List<StudentApplicationEntity> apps = studentApplicationRepository.findAll(acceptanceSpecification);
         if(apps.size() == 0) return null;
         else {
-            System.out.println("ranking = " + apps.get(0).getCollegeByCollegeId().getRanking());
+            debug("ranking = " + apps.get(0).getCollegeByCollegeId().getRanking());
             return apps.get(0).getCollegeByCollegeId().getRanking();
         }
     }

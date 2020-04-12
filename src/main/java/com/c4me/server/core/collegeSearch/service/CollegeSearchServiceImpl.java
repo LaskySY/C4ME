@@ -53,4 +53,10 @@ public class CollegeSearchServiceImpl {
         return resultsInfo;
     }
 
+    public CollegeInfo getCollegeInfo(String name) {
+        CollegeEntity collegeEntity = collegeRepository.findByName(name);
+        if(collegeEntity == null) return null;
+        else return new CollegeInfo(collegeEntity);
+    }
+
 }

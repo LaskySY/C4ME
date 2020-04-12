@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,7 +36,7 @@ public class SimilarHighSchoolController {
         System.out.println(highschoolName.getHighschoolName());
 
         List<HighschoolEntity> similarHighschools = similarHighSchoolService.getSimilarHighSchools(highschoolName.getHighschoolName());
-        if(similarHighschools == null) return null;
+        if(similarHighschools == null || similarHighschools.size() == 0) return new ArrayList<HighschoolInfo2>();
         return similarHighschools.stream().map(HighschoolInfo2::new).collect(Collectors.toList());
     }
 }

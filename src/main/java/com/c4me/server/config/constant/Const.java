@@ -131,6 +131,20 @@ public final class Const {
     };
   }
 
+  public final static class CollegeRecommendationConst {
+    public static final Map<String, String[]> TEST_MAP = new HashMap<String, String[]>(){
+      {
+        put(ProfileEntity_.SAT_MATH, new String[] {CollegeEntity_.SAT_MATH25, CollegeEntity_.SAT_MATH50, CollegeEntity_.SAT_MATH75});
+        put(ProfileEntity_.SAT_EBRW, new String[] {CollegeEntity_.SAT_EBRW25, CollegeEntity_.SAT_EBRW50, CollegeEntity_.SAT_EBRW75});
+        put(ProfileEntity_.ACT_ENGLISH, new String[] {CollegeEntity_.ACT_ENGLISH25, CollegeEntity_.ACT_ENGLISH50, CollegeEntity_.ACT_ENGLISH75});
+        put(ProfileEntity_.ACT_MATH, new String[] {CollegeEntity_.ACT_MATH25, CollegeEntity_.ACT_MATH50, CollegeEntity_.ACT_MATH75});
+      }
+    };
+
+    public static final Double TEST_FACTOR_WEIGHT = 0.8;
+    public static final Double SCHOOL_FACTOR_WEIGHT = 0.2;
+  }
+
   public final static class Types {
     public static final Integer PUBLIC = 1;
     public static final Integer PRIVATE = 2;

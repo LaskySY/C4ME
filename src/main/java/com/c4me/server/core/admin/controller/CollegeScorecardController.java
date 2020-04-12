@@ -5,8 +5,6 @@ import com.c4me.server.config.exception.NoCollegeScorecardException;
 import com.c4me.server.config.exception.NoCollegeTxtException;
 import com.c4me.server.core.admin.service.CollegeScorecardServiceImpl;
 import com.c4me.server.domain.BaseResponse;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;

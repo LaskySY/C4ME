@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static com.c4me.server.config.constant.Const.Types.TYPES_MAP;

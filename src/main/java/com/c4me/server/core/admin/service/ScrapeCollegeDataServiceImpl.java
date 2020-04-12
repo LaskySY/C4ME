@@ -6,7 +6,6 @@ import com.c4me.server.entities.CollegeEntity;
 import com.c4me.server.utils.TestingDataUtils;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,7 +25,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static com.c4me.server.config.constant.Const.Filenames.*;
-import static com.c4me.server.utils.TestingDataUtils.*;
 
 /**
  * @Description:
@@ -481,7 +479,7 @@ public class ScrapeCollegeDataServiceImpl {
 
       collegeRepository.save(c);
 
-//      break;
+      break;
 
 
 

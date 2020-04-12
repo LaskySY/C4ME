@@ -5,6 +5,7 @@ import static com.c4me.server.config.constant.Const.Filenames.STUDENT_APPLICATIO
 import static com.c4me.server.config.constant.Const.Filenames.STUDENT_PROFILES_FILE;
 import static com.c4me.server.config.constant.Const.StudentProfileHeaders.*;
 import static com.c4me.server.config.constant.Const.ApplicationFileHeaders.*;
+import static com.c4me.server.config.constant.Const.Status.*;
 
 
 import com.c4me.server.config.exception.*;
@@ -13,14 +14,15 @@ import com.c4me.server.core.credential.repository.HighschoolRepository;
 import com.c4me.server.core.credential.repository.UserRepository;
 import com.c4me.server.core.credential.service.userDetailsServiceImpl;
 import com.c4me.server.core.profile.repository.CollegeRepository;
+import com.c4me.server.core.profile.repository.MajorRepository;
 import com.c4me.server.core.profile.repository.ProfileRepository;
 import com.c4me.server.entities.CollegeEntity;
 import com.c4me.server.entities.HighschoolEntity;
+import com.c4me.server.entities.MajorEntity;
 import com.c4me.server.entities.ProfileEntity;
 import com.c4me.server.entities.StudentApplicationEntity;
 import com.c4me.server.entities.UserEntity;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -31,7 +33,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -40,7 +41,6 @@ import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.c4me.server.core.profile.service.HighSchoolScraperServiceImpl;
-import static com.c4me.server.config.constant.Const.Filenames.STUDENT_APPLICATIONS_FILE;
 
 /**
  * @Description:
@@ -64,6 +64,9 @@ public class ImportStudentProfileServiceImpl {
   CollegeRepository collegeRepository;
 
   @Autowired
+  MajorRepository majorRepository;
+
+  @Autowired
   HighSchoolScraperServiceImpl highSchoolScraperService;
 
   @Autowired
@@ -81,29 +84,11 @@ public class ImportStudentProfileServiceImpl {
 
 
   public ProfileEntity recordToEntity(CSVRecord record) { //TODO: should only check header for the first record
+
     Map<String, String> recordMap = record.toMap();
 //        System.out.println(recordMap.toString());
 //        System.out.println(recordMap.keySet().toString());
     Set<String> keysWeCareAbout = new HashSet<String>(Arrays.asList(HEADERS));
-    //trim whitespaces
-
-    //this gives concurrent modification error
-//    for(String s: recordMap.keySet()){
-//      System.out.println(s);
-//      String keyvalString = recordMap.remove(s);
-//      s = s.trim();
-//      recordMap.put(s, keyvalString);
-//    }
-
-    //this only changes the values not the headers
-//    for(Iterator<Entry<String, String>> it = recordMap.entrySet().iterator(); it.hasNext();)
-//    {
-//
-//      Map.Entry<String, String> entry = it.next();
-//      String s = entry.getValue().trim();
-//      System.out.println("key is"+s);
-//        entry.setValue(s);
-//    }
 
     if(!recordMap.keySet().containsAll(keysWeCareAbout)) {
       System.out.println("missing headers -- throw an error");
@@ -134,6 +119,7 @@ public class ImportStudentProfileServiceImpl {
           .satMathIi(parseInt(record.get(SAT_MATH2)))
           .satEcoBio(parseInt(record.get(SAT_ECO_BIO)))
           .satMolBio(parseInt(record.get(SAT_MOL_BIO)))
+          .satChemistry(parseInt(record.get(SAT_CHEM)))
           .satPhysics(parseInt(record.get(SAT_PHYS)))
           .numApCourses(parseInt(record.get(NUM_AP_PASSED)))
 //          .createTime(Timestamp.from(Instant.now()))
@@ -163,17 +149,17 @@ public class ImportStudentProfileServiceImpl {
       CollegeEntity thisCollege = collegeRepository.findByName(APP_COLLEGE);
       Integer decisionStatus = 0;
       if(recordMap.get(APP_COLLEGE).equalsIgnoreCase("pending")){
-        decisionStatus = 1;
+        decisionStatus = PENDING;
       }
       else if(recordMap.get(APP_COLLEGE).equalsIgnoreCase("accepted")){
-        decisionStatus = 2;
+        decisionStatus = ACCEPTED;
       }
       else if(recordMap.get(APP_COLLEGE).equalsIgnoreCase("denied")){
-        decisionStatus = 3;
+        decisionStatus = DENIED;
       }
       else if(recordMap.get(APP_COLLEGE).equalsIgnoreCase("waitlisted") ||
           recordMap.get(APP_COLLEGE).equalsIgnoreCase("wait-listed")){
-        decisionStatus = 4;
+        decisionStatus = WAITLISTED;
       }
 
       return StudentApplicationEntity.builder()
@@ -196,10 +182,11 @@ public class ImportStudentProfileServiceImpl {
     if(filename.equals("")) throw new NoStudentProfileCSVException("student profile file not found");
 
     Reader in = new FileReader(filename);
-    Iterable<CSVRecord> records = CSVFormat.EXCEL.withHeader().parse(in);
+    Iterable<CSVRecord> records = CSVFormat.EXCEL.withTrim().withHeader().withTrim().parse(in);
 
     List<UserEntity> currentUsers = userRepository.findAll();
     List<HighschoolEntity> currentHighSchools = highschoolRepository.findAll();
+    List<MajorEntity> currentMajors = majorRepository.findAll();
 
     for (CSVRecord record : records) {
 
@@ -210,10 +197,60 @@ public class ImportStudentProfileServiceImpl {
       UserEntity newUser = null;
       HighschoolEntity newHS = null;
       UserEntity existingUser = null;
+      HighschoolEntity existingHS = null;
 
       ProfileEntity profileEntity = recordToEntity(record);
       if(profileEntity == null) throw new InvalidStudentProfileException("invalid student profile file");
       else{
+
+
+        // set majors properly for profile
+        // if it a major doesnt exist in our DB, add it
+        Boolean majorExists = false;
+        if(!(profileEntity.getMajor1() == null)) {
+          String maj1name = profileEntity.getMajor1().trim();
+          MajorEntity maj = new MajorEntity();
+          maj.setName(maj1name);
+
+          for(MajorEntity m: currentMajors){
+            String currMajName = m.getName();
+            if(currMajName.equals(maj1name)){
+              majorExists = true;
+              profileEntity.setMajorByMajor1(m);
+            }
+          }
+
+          //major currently doesnt exist in our db
+          if(!majorExists){
+            profileEntity.setMajorByMajor1(maj);
+            majorRepository.save(maj);
+          }
+
+        }
+
+        //repeat for maj2
+        majorExists = false;
+        if(!(profileEntity.getMajor2() == null)) {
+          String maj2name = profileEntity.getMajor2().trim();
+          MajorEntity maj = new MajorEntity();
+          maj.setName(maj2name);
+
+          for(MajorEntity m: currentMajors){
+            String currMajName = m.getName();
+            if(currMajName.equals(maj2name)){
+              majorExists = true;
+              profileEntity.setMajorByMajor2(m);
+            }
+          }
+
+          //major currently doesnt exist in our db
+          if(!majorExists){
+            profileEntity.setMajorByMajor2(maj);
+            majorRepository.save(maj);
+          }
+
+        }
+
 
         String username = record.get(USER_ID);
         String highschoolname = record.get(HS_NAME);
@@ -251,6 +288,7 @@ public class ImportStudentProfileServiceImpl {
         for(HighschoolEntity hs : currentHighSchools){
           if(hs.getName().equals(highschoolname)){
             highschoolExists = true;
+            existingHS = hs;
           }
         }
 
@@ -321,12 +359,23 @@ public class ImportStudentProfileServiceImpl {
         }
 
 
+        if(highschoolExists) {
+          profileEntity.setSchoolId(existingHS.getSchoolId());
+          profileEntity.setHighschoolBySchoolId(existingHS);
+        }
+        else{
+          profileEntity.setSchoolId(newHS.getSchoolId());
+          profileEntity.setHighschoolBySchoolId(newHS);
+        }
+
+
         profileRepository.save(profileEntity);
 
 
       }
 
 //      in.close();
+
 
 
     }

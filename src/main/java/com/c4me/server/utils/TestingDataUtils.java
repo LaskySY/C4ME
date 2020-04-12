@@ -1,29 +1,18 @@
 package com.c4me.server.utils;
 
 import com.c4me.server.config.constant.Const;
-import com.c4me.server.core.credential.repository.HighschoolRepository;
 import com.c4me.server.core.profile.repository.CollegeRepository;
 import com.c4me.server.entities.CollegeEntity;
-import com.c4me.server.entities.HighschoolEntity;
-import com.c4me.server.entities.StudentApplicationEntity;
 import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
-import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.util.Pair;
-import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static com.c4me.server.config.constant.Const.Filenames.*;
 

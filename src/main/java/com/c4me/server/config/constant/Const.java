@@ -102,11 +102,13 @@ public final class Const {
       }
     };
 
-    public static final Double TEST_FACTOR_WEIGHT = 0.9;
+    public static final Double TEST_FACTOR_WEIGHT = 0.85;
     public static final Double STUDENT_FACTOR_WEIGHT = 0.1;
+    public static final Double ACADEMIC_FACTOR_WEIGHT = 0.05;
 
-    public static final Double MISSING_TEST_PENALTY = 0.1;
-    public static final Double MISSING_STUDENT_PENALTY = 0.03;
+    public static final Double MISSING_TEST_PENALTY = 1.0;
+    public static final Double MISSING_STUDENT_PENALTY = 1.0;
+    public static final Double MISSING_ACADEMIC_PENALTY = 1.0;
   }
 
   public final static class AcademicQuality {

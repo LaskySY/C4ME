@@ -1,17 +1,21 @@
 package com.c4me.server.core.highschoolSearch.service;
 
 import com.c4me.server.config.constant.Const;
+import com.c4me.server.config.exception.HighSchoolDoesNotExistException;
 import com.c4me.server.core.credential.repository.HighschoolRepository;
 import com.c4me.server.core.highschoolSearch.specifications.AcceptanceSpecification;
 import com.c4me.server.core.profile.repository.StudentApplicationRepository;
+import com.c4me.server.core.profile.service.HighSchoolScraperServiceImpl;
 import com.c4me.server.entities.*;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.c4me.server.config.constant.Const.AcademicQuality.LETTER_TO_NUMBER_GRADE;
 import static com.c4me.server.config.constant.Const.Ranges.*;
 import static com.c4me.server.config.constant.Const.SimilarHS.*;
 
@@ -28,10 +32,15 @@ public class SimilarHighSchoolServiceImpl {
     HighschoolRepository highschoolRepository;
     @Autowired
     StudentApplicationRepository studentApplicationRepository;
+    @Autowired
+    HighSchoolScraperServiceImpl highSchoolScraperService;
 
-    public List<HighschoolEntity> getSimilarHighSchools(String highschoolName) {
+    public List<HighschoolEntity> getSimilarHighSchools(String highschoolName) throws IOException, HighSchoolDoesNotExistException {
         HighschoolEntity highschoolEntity = highschoolRepository.findByName(highschoolName);
-        if(highschoolEntity == null) return null;
+        if(highschoolEntity == null) { //if it's not in the database, try to scrape it
+            highschoolEntity = highSchoolScraperService.scrapeHighSchool(highschoolName, false);
+            if(highschoolEntity == null) return null;
+        }
 
         List<HighschoolEntity> allHighschools = highschoolRepository.findAll();
         Map<HighschoolEntity, Double> distances = new HashMap<>();
@@ -48,14 +57,28 @@ public class SimilarHighSchoolServiceImpl {
     private Double computeSimilarityScore(HighschoolEntity h1, HighschoolEntity h2) {
         Double testDistance = computeTestSimilarityDistance(h1, h2);
         Double studentDistance = computeStudentSimilarityDistance(h1, h2);
+        Double academicDistance = computeAcademicQualityDistance(h1, h2);
         System.out.println("test = " + testDistance);
-        System.out.println("st = " + studentDistance);
-        if(testDistance == null && studentDistance == null) return 1.0;
-        else if (testDistance == null) return MISSING_TEST_PENALTY + studentDistance;
-        else if (studentDistance == null) return MISSING_STUDENT_PENALTY + testDistance;
-        else {
-            return testDistance * TEST_FACTOR_WEIGHT + studentDistance * STUDENT_FACTOR_WEIGHT;
-        }
+        System.out.println("student = " + studentDistance);
+        System.out.println("academic = " + academicDistance);
+        Double score = 0.0;
+        score += (testDistance == null)? MISSING_TEST_PENALTY * TEST_FACTOR_WEIGHT : testDistance * TEST_FACTOR_WEIGHT;
+        score += (studentDistance == null)? MISSING_STUDENT_PENALTY * STUDENT_FACTOR_WEIGHT : studentDistance * STUDENT_FACTOR_WEIGHT;
+        score += (academicDistance == null)? MISSING_ACADEMIC_PENALTY * ACADEMIC_FACTOR_WEIGHT : academicDistance * ACADEMIC_FACTOR_WEIGHT;
+        return score;
+//        if(testDistance == null && studentDistance == null && ) return 1.0;
+//        else if (testDistance == null) return MISSING_TEST_PENALTY + studentDistance;
+//        else if (studentDistance == null) return MISSING_STUDENT_PENALTY + testDistance;
+//        else {
+//            return testDistance * TEST_FACTOR_WEIGHT + studentDistance * STUDENT_FACTOR_WEIGHT;
+//        }
+    }
+
+    private Double computeAcademicQualityDistance(HighschoolEntity h1, HighschoolEntity h2) {
+        if(h1.getAcademicQuality() == null || h2.getAcademicQuality() == null) return null;
+        Integer qualityH1 = LETTER_TO_NUMBER_GRADE.get(h1.getAcademicQuality());
+        Integer qualityH2 = LETTER_TO_NUMBER_GRADE.get(h2.getAcademicQuality());
+        return ((double) Math.abs(qualityH1 - qualityH2)) / ((double) LETTER_TO_NUMBER_GRADE.get("A+"));
     }
 
     private Double computeStudentSimilarityDistance(HighschoolEntity h1, HighschoolEntity h2) {

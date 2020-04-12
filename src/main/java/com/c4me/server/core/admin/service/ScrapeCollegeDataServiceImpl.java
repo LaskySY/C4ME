@@ -2,7 +2,10 @@ package com.c4me.server.core.admin.service;
 
 import com.c4me.server.config.exception.NoCollegeTxtException;
 import com.c4me.server.core.profile.repository.CollegeRepository;
+import com.c4me.server.core.profile.repository.MajorRepository;
 import com.c4me.server.entities.CollegeEntity;
+import com.c4me.server.entities.CollegeMajorAssociationEntity;
+import com.c4me.server.entities.MajorEntity;
 import com.c4me.server.utils.TestingDataUtils;
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,6 +16,7 @@ import java.io.Reader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 
@@ -36,6 +40,9 @@ import static com.c4me.server.config.constant.Const.Filenames.*;
 public class ScrapeCollegeDataServiceImpl {
   @Autowired
   CollegeRepository collegeRepository;
+
+  @Autowired
+  MajorRepository majorRepository;
 
   LevenshteinDistance distance = new LevenshteinDistance();
 
@@ -428,6 +435,49 @@ public class ScrapeCollegeDataServiceImpl {
         }
 
 
+        //get the majors at this college
+        if(e.wholeText().contains("Undergraduate Majors")){
+//          System.out.println("UG EDU is there");
+
+          Collection<CollegeMajorAssociationEntity> cmaList = c.getCollegeMajorAssociationsById();
+
+          Elements list = e.select("li");
+          for(Element e2: list){
+
+            if(e2 != null) {
+              if(e2.wholeText().contains("Not")){
+                continue;
+              }
+              else {
+//                System.out.println("Major is " + e2.wholeText());
+                String majorName = e2.wholeText().trim();
+
+                CollegeMajorAssociationEntity cme = new CollegeMajorAssociationEntity();
+                MajorEntity majEnt = new MajorEntity();
+                majEnt.setName(majorName);
+                majEnt.setCollegeMajorAssociationsByName(c.getCollegeMajorAssociationsById());
+//                majorRepository.save(majEnt);
+
+                cme.setCollegeByCollegeId(c);
+                cme.setMajorByMajorName(majEnt);
+
+
+                cmaList.add(cme);
+              }
+
+            }
+
+          }
+
+          if(cmaList != null) {
+            c.setCollegeMajorAssociationsById(cmaList);
+          }
+
+
+
+        }
+
+
 
 
       }
@@ -479,7 +529,8 @@ public class ScrapeCollegeDataServiceImpl {
 
       collegeRepository.save(c);
 
-      break;
+//      Collection<CollegeMajorAssociationEntity> myEnts = c.getCollegeMajorAssociationsById();
+//      break;
 
 
 

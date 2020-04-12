@@ -49,7 +49,7 @@ public class CollegeSearchServiceImpl {
         final CollegeSearchFilterSpecification specification = new CollegeSearchFilterSpecification(filter, homeState);
         List<CollegeEntity> results = collegeRepository.findAll(specification);
 
-        List<CollegeInfo> resultsInfo = results.stream().map(CollegeInfo::new).collect(Collectors.toList());
+        List<CollegeInfo> resultsInfo = results.stream().map(e -> new CollegeInfo(e, homeState)).collect(Collectors.toList());
         return resultsInfo;
     }
 

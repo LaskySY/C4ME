@@ -26,7 +26,7 @@ public class SimilarHighSchoolController {
     @Autowired
     SimilarHighSchoolServiceImpl similarHighSchoolService;
 
-    @GetMapping
+    @PostMapping
     @LogAndWrap(log = "getting similar high schools")
     public List<HighschoolInfo> getSimilarHighSchools(@RequestParam String username, @RequestBody HSRequest highschoolName) throws IOException, HighSchoolDoesNotExistException {
         System.out.println("getting similar highschools");

@@ -63,6 +63,8 @@ public class CollegeInfo {
 
     private String typeString;
 
+    private Integer costOfAttendance;
+
     public CollegeInfo(CollegeEntity collegeEntity) {
         name = collegeEntity.getName();
         type = TYPES_MAP.entrySet().stream().filter(e -> e.getValue().equals(collegeEntity.getType())).collect(Collectors.toList()).get(0).getKey();
@@ -105,6 +107,11 @@ public class CollegeInfo {
         actComposite = collegeEntity.getActComposite();
 
         typeString = TYPES_MAP.get(type);
+    }
+
+    public CollegeInfo(CollegeEntity collegeEntity, String homeState) {
+        this(collegeEntity);
+        this.costOfAttendance = (homeState.equals(state))? instateTuition : outstateTuition;
     }
 
 

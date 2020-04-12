@@ -23,7 +23,7 @@ public class CollegeSearchController {
     @Autowired
     CollegeSearchServiceImpl collegeSearchService;
 
-    @GetMapping
+    @PostMapping
     @LogAndWrap(log="search for colleges", wrap=true)
     public List<CollegeInfo> searchForColleges(@RequestParam String username, @RequestBody CollegeSearchFilter filter) {
         return collegeSearchService.getSearchResults(username, filter);

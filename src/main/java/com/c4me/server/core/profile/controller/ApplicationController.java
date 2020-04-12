@@ -2,7 +2,6 @@ package com.c4me.server.core.profile.controller;
 
 import com.c4me.server.config.exception.CollegeDoesNotExistException;
 import com.c4me.server.config.exception.UserDoesNotExistException;
-import com.c4me.server.core.profile.domain.ProfileRequest;
 import com.c4me.server.core.profile.domain.StudentApplication;
 import com.c4me.server.core.profile.service.ApplicationServiceImpl;
 import com.c4me.server.domain.BaseResponse;

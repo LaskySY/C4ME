@@ -4,24 +4,13 @@ import com.c4me.server.config.exception.NoCollegeTxtException;
 import com.c4me.server.core.profile.repository.CollegeRepository;
 import com.c4me.server.entities.CollegeEntity;
 import com.google.gson.*;
-import com.google.gson.stream.JsonReader;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.text.similarity.FuzzyScore;
-import org.apache.commons.text.similarity.JaccardDistance;
-import org.apache.commons.text.similarity.JaccardSimilarity;
-import org.apache.commons.text.similarity.LevenshteinDistance;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.*;
 
 import static com.c4me.server.config.constant.Const.Filenames.*;

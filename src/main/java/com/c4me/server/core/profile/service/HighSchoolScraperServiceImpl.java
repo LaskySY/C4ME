@@ -367,21 +367,26 @@ public class HighSchoolScraperServiceImpl {
             }
         }
 
-        List<MajorEntity> majorEntities = majorRepository.findAll();
-        List<String> majorsInDatabase = majorEntities.stream().map(MajorEntity::getName).collect(Collectors.toList());
+//        List<MajorEntity> majorEntities = majorRepository.findAll();
+//        List<String> majorsInDatabase = majorEntities.stream().map(MajorEntity::getName).collect(Collectors.toList());
         for(String major : majors) {
-            major = truncateMajor(major);
-            if(major.length() == 0) continue;
-            int index = matchMajor(major, majorsInDatabase);
-            MajorEntity majorEntity;
-            if(index == -1) {
-                majorEntity = MajorEntity.builder()
-                        .name(major).build();
-                majorRepository.save(majorEntity);
-            }
-            else {
-                majorEntity = majorEntities.get(index);
-            }
+            MajorAliasTable majorAliasTable = new MajorAliasTable();
+            MajorEntity majorEntity = majorAliasTable.parseMajorName(major);
+            System.out.println(major);
+            System.out.println(majorEntity);
+            if(majorEntity == null) continue;
+//            major = truncateMajor(major);
+//            if(major.length() == 0) continue;
+//            int index = matchMajor(major, majorsInDatabase);
+//            MajorEntity majorEntity;
+//            if(index == -1) {
+//                majorEntity = MajorEntity.builder()
+//                        .name(major).build();
+//                majorRepository.save(majorEntity);
+//            }
+//            else {
+//                majorEntity = majorEntities.get(index);
+//            }
             HighschoolMajorAssociationEntityPK hm_pk = HighschoolMajorAssociationEntityPK.builder()
                     .highschool_id(entity.getSchoolId())
                     .major_name(majorEntity.getName()).build();

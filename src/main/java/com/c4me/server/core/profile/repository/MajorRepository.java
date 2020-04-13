@@ -3,6 +3,8 @@ package com.c4me.server.core.profile.repository;
 import com.c4me.server.entities.MajorEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 /**
  * @Description:
  * @Author: Maciej Wlodek

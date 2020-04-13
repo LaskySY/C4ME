@@ -21,10 +21,9 @@ import com.c4me.server.entities.*;
 import java.io.*;
 import java.util.*;
 
+import com.c4me.server.core.profile.service.MajorAliasTable;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.c4me.server.core.profile.service.HighSchoolScraperServiceImpl;
@@ -205,19 +204,21 @@ public class ImportStudentProfileServiceImpl {
 
 
   private MajorEntity getMajorEntityIfExists(String major) {
-    MajorEntity majorEntity;
-    if(major == null || major.length() == 0) {
-      majorEntity = null;
-    }
-    else {
-      Optional<MajorEntity> majorEntityOpt = majorRepository.findById(major);
-      majorEntity = majorEntityOpt.orElseGet(() -> {
-        MajorEntity me = MajorEntity.builder().name(major).build();
-        majorRepository.save(me);
-        return me;
-      });
-    }
-    return majorEntity;
+    MajorAliasTable majorAliasTable = new MajorAliasTable();
+    return majorAliasTable.parseMajorName(major);
+//    MajorEntity majorEntity;
+//    if(major == null || major.length() == 0) {
+//      majorEntity = null;
+//    }
+//    else {
+//      Optional<MajorEntity> majorEntityOpt = majorRepository.findById(major);
+//      majorEntity = majorEntityOpt.orElseGet(() -> {
+//        MajorEntity me = MajorEntity.builder().name(major).build();
+//        majorRepository.save(me);
+//        return me;
+//      });
+//    }
+//    return majorEntity;
   }
 
   private UserEntity getUserEntityIfExists(String username, String password, String name) {

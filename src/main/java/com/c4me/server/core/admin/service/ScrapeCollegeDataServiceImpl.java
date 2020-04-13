@@ -7,6 +7,7 @@ import com.c4me.server.entities.CollegeEntity;
 import com.c4me.server.entities.CollegeMajorAssociationEntity;
 import com.c4me.server.entities.CollegeMajorAssociationEntityPK;
 import com.c4me.server.entities.MajorEntity;
+import com.c4me.server.core.profile.service.MajorAliasTable;
 import com.c4me.server.utils.TestingDataUtils;
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,7 +18,6 @@ import java.net.URLConnection;
 import java.util.*;
 
 
-import org.apache.commons.text.similarity.FuzzyScore;
 import org.apache.commons.text.similarity.LevenshteinDistance;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -77,7 +77,7 @@ public class ScrapeCollegeDataServiceImpl {
     File dataFile = TestingDataUtils.findFile(COLLEGEDATATXT);
     List<String> collegesListedOnWebsite = TestingDataUtils.readFile(dataFile);
 
-    Collection<MajorEntity> majorEntities = majorRepository.findAll();
+//    Collection<MajorEntity> majorEntities = majorRepository.findAll();
 
     for(CollegeEntity c : colleges){
       String name = preprocess(c.getName());
@@ -432,8 +432,9 @@ public class ScrapeCollegeDataServiceImpl {
               }
               else {
 //                System.out.println("Major is " + e2.wholeText());
-                String majorName = truncateMajor(e2.wholeText().trim());
-                MajorEntity majEnt = getMajorEntityIfExists(majorName, majorEntities);
+                String majorName = e2.wholeText().trim();
+                MajorEntity majEnt = getMajorEntityIfExists(majorName);
+                if(majEnt == null) continue;
 
                 CollegeMajorAssociationEntityPK collegeMajorAssociationEntityPK = CollegeMajorAssociationEntityPK.builder()
                         .college_id(c.getId())
@@ -520,16 +521,18 @@ public class ScrapeCollegeDataServiceImpl {
 
   }
 
-  private MajorEntity getMajorEntityIfExists(String major, Collection<MajorEntity> majorEntities) {
-    MajorEntity majorEntity;
-    if(major == null) {
-      majorEntity = null;
-    }
-    else {
-      majorEntity = MajorEntity.builder().name(major).build();
-      if(!(majorEntities.contains(majorEntity))) majorRepository.save(majorEntity);
-    }
-    return majorEntity;
+  private MajorEntity getMajorEntityIfExists(String major) {
+    MajorAliasTable majorAliasTable = new MajorAliasTable();
+    return majorAliasTable.parseMajorName(major);
+//    MajorEntity majorEntity;
+//    if(major == null) {
+//      majorEntity = null;
+//    }
+//    else {
+//      majorEntity = MajorEntity.builder().name(major).build();
+//      if(!(majorEntities.contains(majorEntity))) majorRepository.save(majorEntity);
+//    }
+//    return majorEntity;
   }
 
   private String truncateMajor(String major) {

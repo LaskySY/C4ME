@@ -35,7 +35,7 @@ public class SimilarHighSchoolServiceImpl {
     @Autowired
     HighSchoolScraperServiceImpl highSchoolScraperService;
 
-    boolean debug = false;
+    final boolean debug = false;
 
     private void debug(String arg) { if(debug) System.out.println(arg); }
 

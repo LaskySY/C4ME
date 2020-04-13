@@ -42,7 +42,7 @@ public class ScrapeCollegeDataServiceImpl {
   MajorRepository majorRepository;
   @Autowired
   CollegeMajorAssociationRepository collegeMajorAssociationRepository;
-  LevenshteinDistance distance = new LevenshteinDistance();
+  final LevenshteinDistance distance = new LevenshteinDistance();
 
   public Document openWebpage(URL url) throws IOException {
     URLConnection conn = url.openConnection();

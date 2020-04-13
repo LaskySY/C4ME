@@ -32,9 +32,9 @@ public class CollegeRecommendationServiceImpl {
     @Autowired
     SimilarHighSchoolServiceImpl similarHighSchoolService;
 
-    boolean debug = false;
-    static long tMillis = 0;
-    static long sMillis = 0;
+    final boolean debug = false;
+//    static long tMillis = 0;
+//    static long sMillis = 0;
 
     private void debug(String arg) {
         if(debug) System.out.println(arg);
@@ -86,17 +86,17 @@ public class CollegeRecommendationServiceImpl {
     }
 
     private Double computeCollegeRecommendationScore(ProfileEntity profileEntity, CollegeEntity collegeEntity) {
-        long x,y;
-        x = System.currentTimeMillis();
+//        long x,y;
+//        x = System.currentTimeMillis();
         Double testSimilarityFactor = testScoreSimilarityFactor(profileEntity, collegeEntity);
-        y = System.currentTimeMillis();
-        tMillis += (y-x);
-        x = System.currentTimeMillis();
+//        y = System.currentTimeMillis();
+//        tMillis += (y-x);
+//        x = System.currentTimeMillis();
         Double schoolSimilarityFactor = schoolSimilarityFactor(profileEntity, collegeEntity);
-        y = System.currentTimeMillis();
-        sMillis += (y-x);
-        debug("tmillis = " + tMillis);
-        debug("smillis = " + sMillis);
+//        y = System.currentTimeMillis();
+//        sMillis += (y-x);
+//        debug("tmillis = " + tMillis);
+//        debug("smillis = " + sMillis);
         return testSimilarityFactor * TEST_FACTOR_WEIGHT + schoolSimilarityFactor * SCHOOL_FACTOR_WEIGHT;
     }
 

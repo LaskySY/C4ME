@@ -51,7 +51,7 @@ public class HighSchoolScraperServiceImpl {
     @Autowired
     HighschoolMajorAssociationRepository highschoolMajorAssociationRepository;
 
-    Random random = new Random(System.currentTimeMillis());
+    final Random random = new Random(System.currentTimeMillis());
 
     public boolean scrapeBaseSite(String webpage, HighschoolEntity highschoolEntity) throws IOException {
         URL url = new URL(webpage);

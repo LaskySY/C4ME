@@ -59,7 +59,7 @@ public class ImportStudentProfileServiceImpl {
   @Autowired
   ApplicationServiceImpl applicationService;
 
-  boolean debug = true;
+  final boolean debug = true;
   private void debug(String arg) { if(debug) System.out.println(arg); }
 
   public Integer parseInt(String s) {

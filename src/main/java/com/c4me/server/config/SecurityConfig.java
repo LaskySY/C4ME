@@ -48,8 +48,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
             .authorizeRequests()
-            .antMatchers("/tasks/**").authenticated()
-            .anyRequest().permitAll()
+            .antMatchers("/auth/**").permitAll()
+            .antMatchers("/admin/**").hasRole("ADMIN")
+            .anyRequest().authenticated()
             .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))

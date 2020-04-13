@@ -26,12 +26,8 @@ public class CollegeSearchController {
     @PostMapping
     @LogAndWrap(log="search for colleges", wrap=true)
     public List<CollegeInfo> searchForColleges(@RequestParam String username, @RequestBody CollegeSearchFilter filter) {
+        System.out.println(filter);
         return collegeSearchService.getSearchResults(username, filter);
     }
 
-    @GetMapping
-    @LogAndWrap(log="get college info", wrap=true)
-    public CollegeInfo getCollegeInfo(@RequestParam String name) {
-        return collegeSearchService.getCollegeInfo(name);
-    }
 }

@@ -1,5 +1,6 @@
 package com.c4me.server.core.collegeSearch.service;
 
+import com.c4me.server.core.admin.domain.CollegeInfo;
 import com.c4me.server.core.highschoolSearch.service.SimilarHighSchoolServiceImpl;
 import com.c4me.server.core.profile.repository.CollegeRepository;
 import com.c4me.server.core.profile.repository.ProfileRepository;
@@ -39,29 +40,49 @@ public class CollegeRecommendationServiceImpl {
         if(debug) System.out.println(arg);
     }
 
-    public Map<String, Double> computeCollegeRecommendationScores(String username, List<String> collegeNames) {
+    public List<CollegeInfo> computeCollegeRecommendationScores(String username, List<String> collegeNames) {
         ProfileEntity profileEntity = profileRepository.findByUsername(username);
         if(profileEntity == null) return null;
 
-        HashMap<String, Double> recommendationScores = new HashMap<>();
-
+        List<CollegeInfo> recommendedColleges = new ArrayList<>();
         for(String collegeName : collegeNames) {
             CollegeEntity collegeEntity = collegeRepository.findByName(collegeName);
-            if(collegeEntity == null) {
-                recommendationScores.put(collegeName, 0.0);
-            }
+            if(collegeEntity == null) continue;
             else {
-                recommendationScores.put(collegeName, computeCollegeRecommendationScore(profileEntity, collegeEntity));
+                Double score = computeCollegeRecommendationScore(profileEntity, collegeEntity);
+                CollegeInfo recommendationCollege = new CollegeInfo(collegeEntity);
+                recommendationCollege.setRecommendationScore(score);
+                recommendedColleges.add(recommendationCollege);
             }
         }
-        List<Map.Entry<String, Double>> sortedScores = new ArrayList<>(recommendationScores.entrySet());
-        Comparator<Map.Entry<String, Double>> compareValues = (o1, o2) -> {
-            if(o1.getValue().equals(o2.getValue())) return 0;
-            else if (o1.getValue() < o2.getValue()) return -1;
-            else return 1;
-        };
-        sortedScores.sort(compareValues);
-        return sortedScores.stream().collect(Collectors.toMap(e -> (String) e.getKey(), f -> (Double) f.getValue()));
+        recommendedColleges.sort(Comparator.comparingDouble(CollegeInfo::getRecommendationScore).reversed());
+        return recommendedColleges;
+//        HashMap<String, Double> recommendationScores = new HashMap<>();
+//
+//        for(String collegeName : collegeNames) {
+//            CollegeEntity collegeEntity = collegeRepository.findByName(collegeName);
+//            if(collegeEntity == null) {
+//                recommendationScores.put(collegeName, 0.0);
+//            }
+//            else {
+//                recommendationScores.put(collegeName, computeCollegeRecommendationScore(profileEntity, collegeEntity));
+//            }
+//        }
+//        List<Map.Entry<String, Double>> sortedScores = new ArrayList<>(recommendationScores.entrySet());
+//        Comparator<Map.Entry<String, Double>> compareValues = (o1, o2) -> {
+//            if(o1.getValue().equals(o2.getValue())) return 0;
+//            else if (o1.getValue() < o2.getValue()) return -1;
+//            else return 1;
+//        };
+//        sortedScores.sort(compareValues);
+//        System.out.println(sortedScores);
+//        Map<String, Double> returnMap = new HashMap<>();
+//        for(Map.Entry<String, Double> entry : sortedScores) {
+//            returnMap.put(entry.getKey(), entry.getValue());
+//        }
+//        System.out.println(returnMap);
+//        return returnMap;
+//        return sortedScores.stream().collect(Collectors.toMap(e -> (String) e.getKey(), f -> (Double) f.getValue()));
     }
 
     private Double computeCollegeRecommendationScore(ProfileEntity profileEntity, CollegeEntity collegeEntity) {

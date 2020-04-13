@@ -65,6 +65,8 @@ public class CollegeInfo {
 
     private Integer costOfAttendance;
 
+    private Double recommendationScore;
+
     public CollegeInfo(CollegeEntity collegeEntity) {
         name = collegeEntity.getName();
         type = TYPES_MAP.entrySet().stream().filter(e -> e.getValue().equals(collegeEntity.getType())).collect(Collectors.toList()).get(0).getKey();

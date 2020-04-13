@@ -2,6 +2,8 @@ package com.c4me.server.core.admin.service;
 
 
 
+import static com.c4me.server.config.constant.Const.Questionable.OK;
+import static com.c4me.server.config.constant.Const.Questionable.QUESTIONABLE;
 import static com.c4me.server.config.constant.Const.StudentProfileHeaders.*;
 import static com.c4me.server.config.constant.Const.ApplicationFileHeaders.*;
 import static com.c4me.server.config.constant.Const.Status.*;
@@ -16,6 +18,7 @@ import com.c4me.server.core.profile.repository.CollegeRepository;
 import com.c4me.server.core.profile.repository.MajorRepository;
 import com.c4me.server.core.profile.repository.ProfileRepository;
 import com.c4me.server.core.profile.repository.StudentApplicationRepository;
+import com.c4me.server.core.profile.service.ApplicationServiceImpl;
 import com.c4me.server.entities.*;
 
 import java.io.*;
@@ -53,6 +56,8 @@ public class ImportStudentProfileServiceImpl {
   userDetailsServiceImpl userDetailsService;
   @Autowired
   StudentApplicationRepository studentApplicationRepository;
+  @Autowired
+  ApplicationServiceImpl applicationService;
 
   boolean debug = true;
   private void debug(String arg) { if(debug) System.out.println(arg); }
@@ -196,7 +201,8 @@ public class ImportStudentProfileServiceImpl {
       debug(record.get(USER_ID));
       StudentApplicationEntity studentApplicationEntity = recordApplicationEntity(record);
       if(studentApplicationEntity != null) {
-        //TODO: compute questionable decision first
+        boolean questionable = applicationService.computeQuestionable(studentApplicationEntity.getUserByUsername(), studentApplicationEntity.getCollegeByCollegeId(), studentApplicationEntity.getStatus());
+        studentApplicationEntity.setQuestionable(questionable? QUESTIONABLE : OK);
         studentApplicationRepository.save(studentApplicationEntity);
       }
     }

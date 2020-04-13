@@ -1,5 +1,6 @@
 package com.c4me.server.core.collegeSearch.domain;
 
+import com.c4me.server.entities.CollegeEntity_;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class CollegeSearchFilter {
 
 //    private String major1;
 //    private String major2;
-    private String[] majors;
+    private String[] major;
 
     private Integer minRanking;
     private Integer maxRanking;
@@ -52,10 +53,10 @@ public class CollegeSearchFilter {
 
     private String sortBy;
 
-    @Builder.Default
+//    @Builder.Default
     private Boolean ascending = true;
 
-    @Builder.Default
+//    @Builder.Default
     private Boolean strict = false;
 
     public void setRegions(List<String> regions) {
@@ -73,9 +74,12 @@ public class CollegeSearchFilter {
                 }
             }
         }
+        if(getAscending() == null) setAscending(true);
+        if(getSortBy() == null || getSortBy().length() == 0) setSortBy(CollegeEntity_.RANKING);
+        if(getStrict() == null) setStrict(false);
     }
 
-    public static class CollegeSearchFilterBuilder {
+    public static class CollegeSearchFilterBuilder{
         public CollegeSearchFilter build() {
             CollegeSearchFilter filter = internalBuild();
             filter.loadStatesFromRegions();

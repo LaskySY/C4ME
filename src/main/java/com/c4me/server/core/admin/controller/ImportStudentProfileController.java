@@ -1,10 +1,13 @@
 package com.c4me.server.core.admin.controller;
 
 
+import com.c4me.server.config.annotation.LogAndWrap;
 import com.c4me.server.config.exception.*;
 import com.c4me.server.core.admin.service.ImportStudentProfileServiceImpl;
 import com.c4me.server.domain.BaseResponse;
 import java.util.Iterator;
+
+import com.c4me.server.utils.TestingDataUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,36 +33,17 @@ public class ImportStudentProfileController {
   ImportStudentProfileServiceImpl importStudentProfileService;
 
   @PostMapping
-  public BaseResponse importStudentProfile()
+  @LogAndWrap(log="importing profiles and applications")
+  public void importStudentProfilesAndApplications()
           throws IOException, NoStudentProfileCSVException, InvalidStudentProfileException, HighSchoolDoesNotExistException, InvalidStudentApplicationException, NoStudentApplicationCSVException, DuplicateUsernameException {
 
-    System.out.println("current dir = " + System.getProperty("user.dir"));
+    File studentProfilesFile = TestingDataUtils.findFile(STUDENT_PROFILES_FILE, "csv");
 
-    File topDir = new File(System.getProperty("user.dir"));
-    Iterator<File> files = FileUtils.iterateFiles(topDir, new String[] {"csv"}, true);
+    if(studentProfilesFile == null) throw new NoStudentProfileCSVException("Student profiles file you requested was not found");
+    importStudentProfileService.importStudentProfileCsv(studentProfilesFile);
 
-    String studentProfilesFilename = "";
-    boolean b1 = false, b2 = false;
-
-    while(files.hasNext()) {
-      File f = files.next();
-      String extension = FilenameUtils.getExtension(f.getAbsolutePath());
-      if (f.getName().equals(STUDENT_PROFILES_FILE) && extension.equals("csv")) {
-        studentProfilesFilename = f.getAbsolutePath();
-        b1 = true;
-        if (b2)
-          break;
-      }
-    }
-
-    if(studentProfilesFilename.equals("")) throw new NoStudentProfileCSVException("Student profiles file you requested was not found");
-    importStudentProfileService.importStudentProfileCsv(studentProfilesFilename);
-
-    return BaseResponse.builder()
-        .code("success")
-        .message("")
-        .data(null).build();
-
+    File studentApplicationsFile = TestingDataUtils.findFile(STUDENT_APPLICATIONS_FILE, "csv");
+    importStudentProfileService.importStudentApplicationsCsv(studentApplicationsFile);
   }
 
 }

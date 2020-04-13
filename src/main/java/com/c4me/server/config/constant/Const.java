@@ -161,12 +161,6 @@ public final class Const {
     };
   }
 
-  public final static class SortOptions {
-    public static final String SORT_BY_NAME = "name";
-    public static final String SORT_BY_ADM_RATE = "admissionRate";
-    public static final String SORT_BY_COST = "costOfAttendance";
-    public static final String SORT_BY_RANKING = "ranking";
-  }
   public final static class FilterOptions {
     public static final String[] SUPPORTED_RANGE_FILTERS = {
             CollegeEntity_.SAT_MATH50,
@@ -388,10 +382,7 @@ public final class Const {
         SAT_PHYS,
         NUM_AP_PASSED
     };
-
-
   }
-
 
   public static final class ApplicationFileHeaders {
     public static final String APP_USER_ID                  = "userid";
@@ -403,13 +394,7 @@ public final class Const {
         APP_COLLEGE,
         APP_STATUS
     };
-
-
   }
-
-
-
-
 
   public final static class States {
     public static final String[] STATES = {

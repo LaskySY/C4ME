@@ -1,8 +1,7 @@
 package com.c4me.server.core.admin.service;
 
 
-import static com.c4me.server.config.constant.Const.Filenames.STUDENT_APPLICATIONS_FILE;
-import static com.c4me.server.config.constant.Const.Filenames.STUDENT_PROFILES_FILE;
+
 import static com.c4me.server.config.constant.Const.StudentProfileHeaders.*;
 import static com.c4me.server.config.constant.Const.ApplicationFileHeaders.*;
 import static com.c4me.server.config.constant.Const.Status.*;
@@ -16,24 +15,12 @@ import com.c4me.server.core.credential.service.userDetailsServiceImpl;
 import com.c4me.server.core.profile.repository.CollegeRepository;
 import com.c4me.server.core.profile.repository.MajorRepository;
 import com.c4me.server.core.profile.repository.ProfileRepository;
-import com.c4me.server.entities.CollegeEntity;
-import com.c4me.server.entities.HighschoolEntity;
-import com.c4me.server.entities.MajorEntity;
-import com.c4me.server.entities.ProfileEntity;
-import com.c4me.server.entities.StudentApplicationEntity;
-import com.c4me.server.entities.UserEntity;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.c4me.server.core.profile.repository.StudentApplicationRepository;
+import com.c4me.server.entities.*;
+
+import java.io.*;
+import java.util.*;
+
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.io.FileUtils;
@@ -53,25 +40,23 @@ public class ImportStudentProfileServiceImpl {
 
   @Autowired
   ProfileRepository profileRepository;
-
   @Autowired
   UserRepository userRepository;
-
   @Autowired
   HighschoolRepository highschoolRepository;
-
   @Autowired
   CollegeRepository collegeRepository;
-
   @Autowired
   MajorRepository majorRepository;
-
   @Autowired
   HighSchoolScraperServiceImpl highSchoolScraperService;
-
   @Autowired
   userDetailsServiceImpl userDetailsService;
+  @Autowired
+  StudentApplicationRepository studentApplicationRepository;
 
+  boolean debug = true;
+  private void debug(String arg) { if(debug) System.out.println(arg); }
 
   public Integer parseInt(String s) {
     try { return Integer.parseInt(s); }
@@ -82,21 +67,10 @@ public class ImportStudentProfileServiceImpl {
     catch (NumberFormatException e) { return null; }
   }
 
-
-  public ProfileEntity recordToEntity(CSVRecord record) { //TODO: should only check header for the first record
-
+  public ProfileEntity recordToEntity(CSVRecord record) {
     Map<String, String> recordMap = record.toMap();
-//        System.out.println(recordMap.toString());
-//        System.out.println(recordMap.keySet().toString());
     Set<String> keysWeCareAbout = new HashSet<String>(Arrays.asList(HEADERS));
-
     if(!recordMap.keySet().containsAll(keysWeCareAbout)) {
-      System.out.println("missing headers -- throw an error");
-      for(String key : keysWeCareAbout) {
-        if(!recordMap.containsKey(key)) {
-          System.out.println("missing header key " + key);
-        }
-      }
       return null;
     }
     else {
@@ -122,12 +96,9 @@ public class ImportStudentProfileServiceImpl {
           .satChemistry(parseInt(record.get(SAT_CHEM)))
           .satPhysics(parseInt(record.get(SAT_PHYS)))
           .numApCourses(parseInt(record.get(NUM_AP_PASSED)))
-//          .createTime(Timestamp.from(Instant.now()))
-          .updateTime(Timestamp.from(Instant.now()))
           .schoolYear(parseInt(record.get(COLLEGE_CLASS)))
           .build();
     }
-
   }
 
 
@@ -136,36 +107,38 @@ public class ImportStudentProfileServiceImpl {
     Set<String> keysWeCareAbout = new HashSet<String>(Arrays.asList(APP_HEADERS));
 
     if(!recordMap.keySet().containsAll(keysWeCareAbout)) {
-      System.out.println("missing headers -- throw an error");
-      for(String key : keysWeCareAbout) {
-        if(!recordMap.containsKey(key)) {
-          System.out.println("missing header key " + key);
-        }
-      }
       return null;
     }
     else{
-      UserEntity thisUser = userRepository.findByUsername(APP_USER_ID);
-      CollegeEntity thisCollege = collegeRepository.findByName(APP_COLLEGE);
+      UserEntity thisUser = userRepository.findByUsername(record.get(APP_USER_ID));
+      if(thisUser == null) return null;
+      CollegeEntity thisCollege = collegeRepository.findByNameLike("%"+record.get(APP_COLLEGE)+"%"); //TODO: use fuzzy search on colleges.txt to get the correct name
+      if(thisCollege == null) return null;
       Integer decisionStatus = 0;
-      if(recordMap.get(APP_COLLEGE).equalsIgnoreCase("pending")){
+      String status = record.get(APP_STATUS);
+      if(status.equalsIgnoreCase("pending")){
         decisionStatus = PENDING;
       }
-      else if(recordMap.get(APP_COLLEGE).equalsIgnoreCase("accepted")){
+      else if(status.equalsIgnoreCase("accepted")){
         decisionStatus = ACCEPTED;
       }
-      else if(recordMap.get(APP_COLLEGE).equalsIgnoreCase("denied")){
+      else if(status.equalsIgnoreCase("denied")){
         decisionStatus = DENIED;
       }
-      else if(recordMap.get(APP_COLLEGE).equalsIgnoreCase("waitlisted") ||
-          recordMap.get(APP_COLLEGE).equalsIgnoreCase("wait-listed")){
+      else if(status.equalsIgnoreCase("waitlisted") ||
+          recordMap.get(APP_STATUS).equalsIgnoreCase("wait-listed")){
         decisionStatus = WAITLISTED;
       }
+      StudentApplicationEntityPK studentApplicationEntityPK = StudentApplicationEntityPK.builder()
+              .collegeId(thisCollege.getId())
+              .username(thisUser.getUsername())
+              .build();
 
       return StudentApplicationEntity.builder()
           .userByUsername(thisUser)
           .collegeByCollegeId(thisCollege)
           .status(decisionStatus)
+          .studentApplicationEntityPK(studentApplicationEntityPK)
           .build();
     }
 
@@ -173,220 +146,97 @@ public class ImportStudentProfileServiceImpl {
 
   }
 
+  public void importStudentProfileCsv(File file)
+          throws IOException, NoStudentProfileCSVException, InvalidStudentProfileException, HighSchoolDoesNotExistException, NoStudentApplicationCSVException, DuplicateUsernameException {
+    debug("Importing students");
 
+    if(file == null) throw new NoStudentProfileCSVException("student profile file not found");
 
-  public void importStudentProfileCsv(String filename)
-          throws IOException, NoStudentProfileCSVException, InvalidStudentProfileException, HighSchoolDoesNotExistException, InvalidStudentApplicationException, NoStudentApplicationCSVException, DuplicateUsernameException {
-    System.out.println("Importing");
-
-    if(filename.equals("")) throw new NoStudentProfileCSVException("student profile file not found");
-
-    Reader in = new FileReader(filename);
-    Iterable<CSVRecord> records = CSVFormat.EXCEL.withTrim().withHeader().withTrim().parse(in);
-
-    List<UserEntity> currentUsers = userRepository.findAll();
-    List<HighschoolEntity> currentHighSchools = highschoolRepository.findAll();
-    List<MajorEntity> currentMajors = majorRepository.findAll();
+    Reader in = new FileReader(file);
+    Iterable<CSVRecord> records = CSVFormat.EXCEL.withHeader().withTrim().parse(in);
 
     for (CSVRecord record : records) {
-
-
-
-      Boolean userExists = false;
-      Boolean highschoolExists = false;
-      UserEntity newUser = null;
-      HighschoolEntity newHS = null;
-      UserEntity existingUser = null;
-      HighschoolEntity existingHS = null;
-
+      debug(record.toMap().toString());
       ProfileEntity profileEntity = recordToEntity(record);
       if(profileEntity == null) throw new InvalidStudentProfileException("invalid student profile file");
       else{
+        String major1 = profileEntity.getMajor1();
+        String major2 = profileEntity.getMajor2();
+        profileEntity.setMajorByMajor1(getMajorEntityIfExists(major1));
+        profileEntity.setMajorByMajor2(getMajorEntityIfExists(major2));
 
+        String username = profileEntity.getUsername();
+        String password = record.get(PASSWORD);
+        String name = username;
+        profileEntity.setUserByUsername(getUserEntityIfExists(username, password, name));
 
-        // set majors properly for profile
-        // if it a major doesnt exist in our DB, add it
-        Boolean majorExists = false;
-        if(!(profileEntity.getMajor1() == null)) {
-          String maj1name = profileEntity.getMajor1().trim();
-          MajorEntity maj = new MajorEntity();
-          maj.setName(maj1name);
+        String highschoolName = record.get(HS_NAME);
+        String highschoolCity = record.get(HS_CITY);
+        String highschoolState = record.get(HS_STATE);
 
-          for(MajorEntity m: currentMajors){
-            String currMajName = m.getName();
-            if(currMajName.equals(maj1name)){
-              majorExists = true;
-              profileEntity.setMajorByMajor1(m);
-            }
-          }
-
-          //major currently doesnt exist in our db
-          if(!majorExists){
-            profileEntity.setMajorByMajor1(maj);
-            majorRepository.save(maj);
-          }
-
-        }
-
-        //repeat for maj2
-        majorExists = false;
-        if(!(profileEntity.getMajor2() == null)) {
-          String maj2name = profileEntity.getMajor2().trim();
-          MajorEntity maj = new MajorEntity();
-          maj.setName(maj2name);
-
-          for(MajorEntity m: currentMajors){
-            String currMajName = m.getName();
-            if(currMajName.equals(maj2name)){
-              majorExists = true;
-              profileEntity.setMajorByMajor2(m);
-            }
-          }
-
-          //major currently doesnt exist in our db
-          if(!majorExists){
-            profileEntity.setMajorByMajor2(maj);
-            majorRepository.save(maj);
-          }
-
-        }
-
-
-        String username = record.get(USER_ID);
-        String highschoolname = record.get(HS_NAME);
-        String highschoolcity = record.get(HS_CITY);
-        String highschoolstate = record.get(HS_STATE);
-        username = username.trim();
-        highschoolname = highschoolname.trim();
-        highschoolcity.trim();
-        highschoolstate.trim();
-        //check if user with that username exists
-        for(UserEntity user : currentUsers){
-          if(user.getUsername().equals(username)){
-            userExists = true;
-            existingUser = user;
-          }
-        }
-
-        //if it doesn't exist create it
-        if(!userExists){
-          RegisterUser registerUser = new RegisterUser(username, record.get(PASSWORD), username);
-          newUser = userDetailsService.register(registerUser);
-
-//          newUser = UserEntity.builder()
-//              .username(username)
-//              .name(username)
-//              .password(record.get(PASSWORD))
-//              .role(0)
-//              .profileByUsername(profileEntity)
-//              .createTime(Timestamp.from(Instant.now()))
-//              .updateTime(Timestamp.from(Instant.now()))
-//              .build();
-        }
-
-        //check if highschool exists
-        for(HighschoolEntity hs : currentHighSchools){
-          if(hs.getName().equals(highschoolname)){
-            highschoolExists = true;
-            existingHS = hs;
-          }
-        }
-
-        //if it doesn't exist create it and scrape it's info from niche site
-        if(!highschoolExists){
-          String hsquery = highschoolname + " " + highschoolcity + " " + highschoolstate;
-          newHS = highSchoolScraperService.scrapeHighSchool(hsquery, false);
-        }
-
-        //check applications csv and if it contains any applications from that user then we add them to his profile
-        //dont do it if it's new user because there wont be any application
-
-        if(userExists) {
-
-          //get the applications file
-          File topDir = new File(System.getProperty("user.dir"));
-          Iterator<File> files = FileUtils.iterateFiles(topDir, new String[]{"csv"}, true);
-
-          String studentApplicationsFilename = "";
-          boolean b1 = false, b2 = false;
-          while (files.hasNext()) {
-            File f = files.next();
-            String extension = FilenameUtils.getExtension(f.getAbsolutePath());
-            if (f.getName().equals(STUDENT_APPLICATIONS_FILE) && extension.equals("csv")) {
-              studentApplicationsFilename = f.getAbsolutePath();
-              b1 = true;
-              if (b2)
-                break;
-            }
-          }
-
-          if (studentApplicationsFilename.equals(""))
-            throw new NoStudentApplicationCSVException(
-                "Student applications file you requested was not found");
-
-          Reader applicationReader = new FileReader(studentApplicationsFilename);
-          Iterable<CSVRecord> appRecords = CSVFormat.EXCEL.withHeader().parse(applicationReader);
-          for (CSVRecord appRecord : appRecords) {
-
-            StudentApplicationEntity applicationEntity = recordApplicationEntity(appRecord);
-            if (applicationEntity == null)
-              throw new InvalidStudentApplicationException("invalid student applications file");
-            else {
-              if (existingUser.equals(applicationEntity.getUserByUsername())) {
-                //then add the application to theirs
-                existingUser.getStudentApplicationsByUsername().add(applicationEntity);
-              }
-            }
-
-          }
-//          applicationReader.close();
-        }
-
-
-
-        //save everything
-
-        //save new user if we made one
-        if(!userExists){
-          userRepository.save(newUser);
-        }
-        else{ // else save the existing one with the updated changes to their applications field
-          userRepository.save(existingUser);
-        }
-
-        if(!highschoolExists){
-          highschoolRepository.save(newHS);
-        }
-
-
-        if(highschoolExists) {
-          profileEntity.setSchoolId(existingHS.getSchoolId());
-          profileEntity.setHighschoolBySchoolId(existingHS);
-        }
-        else{
-          profileEntity.setSchoolId(newHS.getSchoolId());
-          profileEntity.setHighschoolBySchoolId(newHS);
-        }
-
+        //if it doesn't exist, scrape its info from niche site
+        String hsquery = highschoolName + " " + highschoolCity + " " + highschoolState;
+        HighschoolEntity highschoolEntity = highschoolRepository.findByName(hsquery);
+        if(highschoolEntity == null) highschoolEntity = highSchoolScraperService.scrapeHighSchool(hsquery, false);
+        profileEntity.setHighschoolBySchoolId(highschoolEntity);
 
         profileRepository.save(profileEntity);
-
-
       }
-
-//      in.close();
-
-
-
     }
+  }
+
+  public void importStudentApplicationsCsv(File file) throws InvalidStudentApplicationException, IOException {
+    debug("Importing applications");
+
+    if(file == null) throw new InvalidStudentApplicationException("applications file not found");
+
+    Reader in = new FileReader(file);
+    Iterable<CSVRecord> records = CSVFormat.EXCEL.withHeader().withTrim().parse(in);
+
+    for(CSVRecord record : records) {
+      debug(record.get(USER_ID));
+      StudentApplicationEntity studentApplicationEntity = recordApplicationEntity(record);
+      if(studentApplicationEntity != null) {
+        //TODO: compute questionable decision first
+        studentApplicationRepository.save(studentApplicationEntity);
+      }
+    }
+  }
 
 
+  private MajorEntity getMajorEntityIfExists(String major) {
+    MajorEntity majorEntity;
+    if(major == null) {
+      majorEntity = null;
+    }
+    else {
+      Optional<MajorEntity> majorEntityOpt = majorRepository.findById(major);
+      majorEntity = majorEntityOpt.orElseGet(() -> {
+        MajorEntity me = MajorEntity.builder().name(major).build();
+        majorRepository.save(me);
+        return me;
+      });
+    }
+    return majorEntity;
+  }
 
-
-
-
-
-
+  private UserEntity getUserEntityIfExists(String username, String password, String name) {
+    UserEntity userEntity;
+    if(username == null) {
+      userEntity = null;
+    }
+    else {
+      Optional<UserEntity> userEntityOpt = userRepository.findById(username);
+      userEntity = userEntityOpt.orElseGet(() -> {
+        RegisterUser registerUser = RegisterUser.builder().username(username).password(password).name(name).build();
+        try {
+          return userDetailsService.register(registerUser);
+        } catch (DuplicateUsernameException ignored) {
+        }
+        return null;
+      });
+    }
+    return userEntity;
   }
 
 }

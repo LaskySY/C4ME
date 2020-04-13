@@ -2,6 +2,7 @@ package com.c4me.server.core.credential.domain;
 
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class RegisterUser {
   private String username;
   @NotNull(message = "password cannot be null")

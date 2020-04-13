@@ -206,7 +206,7 @@ public class ImportStudentProfileServiceImpl {
 
   private MajorEntity getMajorEntityIfExists(String major) {
     MajorEntity majorEntity;
-    if(major == null) {
+    if(major == null || major.length() == 0) {
       majorEntity = null;
     }
     else {

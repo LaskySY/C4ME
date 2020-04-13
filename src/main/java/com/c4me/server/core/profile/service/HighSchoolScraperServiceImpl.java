@@ -371,6 +371,7 @@ public class HighSchoolScraperServiceImpl {
         List<String> majorsInDatabase = majorEntities.stream().map(MajorEntity::getName).collect(Collectors.toList());
         for(String major : majors) {
             major = truncateMajor(major);
+            if(major.length() == 0) continue;
             int index = matchMajor(major, majorsInDatabase);
             MajorEntity majorEntity;
             if(index == -1) {

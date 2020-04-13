@@ -38,17 +38,17 @@ public class LogInterceptor implements HandlerInterceptor {
    * update the log info if error occur
    */
   public synchronized static void logExceptionUnExpect(Throwable e, String errorCode) {
-    HttpServletRequest request = ((ServletRequestAttributes) Objects
-        .requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
-    Integer logId = (Integer) request.getAttribute("logId");
-    request.removeAttribute("logId");
-    LogEntity logEntity = loginterceptor.logRepository.findById(logId).orElse(null);
-    if (logEntity != null) {
-      logEntity.setType("fail");
-      logEntity.setExceptionCode(errorCode);
-      logEntity.setExceptionDetail(e.getMessage());
-      loginterceptor.logRepository.save(logEntity);
-    }
+//    HttpServletRequest request = ((ServletRequestAttributes) Objects
+//        .requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();
+//    Integer logId = (Integer) request.getAttribute("logId");
+//    request.removeAttribute("logId");
+//    LogEntity logEntity = loginterceptor.logRepository.findById(logId).orElse(null);
+//    if (logEntity != null) {
+//      logEntity.setType("fail");
+//      logEntity.setExceptionCode(errorCode);
+//      logEntity.setExceptionDetail(e.getMessage());
+//      loginterceptor.logRepository.save(logEntity);
+//    }
   }
 
   @PostConstruct
@@ -85,7 +85,7 @@ public class LogInterceptor implements HandlerInterceptor {
       }
       logRepository.save(log);
 
-      request.setAttribute("logId", log.getId());
+//      request.setAttribute("logId", log.getId());
     } catch (Exception e) {
       logger.error("Cannot save current Log." + e.getMessage());
       LoggerUtils.saveFailLog(request, "Log", "Cannot save current Log.", Const.Error.LOG);

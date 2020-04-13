@@ -229,6 +229,8 @@ public final class Const {
 
     public static String NICHE_PREFIX = "https://www.niche.com/k12/";
 
+    public static String COLLEGE_DATA_PREFIX = "https://www.collegedata.com/college/";
+
     public static void readConfigFile() {
       System.out.println("reading config file");
       File file = TestingDataUtils.findFile("config.txt", "txt");
@@ -248,6 +250,7 @@ public final class Const {
         THE_RANKINGS_JSON_URL = properties.getProperty("THE_RANKINGS_JSON_URL", THE_RANKINGS_JSON_URL);
         ALL_HIGH_SCHOOLS_FILE = properties.getProperty("ALL_HIGH_SCHOOLS_FILE", ALL_HIGH_SCHOOLS_FILE);
         NICHE_PREFIX = properties.getProperty("NICHE_PREFIX", NICHE_PREFIX);
+        COLLEGE_DATA_PREFIX = properties.getProperty("COLLEGE_DATA_PREFIX", COLLEGE_DATA_PREFIX);
       } catch (IOException e) {
         System.out.println("Could not find configuration file; using default values");
       }

@@ -1,5 +1,9 @@
 package com.c4me.server.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -9,6 +13,9 @@ import java.util.Objects;
  * @CreateDate: 03-15-2020
  */
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "College_major_association", schema = "siyoliu")
 //@IdClass(CollegeMajorAssociationEntityPK.class)
@@ -16,10 +23,10 @@ public class CollegeMajorAssociationEntity {
 //    private int collegeId;
 //    private String majorName;
     @ManyToOne
-    @JoinColumn(name = "college_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "college_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private CollegeEntity collegeByCollegeId;
     @ManyToOne
-    @JoinColumn(name = "major_name", referencedColumnName = "name", nullable = false)
+    @JoinColumn(name = "major_name", referencedColumnName = "name", nullable = false, insertable = false, updatable = false)
     private MajorEntity majorByMajorName;
     @EmbeddedId
     private CollegeMajorAssociationEntityPK collegeMajorAssociationEntityPK;

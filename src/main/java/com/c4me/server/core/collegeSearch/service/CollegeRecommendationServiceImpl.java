@@ -40,7 +40,23 @@ public class CollegeRecommendationServiceImpl {
         if(debug) System.out.println(arg);
     }
 
+    //use the home state if sorting by cost (for in-state vs out of state)
+    private String getHomeState(String username) {
+        if(username == null) return null;
+        String homeState = null;
+        ProfileEntity profileEntity = profileRepository.findByUsername(username);
+        if(profileEntity != null) {
+            HighschoolEntity highschoolEntity = profileEntity.getHighschoolBySchoolId();
+            if(highschoolEntity != null) {
+                homeState = highschoolEntity.getState();
+            }
+        }
+        return homeState;
+    }
+
     public List<CollegeInfo> computeCollegeRecommendationScores(String username, List<String> collegeNames) {
+        String homeState = getHomeState(username);
+
         ProfileEntity profileEntity = profileRepository.findByUsername(username);
         if(profileEntity == null) return null;
 
@@ -50,7 +66,7 @@ public class CollegeRecommendationServiceImpl {
             if(collegeEntity == null) continue;
             else {
                 Double score = computeCollegeRecommendationScore(profileEntity, collegeEntity);
-                CollegeInfo recommendationCollege = new CollegeInfo(collegeEntity);
+                CollegeInfo recommendationCollege = new CollegeInfo(collegeEntity, homeState);
                 recommendationCollege.setRecommendationScore(score);
                 recommendedColleges.add(recommendationCollege);
             }

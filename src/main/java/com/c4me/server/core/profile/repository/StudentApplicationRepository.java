@@ -6,13 +6,13 @@ import com.c4me.server.entities.StudentApplicationEntityPK;
 import com.c4me.server.entities.UserEntity;
 //import org.apache.catalina.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface StudentApplicationRepository extends JpaRepository<StudentApplicationEntity, StudentApplicationEntityPK> {
-    //TODO: find applications for a college and for a student
+public interface StudentApplicationRepository extends JpaRepository<StudentApplicationEntity, StudentApplicationEntityPK>, JpaSpecificationExecutor<StudentApplicationEntity> {
     //public StudentApplicationEntity findByCollegeByCollegeId(CollegeEntity collegeEntity);
     public List<StudentApplicationEntity> findAllByUserByUsername(UserEntity userEntity);
 

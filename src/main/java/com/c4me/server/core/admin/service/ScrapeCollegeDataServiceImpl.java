@@ -1,20 +1,21 @@
 package com.c4me.server.core.admin.service;
 
-import com.c4me.server.config.exception.NoCollegeTxtException;
+import com.c4me.server.core.admin.repository.CollegeMajorAssociationRepository;
 import com.c4me.server.core.profile.repository.CollegeRepository;
+import com.c4me.server.core.profile.repository.MajorRepository;
 import com.c4me.server.entities.CollegeEntity;
+import com.c4me.server.entities.CollegeMajorAssociationEntity;
+import com.c4me.server.entities.CollegeMajorAssociationEntityPK;
+import com.c4me.server.entities.MajorEntity;
+import com.c4me.server.core.profile.service.MajorAliasTable;
 import com.c4me.server.utils.TestingDataUtils;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 import org.apache.commons.text.similarity.LevenshteinDistance;
@@ -26,7 +27,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static com.c4me.server.config.constant.Const.Filenames.*;
-import static com.c4me.server.utils.TestingDataUtils.*;
 
 /**
  * @Description:
@@ -38,18 +38,15 @@ import static com.c4me.server.utils.TestingDataUtils.*;
 public class ScrapeCollegeDataServiceImpl {
   @Autowired
   CollegeRepository collegeRepository;
-
-  LevenshteinDistance distance = new LevenshteinDistance();
-
-  TestingDataUtils td;
-
-
-
-
+  @Autowired
+  MajorRepository majorRepository;
+  @Autowired
+  CollegeMajorAssociationRepository collegeMajorAssociationRepository;
+  final LevenshteinDistance distance = new LevenshteinDistance();
 
   public Document openWebpage(URL url) throws IOException {
     URLConnection conn = url.openConnection();
-    conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0"); //TODO: do we need to cycle user-agents?
+    conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0");
     String line = null;
     StringBuilder tmp = new StringBuilder();
     BufferedReader buf = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -60,77 +57,68 @@ public class ScrapeCollegeDataServiceImpl {
     return doc;
   }
 
-
-  public List<String> readCollegeDataTxt(String filename) throws IOException {
-    Reader in = new FileReader(filename);
-    BufferedReader buf = new BufferedReader(in);
-    List<String> colleges = new ArrayList<>();
-    String line = "";
-    while((line = buf.readLine()) != null) {
-      colleges.add(line);
-    }
-    buf.close();
-    in.close();
-    return colleges;
+  private static String preprocess(String collegeName) {
+    collegeName = collegeName.replace("-", " ");
+    collegeName = collegeName.trim();
+    collegeName = collegeName.replaceAll(" +", " ");
+    return collegeName;
   }
 
+  private static Integer parseInt (String str) {
+    try {
+      return Integer.parseInt(str);
+    } catch (NumberFormatException e) {return null;}
+  }
 
-
+  //TODO: please break up this method into smaller methods.
   public void scrapeCollegeData() throws IOException {
     List<CollegeEntity> colleges = collegeRepository.findAll();
 
-    td.findFile(COLLEGEDATATXT);
-    File dataFile = td.findFile(COLLEGEDATATXT);
-    String path = dataFile.getAbsolutePath();
-    List<String> collegesListedOnWebsite = readCollegeDataTxt(path);
+    File dataFile = TestingDataUtils.findFile(COLLEGEDATATXT);
+    List<String> collegesListedOnWebsite = TestingDataUtils.readFile(dataFile);
 
+//    Collection<MajorEntity> majorEntities = majorRepository.findAll();
 
     for(CollegeEntity c : colleges){
-      int shortestDistance = 10000;
-      String name = c.getName();
-      name = name.replace("-", " ");
-      name = name.trim();
-      name = name.replaceAll(" +"," ");
+      String name = preprocess(c.getName());
 
+      int shortestDistance = Integer.MAX_VALUE;
       String desiredName = name;
 
       //get the closest url extension from name we have vs name on collegeData website
       for(String siteCollege: collegesListedOnWebsite){
-        siteCollege = siteCollege.replace("-", " ");
-        siteCollege = siteCollege.trim();
-        siteCollege = siteCollege.replaceAll(" +"," ");
-        int stringDist = distance.apply(name, siteCollege);
+        int stringDist = distance.apply(name, preprocess(siteCollege));
         if(stringDist < shortestDistance){
           shortestDistance = stringDist;
           desiredName = siteCollege;
         }
       }
+      System.out.println("name = " + name + ", desiredName = " + desiredName);
 
       name = desiredName;
 
       //now we have the accurate name extension to append to our url
 
-      String webpage = "https://www.collegedata.com/college/";
-      name = name.replace(" ", "-");
+      String webpage = COLLEGE_DATA_PREFIX;
+      if(!webpage.endsWith("/")) webpage += "/";
       webpage += name;
-//      webpage += name.replace(" ", "-");
 
-      System.out.println(name);
+      System.out.println(webpage);
 
       URL collegeurl = new URL(webpage);
       Document document = openWebpage(collegeurl);
 
       Double netprice = null;
-      int instateTu = 0;
-      int outstateTu = 0;
+      Integer instateTu = 0;
+      Integer outstateTu = 0;
       Double averageGPA = null;
-      int actComp = 0;
-      int satMath25 = 0;
-      int satMath50 = 0;
-      int satMath75 = 0;
-      int satEbrw25 = 0;
-      int satEbrw50 = 0;
-      int satEbrw75 = 0;
+      Integer actComp = 0;
+      Integer satMath25 = 0;
+      Integer satMath50 = 0;
+      Integer satMath75 = 0;
+      Integer satEbrw25 = 0;
+      Integer satEbrw50 = 0;
+      Integer satEbrw75 = 0;
 
       boolean hasSatMath50 = false;
       boolean hasSatEbrw50 = false;
@@ -233,8 +221,8 @@ public class ScrapeCollegeDataServiceImpl {
                 outStateStr = outStateStr.replace(",", "");
 
 
-                instateTu = Integer.parseInt(inStateStr);
-                outstateTu = Integer.parseInt(outStateStr);
+                instateTu = parseInt(inStateStr);
+                outstateTu = parseInt(outStateStr);
 
 
               }
@@ -244,8 +232,8 @@ public class ScrapeCollegeDataServiceImpl {
                 String tuitionStr = dd.wholeText().substring(startIndex + 1);
                 tuitionStr = tuitionStr.replace(",", "");
 
-                instateTu = Integer.parseInt(tuitionStr);
-                outstateTu = Integer.parseInt(tuitionStr);
+                instateTu = parseInt(tuitionStr);
+                outstateTu = parseInt(tuitionStr);
               }
             }
 
@@ -308,9 +296,9 @@ public class ScrapeCollegeDataServiceImpl {
                 }
 
 
-                satMath50 = Integer.parseInt(math50);
-                satMath25 = Integer.parseInt(math25);
-                satMath75 = Integer.parseInt(math75);
+                satMath50 = parseInt(math50);
+                satMath25 = parseInt(math25);
+                satMath75 = parseInt(math75);
 
                 hasSatMath50 = true;
 
@@ -331,8 +319,8 @@ public class ScrapeCollegeDataServiceImpl {
                   math75 += "0";
                 }
 
-                satMath25 = Integer.parseInt(math25);
-                satMath75 = Integer.parseInt(math75);
+                satMath25 = parseInt(math25);
+                satMath75 = parseInt(math75);
               }
 
             }
@@ -373,9 +361,9 @@ public class ScrapeCollegeDataServiceImpl {
 
 
 
-                satEbrw50 = Integer.parseInt(ebrw50);
-                satEbrw25 = Integer.parseInt(ebrw25);
-                satEbrw75 = Integer.parseInt(ebrw75);
+                satEbrw50 = parseInt(ebrw50);
+                satEbrw25 = parseInt(ebrw25);
+                satEbrw75 = parseInt(ebrw75);
 
                 hasSatEbrw50 = true;
 
@@ -396,8 +384,8 @@ public class ScrapeCollegeDataServiceImpl {
                   ebrw75 += "0";
                 }
 
-                satEbrw25 = Integer.parseInt(ebrw25);
-                satEbrw75 = Integer.parseInt(ebrw75);
+                satEbrw25 = parseInt(ebrw25);
+                satEbrw75 = parseInt(ebrw75);
               }
 
             }
@@ -418,7 +406,7 @@ public class ScrapeCollegeDataServiceImpl {
                 //since actComp is only 1 field we only care about 1 score
                 String actStr = dd.wholeText().substring(0, 2);
 
-                actComp = Integer.parseInt(actStr);
+                actComp = parseInt(actStr);
 
             }
 
@@ -429,7 +417,49 @@ public class ScrapeCollegeDataServiceImpl {
 
         }
 
+        //get the majors at this college
+        if(e.wholeText().contains("Undergraduate Majors")){
+//          System.out.println("UG EDU is there");
 
+          Collection<CollegeMajorAssociationEntity> cmaList = c.getCollegeMajorAssociationsById();
+          Collection<CollegeMajorAssociationEntity> newCollegeMajorAssociations = new ArrayList<>();
+
+          Elements list = e.select("li");
+          for(Element e2: list){
+            if(e2 != null) {
+              if(e2.wholeText().contains("Not")){
+                continue;
+              }
+              else {
+//                System.out.println("Major is " + e2.wholeText());
+                String majorName = e2.wholeText().trim();
+                MajorEntity majEnt = getMajorEntityIfExists(majorName);
+                if(majEnt == null) continue;
+
+                CollegeMajorAssociationEntityPK collegeMajorAssociationEntityPK = CollegeMajorAssociationEntityPK.builder()
+                        .college_id(c.getId())
+                        .major_name(majEnt.getName())
+                        .build();
+                CollegeMajorAssociationEntity collegeMajorAssociationEntity = CollegeMajorAssociationEntity.builder()
+                        .collegeByCollegeId(c)
+                        .majorByMajorName(majEnt)
+                        .collegeMajorAssociationEntityPK(collegeMajorAssociationEntityPK)
+                        .build();
+                //collegeMajorAssociationRepository.save(collegeMajorAssociationEntity);
+                if(!cmaList.contains(collegeMajorAssociationEntity)) {
+                  newCollegeMajorAssociations.add(collegeMajorAssociationEntity);
+                };
+              }
+
+            }
+
+          }
+          if(newCollegeMajorAssociations.size() > 0) {
+            collegeMajorAssociationRepository.saveAll(newCollegeMajorAssociations);
+            cmaList.addAll(newCollegeMajorAssociations);
+          }
+
+        }
 
 
       }
@@ -438,57 +468,77 @@ public class ScrapeCollegeDataServiceImpl {
       if(netprice != null){
         c.setNetPrice(netprice);
       }
-      if(instateTu != 0){
+      if(instateTu != null && instateTu != 0){
         c.setInstateTuition(instateTu);
       }
-      if(outstateTu != 0){
+      if(outstateTu != null && outstateTu != 0){
         c.setOutstateTuition(outstateTu);
       }
       if(averageGPA != null){
         c.setAverageGpa(averageGPA);
       }
-      if(satMath25 != 0){
+      if(satMath25 != null && satMath25 != 0){
         c.setSatMath25(satMath25);
       }
 
-      if(satMath50 != 0) {
+      if(satMath50 != null && satMath50 != 0) {
         if (hasSatMath50) {
           c.setSatMath50(satMath50);
         }
       }
 
-      if(satMath75 != 0){
+      if(satMath75 != null && satMath75 != 0){
         c.setSatMath75(satMath75);
       }
-      if(satEbrw25 != 0){
+      if(satEbrw25 != null && satEbrw25 != 0){
         c.setSatEbrw25(satEbrw25);
       }
 
-      if(satEbrw50 != 0) {
+      if(satEbrw50 != null && satEbrw50 != 0) {
         if (hasSatEbrw50) {
           c.setSatEbrw50(satEbrw50);
         }
       }
 
-      if(satEbrw75 != 0){
+      if(satEbrw75 != null && satEbrw75 != 0){
         c.setSatEbrw75(satEbrw75);
       }
 
-      if(actComp != 0){
+      if(actComp != null && actComp != 0){
         c.setActComposite(actComp);
       }
 
 
       collegeRepository.save(c);
 
+//      Collection<CollegeMajorAssociationEntity> myEnts = c.getCollegeMajorAssociationsById();
 //      break;
-
 
 
     }
 
 
 
+  }
+
+  private MajorEntity getMajorEntityIfExists(String major) {
+    MajorAliasTable majorAliasTable = new MajorAliasTable();
+    return majorAliasTable.parseMajorName(major);
+//    MajorEntity majorEntity;
+//    if(major == null) {
+//      majorEntity = null;
+//    }
+//    else {
+//      majorEntity = MajorEntity.builder().name(major).build();
+//      if(!(majorEntities.contains(majorEntity))) majorRepository.save(majorEntity);
+//    }
+//    return majorEntity;
+  }
+
+  private String truncateMajor(String major) {
+    if(major.length() < 45) return major;
+    if(!major.contains(" ")) return major.substring(0,44);
+    else return truncateMajor(major.substring(0, major.lastIndexOf(" ")));
   }
 
 

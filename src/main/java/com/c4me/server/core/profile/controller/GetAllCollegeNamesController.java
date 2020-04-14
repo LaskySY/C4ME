@@ -1,5 +1,6 @@
 package com.c4me.server.core.profile.controller;
 
+import com.c4me.server.config.annotation.LogAndWrap;
 import com.c4me.server.core.profile.domain.CollegeLabel;
 import com.c4me.server.core.profile.repository.CollegeRepository;
 import com.c4me.server.domain.BaseResponse;
@@ -27,9 +28,10 @@ public class GetAllCollegeNamesController {
     CollegeRepository collegeRepository;
 
     @GetMapping
+    @LogAndWrap(log = "get all college names")
     public BaseResponse<HashMap<String, List<CollegeLabel>>> getCollegeNames() {
         List<CollegeEntity> colleges = collegeRepository.findAllByOrderByName();
-        List<CollegeLabel> collegeLabels = colleges.stream().map(e -> new CollegeLabel(e.getId(), e.getName())).collect(Collectors.toList()); //TODO: update once we have college alias table
+        List<CollegeLabel> collegeLabels = colleges.stream().map(e -> new CollegeLabel(e.getId(), e.getName())).collect(Collectors.toList());
         HashMap<String, List<CollegeLabel>> map = new HashMap<>();
         map.put("colleges", collegeLabels);
         return BaseResponse.<HashMap<String, List<CollegeLabel>>>builder()

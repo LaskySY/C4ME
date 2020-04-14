@@ -1,8 +1,6 @@
 package com.c4me.server.utils;
 
-import com.c4me.server.config.constant.Const;
 import org.apache.commons.text.similarity.FuzzyScore;
-import org.apache.commons.text.similarity.JaccardSimilarity;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -10,14 +8,13 @@ import org.jsoup.select.Elements;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
 import static com.c4me.server.config.constant.Const.Filenames.ALL_HIGH_SCHOOLS_FILE;
 import static com.c4me.server.config.constant.Const.Filenames.TEST_HIGH_SCHOOL_SEARCH_URL;
-import static com.c4me.server.config.constant.Const.STATES.STATES_LIST;
+import static com.c4me.server.config.constant.Const.States.STATES_LIST;
 
 /**
  * @Description:

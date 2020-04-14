@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.List;
 
 import static com.c4me.server.config.constant.Const.ProfilePropertyClasses.*;
 
@@ -106,28 +105,29 @@ public class ProfileServiceImpl {
                 }
             }
 
-            /*
-             TODO: Fix major 1 and major 2 - should be querying major and majorAlias tables to check if it's a proper major name; then set majorByMajor1 and majorByMajor2 of pe
-              Either create a major doesn't exist exception, or make a getAllMajors request --> dropdown to choose major.
-             */
-
-            major1 = MajorEntity.builder().name(profileInfo.getMajor1()).build();
-            major2 = MajorEntity.builder().name(profileInfo.getMajor2()).build();
-            try {
-                majorRepository.save(major1);
-            } catch (Exception e) {
-                System.out.println("ex1");
-                e.printStackTrace();
-            }
-            try {
-                majorRepository.save(major2);
-            } catch (Exception e) {
-                System.out.println("ex");
-                e.printStackTrace();
-            }
-
+//            /*
+//             TODO: Fix major 1 and major 2 - should be querying major and majorAlias tables to check if it's a proper major name; then set majorByMajor1 and majorByMajor2 of pe
+//              Either create a major doesn't exist exception, or make a getAllMajors request --> dropdown to choose major.
+//             */
+//
+//            major1 = MajorEntity.builder().name(profileInfo.getMajor1()).build();
+//            major2 = MajorEntity.builder().name(profileInfo.getMajor2()).build();
+//            try {
+//                majorRepository.save(major1);
+//            } catch (Exception e) {
+//                System.out.println("ex1");
+//                e.printStackTrace();
+//            }
+//            try {
+//                majorRepository.save(major2);
+//            } catch (Exception e) {
+//                System.out.println("ex");
+//                e.printStackTrace();
+//            }
+            MajorAliasTable majorAliasTable = new MajorAliasTable();
+            major1 = majorAliasTable.parseMajorName(profileInfo.getMajor1());
+            major2 = majorAliasTable.parseMajorName(profileInfo.getMajor2());
         }
-
 
         ProfileEntity pe = entityFromDomain(profileInfo, he);
         pe.setMajorByMajor1(major1);

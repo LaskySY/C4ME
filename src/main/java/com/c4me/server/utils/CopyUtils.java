@@ -32,6 +32,17 @@ public class CopyUtils {
         return emptyNames.toArray(result);
     }
 
+    public static java.beans.PropertyDescriptor findDescriptor(Object source, String name) {
+        final BeanWrapper src = new BeanWrapperImpl(source);
+        java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();
+        for(java.beans.PropertyDescriptor pd : pds) {
+            if(pd.getName().equals(name)) {
+                return pd;
+            }
+        }
+        return null;
+    }
+
     public static String[] invertProperties(Object source, String[] properties) {
         List<String> propertiesList = Arrays.asList(properties);
 

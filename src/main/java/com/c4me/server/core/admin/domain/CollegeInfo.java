@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static com.c4me.server.config.constant.Const.Types.TYPES_MAP;
@@ -64,6 +63,10 @@ public class CollegeInfo {
 
     private String typeString;
 
+    private Integer costOfAttendance;
+
+    private Double recommendationScore;
+
     public CollegeInfo(CollegeEntity collegeEntity) {
         name = collegeEntity.getName();
         type = TYPES_MAP.entrySet().stream().filter(e -> e.getValue().equals(collegeEntity.getType())).collect(Collectors.toList()).get(0).getKey();
@@ -82,7 +85,7 @@ public class CollegeInfo {
         retentionRate = collegeEntity.getRetentionRate();
         completionRate = collegeEntity.getCompletionRate();
         meanEarnings = collegeEntity.getMeanEarnings();
-        updatedTime = collegeEntity.getUpdatedTime().toString();
+        updatedTime = collegeEntity.getUpdateTime().toString();
         ranking = collegeEntity.getRanking();
         satMath25 = collegeEntity.getSatMath25();
         satMath50 = collegeEntity.getSatMath50();
@@ -106,6 +109,11 @@ public class CollegeInfo {
         actComposite = collegeEntity.getActComposite();
 
         typeString = TYPES_MAP.get(type);
+    }
+
+    public CollegeInfo(CollegeEntity collegeEntity, String homeState) {
+        this(collegeEntity);
+        this.costOfAttendance = (homeState.equals(state))? instateTuition : outstateTuition;
     }
 
 

@@ -4,11 +4,11 @@ import com.c4me.server.config.exception.HighSchoolDoesNotExistException;
 import com.c4me.server.core.credential.repository.HighschoolRepository;
 import com.c4me.server.core.profile.repository.CollegeHighSchoolAssociationRepository;
 import com.c4me.server.core.profile.repository.CollegeRepository;
-import com.c4me.server.entities.CollegeEntity;
-import com.c4me.server.entities.CollegeHighschoolAssociationEntity;
-import com.c4me.server.entities.CollegeHighschoolAssociationEntityPK;
-import com.c4me.server.entities.HighschoolEntity;
+import com.c4me.server.core.profile.repository.HighschoolMajorAssociationRepository;
+import com.c4me.server.core.profile.repository.MajorRepository;
+import com.c4me.server.entities.*;
 import com.c4me.server.utils.SearchHSUtils;
+import com.c4me.server.utils.TestingDataUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -22,11 +22,13 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
+import static com.c4me.server.config.constant.Const.AcademicQuality.LETTER_TO_NUMBER_GRADE;
 import static com.c4me.server.config.constant.Const.Filenames.*;
 import static com.c4me.server.config.constant.Const.Ranges.*;
-import static com.c4me.server.config.constant.Const.STATES.STATES_LIST;
+import static com.c4me.server.config.constant.Const.States.STATES_LIST;
 import static com.c4me.server.config.constant.Const.Types.*;
 
 /**
@@ -44,13 +46,18 @@ public class HighSchoolScraperServiceImpl {
     CollegeRepository collegeRepository;
     @Autowired
     CollegeHighSchoolAssociationRepository collegeHighSchoolAssociationRepository;
+    @Autowired
+    MajorRepository majorRepository;
+    @Autowired
+    HighschoolMajorAssociationRepository highschoolMajorAssociationRepository;
+
+    final Random random = new Random(System.currentTimeMillis());
 
     public boolean scrapeBaseSite(String webpage, HighschoolEntity highschoolEntity) throws IOException {
         URL url = new URL(webpage);
         Document nicheBaseDoc = openWebpage(url);
         //Document nicheBaseDoc = openWebpage("base_page_test.html");
 
-        //TODO: select for class li.search-tags__wrap__list__tag and check that High School tag exists (otherwise we've accidentally found a middle or elementary school)
 
 //        Element nameHeader = nicheBaseDoc.selectFirst("h1.postcard__title");
 //        if(nameHeader == null) return false;
@@ -58,6 +65,16 @@ public class HighSchoolScraperServiceImpl {
 
 
         Element attributesElement = nicheBaseDoc.selectFirst("ul.postcard__attrs");
+        Elements gradeAttribute = attributesElement.select("li.postcard__attr.postcard__attr--has-grade");
+        if(gradeAttribute.size() >= 1) {
+            Element grade = gradeAttribute.first();
+            String nicheGrade = grade.select("div").text();
+            System.out.println("nicheGrade = " + nicheGrade);
+            if(LETTER_TO_NUMBER_GRADE.containsKey(nicheGrade)) {
+                highschoolEntity.setAcademicQuality(nicheGrade);
+            }
+        }
+
         Elements attributeFacts = attributesElement.select("li.postcard__attr.postcard-fact");
         for(Element e : attributeFacts) {
             String text = e.ownText();
@@ -197,7 +214,21 @@ public class HighSchoolScraperServiceImpl {
 
     public Document openWebpage(URL url) throws IOException {
         URLConnection conn = url.openConnection();
-        conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0"); //TODO: do we need to cycle user-agents?
+        System.out.println(conn.getRequestProperties());
+
+        File userAgentsFile = TestingDataUtils.findFile(USER_AGENTS, "txt");
+        List<String> userAgents = TestingDataUtils.readFile(userAgentsFile);
+        String userAgent = userAgents.get(random.nextInt(userAgents.size()));
+
+        //Jsoup.connect().
+
+        //conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0");
+        //conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 OPR/67.0.3575.115");
+        conn.setRequestProperty("User-Agent", userAgent);
+        //conn.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+
+        System.out.println(conn.getRequestProperties());
+
         String line = null;
         StringBuilder tmp = new StringBuilder();
         BufferedReader buf = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -291,9 +322,22 @@ public class HighSchoolScraperServiceImpl {
             else System.out.println("hs already exists, scraping to update info");
         }
 
-        System.out.println("trying to scrape niche.com");
+//        try {
+//            System.out.println("timeout before next scrape");
+//            Thread.sleep(10000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
+        System.out.println("trying to scrape niche.com for " + bestMatch);
         String url = buildUrl(bestMatch);
         scrapeBaseSite(url, entity);
+//        try {
+//            System.out.println("timeout before next scrape");
+//            Thread.sleep(10000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         HashMap<String, List<String>> result = scrapeAcademicsSite(url, entity);
 
         if(!highschoolRepository.existsByName(entity.getName())) { //final check to make sure the high school doesn't yet exist
@@ -323,7 +367,35 @@ public class HighSchoolScraperServiceImpl {
             }
         }
 
-        //TODO: save high school major associations as well
+//        List<MajorEntity> majorEntities = majorRepository.findAll();
+//        List<String> majorsInDatabase = majorEntities.stream().map(MajorEntity::getName).collect(Collectors.toList());
+        for(String major : majors) {
+            MajorAliasTable majorAliasTable = new MajorAliasTable();
+            MajorEntity majorEntity = majorAliasTable.parseMajorName(major);
+            System.out.println(major);
+            System.out.println(majorEntity);
+            if(majorEntity == null) continue;
+//            major = truncateMajor(major);
+//            if(major.length() == 0) continue;
+//            int index = matchMajor(major, majorsInDatabase);
+//            MajorEntity majorEntity;
+//            if(index == -1) {
+//                majorEntity = MajorEntity.builder()
+//                        .name(major).build();
+//                majorRepository.save(majorEntity);
+//            }
+//            else {
+//                majorEntity = majorEntities.get(index);
+//            }
+            HighschoolMajorAssociationEntityPK hm_pk = HighschoolMajorAssociationEntityPK.builder()
+                    .highschool_id(entity.getSchoolId())
+                    .major_name(majorEntity.getName()).build();
+            HighschoolMajorAssociationEntity hm = HighschoolMajorAssociationEntity.builder()
+                    .highschoolByHighschoolId(entity)
+                    .majorByMajorName(majorEntity)
+                    .highschoolMajorAssociationEntityPK(hm_pk).build();
+            highschoolMajorAssociationRepository.save(hm);
+        }
 
         return entity;
     }
@@ -337,5 +409,18 @@ public class HighSchoolScraperServiceImpl {
         return -1;
     }
 
+    private int matchMajor(String major, List<String> majorsInDatabase) {
+        for(int i=0; i < majorsInDatabase.size(); i++) {
+            String majorI = majorsInDatabase.get(i);
+            if(majorI.contains(major) || major.contains(majorI)) return i;
+        }
+        return -1;
+    }
+
+    private String truncateMajor(String major) {
+        if(major.length() < 45) return major;
+        if(!major.contains(" ")) return major.substring(0,44);
+        else return truncateMajor(major.substring(0, major.lastIndexOf(" ")));
+    }
 
 }

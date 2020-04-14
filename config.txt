@@ -1,0 +1,26 @@
+# this is the file containing url endings  of all high schools supported by our system
+ALL_HIGH_SCHOOLS_FILE = all_highschools_sorted.txt
+
+# this is the prefix from which to scrape high school data
+NICHE_PREFIX = https://www.niche.com/k12/
+
+# this is the url to scrape THE ranking data from
+THE_RANKINGS_JSON_URL = https://www.timeshighereducation.com/sites/default/files/the_data_rankings/united_states_rankings_2020_0__fe9db1a86587c174feb9fd3820701c93.json
+
+# this is the file containing user agents to choose from when scraping high schools
+USER_AGENTS = user-agents-small.txt
+
+# this is the file containing college scorecard data
+COLLEGE_SCORECARD_FILE = Most-Recent-Cohorts-All-Data-Elements.csv
+
+# this is the file with the names of colleges our system will support
+COLLEGES = colleges.txt
+
+# this is the file containing url endings of all colleges on collegedata.com
+COLLEGEDATATXT = college_data_colleges.txt
+
+# this is the file containing student profiles to import
+STUDENT_PROFILES_FILE = students-random.csv
+
+# this is the file containing student applications to import
+STUDENT_APPLICATIONS_FILE = applications-random.csv

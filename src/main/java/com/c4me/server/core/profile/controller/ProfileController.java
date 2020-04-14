@@ -4,12 +4,9 @@ import com.c4me.server.config.exception.DuplicateUsernameException;
 import com.c4me.server.config.exception.HighSchoolDoesNotExistException;
 import com.c4me.server.config.exception.UserDoesNotExistException;
 import com.c4me.server.core.profile.domain.ProfileInfo;
-import com.c4me.server.core.profile.domain.ProfileRequest;
 import com.c4me.server.core.profile.service.ProfileServiceImpl;
 import com.c4me.server.domain.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;

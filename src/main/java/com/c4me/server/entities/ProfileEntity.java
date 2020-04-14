@@ -3,6 +3,8 @@ package com.c4me.server.entities;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -281,6 +283,7 @@ public class ProfileEntity {
     }
 
     @Basic
+    @CreationTimestamp
     @Column(name = "create_time", nullable = true)
     public Timestamp getCreateTime() {
         return createTime;
@@ -291,6 +294,7 @@ public class ProfileEntity {
     }
 
     @Basic
+    @UpdateTimestamp
     @Column(name = "update_time", nullable = true)
     public Timestamp getUpdateTime() {
         return updateTime;

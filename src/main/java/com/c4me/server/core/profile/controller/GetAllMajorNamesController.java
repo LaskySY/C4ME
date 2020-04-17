@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  */
 
 @RestController
-@RequestMapping("/getAllMajorNames")
+@RequestMapping("/collegeSearch/getmajor")
 public class GetAllMajorNamesController {
 
     @Autowired

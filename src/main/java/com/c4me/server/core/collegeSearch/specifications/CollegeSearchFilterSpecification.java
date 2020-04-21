@@ -85,7 +85,7 @@ public class CollegeSearchFilterSpecification implements Specification<CollegeEn
     private Predicate generateInPredicate(String paramName, String filterName, Root<CollegeEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
         if(filterName == null || filterName.equals("") || paramName == null || paramName.equals("")) return criteriaBuilder.conjunction();
         Object filterVal = filterBeanWrapper.getPropertyValue(filterName);
-        if(filterVal == null || !(filterVal instanceof List<?>)) return criteriaBuilder.conjunction();
+        if(filterVal == null || !(filterVal instanceof Collection<?>) || ((Collection<?>) filterVal).size() == 0) return criteriaBuilder.conjunction();
 
         Predicate requireNonNull = criteriaBuilder.isNotNull(root.get(paramName));
         Predicate requireNull = criteriaBuilder.isNull(root.get(paramName));

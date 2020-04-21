@@ -33,7 +33,7 @@ public class CollegeSearchServiceImpl {
     //use the home state if sorting by cost (for in-state vs out of state)
     private String getHomeState(String username) {
         if(username == null) return null;
-        String homeState = null;
+        String homeState = "";
         ProfileEntity profileEntity = profileRepository.findByUsername(username);
         if(profileEntity != null) {
             HighschoolEntity highschoolEntity = profileEntity.getHighschoolBySchoolId();

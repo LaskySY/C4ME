@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * @Description:
+ * @Description: Controller for the getAllCollegeInfo service
  * @Author: Maciej Wlodek
  * @CreateDate: 03-20-2020
  */
@@ -26,18 +26,19 @@ public class GetCollegeController {
     @Autowired
     GetCollegeServiceImpl getCollegeService;
 
+    /**
+     * Controller for the getAllCollegeInfo service
+     * @return HashMap with a single element containing the list of {@link CollegeInfo}'s
+     */
     @GetMapping
-    @LogAndWrap(log = "get all college info", wrap = false)
-    public BaseResponse<HashMap<String, ArrayList<CollegeInfo>>> getCollegeInfo() {
+    @LogAndWrap(log = "get all college info", wrap = true)
+    public HashMap<String, ArrayList<CollegeInfo>> getCollegeInfo() {
         ArrayList<CollegeInfo> colleges = getCollegeService.getColleges();
 
         HashMap<String, ArrayList<CollegeInfo>> responseMap = new HashMap<>();
         responseMap.put("collegeInfo", colleges);
 
-        return BaseResponse.<HashMap<String, ArrayList<CollegeInfo>>>builder()
-                .code("success")
-                .message("")
-                .data(responseMap).build();
+        return responseMap;
     }
 
 }

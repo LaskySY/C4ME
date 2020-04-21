@@ -20,7 +20,7 @@ import static com.c4me.server.config.constant.Const.Ranges.*;
 import static com.c4me.server.config.constant.Const.SimilarHS.*;
 
 /**
- * @Description:
+ * @Description: Implementation of the similar high school service
  * @Author: Maciej Wlodek
  * @CreateDate: 04-10-2020
  */
@@ -39,6 +39,13 @@ public class SimilarHighSchoolServiceImpl {
 
     private void debug(String arg) { if(debug) System.out.println(arg); }
 
+    /**
+     * Get the list of N most similar high schools
+     * @param highschoolName {@link String}
+     * @return {@link List} of N most similar {@link HighschoolEntity}'s
+     * @throws IOException
+     * @throws HighSchoolDoesNotExistException
+     */
     public List<HighschoolEntity> getSimilarHighSchools(String highschoolName) throws IOException, HighSchoolDoesNotExistException {
         HighschoolEntity highschoolEntity = highschoolRepository.findByName(highschoolName);
         if(highschoolEntity == null) { //if it's not in the database, try to scrape it
@@ -58,6 +65,12 @@ public class SimilarHighSchoolServiceImpl {
         return sortedDistances.stream().map(Map.Entry::getKey).collect(Collectors.toList());
     }
 
+    /**
+     * Compute the similarity score for any two given high schools
+     * @param h1 {@link HighschoolEntity} the first high school
+     * @param h2 {@link HighschoolEntity} the second high school
+     * @return {@link Double} the similarity score
+     */
     private Double computeSimilarityScore(HighschoolEntity h1, HighschoolEntity h2) {
         Double testDistance = computeTestSimilarityDistance(h1, h2);
         //Double studentDistance = computeStudentSimilarityDistance(h1, h2);
@@ -73,6 +86,12 @@ public class SimilarHighSchoolServiceImpl {
         return score;
     }
 
+    /**
+     * Compute the academic quality distance for any two given high schools
+     * @param h1 {@link HighschoolEntity} the first high school
+     * @param h2 {@link HighschoolEntity} the second high school
+     * @return {@link Double} the academic quality distance between h1 and h2
+     */
     private Double computeAcademicQualityDistance(HighschoolEntity h1, HighschoolEntity h2) {
         if(h1.getAcademicQuality() == null || h2.getAcademicQuality() == null) return null;
         Integer qualityH1 = LETTER_TO_NUMBER_GRADE.get(h1.getAcademicQuality());
@@ -80,6 +99,12 @@ public class SimilarHighSchoolServiceImpl {
         return ((double) Math.abs(qualityH1 - qualityH2)) / ((double) LETTER_TO_NUMBER_GRADE.get("A+"));
     }
 
+    /**
+     * Compute the student similarity distance between any two given high schools
+     * @param h1 {@link HighschoolEntity} the first high school
+     * @param h2 {@link HighschoolEntity} the second high school
+     * @return {@link Double} the student similarity distance between h1 and h2
+     */
     private Double computeStudentSimilarityDistance(HighschoolEntity h1, HighschoolEntity h2) {
         List<ProfileEntity> school1Students = (List<ProfileEntity>) h1.getProfilesBySchoolId();
         List<ProfileEntity> school2Students = (List<ProfileEntity>) h2.getProfilesBySchoolId();
@@ -92,13 +117,18 @@ public class SimilarHighSchoolServiceImpl {
         return Math.abs(average1 - average2) / 800.0;
     }
 
+    /**
+     * Compute the average top acceptance over a list of student's
+     * @param profileEntities a {@link List} of {@link ProfileEntity}'s
+     * @return {@link Double} the average top acceptance, or null if no student has any acceptance
+     */
     private Double getAverageTopAcceptance(List<ProfileEntity> profileEntities) {
         Integer sum = 0;
         Integer count = 0;
 //        for(ProfileEntity pe : profileEntities) {
 //            List<StudentApplicationEntity> studentApplicationEntities = (List<StudentApplicationEntity>) pe.getUserByUsername().getStudentApplicationsByUsername();
 //        }
-        List<Integer> maxAcceptances = profileEntities.stream().map(e -> getMaxAcceptance(e)).collect(Collectors.toList());
+        List<Integer> maxAcceptances = profileEntities.stream().map(this::getMaxAcceptance).collect(Collectors.toList());
         for(Integer acceptance : maxAcceptances) {
             if(acceptance != null) {
                 sum += acceptance;
@@ -109,6 +139,11 @@ public class SimilarHighSchoolServiceImpl {
         return ((double) sum) / ((double) count);
     }
 
+    /**
+     * Find the best acceptance of the current student
+     * @param profileEntity {@link ProfileEntity}
+     * @return {@link Integer} the maximum acceptance of the current student
+     */
     private Integer getMaxAcceptance(ProfileEntity profileEntity) {
         UserEntity userEntity = profileEntity.getUserByUsername();
         AcceptanceSpecification acceptanceSpecification = new AcceptanceSpecification(userEntity);
@@ -120,6 +155,12 @@ public class SimilarHighSchoolServiceImpl {
         }
     }
 
+    /**
+     * Compute the test similarity distance of any two high schools
+     * @param h1 {@link HighschoolEntity} first high school
+     * @param h2 {@link HighschoolEntity} second high school
+     * @return {@link Double} the test similarity distance
+     */
     private Double computeTestSimilarityDistance(HighschoolEntity h1, HighschoolEntity h2) {
         BeanWrapperImpl h1Wrapper = new BeanWrapperImpl(h1);
         BeanWrapperImpl h2Wrapper = new BeanWrapperImpl(h2);
@@ -144,6 +185,12 @@ public class SimilarHighSchoolServiceImpl {
         }
     }
 
+    /**
+     * Normalize a test score to be in the range [0,1]
+     * @param score {@link Integer} an SAT or ACT test score
+     * @param testType {@link String} the test name, e.g. "satMath"
+     * @return {@link Double} the normalized test score
+     */
     private Double normalizeTestScore(Integer score, String testType) {
         if(score == null) return null;
         Integer min, max;

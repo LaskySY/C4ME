@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * @Description:
+ * @Description: altered highschool info object with different property names
  * @Author: Maciej Wlodek
  * @CreateDate: 04-12-2020
  */

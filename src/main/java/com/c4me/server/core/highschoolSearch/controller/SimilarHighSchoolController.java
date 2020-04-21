@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @Description:
+ * @Description: Controller for the findSimilarHighSchool request
  * @Author: Maciej Wlodek
  * @CreateDate: 04-10-2020
  */
@@ -28,13 +28,17 @@ public class SimilarHighSchoolController {
     @Autowired
     SimilarHighSchoolServiceImpl similarHighSchoolService;
 
+    /**
+     * Get the list of similar high schools to a given high school
+     * @param username {@link String} the username of the student making the request
+     * @param highschoolName {@link HSRequest} the name of the highschool to search for (must be wrapped as it is in the request body)
+     * @return {@link List} of {@link HighschoolInfo2} for the N most similar high schools, sorted by similarity score
+     * @throws IOException
+     * @throws HighSchoolDoesNotExistException
+     */
     @PostMapping
     @LogAndWrap(log = "getting similar high schools")
     public List<HighschoolInfo2> getSimilarHighSchools(@RequestParam String username, @RequestBody HSRequest highschoolName) throws IOException, HighSchoolDoesNotExistException {
-        System.out.println("getting similar highschools");
-        System.out.println(username);
-        System.out.println(highschoolName.getHighschoolName());
-
         List<HighschoolEntity> similarHighschools = similarHighSchoolService.getSimilarHighSchools(highschoolName.getHighschoolName());
         if(similarHighschools == null || similarHighschools.size() == 0) return new ArrayList<HighschoolInfo2>();
         return similarHighschools.stream().map(HighschoolInfo2::new).collect(Collectors.toList());

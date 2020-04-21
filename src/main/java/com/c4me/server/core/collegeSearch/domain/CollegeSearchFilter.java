@@ -11,7 +11,8 @@ import java.util.Set;
 import static com.c4me.server.config.constant.Const.States.*;
 
 /**
- * @Description: IMPORTANT: each supported range filter name should be min___ and max___, with the appropriate CollegeEntity property name (except for special filters)
+ * @Description: Domain object representing a set of filters entered by the user for college search
+ *      IMPORTANT: each supported range filter name should be min___ and max___, with the appropriate CollegeEntity property name (except for special filters)
  * @Author: Maciej Wlodek
  * @CreateDate: 04-06-2020
  */
@@ -65,6 +66,10 @@ public class CollegeSearchFilter {
         this.region = region;
         loadStatesFromRegions();
     }
+
+    /**
+     * Load the set of states from the regions passed
+     */
     public void loadStatesFromRegions() {
         if(states == null) {
             states = new HashSet<>();
@@ -76,14 +81,6 @@ public class CollegeSearchFilter {
             }
         }
         states.addAll(regionStates);
-//        if (region == null || region.size() == 0) {
-//            states = new HashSet<>(STATES_LIST);
-//        } else {
-//            states = new HashSet<>();
-//            for (String region : region) {
-//                states.addAll(REGIONS_MAP.get(region));
-//            }
-//        }
         if(getAscending() == null) setAscending(true);
         if(getSortBy() == null || getSortBy().length() == 0) setSortBy(CollegeEntity_.RANKING);
         if(getStrict() == null) setStrict(false);

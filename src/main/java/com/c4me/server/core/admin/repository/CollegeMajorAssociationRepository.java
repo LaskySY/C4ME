@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * @Description:
+ * @Description: Repository for the {@link CollegeMajorAssociationEntity} class
  * @Author: Maciej Wlodek
  * @CreateDate: 04-12-2020
  */

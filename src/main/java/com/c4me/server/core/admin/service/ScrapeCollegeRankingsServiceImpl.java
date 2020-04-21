@@ -16,7 +16,7 @@ import java.util.*;
 import static com.c4me.server.config.constant.Const.Filenames.*;
 
 /**
- * @Description:
+ * @Description: Implementation of the scrapeCollegeRankings service
  * @Author: Maciej Wlodek
  * @CreateDate: 03-20-2020
  */
@@ -27,13 +27,14 @@ public class ScrapeCollegeRankingsServiceImpl {
     @Autowired
     CollegeRepository collegeRepository;
 
-    public HashMap<String, Integer> readJsonRankings(File rankingsFile) throws FileNotFoundException {
-        FileInputStream in = new FileInputStream(rankingsFile);
-        BufferedInputStream buf = new BufferedInputStream(in);
-
-        Gson gson = new Gson();
+    /**
+     * Get a map of names->rankings reported by TimesHigherEducation
+     * @param rankingsFile the TimesHigherEducation rankings.json file
+     * @return {@link HashMap} containing ({@literal Name}, {@literal Ranking}) for each college
+     * @throws FileNotFoundException
+     */
+    private HashMap<String, Integer> readJsonRankings(File rankingsFile) throws FileNotFoundException {
         FileReader reader = new FileReader(rankingsFile);
-        //Object jsonObj = gson.fromJson(reader, Object.class);
 
         JsonObject rankingsObj = JsonParser.parseReader(reader).getAsJsonObject();
         JsonArray rankingsArray = rankingsObj.getAsJsonArray("data");
@@ -52,10 +53,13 @@ public class ScrapeCollegeRankingsServiceImpl {
     }
 
 
+    /**
+     * Scrape the TimesHigherEducation rankings and save them to the database
+     * @throws IOException
+     */
     public void scrapeRankings() throws IOException {
         URL rankingsUrl = new URL(THE_RANKINGS_JSON_URL);
         File tmpJson = File.createTempFile("jsonRankings", "json");
-//        ReadableByteChannel channel = Channels.newChannel(rankingsUrl.openStream());
         FileUtils.copyURLToFile(rankingsUrl, tmpJson);
 
         HashMap<String, Integer> rankingsMap = readJsonRankings(tmpJson);
@@ -68,11 +72,8 @@ public class ScrapeCollegeRankingsServiceImpl {
             System.out.println(name);
             String processedName = name.replaceAll("[^A-Za-z ]", " ").replaceAll(" +", " ").trim();
             int max = -1;
-//            int min = Integer.MAX_VALUE;
             String bestMatch = null;
-//            String bestMatch2 = null;
             FuzzyScore fs = new FuzzyScore(Locale.US);
-//            LevenshteinDistance ldist = new LevenshteinDistance();
             for(String s : rankingsMap.keySet()) {
                 String processedS = s.replaceAll("[^A-Za-z ]", " ").replaceAll(" +", " ").trim();
                 if(processedS.equals(processedName)) {
@@ -80,23 +81,15 @@ public class ScrapeCollegeRankingsServiceImpl {
                     break;
                 }
                 int dist = fs.fuzzyScore(processedName, processedS);
-//                int dist2 = ldist.apply(processedName, processedS);
-//                if(processedName.equals("University of Houston")) System.out.println("ldist between " + processedName + " and " + processedS + " is " + dist2);
                 if(dist > max) {
                     max = dist;
                     bestMatch = s;
                 }
-//                if (dist2 < min) {
-//                    min = dist2;
-//                    bestMatch2 = s;
-//                }
             }
             System.out.println(bestMatch);
-//            System.out.println("leven = " + bestMatch2);
             System.out.println(rankingsMap.get(bestMatch));
             entity.setRanking(rankingsMap.get(bestMatch));
             collegeRepository.save(entity);
-            //rankingsMap.remove(bestMatch);
         }
     }
 

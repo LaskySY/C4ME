@@ -9,13 +9,19 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @Description:
+ * @Description: Utilities for selecting bean properties to copy from one object to another
  * @Author: Maciej Wlodek
  * @CreateDate: 03-21-2020
  */
 
 public class CopyUtils {
 
+    /**
+     * Get an array of the names of all properties of source whose values are null. Borrowed from stack exchange answer.
+     * @param source {@link Object}
+     * @return {@link String} array of all null property names
+     * @see <a href="https://stackoverflow.com/questions/19737626/how-to-ignore-null-values-using-springframework-beanutils-copyproperties">https://stackoverflow.com/questions/19737626/how-to-ignore-null-values-using-springframework-beanutils-copyproperties</a>
+     */
     //this method is from https://stackoverflow.com/questions/19737626/how-to-ignore-null-values-using-springframework-beanutils-copyproperties
     public static String[] getNullPropertyNames (Object source) {
         final BeanWrapper src = new BeanWrapperImpl(source);
@@ -32,6 +38,12 @@ public class CopyUtils {
         return emptyNames.toArray(result);
     }
 
+    /**
+     * Find a {@link java.beans.PropertyDescriptor} corresponding to name in source.
+     * @param source {@link Object}
+     * @param name {@link String}
+     * @return {@link java.beans.PropertyDescriptor}
+     */
     public static java.beans.PropertyDescriptor findDescriptor(Object source, String name) {
         final BeanWrapper src = new BeanWrapperImpl(source);
         java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();
@@ -43,6 +55,12 @@ public class CopyUtils {
         return null;
     }
 
+    /**
+     * Return an array of inverted properties of source - i.e. the properties of source whose names do not appear in the provided array of properties
+     * @param source {@link Object}
+     * @param properties {@link String} array
+     * @return {@link String} array
+     */
     public static String[] invertProperties(Object source, String[] properties) {
         List<String> propertiesList = Arrays.asList(properties);
 

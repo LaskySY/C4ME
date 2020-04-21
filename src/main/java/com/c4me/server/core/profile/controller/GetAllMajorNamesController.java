@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @Description:
+ * @Description: Controller for the getMajorNames service (for selecting major in frontend)
  * @Author: Maciej Wlodek
  * @CreateDate: 04-13-2020
  */
@@ -25,8 +25,11 @@ public class GetAllMajorNamesController {
     @Autowired
     MajorRepository majorRepository;
 
+    /**
+     * @return {@link List} of college names found in our database
+     */
     @GetMapping
-    @LogAndWrap(log="get all major names")
+    @LogAndWrap(log="get all major names", wrap=true)
     public List<String> majorNames() {
        return majorRepository.findAll().stream().map(MajorEntity::getName).collect(Collectors.toList());
     }

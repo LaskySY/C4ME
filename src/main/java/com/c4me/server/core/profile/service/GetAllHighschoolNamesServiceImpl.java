@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import static com.c4me.server.config.constant.Const.Filenames.ALL_HIGH_SCHOOLS_FILE;
 
 /**
- * @Description:
+ * @Description: Implementation of the getAllHighSchoolNames service
  * @Author: Maciej Wlodek
  * @CreateDate: 03-26-2020
  */
@@ -19,6 +19,11 @@ import static com.c4me.server.config.constant.Const.Filenames.ALL_HIGH_SCHOOLS_F
 @Service
 public class GetAllHighschoolNamesServiceImpl {
 
+    /**
+     * Parse a niche.com url suffix into a high school name, city, and state
+     * @param name {@link String}
+     * @return {@link String} parsed name
+     */
     private String parseHSName(String name) {
         String[] words = name.split("-");
         StringBuilder builder = new StringBuilder();
@@ -38,12 +43,26 @@ public class GetAllHighschoolNamesServiceImpl {
         }
         return builder.toString();
     }
+
+    /**
+     * Get the list of all high school names
+     * @return {@link List} of high school names present on Niche.com
+     * @throws IOException
+     */
     public List<String> getAllHighschoolNames() throws IOException {
         File all_hs = TestingDataUtils.findFile(ALL_HIGH_SCHOOLS_FILE);
         List<String> highschools = TestingDataUtils.readFile(all_hs);
-        return highschools.stream().map(e -> parseHSName(e)).collect(Collectors.toList());
+        return highschools.stream().map(this::parseHSName).collect(Collectors.toList());
     }
 
+    /**
+     * Read a file and return the list of lines matching the partial input
+     * @deprecated
+     * @param file {@link File}
+     * @param partialInput {@link String}
+     * @return {@link List} of high school names
+     * @throws IOException
+     */
     public static List<String> readFile(File file, String partialInput) throws IOException {
         Reader in = new FileReader(file);
         BufferedReader br = new BufferedReader(in);
@@ -54,10 +73,18 @@ public class GetAllHighschoolNamesServiceImpl {
         }
         return lines;
     }
+
+    /**
+     * Get a list of names matching some partial input
+     * @deprecated
+     * @param partialInput {@link String}
+     * @return {@link List} of high school names matching the partial input
+     * @throws IOException
+     */
     public List<String> getAllHighschoolNames(String partialInput) throws IOException {
         File all_hs = TestingDataUtils.findFile(ALL_HIGH_SCHOOLS_FILE);
         List<String> highschools = readFile(all_hs, partialInput);
-        return highschools.stream().map(e -> parseHSName(e)).collect(Collectors.toList());
+        return highschools.stream().map(this::parseHSName).collect(Collectors.toList());
     }
 
 }

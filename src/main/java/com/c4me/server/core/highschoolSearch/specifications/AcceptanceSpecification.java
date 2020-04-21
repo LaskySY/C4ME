@@ -8,7 +8,7 @@ import javax.persistence.criteria.*;
 import static com.c4me.server.config.constant.Const.Status.ACCEPTED;
 
 /**
- * @Description:
+ * @Description: Specification for searching for student applications
  * @Author: Maciej Wlodek
  * @CreateDate: 04-10-2020
  */
@@ -20,6 +20,13 @@ public class AcceptanceSpecification implements Specification<StudentApplication
         this.userEntity = userEntity;
     }
 
+    /**
+     * Get a predicate for the acceptances of a given student; and sort the criteria query by highest ranking of college
+     * @param root {@link Root} of the {@link StudentApplicationEntity} table
+     * @param criteriaQuery {@link CriteriaQuery}
+     * @param criteriaBuilder {@link CriteriaBuilder}
+     * @return {@link Predicate} the criteria predicate for the student's accepted applications
+     */
     @Override
     public Predicate toPredicate(Root<StudentApplicationEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
         Predicate isAcceptance = criteriaBuilder.equal(root.get(StudentApplicationEntity_.STATUS), ACCEPTED);

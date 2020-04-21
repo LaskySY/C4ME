@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Description:
+ * @Description: Table of major aliases
  * @Author: Maciej Wlodek
  * @CreateDate: 04-12-2020
  */
@@ -29,6 +29,9 @@ public class MajorAliasTable {
 
     }
 
+    /**
+     * Initialize the table on startup
+     */
     @PostConstruct
     public void init() {
         List<MajorAliasEntity> majorAliasEntityCollection = majorAliasRepository.findAll();
@@ -37,6 +40,11 @@ public class MajorAliasTable {
         }
     }
 
+    /**
+     * Parse major name to get a match in our database. Currently ad-hoc, but I haven't a better idea at the moment.
+     * @param major {@link String}
+     * @return {@link MajorEntity} the best match in our database
+     */
     //this is ad-hoc, but I haven't a better idea.
     public MajorEntity parseMajorName(String major) {
         if(major == null || major.length() == 0) return null;

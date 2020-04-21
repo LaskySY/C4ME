@@ -17,14 +17,19 @@ import static com.c4me.server.config.constant.Const.Filenames.TEST_HIGH_SCHOOL_S
 import static com.c4me.server.config.constant.Const.States.STATES_LIST;
 
 /**
- * @Description:
+ * @Description: Utility functions for searching for high school urls
  * @Author: Maciej Wlodek
  * @CreateDate: 03-22-2020
  */
 
 public class SearchHSUtils {
 
-    //test whether search result url matches niche.com high school url template
+    /**
+     * Test whether a url matches the niche.com high school url template
+     * @deprecated
+     * @param url {@link String} search result url
+     * @return boolean - whether it matches or not
+     */
     private static boolean urlMatches(String url) {
         String prefix = "https://www.niche.com/k12/";
         if(!url.startsWith(prefix)) return false;
@@ -42,7 +47,12 @@ public class SearchHSUtils {
         return true;
     }
 
-    // get links from google results
+    /**
+     * Get a list of hrefs from a google search results page
+     * @deprecated
+     * @param resultPage {@link Document} jsoup google search result page
+     * @return {@link List} of hrefs
+     */
     private static List<String> getHrefs(Document resultPage) {
         ArrayList<String> hrefs = new ArrayList<>();
 
@@ -56,6 +66,11 @@ public class SearchHSUtils {
         return hrefs;
     }
 
+    /**
+     * Test a scrape of google search results to get the niche url
+     * @deprecated
+     * @throws IOException
+     */
     public static void testNicheSearchScrape() throws IOException {
         System.out.println("testing niche search scrape");
 
@@ -71,6 +86,12 @@ public class SearchHSUtils {
         matchingUrls.stream().forEach(System.out::println);
     }
 
+    /**
+     * Build a google search query from a high school name query
+     * @deprecated
+     * @param query {@link String}
+     * @return {@link String}
+     */
     private static String buildQueryURL(String query) {
         String prefix = "https://www.google.com/search?q=site%3Awww.niche.com";
         query = query.toLowerCase();
@@ -89,6 +110,11 @@ public class SearchHSUtils {
 //        return matchingUrls.get(0); // return the top matching result
 //    }
 
+    /**
+     * Preprocess a niche url so it conforms with fuzzy searching standard
+     * @param line {@link String}
+     * @return {@link String}
+     */
     public static String preprocess(String line) {
         String newLine = line.replace("-", " ");
         newLine = newLine.replaceAll(" +", " ");
@@ -96,18 +122,35 @@ public class SearchHSUtils {
         newLine = newLine.replaceAll("[^A-Za-z0-9 ]", "");
         return newLine.toLowerCase();
     }
+
+    /**
+     * Get the state from a processed niche high school url
+     * @param processedLine {@link String}
+     * @return {@link String}
+     */
     private static String getState(String processedLine) {
         String[] words = processedLine.split(" ");
         if(words.length == 0) return null;
         return words[words.length-1];
     }
+
+    /**
+     * Check if a state is valid
+     * @param state {@link String}
+     * @return boolean
+     */
     private static boolean isValidState(String state) {
         if(STATES_LIST.contains(state.toUpperCase())) return true;
         return false;
     }
 
 
-
+    /**
+     * Search for the correct niche.com url to scrape from, requiring that the state matches exactly
+     * @param query {@link String} - can be anything, but optimally should be name city state
+     * @return {@link String} - return the best matched url
+     * @throws IOException
+     */
     // scraping google results is effective, but dangerous (we don't want to get blacklisted by google)
     // so, we will search through niche's sitemap.xml instead (preprocessed to only contain high school pages)
     public static String searchForNicheUrl(String query) throws IOException {
@@ -115,10 +158,18 @@ public class SearchHSUtils {
     }
 
 
+    /**
+     * Search for the correct niche.com url to scrape from
+     * @param query {@link String}
+     * @param requireStateMatch boolean - whether or not the state must match exactly
+     * @return
+     * @throws IOException
+     */
     public static String searchForNicheUrl(String query, boolean requireStateMatch) throws IOException {
 //        query = parseQuery(query);
         String processedQuery = preprocess(query);
         String state = getState(processedQuery);
+        if(state == null) state = "";
         boolean validState = isValidState(state);
 
         File all_hs = TestingDataUtils.findFile(ALL_HIGH_SCHOOLS_FILE);
@@ -150,6 +201,12 @@ public class SearchHSUtils {
         return bestMatch;
     }
 
+    /**
+     * Parse a query
+     * @deprecated
+     * @param query {@link String}
+     * @return {@link String}
+     */
     private static String parseQuery(String query) {
         query = query.toLowerCase().trim();
 //        if(query.endsWith("high school")) {

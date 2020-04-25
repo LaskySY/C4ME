@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface CollegeRepository extends JpaRepository<CollegeEntity, Integer>, JpaSpecificationExecutor<CollegeEntity> {
-    public CollegeEntity findByName(String name);
-    public List<CollegeEntity> findAllByOrderByName();
+    CollegeEntity findByName(String name);
+    List<CollegeEntity> findAllByOrderByName();
+    CollegeEntity findByNameLike(String name);
 }

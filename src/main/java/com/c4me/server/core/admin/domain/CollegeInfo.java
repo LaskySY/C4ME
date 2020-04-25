@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import static com.c4me.server.config.constant.Const.Types.TYPES_MAP;
 
 /**
- * @Description:
+ * @Description: Domain object representing a college that can be sent to frontend
  * @Author: Maciej Wlodek
  * @CreateDate: 03-20-2020
  */
@@ -63,6 +63,14 @@ public class CollegeInfo {
 
     private String typeString;
 
+    private Integer costOfAttendance;
+
+    private Double recommendationScore;
+
+    /**
+     * Constructor for CollegeInfo from CollegeEntity
+     * @param collegeEntity {@link CollegeEntity} database object
+     */
     public CollegeInfo(CollegeEntity collegeEntity) {
         name = collegeEntity.getName();
         type = TYPES_MAP.entrySet().stream().filter(e -> e.getValue().equals(collegeEntity.getType())).collect(Collectors.toList()).get(0).getKey();
@@ -105,6 +113,16 @@ public class CollegeInfo {
         actComposite = collegeEntity.getActComposite();
 
         typeString = TYPES_MAP.get(type);
+    }
+
+    /**
+     * Constructor for CollegeInfo to compute the costOfAttendance according to a user's home state
+     * @param collegeEntity {@link CollegeEntity} database object
+     * @param homeState user's home state to compute instate or outstate cost of attendance
+     */
+    public CollegeInfo(CollegeEntity collegeEntity, String homeState) {
+        this(collegeEntity);
+        this.costOfAttendance = (homeState.equals(state))? instateTuition : outstateTuition;
     }
 
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 /**
- * @Description:  For testing purposes only
+ * @Description:  Test controller for the high school scraper service
  * @Author: Maciej Wlodek
  * @CreateDate: 03-22-2020
  */
@@ -25,7 +25,13 @@ public class HighSchoolScraperServiceController {
     @Autowired
     HighSchoolScraperServiceImpl highSchoolScraperService;
 
-    // this request is for testing purposes only
+    /**
+     * Test method to scrape a high school given a query (which may or may not be a valid high school name)
+     * @param hsQuery {@link String}
+     * @return Empty {@link BaseResponse}
+     * @throws IOException
+     * @throws HighSchoolDoesNotExistException
+     */
     @PostMapping("/testHighSchoolScrape")
     public BaseResponse scrapeHighSchool(@RequestParam String hsQuery) throws IOException, HighSchoolDoesNotExistException {
         if(hsQuery == null || hsQuery.equals("")) {
@@ -39,6 +45,12 @@ public class HighSchoolScraperServiceController {
                 .build();
     }
 
+    /**
+     * Test controller to find a high school url corresponding to a given high school query (may or may not be a valid hs name)
+     * @param hsQuery {@link String}
+     * @return {@link BaseResponse}
+     * @throws IOException
+     */
     //this request is for testing purposes only
     @PostMapping("/testFindHighSchoolURL")
     public BaseResponse<String> findHighSchoolUrls(@RequestParam String hsQuery) throws IOException {

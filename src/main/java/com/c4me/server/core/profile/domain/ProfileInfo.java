@@ -11,7 +11,7 @@ import lombok.Setter;
 import java.sql.Timestamp;
 
 /**
- * @Description:
+ * @Description: Profile object that may be passed safely to frontend
  * @Author: Maciej Wlodek
  * @CreateDate: 03-15-2020
  */

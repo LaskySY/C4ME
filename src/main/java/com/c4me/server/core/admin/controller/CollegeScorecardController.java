@@ -19,7 +19,7 @@ import java.util.List;
 import static com.c4me.server.config.constant.Const.Filenames.*;
 
 /**
- * @Description:
+ * @Description: Controller for the importCollegeScorecard service
  * @Author: Maciej Wlodek
  * @CreateDate: 03-20-2020
  */
@@ -31,6 +31,14 @@ public class CollegeScorecardController {
     @Autowired
     CollegeScorecardServiceImpl collegeScorecardService;
 
+    /**
+     * Controller for the importCollegeScorecard service.
+     * @return Empty {@link BaseResponse}
+     * @throws IOException
+     * @throws NoCollegeScorecardException
+     * @throws NoCollegeTxtException
+     * @throws InvalidCollegeScorecardException
+     */
     @PostMapping
     public BaseResponse importCollegeScorecard() throws IOException, NoCollegeScorecardException, NoCollegeTxtException, InvalidCollegeScorecardException {
         System.out.println("current dir = " + System.getProperty("user.dir"));

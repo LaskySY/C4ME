@@ -1,9 +1,10 @@
 package com.c4me.server.config.constant;
 
-import com.c4me.server.entities.CollegeEntity;
-import com.c4me.server.entities.CollegeEntity_;
-
+import com.c4me.server.entities.*;
+import com.c4me.server.utils.TestingDataUtils;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -73,7 +74,7 @@ public final class Const {
   }
 
   public final static class Ranges {
-    public static final Double MIN_ZSCORE_FOR_QUESTIONABLE = 1.645;
+    public static final Double MIN_ZSCORE_FOR_QUESTIONABLE = 2.5;
     public static final Integer MIN_STUDENTS_FOR_STDDEV = 10;
     public static final Integer MIN_SAT = 200;
     public static final Integer MAX_SAT = 800;
@@ -84,6 +85,64 @@ public final class Const {
     public static final Integer MAX_SAT_OVERALL = 1600;
 
     public static final Integer MAX_QUERY_SIZE = 128;
+  }
+
+  public final static class SimilarHS {
+    public static final Integer MAX_SCHOOLS = 10;
+    public static final Integer RANGE = 10;
+
+    public static final Map<String, Double> TEST_WEIGHTS = new HashMap<String, Double>(){
+      {
+        put(HighschoolEntity_.SAT_MATH, 1.0);
+        put(HighschoolEntity_.SAT_EBRW, 1.0);
+        put(HighschoolEntity_.ACT_ENGLISH, 0.5);   //act tests have half weight since there are twice as many
+        put(HighschoolEntity_.ACT_MATH, 0.5);
+        put(HighschoolEntity_.ACT_READING, 0.5);
+        put(HighschoolEntity_.ACT_SCIENCE, 0.5);
+      }
+    };
+
+    public static final Double TEST_FACTOR_WEIGHT = 0.85;
+    public static final Double STUDENT_FACTOR_WEIGHT = 0.1;
+    public static final Double ACADEMIC_FACTOR_WEIGHT = 0.05;
+
+    public static final Double MISSING_TEST_PENALTY = 1.0;
+    public static final Double MISSING_STUDENT_PENALTY = 1.0;
+    public static final Double MISSING_ACADEMIC_PENALTY = 1.0;
+  }
+
+  public final static class AcademicQuality {
+    public static final Map<String, Integer> LETTER_TO_NUMBER_GRADE = new HashMap<String, Integer>() {
+      {
+        put("A+", 12);
+        put("A", 11);
+        put("A-", 11);
+        put("B+", 10);
+        put("B", 9);
+        put("B-", 8);
+        put("C+", 7);
+        put("C", 6);
+        put("C-", 5);
+        put("D+", 4);
+        put("D", 3);
+        put("D-", 2);
+        put("F", 1);
+      }
+    };
+  }
+
+  public final static class CollegeRecommendationConst {
+    public static final Map<String, String[]> TEST_MAP = new HashMap<String, String[]>(){
+      {
+        put(ProfileEntity_.SAT_MATH, new String[] {CollegeEntity_.SAT_MATH25, CollegeEntity_.SAT_MATH50, CollegeEntity_.SAT_MATH75});
+        put(ProfileEntity_.SAT_EBRW, new String[] {CollegeEntity_.SAT_EBRW25, CollegeEntity_.SAT_EBRW50, CollegeEntity_.SAT_EBRW75});
+        put(ProfileEntity_.ACT_ENGLISH, new String[] {CollegeEntity_.ACT_ENGLISH25, CollegeEntity_.ACT_ENGLISH50, CollegeEntity_.ACT_ENGLISH75});
+        put(ProfileEntity_.ACT_MATH, new String[] {CollegeEntity_.ACT_MATH25, CollegeEntity_.ACT_MATH50, CollegeEntity_.ACT_MATH75});
+      }
+    };
+
+    public static final Double TEST_FACTOR_WEIGHT = 0.8;
+    public static final Double SCHOOL_FACTOR_WEIGHT = 0.2;
   }
 
   public final static class Types {
@@ -102,12 +161,6 @@ public final class Const {
     };
   }
 
-  public final static class SortOptions {
-    public static final String SORT_BY_NAME = "name";
-    public static final String SORT_BY_ADM_RATE = "admissionRate";
-    public static final String SORT_BY_COST = "costOfAttendance";
-    public static final String SORT_BY_RANKING = "ranking";
-  }
   public final static class FilterOptions {
     public static final String[] SUPPORTED_RANGE_FILTERS = {
             CollegeEntity_.SAT_MATH50,
@@ -143,37 +196,65 @@ public final class Const {
 
   }
 
-  public final static class Filenames {
-    public static final String COLLEGE_SCORECARD_FILE = "Most-Recent-Cohorts-All-Data-Elements.csv";
-    public static final String COLLEGES = "colleges.txt";
-    public static final String COLLEGEDATATXT = "college_data_colleges.txt";
-    public static final String STUDENT_PROFILES_FILE = "students-random.csv";
-    public static final String STUDENT_APPLICATIONS_FILE = "applications-random.csv";
+  public static class Filenames {
+    // these are the default config values ... they may be overwritten if there is a config file found
+    public static String COLLEGE_SCORECARD_FILE = "Most-Recent-Cohorts-All-Data-Elements.csv";
+    public static String COLLEGES = "colleges.txt";
+    public static String COLLEGEDATATXT = "college_data_colleges.txt";
+    public static String STUDENT_PROFILES_FILE = "students-random.csv";
+    public static String STUDENT_APPLICATIONS_FILE = "applications-random.csv";
 
-    public static final String USER_AGENTS = "user-agents-small.txt";
+    public static String USER_AGENTS = "user-agents-small.txt";
 
-    public static final String THE_RANKINGS_JSON_URL = "https://www.timeshighereducation.com/sites/default/files/the_data_rankings/united_states_rankings_2020_0__fe9db1a86587c174feb9fd3820701c93.json";
+    public static String THE_RANKINGS_JSON_URL = "https://www.timeshighereducation.com/sites/default/files/the_data_rankings/united_states_rankings_2020_0__fe9db1a86587c174feb9fd3820701c93.json";
     //public static final String THE_RANKINGS_JSON_URL = "http://allv22.all.cs.stonybrook.edu/~stoller/cse416/WSJ_THE/united_states_rankings_2020_limit0_25839923f8b1714cf54659d4e4af6c3b.json";
 
-    public static final String FIRST_NAMES_URL = "https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.txt";
-    public static final String LAST_NAMES_URL = "https://raw.githubusercontent.com/dominictarr/random-name/master/names.txt";
+    public static String FIRST_NAMES_URL = "https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.txt";
+    public static String LAST_NAMES_URL = "https://raw.githubusercontent.com/dominictarr/random-name/master/names.txt";
 
-    public static final String FIRST_NAMES_FILE = "firstNames.txt";
-    public static final String LAST_NAMES_FILE = "lastNames.txt";
+    public static String FIRST_NAMES_FILE = "firstNames.txt";
+    public static String LAST_NAMES_FILE = "lastNames.txt";
 
-    public static final String SEP = File.separator;
-    public static final String DATA_DIR = "c4me" + SEP + "src" + SEP + "data" + SEP;
+    public static String SEP = File.separator;
+    public static String DATA_DIR = "c4me" + SEP + "src" + SEP + "data" + SEP;
 
-    public static final String TEST_HIGH_SCHOOL_URL = "https://www.niche.com/k12/east-islip-high-school-islip-terrace-ny";
-    public static final String TEST_HIGH_SCHOOL_SEARCH_URL = "https://www.niche.com/search/?q=east%20islip%20high%20school";
+    public static String TEST_HIGH_SCHOOL_URL = "https://www.niche.com/k12/east-islip-high-school-islip-terrace-ny";
+    public static String TEST_HIGH_SCHOOL_SEARCH_URL = "https://www.niche.com/search/?q=east%20islip%20high%20school";
     //public static final String TEST_HIGH_SCHOOL_SEARCH_URL = "https://www.google.com/search?q=site%3Awww.niche.com+east+islip+high+school";
 
-    public static final String TEST_HIGH_SCHOOL_FILE = "suffolkHighSchools.txt";
+    public static String TEST_HIGH_SCHOOL_FILE = "suffolkHighSchools.txt";
     //public static final String TEST_SUFFOLK_HIGH_SCHOOLS = "https://en.wikipedia.org/wiki/List_of_high_schools_in_New_York";
 
-    public static final String ALL_HIGH_SCHOOLS_FILE = "all_highschools_sorted.txt";
+    public static String ALL_HIGH_SCHOOLS_FILE = "all_highschools_sorted.txt";
 
-    public static final String NICHE_PREFIX = "https://www.niche.com/k12/";
+    public static String NICHE_PREFIX = "https://www.niche.com/k12/";
+
+    public static String COLLEGE_DATA_PREFIX = "https://www.collegedata.com/college/";
+
+    public static void readConfigFile() {
+      System.out.println("reading config file");
+      File file = TestingDataUtils.findFile("config.txt", "txt");
+      if(file == null) {
+        System.out.println("Could not find config file; using default values");
+        return;
+      }
+      try {
+        Properties properties = new Properties();
+        properties.load(new FileReader(file));
+        COLLEGE_SCORECARD_FILE = properties.getProperty("COLLEGE_SCORECARD_FILE", COLLEGE_SCORECARD_FILE);
+        COLLEGES = properties.getProperty("COLLEGES", COLLEGES);
+        COLLEGEDATATXT = properties.getProperty("COLLEGEDATATXT", COLLEGEDATATXT);
+        STUDENT_PROFILES_FILE = properties.getProperty("STUDENT_PROFILES_FILE", STUDENT_PROFILES_FILE);
+        STUDENT_APPLICATIONS_FILE = properties.getProperty("STUDENT_APPLICATIONS_FILE", STUDENT_APPLICATIONS_FILE);
+        USER_AGENTS = properties.getProperty("USER_AGENTS", USER_AGENTS);
+        THE_RANKINGS_JSON_URL = properties.getProperty("THE_RANKINGS_JSON_URL", THE_RANKINGS_JSON_URL);
+        ALL_HIGH_SCHOOLS_FILE = properties.getProperty("ALL_HIGH_SCHOOLS_FILE", ALL_HIGH_SCHOOLS_FILE);
+        NICHE_PREFIX = properties.getProperty("NICHE_PREFIX", NICHE_PREFIX);
+        COLLEGE_DATA_PREFIX = properties.getProperty("COLLEGE_DATA_PREFIX", COLLEGE_DATA_PREFIX);
+      } catch (IOException e) {
+        System.out.println("Could not find configuration file; using default values");
+      }
+    }
   }
 
   public final static class CollegeScorecardHeaders {
@@ -304,10 +385,7 @@ public final class Const {
         SAT_PHYS,
         NUM_AP_PASSED
     };
-
-
   }
-
 
   public static final class ApplicationFileHeaders {
     public static final String APP_USER_ID                  = "userid";
@@ -319,13 +397,7 @@ public final class Const {
         APP_COLLEGE,
         APP_STATUS
     };
-
-
   }
-
-
-
-
 
   public final static class States {
     public static final String[] STATES = {

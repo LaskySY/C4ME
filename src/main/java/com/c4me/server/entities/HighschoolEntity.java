@@ -37,6 +37,7 @@ public class HighschoolEntity {
     private Integer actReading;
     private Integer actScience;
     private Integer actComposite;
+    private String academicQuality;
     private Timestamp createTime;
     private Timestamp updateTime;
     private Collection<CollegeHighschoolAssociationEntity> collegeHighschoolAssociationsBySchoolId;
@@ -182,6 +183,16 @@ public class HighschoolEntity {
 
     public void setActComposite(Integer actComposite) {
         this.actComposite = actComposite;
+    }
+
+    @Basic
+    @Column(name = "academic_quality", nullable = true)
+    public String getAcademicQuality() {
+        return academicQuality;
+    }
+
+    public void setAcademicQuality(String academicQuality) {
+        this.academicQuality = academicQuality;
     }
 
     @Basic

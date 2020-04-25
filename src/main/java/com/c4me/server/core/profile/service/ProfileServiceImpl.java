@@ -19,7 +19,7 @@ import java.io.IOException;
 import static com.c4me.server.config.constant.Const.ProfilePropertyClasses.*;
 
 /**
- * @Description:
+ * @Description: Implementation of the profile service
  * @Author: Maciej Wlodek
  * @CreateDate: 03-15-2020
  */
@@ -36,20 +36,27 @@ public class ProfileServiceImpl {
     @Autowired
     MajorRepository majorRepository;
 
+    /**
+     * Get profile info for a given student
+     * @param username {@link String}
+     * @return {@link ProfileInfo}
+     * @throws UserDoesNotExistException
+     */
     public ProfileInfo getInfoByUsername(String username) throws UserDoesNotExistException {
         ProfileEntity pe = profileRepository.findByUsername(username);
         if(pe == null) {
             throw new UserDoesNotExistException("cannot find user");
         }
         ProfileInfo pi = new ProfileInfo(pe);
-//        pi.setName(pe.getUserByUsername().getName());
-//        pi.setGpa(pe.getGpa());
-//        pi.setNumApCourses(pe.getNumApCourses());
-//        pi.setSatMath(pe.getSatMath());
-//        pi.setUsername(username);
         return pi;
     }
 
+    /**
+     * Create an entity object from a domain object and the high school.
+     * @param profileInfo {@link ProfileInfo}
+     * @param he {@link HighschoolEntity}
+     * @return {@link ProfileEntity}
+     */
     public ProfileEntity entityFromDomain(ProfileInfo profileInfo, HighschoolEntity he) {
         ProfileEntity pe = ProfileEntity.builder()
                 .username(profileInfo.getUsername())
@@ -80,6 +87,14 @@ public class ProfileServiceImpl {
         return pe;
     }
 
+    /**
+     * Set profile info according to the group of properties specified by field
+     * @param profileInfo {@link ProfileInfo}
+     * @param field {@link String} should be either "education", "act", or "sat"
+     * @throws UserDoesNotExistException
+     * @throws IOException
+     * @throws HighSchoolDoesNotExistException
+     */
     public void setProfileInfo(ProfileInfo profileInfo, String field) throws UserDoesNotExistException, IOException, HighSchoolDoesNotExistException {
         if(!PROPERTIES_MAP.containsKey(field)) {
             field = NONE;
@@ -105,28 +120,29 @@ public class ProfileServiceImpl {
                 }
             }
 
-            /*
-             TODO: Fix major 1 and major 2 - should be querying major and majorAlias tables to check if it's a proper major name; then set majorByMajor1 and majorByMajor2 of pe
-              Either create a major doesn't exist exception, or make a getAllMajors request --> dropdown to choose major.
-             */
-
-            major1 = MajorEntity.builder().name(profileInfo.getMajor1()).build();
-            major2 = MajorEntity.builder().name(profileInfo.getMajor2()).build();
-            try {
-                majorRepository.save(major1);
-            } catch (Exception e) {
-                System.out.println("ex1");
-                e.printStackTrace();
-            }
-            try {
-                majorRepository.save(major2);
-            } catch (Exception e) {
-                System.out.println("ex");
-                e.printStackTrace();
-            }
-
+//            /*
+//             TODO: Fix major 1 and major 2 - should be querying major and majorAlias tables to check if it's a proper major name; then set majorByMajor1 and majorByMajor2 of pe
+//              Either create a major doesn't exist exception, or make a getAllMajors request --> dropdown to choose major.
+//             */
+//
+//            major1 = MajorEntity.builder().name(profileInfo.getMajor1()).build();
+//            major2 = MajorEntity.builder().name(profileInfo.getMajor2()).build();
+//            try {
+//                majorRepository.save(major1);
+//            } catch (Exception e) {
+//                System.out.println("ex1");
+//                e.printStackTrace();
+//            }
+//            try {
+//                majorRepository.save(major2);
+//            } catch (Exception e) {
+//                System.out.println("ex");
+//                e.printStackTrace();
+//            }
+            MajorAliasTable majorAliasTable = new MajorAliasTable();
+            major1 = majorAliasTable.parseMajorName(profileInfo.getMajor1());
+            major2 = majorAliasTable.parseMajorName(profileInfo.getMajor2());
         }
-
 
         ProfileEntity pe = entityFromDomain(profileInfo, he);
         pe.setMajorByMajor1(major1);

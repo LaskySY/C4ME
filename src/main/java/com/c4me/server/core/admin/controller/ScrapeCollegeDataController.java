@@ -1,5 +1,6 @@
 package com.c4me.server.core.admin.controller;
 
+import com.c4me.server.config.annotation.LogAndWrap;
 import com.c4me.server.config.exception.NoCollegeTxtException;
 import com.c4me.server.core.admin.service.ScrapeCollegeDataServiceImpl;
 import com.c4me.server.domain.BaseResponse;
@@ -26,17 +27,9 @@ public class ScrapeCollegeDataController {
   ScrapeCollegeDataServiceImpl scrapeCollegeDataService;
 
   @PostMapping
-  public BaseResponse scrapeCollegeData() throws IOException {
-    System.out.println("mapping works");
-
+  @LogAndWrap(log="scraping college data")
+  public void scrapeCollegeData() throws IOException {
     scrapeCollegeDataService.scrapeCollegeData();
-
-
-    return BaseResponse.builder()
-        .code("success")
-        .message("")
-        .data(null).build();
-
   }
 
 

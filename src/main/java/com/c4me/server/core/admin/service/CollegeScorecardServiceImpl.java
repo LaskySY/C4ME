@@ -20,7 +20,7 @@ import static com.c4me.server.config.constant.Const.CollegeScorecardHeaders.*;
 import static com.c4me.server.config.constant.Const.Types.*;
 
 /**
- * @Description:
+ * @Description: Implementation of the importCollegeScorecardService
  * @Author: Maciej Wlodek
  * @CreateDate: 03-20-2020
  */
@@ -32,6 +32,12 @@ public class CollegeScorecardServiceImpl {
     CollegeRepository collegeRepository;
 
 
+    /**
+     * Read the colleges.txt file and return the list of names found
+     * @param filename the name of the colleges.txt file
+     * @return a list of college names
+     * @throws IOException
+     */
     public List<String> readCollegesTxt(String filename) throws IOException {
         Reader in = new FileReader(filename);
         BufferedReader buf = new BufferedReader(in);
@@ -45,20 +51,43 @@ public class CollegeScorecardServiceImpl {
         return colleges;
     }
 
-    public Integer parseInt(String s) {
+    /**
+     * Safely parse an integer
+     * @param s {@link String} to parse
+     * @return {@link Integer} or null
+     */
+    private Integer parseInt(String s) {
         try { return Integer.parseInt(s); }
         catch (NumberFormatException e) { return null; }
     }
-    public Double parseDouble(String s) {
+
+    /**
+     * Safely parse a double
+     * @param s {@link String} to parse
+     * @return {@link Double} or null
+     */
+    private Double parseDouble(String s) {
         try { return Double.parseDouble(s); }
         catch (NumberFormatException e) { return null; }
     }
-    public String parseType(String s) {
+
+    /**
+     * Parse the type of the college as reported by college scorecard to the String type
+     * @param s {@link String} to parse; represents the numeric value of the type
+     * @return the {@link String} representation of the type or null
+     */
+    private String parseType(String s) {
         Integer typeI = parseInt(s);
         if(typeI == null || !(TYPES_MAP.containsKey(typeI))) return null;
         else return TYPES_MAP.get(typeI);
     }
-    public String[] parseAlias(String s) {
+
+    /**
+     * Parse the alias field of college scorecard
+     * @param s {@link String} to parse
+     * @return a {@link String} array of aliases
+     */
+    private String[] parseAlias(String s) {
         if(s.equals("NULL")) return new String[0];
         String[] aliases = s.split("\\|"); //TODO: remove empty aliases
         for(int i=0; i<aliases.length; i++) {
@@ -67,7 +96,12 @@ public class CollegeScorecardServiceImpl {
         return aliases;
     }
 
-    public CollegeEntity recordToEntity(CSVRecord record) { //TODO: should only check header for the first record
+    /**
+     * Create a college entity from a single record of the college scorecard file
+     * @param record A {@link CSVRecord} from college scorecard file
+     * @return {@link CollegeEntity}
+     */
+    private CollegeEntity recordToEntity(CSVRecord record) { //TODO: should only check header for the first record
         Map<String, String> recordMap = record.toMap();
 //        System.out.println(recordMap.toString());
 //        System.out.println(recordMap.keySet().toString());
@@ -118,6 +152,14 @@ public class CollegeScorecardServiceImpl {
         }
     }
 
+    /**
+     * Import the college scorecard csv file
+     * @param filename {@link String} name of the scorecard file
+     * @param colleges {@link List} of college names to import (from colleges.txt)
+     * @throws NoCollegeScorecardException
+     * @throws IOException
+     * @throws InvalidCollegeScorecardException
+     */
     public void importCsv(String filename, List<String> colleges) throws NoCollegeScorecardException, IOException, InvalidCollegeScorecardException {
         if(filename.equals("")) throw new NoCollegeScorecardException("college scorecard file not found");
 
@@ -131,7 +173,7 @@ public class CollegeScorecardServiceImpl {
         for (CSVRecord record : records) { //TODO: transpose the iteration -- right now we can potentially get more than one record per college (aliases might not be unique)
             String name = record.get(NAME);
             String[] aliases = parseAlias(record.get(ALIAS));
-            List<String> aliasesList = Arrays.asList(aliases); //TODO: shouldn't we save these in the database?
+            List<String> aliasesList = Arrays.asList(aliases);
 
             if(colleges.contains(name) || aliasesList.stream().anyMatch(s -> colleges.contains(s))) {
                 //System.out.println("name is in colleges");
@@ -140,19 +182,8 @@ public class CollegeScorecardServiceImpl {
                 else {
                     boolean found = false;
                     for(CollegeEntity ce: currentEntities) {
-                        if(ce.getName().equals(name)) { //TODO: check alias as well
+                        if(ce.getName().equals(name)) {
                             BeanUtils.copyProperties(collegeEntity, ce, CopyUtils.getNullPropertyNames(collegeEntity));
-//                            try {
-//                                System.out.println(name + "was found - attempting to copy properties");
-//                                System.out.println("new ranking = " + collegeEntity.getRanking());
-//                                System.out.println("old ranking = " + ce.getRanking());
-//                                BeanUtilsBean.getInstance().getConvertUtils().register(false, false, 0);
-//                                BeanUtils.copyProperties(ce, collegeEntity);
-//                                System.out.println("it shouldn't have updated old ranking, but it is now " + ce.getRanking());
-//                            } catch (Exception e) {
-//                                e.printStackTrace();
-//                            }
-//                            System.out.println("and now? : " + ce.getRanking());
                             collegeRepository.save(ce);
                             found = true;
                             break;

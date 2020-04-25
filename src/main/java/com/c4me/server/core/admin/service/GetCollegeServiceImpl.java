@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @Description:
+ * @Description: Implementation for the getCollegeInfo service
  * @Author: Maciej Wlodek
  * @CreateDate: 03-20-2020
  */
@@ -22,10 +22,13 @@ public class GetCollegeServiceImpl {
     @Autowired
     CollegeRepository collegeRepository;
 
-    //get all colleges
+    /**
+     * Get all college info objects from the database
+     * @return {@link ArrayList} of all {@link CollegeInfo} objects found in the database
+     */
     public ArrayList<CollegeInfo> getColleges() {
         List<CollegeEntity> colleges = collegeRepository.findAll();
-        ArrayList<CollegeInfo> collegeInfos = (ArrayList<CollegeInfo>) colleges.stream().map(e -> new CollegeInfo(e)).collect(Collectors.toList());
+        ArrayList<CollegeInfo> collegeInfos = (ArrayList<CollegeInfo>) colleges.stream().map(CollegeInfo::new).collect(Collectors.toList());
         return collegeInfos;
     }
 

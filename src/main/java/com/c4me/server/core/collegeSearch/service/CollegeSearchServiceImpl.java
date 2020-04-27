@@ -73,7 +73,11 @@ public class CollegeSearchServiceImpl {
     public CollegeInfo getCollegeInfo(String name) {
         CollegeEntity collegeEntity = collegeRepository.findByName(name);
         if(collegeEntity == null) return null;
-        else return new CollegeInfo(collegeEntity);
+        else {
+            CollegeInfo collegeInfo = new CollegeInfo(collegeEntity);
+            collegeInfo.setMajors(collegeEntity.getCollegeMajorAssociationsById().stream().map(e -> e.getMajorByMajorName().getName()).collect(Collectors.toList()));
+            return collegeInfo;
+        }
     }
 
 }

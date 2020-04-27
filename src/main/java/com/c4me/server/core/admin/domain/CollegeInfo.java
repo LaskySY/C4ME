@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.c4me.server.config.constant.Const.Types.TYPES_MAP;
@@ -66,6 +67,8 @@ public class CollegeInfo {
     private Integer costOfAttendance;
 
     private Double recommendationScore;
+
+    private List<String> majors;
 
     /**
      * Constructor for CollegeInfo from CollegeEntity

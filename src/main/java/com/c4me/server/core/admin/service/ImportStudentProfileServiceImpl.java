@@ -130,8 +130,14 @@ public class ImportStudentProfileServiceImpl {
         decisionStatus = DENIED;
       }
       else if(status.equalsIgnoreCase("waitlisted") ||
-          recordMap.get(APP_STATUS).equalsIgnoreCase("wait-listed")){
+          status.equalsIgnoreCase("wait-listed")){
         decisionStatus = WAITLISTED;
+      }
+      else if(status.equalsIgnoreCase("deferred")) {
+        decisionStatus = DEFERRED;
+      }
+      else if(status.equalsIgnoreCase("withdrawn")) {
+        decisionStatus = WITHDRAWN;
       }
       StudentApplicationEntityPK studentApplicationEntityPK = StudentApplicationEntityPK.builder()
               .collegeId(thisCollege.getId())

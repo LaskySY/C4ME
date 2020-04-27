@@ -50,11 +50,15 @@ public final class Const {
     public static final Integer ACCEPTED = 1;
     public static final Integer DENIED = 2;
     public static final Integer WAITLISTED = 3;
+    public static final Integer DEFERRED = 4;
+    public static final Integer WITHDRAWN = 5;
 
     public static final String PENDING_STR = "Pending";
     public static final String ACCEPTED_STR = "Accepted";
     public static final String DENIED_STR = "Denied";
     public static final String WAITLISTED_STR = "Waitlisted";
+    public static final String DEFERRED_STR = "Deferred";
+    public static final String WITHDRAWN_STR = "Withdrawn";
 
     public static final Map<Integer, String> STATUS_MAP = new HashMap<Integer, String>() {
       {
@@ -62,6 +66,8 @@ public final class Const {
         put(ACCEPTED, ACCEPTED_STR);
         put(DENIED, DENIED_STR);
         put(WAITLISTED, WAITLISTED_STR);
+        put(DEFERRED, DEFERRED_STR);
+        put(WITHDRAWN, WITHDRAWN_STR);
       }
     };
 

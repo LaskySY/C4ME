@@ -23,4 +23,8 @@ public interface StudentApplicationRepository extends JpaRepository<StudentAppli
     Long countByCollegeByCollegeId(CollegeEntity collegeEntity);
 
     List<StudentApplicationEntity> findAllByQuestionable(Byte questionable);
+
+//    List<StudentApplicationEntity> getAll();
+
+//    List<StudentApplicationEntity> findAllByCollegeId(CollegeEntity collegeEntity);
 }

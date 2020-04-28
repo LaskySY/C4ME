@@ -51,6 +51,8 @@ public class ProfileEntity {
     private HighschoolEntity highschoolBySchoolId;
     private MajorEntity majorByMajor1;
     private MajorEntity majorByMajor2;
+//    private Integer weightedAvgPercentileScore;
+//    private Integer sat;
 
     @Id
     @Column(name = "username", nullable = false, length = 255)
@@ -303,6 +305,18 @@ public class ProfileEntity {
     public void setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime;
     }
+
+//    public Integer getWeightedAvgPercentileScore(){ return  weightedAvgPercentileScore;}
+//
+//    public void setWeightedAvgPercentileScore(Integer percentileScore){
+//        this.weightedAvgPercentileScore = percentileScore;
+//    }
+
+//    public Integer getSat(){ return sat;}
+//
+//    public void setSat(Integer satScore){
+//        this.sat = satScore;
+//    }
 
     @Override
     public boolean equals(Object o) {

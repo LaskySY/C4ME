@@ -145,6 +145,12 @@ public final class Const {
     public static final Double SCHOOL_FACTOR_WEIGHT = 0.2;
   }
 
+  public final static class ProfileWeightedPercentileConst {
+
+    public static final Double SUBJECT_TEST_WEIGHT = 0.05;
+
+  }
+
   public final static class Types {
     public static final Integer PUBLIC = 1;
     public static final Integer PRIVATE = 2;

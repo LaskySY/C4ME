@@ -70,8 +70,10 @@ public class ProfileInfo {
     satPhysics = profileEntity.getSatPhysics();
     major1 = profileEntity.getMajor1();
     major2 = profileEntity.getMajor2();
-    sat = satMath + satEbrw;
 
+    if(satMath != null && satEbrw != null){
+      sat = satMath + satEbrw;
+    }
 
   }
 

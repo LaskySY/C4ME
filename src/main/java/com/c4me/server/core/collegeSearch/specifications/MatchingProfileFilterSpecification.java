@@ -122,9 +122,24 @@ public class MatchingProfileFilterSpecification implements Specification<Profile
     Expression <String> profileusername = join2.get(UserEntity_.profileByUsername).get(ProfileEntity_.username);
 
 
-    Predicate pred = criteriaBuilder.equal(collegename, filter.getName());
+    Predicate pred;
+    Predicate pred3;
+    if(filter.getName() == null){
+      pred = criteriaBuilder.conjunction();
+    }
+    else{
+      pred = criteriaBuilder.equal(collegename, filter.getName());
+    }
+
     Predicate pred2 = criteriaBuilder.equal(username, profileusername);
-    Predicate pred3 = join.get(StudentApplicationEntity_.status).in(filter.getApplicationInts());
+
+    if(filter.getApplicationInts() == null){
+      pred3 = criteriaBuilder.conjunction();
+    }
+    else{
+      pred3 = join.get(StudentApplicationEntity_.status).in(filter.getApplicationInts());
+    }
+
     return criteriaBuilder.and(pred, pred2, pred3);
   }
 
@@ -155,8 +170,8 @@ public class MatchingProfileFilterSpecification implements Specification<Profile
     List<Predicate> predicates = new ArrayList<>();
 
     predicates.add(generateCollegeClassPredicate(root, criteriaQuery, criteriaBuilder));
-//    predicates.add(generateApplicationProfilePredicate(root, criteriaQuery, criteriaBuilder));
-//    predicates.add(generateHighschoolNamePredicate(root, criteriaQuery, criteriaBuilder));
+    predicates.add(generateApplicationProfilePredicate(root, criteriaQuery, criteriaBuilder));
+    predicates.add(generateHighschoolNamePredicate(root, criteriaQuery, criteriaBuilder));
 
     Predicate finalPredicate =  criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 

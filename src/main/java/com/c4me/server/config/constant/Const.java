@@ -243,6 +243,8 @@ public final class Const {
 
     public static String COLLEGE_DATA_PREFIX = "https://www.collegedata.com/college/";
 
+    public static String PERCENTILES_FILE = "percentiles.csv";
+
     public static void readConfigFile() {
       System.out.println("reading config file");
       File file = TestingDataUtils.findFile("config.txt", "txt");
@@ -263,10 +265,34 @@ public final class Const {
         ALL_HIGH_SCHOOLS_FILE = properties.getProperty("ALL_HIGH_SCHOOLS_FILE", ALL_HIGH_SCHOOLS_FILE);
         NICHE_PREFIX = properties.getProperty("NICHE_PREFIX", NICHE_PREFIX);
         COLLEGE_DATA_PREFIX = properties.getProperty("COLLEGE_DATA_PREFIX", COLLEGE_DATA_PREFIX);
+        PERCENTILES_FILE = properties.getProperty("PERCENTILES_FILE", PERCENTILES_FILE);
       } catch (IOException e) {
         System.out.println("Could not find configuration file; using default values");
       }
     }
+  }
+
+  public final static class Percentiles {
+    public static final String[] SAT_SUBJECT_TESTS = {
+            ProfileEntity_.SAT_CHEMISTRY,
+            ProfileEntity_.SAT_ECO_BIO,
+            ProfileEntity_.SAT_LITERATURE,
+            ProfileEntity_.SAT_MATH_I,
+            ProfileEntity_.SAT_MATH_II,
+            ProfileEntity_.SAT_MOL_BIO,
+            ProfileEntity_.SAT_PHYSICS,
+            ProfileEntity_.SAT_US_HIST,
+            ProfileEntity_.SAT_WORLD_HIST
+    };
+    public static final String[] SAT_MAIN_TESTS = {
+            ProfileEntity_.SAT_MATH,
+            ProfileEntity_.SAT_EBRW
+    };
+    public static final String[] ACT_TESTS = {
+            ProfileEntity_.ACT_COMPOSITE
+    };
+
+    public static final double SAT_SUBJECT_WEIGHT = 0.05;
   }
 
   public final static class CollegeScorecardHeaders {

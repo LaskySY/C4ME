@@ -24,3 +24,6 @@ STUDENT_PROFILES_FILE = students-random.csv
 
 # this is the file containing student applications to import
 STUDENT_APPLICATIONS_FILE = applications-random.csv
+
+# this is the file containing sat and act percentile conversion tables
+PERCENTILES_FILE = percentiles.csv

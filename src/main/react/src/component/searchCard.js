@@ -180,7 +180,7 @@ class searchCard extends Component {
                 : null
             }
             {
-              this.props.type === 'college' || this.props.type === 'highSchool'
+              this.props.type === 'highSchool'
                 ? <div className="col-3">
                   {
                     this.props.info && this.props.info.location
@@ -192,6 +192,26 @@ class searchCard extends Component {
                   }
                 </div>
                 : null
+            }
+            {
+              this.props.type === 'college'
+              ? <div className="col-3">
+                {
+                  this.props.info && this.props.info.location
+                      ? <span>
+                            <i className="search-card-info-icon fas fa-map-marker-alt"/>
+                              <a target="_blank"
+                                 href={"http://maps.google.com/?q=" + this.props.info.latitude + "," + this.props.info.longitude}
+                                 style={{cursor: this.props.info.latitude && this.props.info.longitude ? 'pointer' : 'default'}}
+                                 onClick={e => e.stopPropagation()}>
+                                {this.props.info.location}
+                              </a>
+                        {/*{this.props.info.location}*/}
+                          </span>
+                      : null
+                }
+              </div>
+              : null
             }
             {
               this.props.type === 'college'

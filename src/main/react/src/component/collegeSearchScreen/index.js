@@ -223,7 +223,9 @@ class collegeSearchScreen extends Component {
                 tuition: college.costOfAttendance,
                 location: college.city + ' ' + college.state,
                 enroll: college.numStudentsEnrolled,
-                rate: college.admissionRate
+                rate: college.admissionRate,
+                latitude: college.latitude,
+                  longitude: college.longitude
               }}
             />
           )

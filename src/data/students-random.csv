@@ -1,101 +1,1001 @@
 userid,password,residence_state,high_school_name,high_school_city,high_school_state,GPA,college_class,major_1,major_2,SAT_math,SAT_EBRW,ACT_English,ACT_math,ACT_reading,ACT_science,ACT_composite,SAT_literature,SAT_US_hist,SAT_world_hist,SAT_math_I,SAT_math_II,SAT_eco_bio,SAT_mol_bio,SAT_chemistry,SAT_physics,num_AP_passed
-coralynCoit9432,coralynCoit9432,NY,Sayville High School,West Sayville,NY,2.6,2024,Chemistry,Music Theory,480,490,25,22,19,19,23,530,520,550,490,490,470,490,570,500,4
-blissColtson3665,blissColtson3665,NY,Smithtown High School East,Saint James,NY,3.7,2024,Art History,History,780,690,35,36,30,30,33,770,780,770,760,710,800,770,690,750,9
-stellaPhenice6036,stellaPhenice6036,NY,Walt Whitman High School,Huntington Station,NY,2.8,2024,Computer Science,Political Science,560,550,21,20,18,22,30,590,590,580,630,600,540,620,610,580,8
-tomaDalt4312,tomaDalt4312,NY,West Islip Senior High School,West Islip,NY,2.5,2024,Biology,Physics,560,650,21,27,20,25,23,670,580,570,620,570,580,570,640,560,3
-roseannJaneczka3171,roseannJaneczka3171,NY,Newfield High School,Selden,NY,2.9,2024,Music Theory,Biology,590,560,25,25,28,22,23,640,610,600,630,570,630,600,650,580,6
-salaidhMoffit1729,salaidhMoffit1729,NY,Hampton Bays High School,Hampton Bays,NY,2.9,2024,Physics,Music Theory,630,630,26,30,24,33,22,580,600,640,670,570,630,640,700,660,4
-sheelahKleiman9333,sheelahKleiman9333,NY,Commack High School,Commack,NY,2.8,2024,Art History,Political Science,580,590,27,21,26,23,19,580,600,610,580,600,520,570,630,630,1
-natAney1676,natAney1676,NY,Connetquot High School,Bohemia,NY,2.6,2024,Biology,Mathematics,590,580,27,23,26,22,22,580,600,560,580,560,550,560,600,560,1
-jadaPlato4362,jadaPlato4362,NY,Sachem High School East,Farmingville,NY,2.9,2024,Physics,Art History,600,620,31,24,22,29,26,650,620,670,580,680,620,640,580,610,8
-selaBoswell2336,selaBoswell2336,NY,Wyandanch Memorial High School,Wyandanch,NY,2.3,2024,Political Science,Mathematics,520,560,22,26,19,26,26,560,580,580,550,610,560,610,580,530,1
-vivyanFarrar4439,vivyanFarrar4439,NY,Greenport High School,Greenport,NY,2.8,2024,Physics,Music Theory,660,620,21,28,18,24,28,570,630,630,650,590,560,580,660,590,6
-emmalynneAzarria5010,emmalynneAzarria5010,NY,Eastport South Manor Junior Senior High School,Manorville,NY,2.5,2024,Biology,Chemistry,580,560,23,24,24,20,20,520,510,560,550,580,600,530,570,480,2
-florriKimberlee1909,florriKimberlee1909,NY,Central Islip Senior High School,Central Islip,NY,2.8,2024,Computer Science,Political Science,530,540,17,22,19,25,16,510,550,550,590,540,530,560,540,530,9
-brandaisLupee3239,brandaisLupee3239,NY,Ward Melville Senior High School,East Setauket,NY,3.0,2024,Physics,Biology,620,620,30,27,29,28,27,610,660,670,720,670,690,660,680,680,1
-carmelleAlcus2305,carmelleAlcus2305,NY,Patchogue Medford High School,Medford,NY,3.2,2024,Political Science,Mathematics,680,740,29,28,25,22,24,690,670,630,700,670,630,670,670,660,2
-melicentMaurilia6001,melicentMaurilia6001,NY,Newfield High School,Selden,NY,2.8,2024,Computer Science,Political Science,680,660,26,21,25,29,30,640,650,640,610,610,630,660,630,650,8
-tomiManya1625,tomiManya1625,NY,Smithtown High School   Western Campus,Smithtown,NY,2.9,2024,History,Chemistry,660,620,27,25,27,27,23,630,570,650,640,600,580,640,650,680,1
-deniseCalise5321,deniseCalise5321,NY,Kings Park High School,Kings Park,NY,3.2,2024,Chemistry,Geology,740,710,24,27,29,27,31,720,710,700,740,740,660,720,680,720,8
-josiCrudden1700,josiCrudden1700,NY,Islip High School,Islip,NY,2.8,2024,Political Science,Music Theory,670,650,28,29,26,35,26,660,600,640,680,640,670,650,700,710,6
-gabriellaWightman7187,gabriellaWightman7187,NY,Hampton Bays High School,Hampton Bays,NY,2.6,2024,Chemistry,Art History,540,580,25,24,19,24,20,540,540,530,580,570,580,540,540,570,2
-brittniArde4693,brittniArde4693,NY,Rocky Point High School,Rocky Point,NY,2.4,2024,Mathematics,Art History,550,510,13,25,21,19,14,510,490,460,520,490,460,470,500,490,7
-cathrineLuna3811,cathrineLuna3811,NY,Sachem High School East,Farmingville,NY,2.4,2024,History,Physics,560,570,24,25,22,20,26,550,610,550,540,600,570,600,610,590,0
-garnetteKrystin4011,garnetteKrystin4011,NY,Centereach High School,Centereach,NY,3.1,2024,Art History,History,640,650,26,26,31,26,29,670,630,660,600,670,650,600,700,590,2
-sharityKoziel7921,sharityKoziel7921,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,2.7,2024,History,Physics,580,610,21,26,23,27,16,580,620,560,580,620,550,550,610,610,3
-liliasGarfinkel2532,liliasGarfinkel2532,NY,North Babylon High School,North Babylon,NY,3.8,2024,Music Theory,Physics,750,750,33,28,33,32,31,750,760,750,750,770,770,750,700,730,8
-myrahEli5278,myrahEli5278,NY,Brentwood High School,Brentwood,NY,3.1,2024,Physics,Biology,670,690,29,36,26,30,33,760,720,690,770,650,760,790,760,720,5
-tootsieNoonberg8588,tootsieNoonberg8588,NY,Mattituck Junior Senior High School,Mattituck,NY,2.7,2024,Art History,Political Science,580,540,27,20,24,21,18,530,570,490,570,540,530,590,540,560,2
-vinnieMayhew3698,vinnieMayhew3698,NY,Pierson Middle High School,Sag Harbor,NY,2.5,2024,Computer Science,Physics,600,560,23,25,21,23,19,610,560,510,570,550,590,580,540,580,8
-oraliaFlorella488,oraliaFlorella488,NY,Centereach High School,Centereach,NY,2.0,2024,Chemistry,Computer Science,440,440,25,19,21,15,19,480,460,520,510,480,440,470,440,430,8
-myrtleStatis9661,myrtleStatis9661,NY,Brentwood High School,Brentwood,NY,3.3,2024,Computer Science,Biology,680,710,24,28,29,32,25,670,640,690,670,740,620,680,710,690,3
-maigaGerstner155,maigaGerstner155,NY,Wyandanch Memorial High School,Wyandanch,NY,2.7,2024,History,Music Theory,650,650,20,27,27,20,25,630,630,640,660,680,620,600,630,610,6
-koreZak4485,koreZak4485,NY,William Floyd High School,Mastic Beach,NY,3.3,2024,Biology,Art History,690,730,30,32,33,33,31,760,710,780,790,750,680,730,750,750,5
-essaGenna2320,essaGenna2320,NY,The Knox School,St James,NY,2.7,2024,Biology,Political Science,610,700,28,27,29,23,27,670,650,630,680,660,670,620,680,610,7
-rozalinHengel4770,rozalinHengel4770,NY,Comsewogue High School,Port Jefferson Sta,NY,3.6,2024,Art History,Mathematics,750,760,32,33,34,29,36,720,760,740,780,770,750,740,740,770,9
-lynnetBirdie6772,lynnetBirdie6772,NY,Hauppauge High School,Hauppauge,NY,3.7,2024,Music Theory,Geology,740,710,26,32,28,29,29,770,750,730,710,700,740,730,730,710,1
-maureeneShutz3697,maureeneShutz3697,NY,Riverhead Senior High School,Riverhead,NY,3.2,2024,Biology,Computer Science,750,720,32,27,33,30,29,740,770,760,750,710,710,710,720,760,8
-perriHoopen3780,perriHoopen3780,NY,Longwood High School,Middle Island,NY,2.4,2024,Mathematics,Political Science,550,520,22,20,17,16,20,580,570,550,570,540,570,560,550,580,4
-donnieAgneta1063,donnieAgneta1063,NY,Bayport Blue Point High School,Bayport,NY,3.5,2024,Art History,Geology,800,770,33,31,30,34,30,710,760,740,740,750,760,780,740,800,3
-nannyHardi1781,nannyHardi1781,NY,Kings Park High School,Kings Park,NY,3.6,2024,History,Biology,740,750,29,30,31,28,28,750,690,710,650,730,700,700,760,750,6
-willetteTobin3191,willetteTobin3191,NY,Sachem High School North,Lake Ronkonkoma,NY,3.1,2024,Mathematics,History,760,770,25,28,29,29,28,750,780,740,730,750,750,750,760,710,8
-ramonaMazel8329,ramonaMazel8329,NY,Mattituck Junior Senior High School,Mattituck,NY,3.1,2024,Geology,Art History,660,690,28,25,21,28,28,690,610,630,680,650,610,630,650,650,8
-josephinaDonahoe6857,josephinaDonahoe6857,NY,Deer Park High School,Deer Park,NY,3.2,2024,Music Theory,Physics,760,730,28,31,31,28,33,720,700,790,760,710,760,710,740,720,2
-kevynEward3603,kevynEward3603,NY,Wyandanch Memorial High School,Wyandanch,NY,2.7,2024,Geology,Music Theory,570,600,26,20,18,23,25,600,610,580,580,590,530,610,560,570,7
-noveliaBrunell3790,noveliaBrunell3790,NY,Connetquot High School,Bohemia,NY,2.6,2024,Music Theory,History,660,590,24,30,30,28,27,580,600,550,640,670,630,570,600,620,1
-tessyHendon5346,tessyHendon5346,NY,Half Hollow Hills High School West,Dix Hills,NY,1.8,2024,Biology,Physics,440,360,16,18,22,24,19,410,490,400,350,400,410,390,370,420,7
-dulcianaLindemann121,dulcianaLindemann121,NY,Smithtown High School East,Saint James,NY,2.6,2024,Computer Science,Music Theory,580,610,19,25,19,23,25,580,560,590,600,630,580,580,570,590,1
-leylaWye2992,leylaWye2992,NY,Ross School,East Hampton,NY,2.0,2024,Political Science,Mathematics,430,440,15,18,15,17,14,440,420,440,440,420,460,480,430,410,1
-utaBrandi8907,utaBrandi8907,NY,Centereach High School,Centereach,NY,2.9,2024,Art History,History,540,620,21,18,22,23,25,600,580,570,550,600,580,540,550,560,0
-delorisRichart8079,delorisRichart8079,NY,Connetquot High School,Bohemia,NY,2.9,2024,Physics,Chemistry,550,640,29,23,23,23,27,690,640,700,620,690,640,590,630,690,4
-essaGranny3155,essaGranny3155,NY,Sayville High School,West Sayville,NY,2.7,2024,History,Chemistry,720,680,29,33,32,34,26,750,710,680,670,700,740,730,700,710,7
-davineParnas7964,davineParnas7964,NY,Riverhead Senior High School,Riverhead,NY,2.9,2024,Geology,Chemistry,570,660,20,25,25,28,26,640,630,660,600,640,670,620,610,670,7
-katharynPortingale6809,katharynPortingale6809,NY,Smithtown High School   Western Campus,Smithtown,NY,2.1,2024,Geology,Physics,520,510,14,18,18,15,19,550,560,560,520,480,520,490,500,510,4
-demetraPascha6497,demetraPascha6497,NY,Central Islip Senior High School,Central Islip,NY,2.8,2024,Computer Science,Physics,620,660,27,20,28,23,25,610,650,620,670,630,610,640,640,650,8
-kittiRudiger7725,kittiRudiger7725,NY,Southampton High School,Southampton,NY,2.6,2024,Music Theory,History,580,570,23,24,20,23,21,570,560,590,540,510,550,600,620,580,5
-carlitaRobb80,carlitaRobb80,NY,Bayport Blue Point High School,Bayport,NY,2.8,2024,Computer Science,Chemistry,570,600,25,23,25,20,21,550,590,610,570,580,570,630,570,610,4
-melisandraUlric7081,melisandraUlric7081,NY,Northport Senior High School,Northport,NY,2.9,2024,History,Mathematics,610,630,25,29,24,28,27,640,620,620,620,630,610,560,640,650,4
-brandeaKeeler3062,brandeaKeeler3062,NY,Patchogue Medford High School,Medford,NY,2.9,2024,History,Music Theory,630,660,25,29,26,27,24,660,660,670,640,640,620,640,630,630,7
-juneYoshi1838,juneYoshi1838,NY,Half Hollow Hills High School East,Dix Hills,NY,3.1,2024,History,Music Theory,600,650,20,21,26,28,32,670,630,640,630,610,670,590,660,580,7
-zorahKipper6572,zorahKipper6572,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,3.0,2024,Biology,Computer Science,660,670,25,31,29,21,26,640,720,690,690,670,690,710,740,650,4
-bertiDric3269,bertiDric3269,NY,Bridgehampton School,Bridgehampton,NY,3.0,2024,Music Theory,Mathematics,600,590,26,26,23,25,29,580,610,550,640,610,630,600,660,650,7
-laineyAlyworth9932,laineyAlyworth9932,NY,Sachem High School East,Farmingville,NY,2.6,2024,Physics,Geology,690,740,31,24,27,30,33,680,660,690,650,680,630,660,660,620,2
-farraCarlee1873,farraCarlee1873,NY,Central Islip Senior High School,Central Islip,NY,3.5,2024,Physics,History,730,760,32,31,36,29,29,800,800,740,770,770,790,800,790,750,8
-imojeanKarly3072,imojeanKarly3072,NY,Center Moriches High School,Center Moriches,NY,2.9,2024,Biology,Chemistry,750,670,26,31,29,36,29,720,700,710,710,700,730,670,700,750,7
-kessiahCordova5546,kessiahCordova5546,NY,Greenport High School,Greenport,NY,3.0,2024,Chemistry,Art History,630,670,23,27,28,20,26,560,660,620,620,580,660,620,650,640,4
-mernaColvert1316,mernaColvert1316,NY,Huntington High School,Huntington,NY,3.3,2024,Art History,Music Theory,760,750,36,31,34,32,36,800,800,780,790,750,770,730,730,790,7
-rainaOringa6927,rainaOringa6927,NY,The Stony Brook School,Stony Brook,NY,3.0,2024,Physics,Geology,800,700,28,29,29,32,28,750,740,740,720,700,780,680,740,720,7
-cristyForrest2904,cristyForrest2904,NY,Miller Place High School,Miller Place,NY,2.0,2024,Political Science,Computer Science,580,540,22,23,18,21,22,550,530,540,570,540,520,550,460,610,4
-melisandeMavis2341,melisandeMavis2341,NY,West Islip Senior High School,West Islip,NY,2.9,2024,Chemistry,Physics,700,690,27,32,29,29,24,670,700,590,640,670,650,700,660,720,9
-gretelEdme1507,gretelEdme1507,NY,Hampton Bays High School,Hampton Bays,NY,2.8,2024,Biology,Political Science,690,720,30,32,31,29,26,760,740,670,670,730,780,690,710,730,2
-gertiZaslow2574,gertiZaslow2574,NY,Miller Place High School,Miller Place,NY,2.2,2024,Computer Science,Political Science,540,510,21,12,24,22,20,490,470,580,540,550,540,530,540,490,7
-trulaHooge4695,trulaHooge4695,NY,Northport Senior High School,Northport,NY,2.7,2024,Geology,History,580,580,24,17,22,23,24,600,590,600,570,590,590,590,570,570,2
-livvyyTricia5476,livvyyTricia5476,NY,East Hampton High School,East Hampton,NY,2.3,2024,Chemistry,Physics,480,430,14,18,14,16,14,430,450,440,470,460,430,430,420,480,9
-lilasDidi1458,lilasDidi1458,NY,Babylon Junior Senior High School,Babylon,NY,3.0,2024,Physics,Mathematics,650,610,25,27,30,24,28,610,710,620,620,640,680,630,620,680,4
-ebonyDavis1628,ebonyDavis1628,NY,Eastport South Manor Junior Senior High School,Manorville,NY,3.6,2024,Mathematics,History,790,760,30,33,33,30,32,760,760,780,800,760,800,760,770,750,4
-traciFifi569,traciFifi569,NY,Bay Shore Senior High School,Bay Shore,NY,2.8,2024,Computer Science,Political Science,680,640,29,24,31,29,29,620,640,610,600,630,590,620,670,610,0
-colettaOber2786,colettaOber2786,NY,Ross School,East Hampton,NY,3.1,2024,History,Geology,800,730,26,30,35,31,27,750,700,730,770,730,780,730,730,710,8
-brookHewitt5534,brookHewitt5534,NY,Smithtown Christian School,Smithtown,NY,2.7,2024,Chemistry,Music Theory,660,610,24,26,29,27,24,680,650,650,620,600,590,600,630,630,0
-ansticeRaybin9843,ansticeRaybin9843,NY,Ross School,East Hampton,NY,2.6,2024,Music Theory,Biology,640,680,33,28,31,23,29,680,670,660,730,730,640,640,630,730,9
-leaCallahan9693,leaCallahan9693,NY,Northport Senior High School,Northport,NY,2.5,2024,Art History,Computer Science,590,570,24,22,22,24,26,530,550,580,560,550,510,560,600,580,9
-marissaRiha3202,marissaRiha3202,NY,Deer Park High School,Deer Park,NY,2.7,2024,Chemistry,Mathematics,580,570,24,24,24,25,24,610,560,630,610,570,580,630,600,570,0
-mattieNobie6821,mattieNobie6821,NY,The Stony Brook School,Stony Brook,NY,2.5,2024,Music Theory,Art History,520,540,17,27,28,24,15,590,500,470,580,560,610,510,560,530,0
-erinnaPortugal5100,erinnaPortugal5100,NY,Half Hollow Hills High School East,Dix Hills,NY,2.7,2024,History,Geology,630,580,20,24,22,25,22,570,560,600,620,650,590,580,610,570,8
-birgittaBotsford2569,birgittaBotsford2569,NY,Earl L Vandermeulen High School,Port Jefferson,NY,3.3,2024,Computer Science,History,740,700,28,24,26,23,29,690,750,690,730,710,690,680,700,660,3
-lucindaWestphal8861,lucindaWestphal8861,NY,Smithtown Christian School,Smithtown,NY,2.4,2024,Art History,History,580,550,27,21,18,22,24,550,590,520,510,560,550,530,590,530,8
-dollieHenden3036,dollieHenden3036,NY,North Babylon High School,North Babylon,NY,2.5,2024,Political Science,Geology,570,620,25,21,25,22,29,580,590,580,540,580,620,570,600,610,2
-margeGilberte8455,margeGilberte8455,NY,West Babylon Senior High School,West Babylon,NY,3.3,2024,Biology,Political Science,760,750,31,31,34,36,33,730,760,770,760,790,730,780,700,760,5
-phedraPete5304,phedraPete5304,NY,Miller Place High School,Miller Place,NY,2.9,2024,Mathematics,Biology,710,680,34,27,34,22,26,720,710,670,650,760,720,750,750,630,9
-pippaSolana9069,pippaSolana9069,NY,Smithtown Christian School,Smithtown,NY,2.9,2024,Political Science,Chemistry,630,620,30,27,24,29,27,500,560,600,570,560,570,590,620,570,6
-naniBurrell6280,naniBurrell6280,NY,Ward Melville Senior High School,East Setauket,NY,2.9,2024,Music Theory,Computer Science,610,610,25,25,19,23,26,640,650,630,690,610,610,620,660,610,3
-bonnibelleLynelle4692,bonnibelleLynelle4692,NY,Comsewogue High School,Port Jefferson Sta,NY,2.6,2024,Mathematics,Computer Science,590,610,25,26,22,25,30,660,640,580,570,680,650,560,630,670,9
-guendolenTaft6618,guendolenTaft6618,NY,Eastport South Manor Junior Senior High School,Manorville,NY,2.6,2024,Biology,Geology,570,580,23,24,19,19,22,500,580,550,520,530,570,550,550,470,1
-claudelleOberstone7854,claudelleOberstone7854,NY,Ross School,East Hampton,NY,3.2,2024,Physics,Chemistry,730,690,27,31,31,35,26,660,710,680,680,650,590,730,780,660,1
-kirstiFabian1912,kirstiFabian1912,NY,Bayport Blue Point High School,Bayport,NY,2.1,2024,Chemistry,Political Science,440,430,13,16,19,23,21,410,530,460,440,470,450,450,450,470,3
-cyndiaWon1374,cyndiaWon1374,NY,Patchogue Medford High School,Medford,NY,3.0,2024,History,Computer Science,630,620,21,24,24,31,23,610,580,570,630,630,610,630,660,640,9
-kristinaFulvi205,kristinaFulvi205,NY,Longwood High School,Middle Island,NY,3.5,2024,Mathematics,Music Theory,720,670,36,26,35,27,28,770,780,730,690,740,740,750,710,750,3
-dennieMyrtice1466,dennieMyrtice1466,NY,St John the Baptist Diocesan High School,West Islip,NY,3.2,2024,Biology,History,670,680,30,30,28,28,28,670,720,700,710,720,710,710,720,660,5
-emyleBonni8938,emyleBonni8938,NY,Brentwood High School,Brentwood,NY,2.5,2024,Computer Science,Mathematics,600,600,23,26,26,23,18,560,560,560,550,600,610,600,580,590,8
-sherlineRoye9586,sherlineRoye9586,NY,Comsewogue High School,Port Jefferson Sta,NY,2.3,2024,Mathematics,Physics,570,570,21,22,19,18,16,560,560,520,520,530,590,530,590,470,2
-hildagardMcCourt3034,hildagardMcCourt3034,NY,Deer Park High School,Deer Park,NY,3.2,2024,Chemistry,Political Science,760,710,34,33,29,32,28,780,780,700,750,700,730,770,730,730,3
-mabMaro7145,mabMaro7145,NY,Greenport High School,Greenport,NY,2.5,2024,History,Physics,590,610,18,26,23,21,23,520,580,520,560,540,520,510,520,540,5
+lexisChapin850,lexisChapin850,NY,Smithtown High School   Western Campus,Smithtown,NY,2.7,2024,Political Science,Mathematics,590,610,24,22,27,23,20,620,600,540,600,540,540,570,570,570,9
+abigaleHashimoto5791,abigaleHashimoto5791,NY,Saint Anthonys High School,Huntington Station,NY,3.7,2024,Physics,Mathematics,720,790,35,31,31,31,29,760,710,760,740,800,790,770,700,760,6
+diahannOgawa3090,diahannOgawa3090,NY,Smithtown High School   Western Campus,Smithtown,NY,3.3,2024,Computer Science,Mathematics,760,760,32,36,36,34,32,740,740,730,780,780,770,740,730,730,7
+delphiniaBabbette267,delphiniaBabbette267,NY,Walter G Oconnell Copiague High School,Copiague,NY,2.8,2024,Geology,Art History,650,620,25,24,24,21,20,610,550,610,600,570,660,590,610,610,1
+norahScurlock8707,norahScurlock8707,NY,Rocky Point High School,Rocky Point,NY,3.0,2024,Physics,Chemistry,740,760,32,26,25,35,30,710,720,730,740,780,720,750,770,740,8
+gabbieAshti6116,gabbieAshti6116,NY,Greenport High School,Greenport,NY,3.6,2024,Music Theory,Physics,760,780,29,30,36,34,34,730,750,780,680,680,750,790,800,730,4
+tessPasco285,tessPasco285,NY,Pierson Middle High School,Sag Harbor,NY,2.5,2024,Computer Science,Mathematics,620,600,29,26,28,28,20,610,700,630,620,720,630,670,620,670,3
+linetHastie1200,linetHastie1200,NY,Hauppauge High School,Hauppauge,NY,3.5,2024,History,Physics,720,690,32,30,30,35,29,770,760,740,800,740,780,780,800,760,9
+lindseyMayda5181,lindseyMayda5181,NY,Newfield High School,Selden,NY,2.3,2024,Biology,History,460,480,22,23,18,21,18,540,480,500,560,470,510,500,500,520,3
+wrenLeandra9466,wrenLeandra9466,NY,Sayville High School,West Sayville,NY,2.8,2024,Computer Science,Chemistry,610,560,20,18,31,27,21,520,620,610,630,610,580,560,570,580,5
+gussieBlackburn5095,gussieBlackburn5095,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,3.1,2024,Physics,History,670,670,27,29,30,30,29,660,660,640,680,680,620,670,680,660,7
+constantaAreta8098,constantaAreta8098,NY,Eastport South Manor Junior Senior High School,Manorville,NY,3.0,2024,Physics,History,700,750,36,30,33,21,28,690,720,670,670,750,680,740,740,620,1
+lydaLuing7636,lydaLuing7636,NY,Centereach High School,Centereach,NY,2.7,2024,Political Science,Biology,620,570,20,29,19,25,22,570,590,570,580,600,580,520,620,590,5
+brigittaKimberli6424,brigittaKimberli6424,NY,Bay Shore Senior High School,Bay Shore,NY,2.3,2024,Biology,Art History,520,560,20,21,24,25,23,540,590,560,560,550,600,550,550,580,3
+shandieDarrell1741,shandieDarrell1741,NY,Lindenhurst Senior High School,Lindenhurst,NY,3.5,2024,Music Theory,Chemistry,710,670,32,33,32,35,26,720,730,720,700,760,690,770,740,730,8
+shelaghAttenweiler2298,shelaghAttenweiler2298,NY,Connetquot High School,Bohemia,NY,2.5,2024,Physics,Geology,580,540,23,21,25,20,21,530,510,530,570,540,530,580,600,480,8
+juliaGawen3390,juliaGawen3390,NY,Center Moriches High School,Center Moriches,NY,2.1,2024,Computer Science,Physics,470,540,22,20,21,18,19,550,540,510,570,490,530,540,560,560,0
+ulrikeHildick7886,ulrikeHildick7886,NY,East Hampton High School,East Hampton,NY,2.4,2024,Computer Science,Geology,570,460,22,18,22,18,13,490,440,540,520,530,510,520,460,510,4
+robinettaChrisy4522,robinettaChrisy4522,NY,John H Glenn High School,Elwood,NY,3.2,2024,Computer Science,Biology,630,620,30,28,25,27,24,620,640,650,650,630,640,620,670,630,6
+dioneAshia174,dioneAshia174,NY,Connetquot High School,Bohemia,NY,3.1,2024,Geology,Biology,720,730,31,35,31,28,34,680,760,770,690,700,780,710,730,730,1
+gwendolinMusetta7200,gwendolinMusetta7200,NY,The Knox School,St James,NY,2.4,2024,Geology,Chemistry,600,650,26,25,22,24,26,610,590,650,650,640,590,630,640,630,5
+melodieAvelin6586,melodieAvelin6586,NY,Comsewogue High School,Port Jefferson Sta,NY,3.4,2024,History,Computer Science,700,700,28,25,21,23,27,690,710,740,650,710,750,670,710,670,5
+mellaAharon717,mellaAharon717,NY,Walt Whitman High School,Huntington Station,NY,1.8,2024,Computer Science,Political Science,330,420,12,12,15,13,12,350,360,360,380,350,370,370,440,370,8
+libRuthanne7796,libRuthanne7796,NY,West Islip Senior High School,West Islip,NY,2.2,2024,Geology,Biology,580,610,22,21,23,27,24,650,640,610,650,650,560,610,640,640,4
+lianneBerner4224,lianneBerner4224,NY,Sayville High School,West Sayville,NY,3.1,2024,History,Political Science,640,640,26,28,27,26,26,650,630,690,650,630,660,660,690,660,9
+pepitaLeverick8091,pepitaLeverick8091,NY,Babylon Junior Senior High School,Babylon,NY,3.0,2024,Music Theory,Geology,670,610,21,26,29,29,18,610,670,670,570,630,650,580,620,670,8
+caciliaDian3667,caciliaDian3667,NY,Northport Senior High School,Northport,NY,3.0,2024,Physics,Chemistry,700,650,32,34,34,32,28,690,720,710,750,710,690,770,690,740,8
+rianonDaveta6817,rianonDaveta6817,NY,William Floyd High School,Mastic Beach,NY,3.0,2024,Computer Science,Political Science,710,750,35,30,26,26,27,750,760,720,690,670,740,730,710,780,9
+gwendolinZalea1193,gwendolinZalea1193,NY,Miller Place High School,Miller Place,NY,3.2,2024,Art History,Biology,640,610,25,34,30,29,30,700,660,700,670,710,630,640,710,670,6
+hyacintheMartel7701,hyacintheMartel7701,NY,John H Glenn High School,Elwood,NY,1.9,2024,Art History,Biology,500,470,15,18,15,16,22,420,440,470,450,470,500,480,490,510,1
+keelyAlexi3041,keelyAlexi3041,NY,Smithtown High School East,Saint James,NY,3.0,2024,Political Science,Chemistry,610,580,29,25,22,26,23,680,650,630,620,610,600,660,610,630,4
+krystynaMukerji5817,krystynaMukerji5817,NY,Mount Sinai High School,Mount Sinai,NY,2.3,2024,Computer Science,Art History,540,500,16,22,18,18,18,470,480,490,490,500,500,490,500,440,0
+marybelleJanelle7248,marybelleJanelle7248,NY,Saint Anthonys High School,Huntington Station,NY,2.1,2024,Geology,Computer Science,460,490,20,20,17,12,16,460,500,520,500,480,520,490,430,490,3
+ardeneMaurilla8134,ardeneMaurilla8134,NY,Southampton High School,Southampton,NY,1.9,2024,Chemistry,Computer Science,420,420,10,19,20,14,14,420,380,400,420,380,440,430,390,480,2
+jerryleeSteward340,jerryleeSteward340,NY,Mount Sinai High School,Mount Sinai,NY,2.8,2024,Geology,Physics,750,700,31,26,31,28,30,650,700,660,660,630,680,670,680,630,9
+zoraGiaimo7589,zoraGiaimo7589,NY,Rocky Point High School,Rocky Point,NY,3.0,2024,Political Science,Geology,640,640,27,34,23,22,21,600,630,630,650,640,660,630,710,540,4
+abagailGathard8425,abagailGathard8425,NY,Sayville High School,West Sayville,NY,3.6,2024,Political Science,Biology,780,770,36,30,32,36,27,770,790,710,800,760,800,700,770,770,6
+miguelitaFannie2113,miguelitaFannie2113,NY,Commack High School,Commack,NY,2.6,2024,Chemistry,History,560,540,23,21,20,19,21,560,580,610,520,530,520,500,550,530,0
+maggeeBinky3574,maggeeBinky3574,NY,Huntington High School,Huntington,NY,2.3,2024,Computer Science,History,480,490,18,15,18,16,18,510,490,510,480,490,490,520,470,530,9
+vanessaSandor3858,vanessaSandor3858,NY,Hauppauge High School,Hauppauge,NY,2.5,2024,Physics,Music Theory,570,580,25,17,24,22,21,520,570,540,510,580,580,490,520,570,8
+meggiePell4861,meggiePell4861,NY,Northport Senior High School,Northport,NY,3.3,2024,Political Science,Biology,760,690,25,27,26,30,31,760,690,740,720,680,690,660,790,710,5
+evangelinaModeste7797,evangelinaModeste7797,NY,Earl L Vandermeulen High School,Port Jefferson,NY,2.3,2024,Physics,Mathematics,500,480,15,22,19,17,24,500,510,500,550,500,560,490,550,480,0
+marianaNorry3243,marianaNorry3243,NY,Earl L Vandermeulen High School,Port Jefferson,NY,2.0,2024,Art History,Chemistry,530,530,17,18,19,19,21,470,470,560,550,520,500,500,520,500,1
+melisaChapen7978,melisaChapen7978,NY,Sachem High School North,Lake Ronkonkoma,NY,1.9,2024,Political Science,Chemistry,450,460,19,15,22,18,19,500,490,520,470,540,460,500,510,450,3
+ariellaKrug5917,ariellaKrug5917,NY,Rocky Point High School,Rocky Point,NY,3.2,2024,Art History,Political Science,710,710,29,28,24,33,34,720,690,670,690,720,680,650,710,690,8
+marthaBab4861,marthaBab4861,NY,North Babylon High School,North Babylon,NY,3.4,2024,Geology,History,670,710,28,27,23,26,30,750,720,660,720,710,790,710,690,720,5
+taniaPotts8028,taniaPotts8028,NY,Riverhead Senior High School,Riverhead,NY,2.6,2024,Physics,Music Theory,640,670,23,21,28,25,24,600,620,620,640,650,640,680,620,590,7
+deliaCollum8876,deliaCollum8876,NY,Westhampton Beach Senior High School,Westhampton Beach,NY,2.9,2024,Mathematics,Biology,620,640,29,26,26,27,28,620,620,650,640,650,690,660,630,670,2
+amandiAmye2909,amandiAmye2909,NY,Bellport Senior High School,Brookhaven,NY,3.0,2024,Biology,Physics,650,560,29,25,19,22,26,620,670,550,590,650,630,620,560,600,0
+mercedesMerrili5501,mercedesMerrili5501,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,3.0,2024,Chemistry,Computer Science,700,710,27,28,27,24,22,710,690,640,680,690,630,670,640,640,5
+maireGarrity7214,maireGarrity7214,NY,East Islip High School,Islip Terrace,NY,2.6,2024,Physics,Computer Science,630,570,27,25,22,24,20,620,570,620,610,620,600,650,580,600,4
+giuliaPetulia9862,giuliaPetulia9862,NY,Center Moriches High School,Center Moriches,NY,3.2,2024,Music Theory,History,720,630,28,27,27,25,27,700,660,670,700,610,700,720,670,680,9
+dollieMacNamara8930,dollieMacNamara8930,NY,Huntington High School,Huntington,NY,2.2,2024,Mathematics,Music Theory,520,470,14,17,14,16,23,420,510,480,450,470,410,440,530,480,3
+dottyMarylin2547,dottyMarylin2547,NY,William Floyd High School,Mastic Beach,NY,2.3,2024,Physics,Mathematics,500,590,23,24,24,19,20,570,600,580,570,570,560,590,580,510,2
+benniClardy7382,benniClardy7382,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,2.7,2024,Chemistry,Geology,620,580,23,21,19,22,25,570,570,520,520,580,530,600,590,530,0
+phillieGrunberg5927,phillieGrunberg5927,NY,Shoreham Wading River High School,Shoreham,NY,2.9,2024,Physics,Art History,620,560,21,24,20,23,21,610,580,550,590,570,560,570,610,540,3
+samariaThorvald8084,samariaThorvald8084,NY,East Hampton High School,East Hampton,NY,2.5,2024,Political Science,Art History,560,540,22,19,23,23,29,480,540,580,590,570,540,550,600,570,0
+maureneBertina2931,maureneBertina2931,NY,Sachem High School North,Lake Ronkonkoma,NY,1.9,2024,Geology,Political Science,460,400,13,16,19,17,20,470,520,470,450,440,440,450,440,500,6
+faraBlum754,faraBlum754,NY,Rocky Point High School,Rocky Point,NY,3.0,2024,Mathematics,History,620,670,30,28,27,26,28,610,660,650,640,600,630,680,680,670,7
+wendyCherianne7806,wendyCherianne7806,NY,Sachem High School East,Farmingville,NY,3.1,2024,Chemistry,History,740,780,25,29,31,32,28,740,720,740,680,770,690,770,720,680,7
+gabrielleDelacourt5181,gabrielleDelacourt5181,NY,Brentwood High School,Brentwood,NY,2.7,2024,Physics,Music Theory,550,600,27,23,22,24,25,610,580,610,510,610,580,620,520,560,0
+lyndelCartwright8361,lyndelCartwright8361,NY,Patchogue Medford High School,Medford,NY,2.4,2024,Mathematics,Art History,540,590,21,21,18,17,20,460,520,500,510,530,520,530,520,470,6
+rochellMilurd2837,rochellMilurd2837,NY,West Babylon Senior High School,West Babylon,NY,3.2,2024,Political Science,Computer Science,700,720,27,26,31,30,31,710,690,700,740,690,670,750,760,680,8
+marillinJermayne3463,marillinJermayne3463,NY,Bay Shore Senior High School,Bay Shore,NY,1.9,2024,Political Science,Art History,480,440,17,18,17,16,17,440,480,460,470,400,430,460,420,450,6
+karlyPrudie2485,karlyPrudie2485,NY,Riverhead Senior High School,Riverhead,NY,2.8,2024,History,Mathematics,720,690,30,27,30,26,26,700,670,720,680,730,670,690,750,720,0
+libbyEv1877,libbyEv1877,NY,Bayport Blue Point High School,Bayport,NY,3.3,2024,Biology,Geology,600,620,26,23,33,28,26,620,660,680,620,630,660,600,600,640,6
+anna-mariaAdamik2075,anna-mariaAdamik2075,NY,Southampton High School,Southampton,NY,3.4,2024,Political Science,Computer Science,740,780,34,29,34,31,29,760,730,710,760,730,670,760,750,780,3
+berthaHarlen9996,berthaHarlen9996,NY,Half Hollow Hills High School East,Dix Hills,NY,2.7,2024,Music Theory,Physics,550,610,21,24,24,23,23,610,560,610,570,610,560,570,580,580,4
+linaQuesta8387,linaQuesta8387,NY,Greenport High School,Greenport,NY,3.3,2024,Physics,Computer Science,710,680,33,33,33,28,30,740,680,730,690,690,700,610,730,730,7
+papagenaWilek5682,papagenaWilek5682,NY,Wyandanch Memorial High School,Wyandanch,NY,2.4,2024,Computer Science,Political Science,550,560,21,20,20,17,20,510,540,530,560,560,570,600,580,520,8
+cybillKellby5534,cybillKellby5534,NY,East Islip High School,Islip Terrace,NY,3.4,2024,Computer Science,Biology,750,760,31,36,36,32,33,760,800,800,770,740,800,730,760,750,0
+billCate8491,billCate8491,NY,Half Hollow Hills High School East,Dix Hills,NY,3.1,2024,Art History,Chemistry,620,650,28,23,22,25,23,610,590,600,670,680,670,640,670,670,0
+hettyCarver9844,hettyCarver9844,NY,The Stony Brook School,Stony Brook,NY,2.5,2024,Physics,Biology,640,620,29,24,22,22,26,640,630,620,610,640,630,670,630,630,6
+alainePaluas555,alainePaluas555,NY,Sachem High School North,Lake Ronkonkoma,NY,3.5,2024,Geology,Music Theory,770,800,31,35,34,29,36,760,730,780,770,780,710,800,730,780,3
+linetUrsulina1259,linetUrsulina1259,NY,Sayville High School,West Sayville,NY,3.1,2024,History,Art History,650,680,28,33,23,29,33,700,660,730,660,700,690,670,740,650,0
+lacyZailer5552,lacyZailer5552,NY,Greenport High School,Greenport,NY,3.4,2024,Music Theory,Geology,750,760,32,33,32,36,27,790,740,800,800,730,780,750,800,760,8
+vivianneBlodgett9396,vivianneBlodgett9396,NY,Connetquot High School,Bohemia,NY,1.9,2024,Biology,Geology,530,490,21,16,15,16,20,490,500,460,490,450,500,430,470,500,7
+tarahJapeth1988,tarahJapeth1988,NY,Half Hollow Hills High School East,Dix Hills,NY,2.8,2024,Music Theory,Chemistry,600,650,23,26,23,30,25,650,630,680,660,630,670,680,620,600,7
+imojeanMapes50,imojeanMapes50,NY,East Islip High School,Islip Terrace,NY,3.5,2024,Political Science,Biology,670,670,32,29,25,28,25,730,700,740,730,690,710,720,690,700,1
+reyAtiana5262,reyAtiana5262,NY,William Floyd High School,Mastic Beach,NY,3.1,2024,Physics,Biology,690,670,30,31,32,24,27,660,630,630,700,630,650,650,580,710,8
+ashienBlondell7233,ashienBlondell7233,NY,Half Hollow Hills High School East,Dix Hills,NY,2.8,2024,Political Science,Geology,550,590,22,25,27,23,19,670,660,600,570,590,610,560,620,600,3
+aundreaArmilla7018,aundreaArmilla7018,NY,Smithtown High School   Western Campus,Smithtown,NY,2.2,2024,History,Music Theory,470,470,15,16,16,17,20,490,430,480,460,490,500,460,450,450,9
+doralynKreit6970,doralynKreit6970,NY,Eastport South Manor Junior Senior High School,Manorville,NY,3.4,2024,Computer Science,Physics,750,730,31,30,31,24,28,730,750,720,690,750,700,740,730,760,1
+glenineFriedrich164,glenineFriedrich164,NY,Huntington High School,Huntington,NY,2.8,2024,History,Physics,580,540,22,26,28,23,17,560,590,590,560,630,570,600,570,620,7
+paolaLoseff3134,paolaLoseff3134,NY,East Islip High School,Islip Terrace,NY,3.1,2024,Physics,Political Science,760,680,34,30,28,28,30,720,680,730,690,700,640,630,650,630,0
+melodieBenoit8556,melodieBenoit8556,NY,Walt Whitman High School,Huntington Station,NY,3.4,2024,Biology,Computer Science,750,720,29,27,35,31,33,740,720,710,710,740,800,700,750,790,0
+ofeliaMaurise5131,ofeliaMaurise5131,NY,Wyandanch Memorial High School,Wyandanch,NY,2.9,2024,Biology,Art History,630,620,20,30,28,24,24,630,670,670,590,580,660,620,660,600,9
+rosAmandi2775,rosAmandi2775,NY,Centereach High School,Centereach,NY,2.7,2024,Physics,Music Theory,670,600,20,21,31,30,25,590,590,590,650,600,640,640,630,640,3
+tashaSchnorr5897,tashaSchnorr5897,NY,Central Islip Senior High School,Central Islip,NY,1.8,2024,Geology,History,460,440,17,19,20,17,24,450,400,420,470,360,430,420,420,450,9
+karilCargian9649,karilCargian9649,NY,Bayport Blue Point High School,Bayport,NY,2.3,2024,Physics,Music Theory,470,470,17,18,17,14,16,560,420,430,440,420,480,450,460,460,0
+othilieBoswall4575,othilieBoswall4575,NY,Sachem High School East,Farmingville,NY,2.5,2024,Geology,Chemistry,590,580,23,25,23,19,23,600,580,580,600,600,630,620,630,590,6
+celestaShurlocke6858,celestaShurlocke6858,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.0,2024,Mathematics,Political Science,450,450,20,17,21,15,15,440,410,440,470,470,490,480,480,460,4
+phaidraAlisan6165,phaidraAlisan6165,NY,Half Hollow Hills High School West,Dix Hills,NY,3.0,2024,Political Science,Computer Science,730,660,30,30,31,25,32,660,670,700,700,700,640,640,650,640,0
+wynnyKaden7667,wynnyKaden7667,NY,Southampton High School,Southampton,NY,2.9,2024,Mathematics,Music Theory,590,560,20,17,22,19,27,530,530,550,570,500,470,510,510,490,2
+daniJeminah7597,daniJeminah7597,NY,Mount Sinai High School,Mount Sinai,NY,2.0,2024,History,Political Science,430,410,16,19,18,15,21,390,410,430,340,400,380,470,420,390,2
+lynnetJanelle1739,lynnetJanelle1739,NY,North Babylon High School,North Babylon,NY,2.8,2024,Geology,History,680,700,25,29,30,31,30,650,600,690,680,630,670,650,670,670,8
+carrollFidela9758,carrollFidela9758,NY,Hauppauge High School,Hauppauge,NY,3.5,2024,Music Theory,Art History,750,760,35,27,34,35,34,800,730,790,770,790,760,720,800,800,8
+hestiaHootman4954,hestiaHootman4954,NY,The Knox School,St James,NY,2.7,2024,History,Mathematics,660,640,27,26,23,21,23,610,600,600,660,610,650,600,670,660,4
+theodoraVirge600,theodoraVirge600,NY,Comsewogue High School,Port Jefferson Sta,NY,2.8,2024,Art History,Computer Science,680,660,28,27,31,27,25,660,700,670,670,610,630,650,660,710,3
+arabeleCelina5530,arabeleCelina5530,NY,East Hampton High School,East Hampton,NY,3.0,2024,Mathematics,Geology,670,720,27,29,27,27,29,730,660,710,720,710,710,680,730,670,8
+kayceeCon1205,kayceeCon1205,NY,North Babylon High School,North Babylon,NY,2.9,2024,Music Theory,Mathematics,650,650,30,33,26,28,26,670,580,610,650,640,600,650,660,640,4
+adianaDarcie4373,adianaDarcie4373,NY,John H Glenn High School,Elwood,NY,2.3,2024,History,Mathematics,550,490,23,19,21,23,19,580,560,570,530,560,560,500,570,550,3
+herthaAgnola1398,herthaAgnola1398,NY,Pierson Middle High School,Sag Harbor,NY,3.6,2024,Music Theory,Physics,770,760,29,34,32,29,35,790,770,700,770,750,770,770,790,730,7
+cordulaMarston2866,cordulaMarston2866,NY,Wyandanch Memorial High School,Wyandanch,NY,3.0,2024,Biology,Chemistry,700,680,27,27,26,28,29,710,710,680,670,680,690,680,730,680,5
+goldiBerkly8784,goldiBerkly8784,NY,Westhampton Beach Senior High School,Westhampton Beach,NY,3.2,2024,Music Theory,Computer Science,800,800,32,32,36,36,35,760,780,740,800,740,750,800,780,800,8
+annySwor1809,annySwor1809,NY,East Hampton High School,East Hampton,NY,2.4,2024,Biology,History,500,490,24,18,20,19,21,490,470,530,510,520,500,490,530,480,9
+delaAntipus4828,delaAntipus4828,NY,Rocky Point High School,Rocky Point,NY,3.4,2024,Geology,Biology,710,740,35,31,27,31,25,710,760,700,700,710,770,690,640,750,7
+araNewcomer9428,araNewcomer9428,NY,St John the Baptist Diocesan High School,West Islip,NY,3.4,2024,Geology,Political Science,730,710,30,28,31,30,25,700,710,710,670,720,690,700,700,710,8
+loellaOwena2287,loellaOwena2287,NY,Riverhead Senior High School,Riverhead,NY,2.8,2024,Physics,Chemistry,520,570,20,24,22,21,22,470,560,560,570,530,520,600,580,570,0
+doretteAngadresma2572,doretteAngadresma2572,NY,Smithtown High School   Western Campus,Smithtown,NY,3.0,2024,Physics,Political Science,690,640,29,30,28,32,24,660,650,600,700,650,620,630,610,580,0
+philisNicole8885,philisNicole8885,NY,Bay Shore Senior High School,Bay Shore,NY,2.5,2024,Chemistry,Political Science,590,590,22,23,18,19,20,530,570,520,500,540,530,560,500,540,2
+innaBurns8217,innaBurns8217,NY,Riverhead Senior High School,Riverhead,NY,3.1,2024,Biology,Chemistry,670,670,33,28,30,26,28,680,660,660,710,710,730,710,720,740,2
+margeKassi9803,margeKassi9803,NY,North Babylon High School,North Babylon,NY,1.6,2024,Chemistry,Art History,360,420,15,13,14,15,14,400,450,390,300,310,410,390,430,450,6
+melonyLeda7042,melonyLeda7042,NY,Smithtown High School East,Saint James,NY,3.1,2024,Biology,History,730,750,27,33,30,34,32,740,690,680,700,750,680,700,640,740,2
+adriannaAngelita3020,adriannaAngelita3020,NY,Hauppauge High School,Hauppauge,NY,3.3,2024,Art History,Political Science,610,610,25,26,21,25,24,590,620,620,640,640,610,650,610,660,7
+shirleyBosch3562,shirleyBosch3562,NY,Westhampton Beach Senior High School,Westhampton Beach,NY,3.1,2024,Geology,Music Theory,650,650,21,25,32,25,25,630,670,680,610,620,690,640,680,700,3
+mandyPlacidia2809,mandyPlacidia2809,NY,Smithtown High School   Western Campus,Smithtown,NY,3.2,2024,Mathematics,Chemistry,750,760,35,36,27,29,36,710,750,720,730,790,700,790,750,750,2
+lonnaCarothers2731,lonnaCarothers2731,NY,Ward Melville Senior High School,East Setauket,NY,2.6,2024,Physics,Music Theory,690,650,24,29,23,29,28,740,690,720,680,690,710,640,620,660,6
+leilahLonne1890,leilahLonne1890,NY,Sachem High School East,Farmingville,NY,1.8,2024,Music Theory,Art History,580,520,26,19,20,17,14,540,480,530,470,520,510,490,510,560,5
+mignonField9043,mignonField9043,NY,Islip High School,Islip,NY,2.4,2024,Art History,Geology,640,650,26,29,22,29,28,620,650,660,630,640,680,610,600,640,0
+ryannJoceline8193,ryannJoceline8193,NY,Southampton High School,Southampton,NY,2.5,2024,Biology,Music Theory,540,550,23,27,24,29,22,600,630,580,600,610,620,570,580,590,9
+lorenaPrudie292,lorenaPrudie292,NY,Smithtown High School   Western Campus,Smithtown,NY,3.0,2024,Chemistry,Physics,680,700,34,29,33,32,32,740,700,740,760,730,680,740,700,700,8
+valeriaHinckley4651,valeriaHinckley4651,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.7,2024,Chemistry,Mathematics,660,660,29,26,23,22,29,690,630,670,620,680,670,690,650,640,0
+johnetteHospers9280,johnetteHospers9280,NY,Ross School,East Hampton,NY,2.5,2024,History,Computer Science,550,530,22,22,24,20,17,570,500,530,570,530,490,480,500,510,5
+nydiaArquit3442,nydiaArquit3442,NY,Smithtown High School   Western Campus,Smithtown,NY,2.2,2024,History,Biology,510,540,20,16,17,21,16,500,490,490,490,460,530,520,480,500,0
+karalynnJoe7400,karalynnJoe7400,NY,Harborfields High School,Greenlawn,NY,3.0,2024,Physics,History,570,570,28,24,27,28,27,650,610,640,620,580,620,590,650,630,9
+gayelYseulta5853,gayelYseulta5853,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.4,2024,Computer Science,Biology,490,600,21,19,24,22,21,550,560,490,530,570,520,490,590,530,8
+odeliaBrennen3968,odeliaBrennen3968,NY,Half Hollow Hills High School East,Dix Hills,NY,2.6,2024,History,Biology,640,600,20,26,24,27,24,650,600,680,600,620,580,650,590,640,0
+anna-dianePrevidi5045,anna-dianePrevidi5045,NY,West Islip Senior High School,West Islip,NY,2.4,2024,Physics,Art History,560,500,16,15,19,21,21,520,510,530,550,530,580,510,530,510,4
+karmenCarilyn2665,karmenCarilyn2665,NY,Sayville High School,West Sayville,NY,3.3,2024,History,Political Science,660,680,32,30,23,27,29,660,700,720,720,640,660,690,700,710,3
+gavrielleEppie4600,gavrielleEppie4600,NY,Greenport High School,Greenport,NY,1.6,2024,Geology,Chemistry,390,400,20,11,12,14,13,420,470,410,390,410,440,350,390,430,1
+paulettaArchibald8864,paulettaArchibald8864,NY,Commack High School,Commack,NY,3.1,2024,Physics,Political Science,710,580,30,28,25,26,25,630,670,710,620,640,660,690,630,670,5
+tobyeCharie401,tobyeCharie401,NY,Pierson Middle High School,Sag Harbor,NY,2.2,2024,Mathematics,Biology,550,560,22,26,18,25,22,590,540,570,570,570,600,550,630,560,2
+keriannBruning7944,keriannBruning7944,NY,Ross School,East Hampton,NY,3.0,2024,Physics,Computer Science,710,760,33,31,34,29,35,700,760,720,800,740,740,760,760,770,2
+janineMandie3206,janineMandie3206,NY,West Babylon Senior High School,West Babylon,NY,2.1,2024,Geology,History,500,440,22,14,21,20,16,530,440,460,500,470,460,490,500,530,9
+elyshaSchulze9017,elyshaSchulze9017,NY,Sachem High School East,Farmingville,NY,3.0,2024,Geology,History,670,660,20,29,26,24,27,650,700,630,650,610,700,660,680,640,9
+gilberteRoscoe4331,gilberteRoscoe4331,NY,North Babylon High School,North Babylon,NY,2.6,2024,Art History,Geology,590,690,25,23,26,20,26,590,660,630,620,660,630,630,610,610,4
+hailyBerthold9491,hailyBerthold9491,NY,Huntington High School,Huntington,NY,2.5,2024,Chemistry,Mathematics,560,570,24,24,23,22,23,620,520,590,520,530,490,590,570,540,4
+lexyChuch3736,lexyChuch3736,NY,Smithtown High School   Western Campus,Smithtown,NY,2.5,2024,Physics,Geology,630,650,27,23,21,22,29,620,630,620,670,700,650,560,610,610,1
+elisabethSachiko8722,elisabethSachiko8722,NY,William Floyd High School,Mastic Beach,NY,2.7,2024,History,Geology,490,520,19,23,21,18,18,450,510,460,490,550,470,530,560,530,4
+emmalineMalet6653,emmalineMalet6653,NY,East Islip High School,Islip Terrace,NY,1.7,2024,Music Theory,Computer Science,340,380,13,14,11,13,16,320,340,350,350,360,370,340,370,380,5
+astraBenetta3132,astraBenetta3132,NY,Commack High School,Commack,NY,2.5,2024,Art History,Physics,630,670,28,24,23,28,28,650,610,620,670,600,680,620,630,640,9
+charmaneTrula6006,charmaneTrula6006,NY,Walter G Oconnell Copiague High School,Copiague,NY,2.6,2024,Biology,Geology,620,640,26,26,26,29,25,710,580,660,630,650,630,650,630,620,0
+leonoreAllana7537,leonoreAllana7537,NY,North Babylon High School,North Babylon,NY,2.7,2024,Computer Science,Chemistry,570,560,18,23,17,20,24,590,590,560,590,580,530,590,570,590,4
+ednaDarla3613,ednaDarla3613,NY,William Floyd High School,Mastic Beach,NY,2.8,2024,Geology,Computer Science,700,680,25,28,27,27,24,690,620,660,660,660,660,660,670,710,7
+mallorieCarpenter3369,mallorieCarpenter3369,NY,Hauppauge High School,Hauppauge,NY,2.7,2024,Biology,Computer Science,670,660,25,25,24,29,25,690,670,630,680,670,720,700,650,670,3
+janayeScrope8279,janayeScrope8279,NY,Smithtown High School   Western Campus,Smithtown,NY,2.5,2024,History,Computer Science,510,450,20,16,13,23,17,520,470,470,440,440,460,440,460,490,5
+mignonneTseng8556,mignonneTseng8556,NY,Patchogue Medford High School,Medford,NY,2.5,2024,Biology,History,550,500,23,22,25,21,23,550,550,580,530,490,540,540,560,550,8
+bobinaBiggs940,bobinaBiggs940,NY,Earl L Vandermeulen High School,Port Jefferson,NY,3.4,2024,History,Geology,740,740,30,36,34,34,32,760,730,800,790,800,790,800,800,760,3
+shelEmelda1611,shelEmelda1611,NY,Sachem High School North,Lake Ronkonkoma,NY,3.5,2024,Biology,Computer Science,690,710,23,31,25,26,27,680,660,680,630,660,740,700,710,670,0
+toreyCathlene5729,toreyCathlene5729,NY,Harborfields High School,Greenlawn,NY,3.2,2024,Computer Science,History,740,790,29,29,32,35,26,790,770,770,740,730,750,760,750,780,4
+kassiaGaniats7320,kassiaGaniats7320,NY,Mattituck Junior Senior High School,Mattituck,NY,2.4,2024,Computer Science,Music Theory,490,460,18,23,15,19,18,500,500,500,440,510,470,440,450,510,8
+erickaDurwyn1782,erickaDurwyn1782,NY,Miller Place High School,Miller Place,NY,3.3,2024,Biology,Chemistry,770,730,32,35,31,28,26,740,690,700,760,730,790,710,720,720,2
+hestherLevan2622,hestherLevan2622,NY,John H Glenn High School,Elwood,NY,2.4,2024,Geology,Mathematics,470,500,18,22,17,22,21,430,510,460,470,410,470,480,480,520,8
+onidaEdelman3588,onidaEdelman3588,NY,Centereach High School,Centereach,NY,3.3,2024,Mathematics,Chemistry,800,790,27,30,33,30,25,720,720,750,720,800,800,720,660,670,7
+emmaSola8716,emmaSola8716,NY,Sayville High School,West Sayville,NY,3.4,2024,Art History,Music Theory,680,660,26,31,29,28,27,670,680,680,700,720,670,620,720,680,7
+margiTenner5982,margiTenner5982,NY,Southampton High School,Southampton,NY,2.8,2024,Geology,Computer Science,570,600,32,21,23,25,19,610,600,560,580,640,580,580,590,570,5
+ainslieHyozo507,ainslieHyozo507,NY,John H Glenn High School,Elwood,NY,3.0,2024,Music Theory,Geology,690,670,30,26,31,29,32,750,650,680,640,650,680,630,630,710,2
+cindyKado2301,cindyKado2301,NY,Earl L Vandermeulen High School,Port Jefferson,NY,2.3,2024,Physics,Geology,560,620,21,20,24,22,26,540,580,650,580,580,560,600,620,610,7
+ulrikaLewison1333,ulrikaLewison1333,NY,Rocky Point High School,Rocky Point,NY,2.5,2024,Political Science,Art History,560,600,24,24,24,24,24,510,550,560,610,570,550,590,560,520,7
+lenaMarienthal590,lenaMarienthal590,NY,Amityville Memorial High School,Amityville,NY,3.0,2024,Physics,Art History,590,700,28,31,25,29,31,650,620,640,660,680,690,650,660,640,4
+gladysAbisia7331,gladysAbisia7331,NY,West Islip Senior High School,West Islip,NY,2.0,2024,Political Science,Geology,530,530,26,22,17,24,20,580,550,570,600,520,520,470,540,540,6
+violetteAnatolio2882,violetteAnatolio2882,NY,Centereach High School,Centereach,NY,2.7,2024,Geology,Art History,590,560,20,26,17,22,22,450,570,540,540,550,540,550,560,570,1
+angeLem5129,angeLem5129,NY,Centereach High School,Centereach,NY,2.4,2024,Political Science,Computer Science,470,500,18,21,19,12,22,480,510,530,460,520,510,450,460,550,2
+tildaGrati2414,tildaGrati2414,NY,Miller Place High School,Miller Place,NY,2.5,2024,Geology,Art History,560,550,24,24,20,18,15,530,520,470,510,530,470,520,500,470,7
+marshaCarli1852,marshaCarli1852,NY,Eastport South Manor Junior Senior High School,Manorville,NY,2.1,2024,Biology,Geology,410,420,11,11,14,16,11,380,400,400,390,410,390,400,410,440,9
+pruChlori802,pruChlori802,NY,Central Islip Senior High School,Central Islip,NY,2.8,2024,Physics,Mathematics,700,660,27,29,28,26,27,690,660,610,590,600,640,630,660,640,3
+joeannTye5746,joeannTye5746,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,3.1,2024,Music Theory,Physics,700,710,31,34,29,29,31,730,750,780,730,690,690,690,700,680,3
+jacquieJandel5664,jacquieJandel5664,NY,Rocky Point High School,Rocky Point,NY,3.4,2024,History,Mathematics,750,800,34,35,35,34,32,780,800,740,770,730,760,730,790,760,0
+caryGoles6775,caryGoles6775,NY,Centereach High School,Centereach,NY,3.4,2024,Music Theory,Biology,630,680,23,20,26,32,27,730,760,680,750,690,660,700,700,610,4
+renateMelvina8373,renateMelvina8373,NY,Mount Sinai High School,Mount Sinai,NY,2.7,2024,Biology,Art History,600,700,27,29,23,28,23,620,640,730,690,670,630,630,630,680,8
+madelenaDonahue4441,madelenaDonahue4441,NY,Brentwood High School,Brentwood,NY,2.3,2024,Physics,Art History,530,520,14,22,23,18,21,540,580,540,520,550,520,490,530,560,2
+melindeDareece2193,melindeDareece2193,NY,Commack High School,Commack,NY,2.4,2024,Music Theory,Art History,600,620,28,17,28,23,21,590,560,600,620,630,590,650,600,540,6
+daryaMaitund5203,daryaMaitund5203,NY,Riverhead Senior High School,Riverhead,NY,1.9,2024,Geology,Political Science,440,460,6,17,20,15,12,400,480,410,450,440,400,450,420,410,7
+angeleGorlicki7212,angeleGorlicki7212,NY,Central Islip Senior High School,Central Islip,NY,2.5,2024,Biology,Computer Science,550,540,23,20,17,25,19,570,500,540,580,560,550,600,540,550,2
+poppyRainwater8253,poppyRainwater8253,NY,Sayville High School,West Sayville,NY,2.7,2024,Political Science,Computer Science,560,610,25,25,28,23,19,610,580,650,620,650,600,550,540,600,5
+bertaFlita9000,bertaFlita9000,NY,Commack High School,Commack,NY,4.0,2024,Geology,Physics,800,710,35,32,33,26,35,760,770,750,800,750,790,760,760,760,7
+emaliaCaiaphas2566,emaliaCaiaphas2566,NY,Center Moriches High School,Center Moriches,NY,2.1,2024,History,Art History,400,460,13,10,14,16,14,400,430,400,410,420,430,410,450,400,4
+millisentHettie7602,millisentHettie7602,NY,Greenport High School,Greenport,NY,2.1,2024,History,Political Science,600,600,23,19,26,27,24,570,570,610,590,610,540,580,570,580,3
+joannHebner2462,joannHebner2462,NY,Walter G Oconnell Copiague High School,Copiague,NY,2.8,2024,History,Geology,630,630,22,29,24,21,28,610,640,660,630,680,640,650,700,640,4
+marniaWeider3395,marniaWeider3395,NY,North Babylon High School,North Babylon,NY,2.2,2024,Music Theory,Art History,530,520,22,19,19,17,22,500,530,500,510,490,520,510,500,530,3
+easterRichardson2593,easterRichardson2593,NY,East Hampton High School,East Hampton,NY,3.2,2024,Physics,Computer Science,610,630,26,23,22,26,23,630,650,650,630,650,630,650,660,640,5
+nanetteBelvia8625,nanetteBelvia8625,NY,Commack High School,Commack,NY,2.9,2024,Biology,Mathematics,730,700,28,26,28,34,26,700,720,710,690,690,630,700,640,710,4
+agnolaMalva4046,agnolaMalva4046,NY,Brentwood High School,Brentwood,NY,3.4,2024,Mathematics,Biology,750,670,29,30,35,33,22,750,740,760,690,700,750,720,690,700,0
+geriannaBarnabe4699,geriannaBarnabe4699,NY,Islip High School,Islip,NY,2.5,2024,Biology,Physics,560,580,24,23,26,17,27,590,560,610,570,590,600,630,590,580,1
+kierstenGreenes2050,kierstenGreenes2050,NY,Sachem High School North,Lake Ronkonkoma,NY,2.5,2024,History,Music Theory,630,570,27,21,23,24,23,580,600,560,650,610,540,570,590,600,5
+chlorisGleason7413,chlorisGleason7413,NY,Central Islip Senior High School,Central Islip,NY,1.9,2024,Art History,Political Science,370,430,19,17,19,13,12,400,420,370,380,370,420,410,370,400,5
+margueritePeterus5876,margueritePeterus5876,NY,Eastport South Manor Junior Senior High School,Manorville,NY,3.1,2024,Chemistry,Geology,630,670,25,29,26,25,28,690,630,630,630,630,630,630,600,630,3
+corrinaTamer8526,corrinaTamer8526,NY,Walter G Oconnell Copiague High School,Copiague,NY,3.4,2024,History,Political Science,660,700,26,24,30,23,27,680,630,650,610,630,660,670,690,680,7
+gypsyEdi6423,gypsyEdi6423,NY,Smithtown Christian School,Smithtown,NY,2.5,2024,Physics,History,510,510,22,21,26,17,19,550,520,580,560,560,530,540,540,530,6
+carolannWera740,carolannWera740,NY,Sayville High School,West Sayville,NY,2.9,2024,Art History,Music Theory,660,730,20,26,29,27,27,700,660,690,710,700,710,730,670,690,4
+alyceCarry4049,alyceCarry4049,NY,Pierson Middle High School,Sag Harbor,NY,2.7,2024,Computer Science,Mathematics,520,460,18,20,15,23,18,560,590,570,500,530,470,550,500,560,9
+ediFalconer2325,ediFalconer2325,NY,Bellport Senior High School,Brookhaven,NY,3.0,2024,Political Science,Biology,730,700,28,25,23,29,29,680,680,670,720,660,690,680,660,670,1
+idalinaKaylee8592,idalinaKaylee8592,NY,North Babylon High School,North Babylon,NY,2.6,2024,Mathematics,Computer Science,500,530,18,20,23,26,19,480,510,590,500,560,510,560,450,510,7
+sharaEugen9311,sharaEugen9311,NY,Central Islip Senior High School,Central Islip,NY,2.9,2024,Chemistry,Political Science,610,560,22,26,31,26,25,650,630,670,670,620,610,620,620,600,7
+abbeyDreher6906,abbeyDreher6906,NY,Ross School,East Hampton,NY,2.6,2024,Chemistry,Mathematics,640,620,26,29,26,27,27,580,620,680,640,620,570,620,620,660,5
+donellaNicki8042,donellaNicki8042,NY,Bellport Senior High School,Brookhaven,NY,2.3,2024,Physics,Music Theory,480,540,18,21,22,22,16,470,510,530,490,500,480,480,500,490,9
+shelleySkees3606,shelleySkees3606,NY,Walt Whitman High School,Huntington Station,NY,2.0,2024,Chemistry,Political Science,520,460,20,17,12,19,12,480,440,440,440,450,520,480,500,430,4
+cosetteSwithbart2878,cosetteSwithbart2878,NY,Sachem High School North,Lake Ronkonkoma,NY,3.4,2024,Physics,Political Science,630,700,29,28,25,28,22,710,710,690,750,690,710,690,730,710,5
+penelopaLuanni5385,penelopaLuanni5385,NY,East Hampton High School,East Hampton,NY,2.8,2024,Biology,Mathematics,650,660,31,30,26,22,27,670,620,610,610,630,650,620,660,680,8
+faniaEzara9700,faniaEzara9700,NY,Ward Melville Senior High School,East Setauket,NY,2.4,2024,Physics,Mathematics,490,540,13,15,20,22,18,470,530,470,520,470,480,440,470,490,6
+georgieBravar4445,georgieBravar4445,NY,Smithtown High School   Western Campus,Smithtown,NY,2.7,2024,Geology,Physics,560,560,19,26,22,21,24,590,560,570,570,600,590,570,570,590,6
+deannaLydie2973,deannaLydie2973,NY,Earl L Vandermeulen High School,Port Jefferson,NY,2.9,2024,Physics,History,710,670,28,27,27,28,30,690,680,660,710,680,640,650,660,640,5
+tasiaClayborn2529,tasiaClayborn2529,NY,Hauppauge High School,Hauppauge,NY,3.8,2024,Music Theory,Geology,750,800,36,35,29,30,32,800,740,710,720,750,790,750,740,770,2
+joellHarley4541,joellHarley4541,NY,Commack High School,Commack,NY,2.6,2024,Art History,Music Theory,670,640,25,26,21,24,18,590,640,590,610,640,620,590,680,620,1
+brianneKidder1342,brianneKidder1342,NY,Walt Whitman High School,Huntington Station,NY,3.3,2024,Political Science,History,750,770,28,28,35,31,28,790,750,800,780,770,730,780,790,680,3
+nerteSherburne8537,nerteSherburne8537,NY,William Floyd High School,Mastic Beach,NY,2.3,2024,Biology,Physics,520,500,21,21,23,21,23,510,520,490,500,500,490,540,530,460,0
+layneWalter8859,layneWalter8859,NY,Wyandanch Memorial High School,Wyandanch,NY,3.3,2024,Geology,Music Theory,770,770,33,30,35,36,36,800,780,800,800,750,800,800,770,770,9
+yovonndaSoneson3630,yovonndaSoneson3630,NY,Brentwood High School,Brentwood,NY,2.8,2024,Art History,Music Theory,550,570,19,20,20,25,17,570,580,530,600,580,520,560,600,570,2
+jewellPatman7564,jewellPatman7564,NY,Bay Shore Senior High School,Bay Shore,NY,2.2,2024,Computer Science,Art History,480,420,18,24,17,20,15,410,400,480,500,470,470,470,490,410,3
+sheliaShue9172,sheliaShue9172,NY,Newfield High School,Selden,NY,3.3,2024,History,Music Theory,690,740,26,26,29,32,28,770,690,700,670,720,740,710,690,760,4
+christiRyun3065,christiRyun3065,NY,Brentwood High School,Brentwood,NY,3.3,2024,Computer Science,Mathematics,630,650,34,25,27,26,23,680,610,670,600,670,660,660,610,650,3
+helenPirozzo2155,helenPirozzo2155,NY,Southold Junior Senior High School,Southold,NY,3.5,2024,Computer Science,Geology,790,750,30,34,32,36,30,800,750,800,760,760,780,770,750,750,2
+georgiannaCrutcher3030,georgiannaCrutcher3030,NY,St John the Baptist Diocesan High School,West Islip,NY,2.1,2024,Mathematics,Physics,460,520,18,18,20,14,15,460,470,490,550,470,460,460,420,520,9
+natividadLucey7880,natividadLucey7880,NY,Sayville High School,West Sayville,NY,2.3,2024,Computer Science,History,490,510,19,23,17,14,15,480,450,480,480,460,480,520,490,450,1
+tashaLengel7923,tashaLengel7923,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.8,2024,Computer Science,Political Science,640,750,27,32,29,26,26,650,670,730,660,670,680,690,690,670,6
+dedieJanerich2803,dedieJanerich2803,NY,Central Islip Senior High School,Central Islip,NY,3.1,2024,Political Science,Geology,730,660,28,31,25,26,33,670,740,700,700,700,750,690,740,720,6
+arlyNagel2779,arlyNagel2779,NY,Longwood High School,Middle Island,NY,2.3,2024,Art History,Political Science,530,560,23,12,21,21,20,490,580,550,550,550,540,530,540,540,1
+roshelleKara8501,roshelleKara8501,NY,Half Hollow Hills High School East,Dix Hills,NY,3.2,2024,Political Science,Chemistry,700,710,24,23,25,29,32,700,650,700,700,640,660,740,670,700,0
+cherSulamith8166,cherSulamith8166,NY,Bridgehampton School,Bridgehampton,NY,2.0,2024,Physics,Computer Science,470,520,22,20,19,16,16,520,470,470,550,500,490,500,550,510,0
+brenaSuzzy1659,brenaSuzzy1659,NY,Walter G Oconnell Copiague High School,Copiague,NY,3.0,2024,Biology,Music Theory,700,730,25,29,29,35,31,720,740,700,760,750,660,710,700,720,1
+tammiCoffee1710,tammiCoffee1710,NY,Smithtown High School East,Saint James,NY,2.6,2024,Music Theory,History,710,660,32,29,29,26,24,620,670,660,680,670,670,680,640,690,2
+hildagardGalvin4597,hildagardGalvin4597,NY,Amityville Memorial High School,Amityville,NY,2.6,2024,Physics,Political Science,650,640,29,29,24,34,23,600,640,620,660,600,630,640,630,640,8
+nicolleDouglas4508,nicolleDouglas4508,NY,Smithtown High School   Western Campus,Smithtown,NY,3.3,2024,Music Theory,Physics,780,750,33,32,36,32,28,800,700,800,760,720,750,740,730,760,0
+kathleenPearlman2719,kathleenPearlman2719,NY,Center Moriches High School,Center Moriches,NY,2.1,2024,Music Theory,Mathematics,500,500,17,16,20,21,21,550,550,490,540,530,520,500,540,530,7
+floryPleasant5126,floryPleasant5126,NY,Deer Park High School,Deer Park,NY,2.8,2024,Political Science,Geology,650,560,27,24,28,23,24,640,670,640,660,610,610,600,650,690,3
+dariceKasey5056,dariceKasey5056,NY,Connetquot High School,Bohemia,NY,3.2,2024,Computer Science,Art History,720,670,28,34,26,30,17,660,670,690,660,610,660,690,680,640,8
+claribelFilip9794,claribelFilip9794,NY,Connetquot High School,Bohemia,NY,1.7,2024,Biology,Mathematics,370,350,11,6,12,13,10,320,310,380,340,270,370,400,370,340,1
+christelMcLaurin3334,christelMcLaurin3334,NY,Center Moriches High School,Center Moriches,NY,3.4,2024,Computer Science,Chemistry,780,750,33,31,36,31,31,770,740,740,710,760,800,770,760,740,5
+easterDaniella1472,easterDaniella1472,NY,Southold Junior Senior High School,Southold,NY,3.4,2024,Physics,Chemistry,740,730,29,34,28,32,28,790,780,740,760,690,780,730,760,750,1
+harriEgor2441,harriEgor2441,NY,Southampton High School,Southampton,NY,2.7,2024,Art History,Computer Science,650,530,25,24,26,20,24,610,540,600,620,640,590,590,570,640,4
+rivaRabkin7456,rivaRabkin7456,NY,Half Hollow Hills High School East,Dix Hills,NY,2.6,2024,Music Theory,Art History,630,590,23,20,21,22,25,620,590,570,540,640,610,610,610,610,5
+bennieWittenburg9354,bennieWittenburg9354,NY,Westhampton Beach Senior High School,Westhampton Beach,NY,3.5,2024,Geology,Music Theory,760,760,31,36,29,27,34,720,750,720,800,750,780,770,790,800,1
+ashleeDowning7840,ashleeDowning7840,NY,Bridgehampton School,Bridgehampton,NY,2.7,2024,Art History,Political Science,520,580,25,20,22,21,17,590,550,580,620,610,540,560,590,520,1
+alexandraEnos6584,alexandraEnos6584,NY,East Islip High School,Islip Terrace,NY,2.9,2024,Chemistry,Political Science,640,680,26,25,24,27,24,610,640,670,650,630,640,620,590,600,5
+wilmetteBettencourt7660,wilmetteBettencourt7660,NY,Mattituck Junior Senior High School,Mattituck,NY,2.7,2024,Music Theory,Chemistry,580,580,23,22,25,22,29,590,620,620,600,630,540,690,590,580,0
+charlottaAbra2769,charlottaAbra2769,NY,Wyandanch Memorial High School,Wyandanch,NY,3.3,2024,Mathematics,Political Science,680,680,26,28,31,31,26,700,730,670,720,670,670,640,670,760,4
+rosemaryZolly7988,rosemaryZolly7988,NY,Southold Junior Senior High School,Southold,NY,2.5,2024,Computer Science,Political Science,570,540,21,23,22,22,23,580,560,580,580,550,570,580,540,590,2
+moreenLean7612,moreenLean7612,NY,Newfield High School,Selden,NY,3.1,2024,History,Biology,650,640,27,31,28,33,26,550,600,640,570,640,650,580,660,640,5
+deloraJeavons5171,deloraJeavons5171,NY,West Babylon Senior High School,West Babylon,NY,2.1,2024,Political Science,Mathematics,550,510,20,20,22,21,24,540,560,520,570,520,530,510,520,530,5
+stormiMuir4420,stormiMuir4420,NY,Southold Junior Senior High School,Southold,NY,2.9,2024,Computer Science,Political Science,560,620,26,28,23,24,20,600,560,590,580,610,600,550,590,580,8
+klarikaMartsen9171,klarikaMartsen9171,NY,Commack High School,Commack,NY,3.1,2024,Computer Science,Political Science,720,630,32,29,30,29,27,680,610,680,630,640,660,650,690,680,3
+dorrieTheurer6228,dorrieTheurer6228,NY,Eastport South Manor Junior Senior High School,Manorville,NY,2.6,2024,Physics,Computer Science,670,680,29,29,27,24,27,620,680,650,640,620,640,620,680,660,0
+jayneTomasine4557,jayneTomasine4557,NY,Kings Park High School,Kings Park,NY,2.5,2024,Physics,History,620,610,23,21,23,24,17,570,630,590,580,510,530,550,600,570,5
+margaretNarcho831,margaretNarcho831,NY,William Floyd High School,Mastic Beach,NY,2.4,2024,Mathematics,Chemistry,510,530,16,21,19,17,18,430,550,490,470,520,510,500,470,440,8
+denysKenison9574,denysKenison9574,NY,Newfield High School,Selden,NY,2.5,2024,Computer Science,Mathematics,580,550,23,25,20,22,22,570,610,590,600,540,590,540,550,590,0
+cordiLeroi4218,cordiLeroi4218,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,3.1,2024,Music Theory,Mathematics,660,660,33,22,24,26,29,640,720,640,650,680,690,610,640,600,7
+sibleyStralka3521,sibleyStralka3521,NY,Bellport Senior High School,Brookhaven,NY,3.4,2024,Geology,Art History,750,790,29,31,35,31,32,700,780,780,770,780,700,730,780,780,8
+emIdelia1545,emIdelia1545,NY,Smithtown High School East,Saint James,NY,3.2,2024,Physics,Mathematics,720,740,25,34,26,28,29,670,690,730,740,690,700,730,700,750,2
+ethelineRovner6896,ethelineRovner6896,NY,Earl L Vandermeulen High School,Port Jefferson,NY,3.4,2024,Art History,Physics,660,680,27,26,24,28,29,670,660,760,710,710,660,680,660,730,7
+deberaRoselle3662,deberaRoselle3662,NY,Sayville High School,West Sayville,NY,3.0,2024,Physics,Art History,670,680,28,28,29,28,27,640,630,650,650,640,700,620,650,630,7
+crystieWillis8893,crystieWillis8893,NY,William Floyd High School,Mastic Beach,NY,3.2,2024,Chemistry,Art History,750,690,29,29,29,28,27,710,660,660,670,730,690,760,720,730,9
+betteBlanch5253,betteBlanch5253,NY,West Babylon Senior High School,West Babylon,NY,2.9,2024,Political Science,Biology,670,620,26,20,24,24,20,590,580,620,620,630,600,660,620,600,9
+tandieStockmon8046,tandieStockmon8046,NY,Sayville High School,West Sayville,NY,2.6,2024,History,Computer Science,590,610,31,29,15,23,18,570,590,580,570,570,570,610,580,610,5
+saretteKatti7075,saretteKatti7075,NY,The Knox School,St James,NY,3.2,2024,Art History,History,650,650,26,31,28,19,31,620,650,660,670,720,650,590,690,670,9
+fifiHurd6020,fifiHurd6020,NY,Bridgehampton School,Bridgehampton,NY,2.1,2024,Political Science,Music Theory,500,540,21,23,18,25,24,640,520,530,500,530,490,570,510,500,5
+wandaBainbrudge841,wandaBainbrudge841,NY,Sachem High School East,Farmingville,NY,2.7,2024,Physics,Chemistry,620,640,33,27,28,26,25,610,660,660,640,660,660,660,570,580,8
+nancyLowis5531,nancyLowis5531,NY,Sachem High School East,Farmingville,NY,2.9,2024,History,Biology,580,640,28,22,22,29,23,650,640,640,670,620,610,650,610,600,0
+theklaGrieve7248,theklaGrieve7248,NY,Half Hollow Hills High School West,Dix Hills,NY,3.2,2024,Physics,Art History,690,770,29,36,33,32,33,700,720,760,720,690,690,700,750,680,1
+julietteEmmalynn4188,julietteEmmalynn4188,NY,Mount Sinai High School,Mount Sinai,NY,2.8,2024,Chemistry,Mathematics,600,620,21,29,21,22,21,600,620,620,600,680,550,650,620,610,5
+kelsiCharley4125,kelsiCharley4125,NY,Babylon Junior Senior High School,Babylon,NY,2.6,2024,History,Physics,550,580,24,23,23,27,25,620,590,620,610,570,620,630,650,590,9
+gertKeelin1619,gertKeelin1619,NY,Center Moriches High School,Center Moriches,NY,2.7,2024,History,Biology,650,690,26,25,27,30,28,650,700,670,650,670,640,690,650,640,3
+kailaEmelin1145,kailaEmelin1145,NY,Bellport Senior High School,Brookhaven,NY,2.8,2024,Music Theory,Geology,630,580,18,23,25,22,26,580,590,580,600,620,580,630,530,600,5
+elsaMatland7730,elsaMatland7730,NY,Half Hollow Hills High School West,Dix Hills,NY,2.6,2024,Physics,Computer Science,530,570,28,21,20,25,18,520,570,530,550,490,560,540,580,530,1
+betteMarshal664,betteMarshal664,NY,Deer Park High School,Deer Park,NY,2.4,2024,History,Geology,580,540,23,22,27,24,22,540,590,560,590,560,580,570,530,620,3
+doreFranciskus7418,doreFranciskus7418,NY,North Babylon High School,North Babylon,NY,1.9,2024,Geology,Biology,450,440,17,15,15,17,15,500,470,470,470,490,460,440,490,480,7
+lanaCummine1733,lanaCummine1733,NY,Miller Place High School,Miller Place,NY,3.0,2024,History,Music Theory,640,660,22,31,26,25,29,580,670,610,590,590,580,600,620,630,6
+kariMagdalene8648,kariMagdalene8648,NY,Bridgehampton School,Bridgehampton,NY,3.1,2024,Mathematics,History,600,610,25,24,22,20,25,570,530,650,610,590,630,620,620,580,2
+adahGenesa7502,adahGenesa7502,NY,Saint Anthonys High School,Huntington Station,NY,3.5,2024,Biology,Music Theory,740,780,30,35,32,34,36,800,720,770,710,740,770,710,740,680,7
+samanthaKimitri8531,samanthaKimitri8531,NY,Mount Sinai High School,Mount Sinai,NY,2.8,2024,Art History,History,630,550,24,21,25,24,23,580,600,590,560,480,610,570,570,580,7
+alexaEmmey46,alexaEmmey46,NY,Smithtown High School East,Saint James,NY,3.4,2024,Political Science,Chemistry,760,760,34,33,35,35,33,800,780,800,790,720,700,750,750,770,4
+devinneCheney4534,devinneCheney4534,NY,Walt Whitman High School,Huntington Station,NY,2.7,2024,Physics,Music Theory,630,650,23,27,28,26,25,660,610,670,600,660,600,680,660,640,8
+eveSanyu7051,eveSanyu7051,NY,St John the Baptist Diocesan High School,West Islip,NY,3.3,2024,Computer Science,Music Theory,710,660,26,30,28,29,26,690,690,730,700,690,700,690,720,690,4
+adreaWendi9707,adreaWendi9707,NY,Kings Park High School,Kings Park,NY,2.4,2024,Music Theory,Computer Science,570,610,20,19,20,27,20,570,580,560,600,590,570,570,600,550,4
+brandeSturges4971,brandeSturges4971,NY,Saint Anthonys High School,Huntington Station,NY,2.8,2024,History,Art History,650,610,25,26,28,25,27,630,680,580,610,600,650,660,580,610,9
+rubiaMyrtie3200,rubiaMyrtie3200,NY,Mattituck Junior Senior High School,Mattituck,NY,2.8,2024,Chemistry,Music Theory,610,690,29,29,26,22,17,610,600,610,670,650,610,590,640,630,4
+sandyeKhalid3825,sandyeKhalid3825,NY,Hauppauge High School,Hauppauge,NY,2.7,2024,Computer Science,Physics,620,560,19,21,22,19,21,580,560,530,590,570,540,610,550,530,1
+laurenId1889,laurenId1889,NY,Half Hollow Hills High School East,Dix Hills,NY,3.0,2024,Music Theory,History,700,610,26,27,28,27,29,690,650,670,720,650,720,630,690,700,2
+lineaManda5874,lineaManda5874,NY,Brentwood High School,Brentwood,NY,2.4,2024,Political Science,Computer Science,620,630,27,20,22,24,25,600,610,610,710,600,620,600,580,670,0
+elaineRosanne3163,elaineRosanne3163,NY,Islip High School,Islip,NY,2.7,2024,Computer Science,Chemistry,630,640,29,27,28,24,26,630,700,590,640,670,650,650,640,660,2
+elsbethDarach788,elsbethDarach788,NY,West Babylon Senior High School,West Babylon,NY,3.3,2024,Geology,Computer Science,620,690,23,30,24,31,28,650,680,640,630,710,670,660,680,720,2
+gilliZima3817,gilliZima3817,NY,Newfield High School,Selden,NY,2.2,2024,Physics,Mathematics,540,440,20,19,21,20,20,500,450,440,540,510,490,500,500,510,2
+jeriConcha7178,jeriConcha7178,NY,East Hampton High School,East Hampton,NY,2.9,2024,History,Geology,780,700,28,31,22,29,32,740,760,710,720,720,680,680,680,720,7
+trishaFriedrick9440,trishaFriedrick9440,NY,Northport Senior High School,Northport,NY,3.5,2024,Computer Science,Physics,750,740,36,31,35,31,34,770,730,720,780,780,770,770,760,790,4
+lidiaOlympias2940,lidiaOlympias2940,NY,Southampton High School,Southampton,NY,2.7,2024,Chemistry,Biology,580,630,26,24,15,25,29,610,630,620,630,530,590,620,640,600,8
+constantinaSiouxie2758,constantinaSiouxie2758,NY,Mattituck Junior Senior High School,Mattituck,NY,2.6,2024,Physics,Political Science,530,540,23,18,19,18,21,520,570,570,590,530,530,620,570,510,7
+missySadie4678,missySadie4678,NY,The Knox School,St James,NY,3.3,2024,Art History,Physics,710,710,29,31,34,28,25,720,690,690,680,700,660,710,680,730,6
+norahStent6396,norahStent6396,NY,Centereach High School,Centereach,NY,3.0,2024,Computer Science,Geology,660,710,27,23,28,26,27,670,690,650,640,670,670,670,650,680,9
+cristinHowlond3589,cristinHowlond3589,NY,East Hampton High School,East Hampton,NY,2.4,2024,Geology,Chemistry,590,530,23,22,20,22,23,610,590,570,600,640,540,630,530,640,1
+leonaTeodora4641,leonaTeodora4641,NY,Center Moriches High School,Center Moriches,NY,2.2,2024,Art History,Chemistry,460,460,19,16,18,22,18,440,480,460,410,450,480,530,430,450,0
+koressaDido1018,koressaDido1018,NY,Kings Park High School,Kings Park,NY,2.4,2024,Chemistry,Physics,540,520,25,26,22,24,21,520,520,570,530,560,570,530,600,520,8
+ealasaidMaggie1098,ealasaidMaggie1098,NY,Connetquot High School,Bohemia,NY,2.9,2024,Mathematics,Computer Science,550,530,21,23,23,23,22,560,560,520,560,580,590,550,590,550,5
+layneMears5849,layneMears5849,NY,East Hampton High School,East Hampton,NY,3.1,2024,Biology,History,730,700,30,29,35,35,32,780,700,740,670,690,740,740,690,730,9
+joelieDevonna8222,joelieDevonna8222,NY,West Islip Senior High School,West Islip,NY,2.0,2024,Chemistry,History,510,530,16,16,19,17,23,510,500,510,530,520,470,470,470,530,9
+nissaDougall8312,nissaDougall8312,NY,Bellport Senior High School,Brookhaven,NY,2.6,2024,Computer Science,Chemistry,560,580,25,20,20,29,27,530,590,630,540,560,570,590,590,570,8
+quintillaKehr6489,quintillaKehr6489,NY,Riverhead Senior High School,Riverhead,NY,2.3,2024,Physics,Computer Science,550,510,18,22,16,17,23,470,510,480,520,530,550,510,470,510,1
+teraBarkley7507,teraBarkley7507,NY,Kings Park High School,Kings Park,NY,2.5,2024,Music Theory,Biology,550,480,22,17,20,19,19,530,540,500,490,450,540,490,540,470,0
+robinaCrowley5280,robinaCrowley5280,NY,Half Hollow Hills High School East,Dix Hills,NY,2.3,2024,Physics,Computer Science,490,500,22,17,19,16,21,470,520,490,460,460,470,470,480,450,6
+danaVigor3478,danaVigor3478,NY,Bay Shore Senior High School,Bay Shore,NY,2.5,2024,Computer Science,History,510,570,25,25,18,22,24,550,590,580,530,590,590,600,570,600,4
+floriaSpohr728,floriaSpohr728,NY,Smithtown High School East,Saint James,NY,3.1,2024,Chemistry,Physics,740,740,25,28,32,29,30,710,700,740,680,730,720,760,760,730,6
+grayceEno1325,grayceEno1325,NY,Walter G Oconnell Copiague High School,Copiague,NY,3.3,2024,Political Science,Biology,740,680,22,27,27,25,33,700,670,690,670,650,710,720,730,700,8
+shelliFran5427,shelliFran5427,NY,Center Moriches High School,Center Moriches,NY,2.5,2024,Chemistry,Geology,480,510,16,12,19,22,22,480,490,410,490,420,470,580,490,470,6
+andieRubia290,andieRubia290,NY,Walter G Oconnell Copiague High School,Copiague,NY,2.8,2024,Political Science,Physics,560,640,17,26,26,28,22,580,600,600,610,570,570,580,560,520,2
+donielleMurrah805,donielleMurrah805,NY,North Babylon High School,North Babylon,NY,3.5,2024,Computer Science,History,800,760,26,33,34,33,34,720,770,780,740,800,730,790,760,720,0
+nellieKalindi4789,nellieKalindi4789,NY,Central Islip Senior High School,Central Islip,NY,2.3,2024,Biology,History,450,420,18,19,22,22,17,480,420,480,430,480,460,400,510,400,6
+jeanineMitchel965,jeanineMitchel965,NY,West Babylon Senior High School,West Babylon,NY,3.3,2024,History,Chemistry,660,670,34,25,27,29,24,660,680,750,610,570,620,710,660,740,7
+lesyaEsta9318,lesyaEsta9318,NY,Saint Anthonys High School,Huntington Station,NY,2.7,2024,Geology,Biology,650,650,31,28,25,25,25,680,680,640,650,660,670,640,670,650,9
+lonnaMehalek5257,lonnaMehalek5257,NY,Bayport Blue Point High School,Bayport,NY,2.8,2024,Physics,Geology,640,670,27,24,26,29,25,640,560,710,630,690,670,690,680,660,3
+cheslieTimmons6814,cheslieTimmons6814,NY,William Floyd High School,Mastic Beach,NY,1.7,2024,Biology,Geology,460,500,15,16,17,11,14,490,380,420,450,470,460,500,490,430,6
+rosalynEllora8489,rosalynEllora8489,NY,Northport Senior High School,Northport,NY,2.6,2024,Geology,Physics,550,570,24,12,18,25,16,540,550,570,580,570,590,530,620,510,4
+shoshannaRanna1456,shoshannaRanna1456,NY,Miller Place High School,Miller Place,NY,2.6,2024,Physics,Chemistry,570,560,20,23,27,18,21,590,570,570,550,570,580,540,540,540,9
+toriSheppard2382,toriSheppard2382,NY,Miller Place High School,Miller Place,NY,3.4,2024,Chemistry,Geology,750,780,32,31,30,36,36,730,780,770,750,800,740,770,760,740,9
+hestherErma8898,hestherErma8898,NY,St John the Baptist Diocesan High School,West Islip,NY,1.8,2024,Geology,Physics,470,410,14,12,15,14,20,440,400,450,420,450,420,460,460,460,2
+virginieJoell4025,virginieJoell4025,NY,Sachem High School North,Lake Ronkonkoma,NY,2.6,2024,Geology,Computer Science,540,600,26,20,19,21,21,550,560,600,610,610,610,600,560,650,8
+sibealMedorra8205,sibealMedorra8205,NY,Smithtown High School East,Saint James,NY,3.4,2024,Biology,Mathematics,700,660,27,28,27,26,25,670,650,660,680,680,630,690,660,700,3
+delilahWenoa8790,delilahWenoa8790,NY,Ward Melville Senior High School,East Setauket,NY,2.6,2024,Art History,Mathematics,590,570,22,23,31,24,22,590,580,610,550,540,610,570,590,550,6
+drucieHimelman7829,drucieHimelman7829,NY,Bellport Senior High School,Brookhaven,NY,2.3,2024,Geology,Political Science,510,570,22,16,18,21,18,550,580,480,530,480,510,510,530,520,0
+jenaJuster2148,jenaJuster2148,NY,The Stony Brook School,Stony Brook,NY,3.5,2024,Music Theory,Art History,730,670,26,27,28,36,32,660,700,720,740,770,680,650,660,740,2
+christabellaMaddock7519,christabellaMaddock7519,NY,Hauppauge High School,Hauppauge,NY,2.9,2024,Music Theory,Chemistry,750,750,35,25,26,30,28,740,720,700,740,710,710,710,730,750,6
+adoraPanta4736,adoraPanta4736,NY,Huntington High School,Huntington,NY,2.2,2024,Mathematics,Physics,490,480,17,24,20,19,20,520,540,530,470,510,550,530,530,460,2
+maggeeFast8337,maggeeFast8337,NY,North Babylon High School,North Babylon,NY,2.9,2024,Geology,Computer Science,530,550,19,19,21,22,18,470,540,530,530,530,510,540,510,530,5
+maryroseLacee4661,maryroseLacee4661,NY,Centereach High School,Centereach,NY,3.2,2024,Music Theory,Computer Science,730,800,28,32,30,35,31,730,750,800,760,770,800,760,750,800,2
+gustiMerilyn3926,gustiMerilyn3926,NY,Harborfields High School,Greenlawn,NY,2.9,2024,Chemistry,Biology,500,540,17,20,18,18,19,490,530,550,540,510,480,530,540,530,3
+kynthiaKarame2337,kynthiaKarame2337,NY,Deer Park High School,Deer Park,NY,3.6,2024,Political Science,History,790,750,31,30,31,34,28,800,790,770,730,780,790,790,780,750,9
+nerissaGoran2138,nerissaGoran2138,NY,West Islip Senior High School,West Islip,NY,1.7,2024,History,Mathematics,410,380,11,11,17,11,12,380,420,350,420,320,360,380,360,380,1
+tanaKutzenco2893,tanaKutzenco2893,NY,Southampton High School,Southampton,NY,2.8,2024,Art History,Political Science,620,650,27,27,18,25,26,600,640,680,670,620,680,650,640,640,0
+joseyHugo2708,joseyHugo2708,NY,Smithtown High School   Western Campus,Smithtown,NY,2.3,2024,History,Political Science,490,410,18,18,18,20,23,520,520,450,440,450,500,490,470,500,3
+blinnieHamlani4755,blinnieHamlani4755,NY,Northport Senior High School,Northport,NY,2.3,2024,Mathematics,Biology,530,520,16,22,21,21,22,580,570,500,610,530,580,470,550,530,2
+dellSelig1722,dellSelig1722,NY,John H Glenn High School,Elwood,NY,2.7,2024,Political Science,Computer Science,570,520,16,17,16,22,15,500,520,540,530,490,530,530,500,550,1
+doreyGadmon5060,doreyGadmon5060,NY,Commack High School,Commack,NY,2.5,2024,History,Music Theory,600,570,24,27,30,27,23,630,570,610,590,630,650,590,610,620,8
+eleniHachmin1422,eleniHachmin1422,NY,Connetquot High School,Bohemia,NY,2.8,2024,Physics,Geology,590,630,27,31,26,24,27,580,660,610,670,620,540,580,650,600,6
+sadellaKester380,sadellaKester380,NY,Sachem High School East,Farmingville,NY,2.0,2024,Geology,Music Theory,420,490,14,10,15,13,18,390,420,390,480,440,470,440,430,380,9
+dolliLeblanc3346,dolliLeblanc3346,NY,Connetquot High School,Bohemia,NY,3.4,2024,Mathematics,Art History,720,700,25,31,28,31,34,730,710,750,750,710,710,740,680,630,9
+quintillaLoyce6677,quintillaLoyce6677,NY,Ward Melville Senior High School,East Setauket,NY,2.8,2024,Music Theory,Mathematics,550,690,22,23,22,23,28,590,640,650,600,530,610,630,600,590,6
+leonoreMeris2544,leonoreMeris2544,NY,William Floyd High School,Mastic Beach,NY,2.6,2024,Mathematics,Chemistry,570,630,23,26,20,23,20,660,580,590,590,620,640,580,570,610,2
+manonAustine3048,manonAustine3048,NY,North Babylon High School,North Babylon,NY,3.0,2024,Political Science,History,640,660,30,26,34,27,29,670,620,700,660,650,700,670,700,570,3
+ellaLaughton7926,ellaLaughton7926,NY,Pierson Middle High School,Sag Harbor,NY,3.0,2024,Chemistry,Mathematics,650,620,27,27,27,29,22,690,690,660,640,650,650,660,690,680,5
+erickaMinna6488,erickaMinna6488,NY,Half Hollow Hills High School West,Dix Hills,NY,2.9,2024,Physics,Mathematics,670,660,31,27,29,25,24,630,670,710,700,660,680,630,610,600,1
+magAlwin2001,magAlwin2001,NY,Ross School,East Hampton,NY,2.9,2024,Music Theory,Mathematics,670,650,20,26,24,26,27,650,600,650,680,560,630,610,720,650,5
+rosaliaRap2945,rosaliaRap2945,NY,Mattituck Junior Senior High School,Mattituck,NY,2.1,2024,Art History,Political Science,460,470,17,14,18,19,19,500,420,470,440,460,490,400,470,470,4
+nadiyaKyrstin2332,nadiyaKyrstin2332,NY,Ross School,East Hampton,NY,3.0,2024,Music Theory,Chemistry,610,550,21,25,22,27,23,600,570,540,650,570,580,630,580,640,9
+cherylKrystin7565,cherylKrystin7565,NY,Kings Park High School,Kings Park,NY,2.4,2024,Music Theory,Mathematics,660,560,28,25,20,20,28,540,600,600,600,560,520,590,590,550,7
+elinorRahr9190,elinorRahr9190,NY,Northport Senior High School,Northport,NY,2.6,2024,Political Science,History,580,590,25,23,23,25,19,590,620,570,560,560,570,570,610,580,5
+geriRolando6334,geriRolando6334,NY,The Knox School,St James,NY,2.7,2024,Chemistry,Computer Science,640,560,24,23,26,19,29,510,580,580,530,560,570,560,560,590,6
+valryLaurel6549,valryLaurel6549,NY,Smithtown Christian School,Smithtown,NY,3.0,2024,Music Theory,Biology,660,700,25,29,23,27,26,690,660,710,630,690,720,740,720,660,9
+priscillaDomineca7988,priscillaDomineca7988,NY,Centereach High School,Centereach,NY,2.9,2024,Biology,Music Theory,610,570,23,19,28,26,30,600,550,640,600,650,610,600,600,550,9
+isabelitaManton2061,isabelitaManton2061,NY,Smithtown High School East,Saint James,NY,3.2,2024,Biology,Music Theory,590,620,25,25,28,24,26,630,670,620,620,580,640,640,600,660,6
+etheldaHecklau9045,etheldaHecklau9045,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.4,2024,Mathematics,Music Theory,480,500,24,22,21,22,20,580,560,600,580,540,510,550,550,550,8
+gennyMcRoberts5744,gennyMcRoberts5744,NY,Southold Junior Senior High School,Southold,NY,2.0,2024,Chemistry,Physics,500,460,22,15,21,20,23,480,510,490,510,530,500,510,540,500,0
+dodyRebbecca2741,dodyRebbecca2741,NY,Patchogue Medford High School,Medford,NY,3.4,2024,Biology,Art History,710,700,36,31,26,32,29,730,700,750,720,700,670,650,680,690,4
+garlandMariana2680,garlandMariana2680,NY,Brentwood High School,Brentwood,NY,2.8,2024,Physics,Computer Science,630,710,29,26,24,21,24,660,660,640,660,660,670,610,590,700,4
+dottieAubry4876,dottieAubry4876,NY,Eastport South Manor Junior Senior High School,Manorville,NY,2.6,2024,Music Theory,Political Science,670,670,21,28,28,27,29,590,670,680,660,610,700,700,700,690,0
+berthaTavish1107,berthaTavish1107,NY,Harborfields High School,Greenlawn,NY,2.4,2024,Geology,Biology,520,470,16,15,15,20,13,460,470,510,450,500,470,480,480,480,2
+ravenHamner8804,ravenHamner8804,NY,The Knox School,St James,NY,2.1,2024,Music Theory,Computer Science,510,520,18,22,17,18,11,450,510,490,430,470,490,500,500,470,2
+emyleeBeetner5380,emyleeBeetner5380,NY,Centereach High School,Centereach,NY,2.3,2024,Political Science,Chemistry,570,530,20,27,18,23,32,540,550,540,620,580,560,580,580,610,1
+tomiMarv909,tomiMarv909,NY,North Babylon High School,North Babylon,NY,1.9,2024,History,Mathematics,520,490,19,16,22,18,12,460,490,520,510,460,440,500,500,460,9
+jorieMalik775,jorieMalik775,NY,Sachem High School North,Lake Ronkonkoma,NY,3.4,2024,Art History,Biology,730,770,35,31,31,27,29,740,720,760,730,720,780,730,750,730,1
+mariaFlavia3744,mariaFlavia3744,NY,The Knox School,St James,NY,3.8,2024,Political Science,Computer Science,760,730,33,26,32,31,30,770,750,780,760,720,730,730,780,800,5
+cyndySchubert2782,cyndySchubert2782,NY,Riverhead Senior High School,Riverhead,NY,3.0,2024,Biology,Music Theory,620,650,19,24,31,24,28,610,730,690,630,580,650,620,580,650,8
+pattiFeinberg8624,pattiFeinberg8624,NY,Hauppauge High School,Hauppauge,NY,2.6,2024,Mathematics,Music Theory,620,540,24,22,22,25,27,560,600,610,610,560,640,590,620,570,6
+penNorvell8298,penNorvell8298,NY,West Babylon Senior High School,West Babylon,NY,2.8,2024,Music Theory,Art History,620,580,23,18,21,25,21,580,560,600,550,550,610,550,580,590,7
+lianTorosian4163,lianTorosian4163,NY,Westhampton Beach Senior High School,Westhampton Beach,NY,2.0,2024,Computer Science,Political Science,520,530,20,24,21,17,20,500,550,580,520,570,530,560,480,530,0
+allyZannini4323,allyZannini4323,NY,Islip High School,Islip,NY,3.2,2024,Biology,Political Science,610,640,27,23,20,25,29,620,680,640,670,670,590,610,610,610,1
+jenniferToms910,jenniferToms910,NY,Hauppauge High School,Hauppauge,NY,3.4,2024,Geology,Chemistry,800,770,31,32,33,36,35,770,780,770,800,760,770,770,800,760,7
+nollieAvan2859,nollieAvan2859,NY,Northport Senior High School,Northport,NY,3.3,2024,Geology,Art History,760,700,31,30,27,26,31,710,730,750,750,700,750,750,760,720,1
+cybillFlaherty3637,cybillFlaherty3637,NY,Sachem High School North,Lake Ronkonkoma,NY,2.8,2024,Chemistry,Mathematics,670,650,26,28,29,27,29,680,690,670,670,670,650,670,680,680,7
+belleElodie7484,belleElodie7484,NY,Amityville Memorial High School,Amityville,NY,2.5,2024,Biology,Mathematics,590,550,23,23,17,16,22,520,560,510,590,560,580,550,580,560,4
+daleFari8862,daleFari8862,NY,Smithtown Christian School,Smithtown,NY,3.1,2024,Chemistry,Art History,720,650,23,32,33,28,32,710,710,720,690,660,670,690,620,730,1
+eileenRiki7282,eileenRiki7282,NY,Center Moriches High School,Center Moriches,NY,2.3,2024,Chemistry,Mathematics,680,670,29,25,28,23,26,660,620,590,660,660,620,660,660,630,0
+loraDaryn6738,loraDaryn6738,NY,Mattituck Junior Senior High School,Mattituck,NY,3.2,2024,History,Physics,680,670,24,28,27,29,25,720,650,650,620,670,720,670,630,650,2
+marieBultman1043,marieBultman1043,NY,Sachem High School North,Lake Ronkonkoma,NY,2.9,2024,Biology,Physics,650,610,26,24,28,21,30,620,650,640,600,570,610,710,660,620,7
+athenePetula5575,athenePetula5575,NY,North Babylon High School,North Babylon,NY,3.2,2024,Biology,Music Theory,730,770,36,30,29,33,35,720,700,700,750,750,750,730,710,760,0
+aureleaTorruella6486,aureleaTorruella6486,NY,Sachem High School North,Lake Ronkonkoma,NY,2.7,2024,Geology,Music Theory,630,580,26,20,27,23,23,560,560,570,630,620,600,620,610,610,2
+blytheAbott5335,blytheAbott5335,NY,East Hampton High School,East Hampton,NY,2.0,2024,Physics,Political Science,440,430,20,14,13,17,12,420,400,450,370,400,410,400,390,440,7
+karleeFong5942,karleeFong5942,NY,Half Hollow Hills High School East,Dix Hills,NY,3.2,2024,Political Science,History,750,700,33,29,26,33,31,680,700,740,710,710,740,690,760,680,8
+estherAllcot184,estherAllcot184,NY,Brentwood High School,Brentwood,NY,2.3,2024,Physics,Music Theory,560,600,22,25,30,20,22,510,580,540,540,560,550,530,580,610,6
+martynneLay8168,martynneLay8168,NY,Ross School,East Hampton,NY,3.3,2024,Political Science,Physics,800,760,31,36,29,29,34,730,780,790,760,760,800,800,730,770,1
+patriziaRinee7509,patriziaRinee7509,NY,Saint Anthonys High School,Huntington Station,NY,2.1,2024,Biology,Physics,470,480,20,21,20,20,14,440,470,430,460,460,460,440,380,430,9
+agneseKeavy3864,agneseKeavy3864,NY,Southold Junior Senior High School,Southold,NY,2.7,2024,Art History,Chemistry,640,660,25,27,30,27,30,660,680,610,640,670,680,640,650,620,1
+chiquitaJinny2233,chiquitaJinny2233,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.6,2024,Art History,History,620,590,24,26,18,29,21,620,600,590,590,620,590,600,610,570,9
+miguelaGoodyear9480,miguelaGoodyear9480,NY,West Islip Senior High School,West Islip,NY,2.6,2024,Mathematics,Chemistry,610,650,25,23,24,26,29,660,620,640,620,620,570,650,660,680,9
+trishaKronick4874,trishaKronick4874,NY,Pierson Middle High School,Sag Harbor,NY,2.6,2024,Computer Science,Music Theory,610,610,21,27,29,25,24,610,660,650,650,600,620,630,610,610,0
+emlynneRobby3573,emlynneRobby3573,NY,Earl L Vandermeulen High School,Port Jefferson,NY,2.2,2024,Music Theory,Art History,580,530,27,20,18,21,25,590,600,560,540,550,600,540,620,580,5
+imogenMarsden658,imogenMarsden658,NY,Bellport Senior High School,Brookhaven,NY,2.8,2024,Physics,Political Science,680,720,27,31,26,27,24,660,690,660,660,640,690,690,710,660,3
+tiffieDrais9698,tiffieDrais9698,NY,Comsewogue High School,Port Jefferson Sta,NY,2.7,2024,Political Science,Music Theory,570,630,30,29,27,24,29,670,680,610,630,630,650,660,650,660,2
+rosalindaShieh8713,rosalindaShieh8713,NY,Amityville Memorial High School,Amityville,NY,2.9,2024,Political Science,Mathematics,600,600,25,21,24,21,26,580,550,580,610,590,550,590,580,550,2
+maiaMcCreary7739,maiaMcCreary7739,NY,Sachem High School North,Lake Ronkonkoma,NY,2.5,2024,Mathematics,Physics,570,620,24,24,19,23,24,630,580,580,570,600,580,560,550,540,9
+hettieKlein9194,hettieKlein9194,NY,Brentwood High School,Brentwood,NY,2.5,2024,Political Science,Physics,600,560,28,21,20,20,25,610,510,570,530,510,580,590,570,640,0
+dodyCai9541,dodyCai9541,NY,Comsewogue High School,Port Jefferson Sta,NY,3.2,2024,History,Physics,730,720,24,36,28,31,32,700,690,750,730,730,690,730,800,750,8
+laneRaquela9587,laneRaquela9587,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,3.3,2024,Chemistry,Biology,750,750,31,30,33,35,28,770,800,780,750,770,740,710,740,760,3
+carenaLatoniah3561,carenaLatoniah3561,NY,Bay Shore Senior High School,Bay Shore,NY,2.3,2024,Music Theory,Physics,530,550,18,25,19,23,18,630,520,560,540,540,540,550,550,530,7
+jereSadira2950,jereSadira2950,NY,Southampton High School,Southampton,NY,3.1,2024,Political Science,Geology,790,670,34,28,31,36,30,760,730,680,690,680,710,720,690,720,8
+fredraLuanne7925,fredraLuanne7925,NY,Deer Park High School,Deer Park,NY,3.0,2024,Physics,Geology,520,580,24,22,24,24,17,600,610,640,610,570,600,600,520,590,8
+starlinFlss8274,starlinFlss8274,NY,Bellport Senior High School,Brookhaven,NY,3.0,2024,Political Science,History,740,710,33,29,30,33,29,720,800,720,720,750,720,760,710,710,8
+laineyFranciscka3046,laineyFranciscka3046,NY,Northport Senior High School,Northport,NY,2.9,2024,Geology,Art History,620,690,23,30,28,25,31,640,640,710,660,690,730,630,620,670,5
+charmionConroy9549,charmionConroy9549,NY,Wyandanch Memorial High School,Wyandanch,NY,2.9,2024,Computer Science,Geology,690,720,29,29,33,24,24,700,680,670,680,630,660,630,650,650,8
+corinneKeung3571,corinneKeung3571,NY,Pierson Middle High School,Sag Harbor,NY,3.2,2024,Physics,Computer Science,740,690,32,32,32,31,29,700,770,710,750,690,750,630,690,720,4
+francineAdam3163,francineAdam3163,NY,The Stony Brook School,Stony Brook,NY,2.3,2024,Computer Science,Art History,570,560,16,19,22,22,20,500,560,510,580,490,580,490,550,560,2
+guennaSliwa3165,guennaSliwa3165,NY,Westhampton Beach Senior High School,Westhampton Beach,NY,2.8,2024,Physics,Music Theory,580,530,20,25,24,23,26,590,590,600,630,560,610,620,580,620,7
+vanniEdrei2407,vanniEdrei2407,NY,Smithtown Christian School,Smithtown,NY,2.8,2024,Mathematics,History,670,670,31,27,29,27,22,630,640,640,690,690,590,640,650,650,2
+kimberleyLynnett6157,kimberleyLynnett6157,NY,Walt Whitman High School,Huntington Station,NY,3.4,2024,Geology,Chemistry,790,740,25,28,31,28,34,740,730,730,760,700,720,800,700,720,7
+charlineDonica4082,charlineDonica4082,NY,Central Islip Senior High School,Central Islip,NY,3.5,2024,Political Science,Mathematics,760,710,30,32,30,31,32,750,750,680,720,720,730,730,700,740,0
+noelynLalise9107,noelynLalise9107,NY,Connetquot High School,Bohemia,NY,3.0,2024,Chemistry,Computer Science,690,710,31,29,33,32,27,690,660,720,660,660,700,650,720,750,5
+eranCarlita2820,eranCarlita2820,NY,Eastport South Manor Junior Senior High School,Manorville,NY,2.9,2024,Physics,Mathematics,650,620,28,28,28,31,31,680,610,620,640,650,640,630,640,640,7
+ofiliaSelden5578,ofiliaSelden5578,NY,Longwood High School,Middle Island,NY,2.4,2024,Biology,Chemistry,560,630,22,17,26,24,23,570,620,560,580,570,640,660,590,560,4
+karlaCarpio5494,karlaCarpio5494,NY,Mount Sinai High School,Mount Sinai,NY,2.9,2024,Geology,Political Science,710,710,30,24,29,27,33,720,710,670,700,730,690,720,780,790,7
+crissieKwei7942,crissieKwei7942,NY,West Babylon Senior High School,West Babylon,NY,2.1,2024,Art History,Geology,540,570,18,20,16,21,22,590,590,490,520,560,550,550,480,570,8
+eachelleBartko4198,eachelleBartko4198,NY,Riverhead Senior High School,Riverhead,NY,2.1,2024,Political Science,Chemistry,580,490,22,17,26,26,20,500,520,570,520,520,510,540,580,450,3
+dorieFarrell7088,dorieFarrell7088,NY,Smithtown Christian School,Smithtown,NY,2.9,2024,Biology,Political Science,560,610,24,22,23,28,22,560,600,590,560,580,560,580,560,630,3
+mairCandi3826,mairCandi3826,NY,Saint Anthonys High School,Huntington Station,NY,3.5,2024,Mathematics,Physics,790,780,35,36,34,33,33,770,770,750,710,800,790,730,730,770,6
+ulrikeCohette2212,ulrikeCohette2212,NY,Babylon Junior Senior High School,Babylon,NY,2.8,2024,Art History,Geology,540,530,26,21,22,25,21,590,590,540,580,580,540,600,550,580,5
+wiloneZenia5500,wiloneZenia5500,NY,West Babylon Senior High School,West Babylon,NY,3.3,2024,Chemistry,Political Science,740,710,32,21,34,32,36,730,680,710,680,680,700,720,690,700,6
+ardathCiaphus466,ardathCiaphus466,NY,Babylon Junior Senior High School,Babylon,NY,3.0,2024,Chemistry,Geology,750,680,26,26,26,18,30,660,650,720,700,640,710,660,660,690,9
+noveliaBrownley6740,noveliaBrownley6740,NY,West Islip Senior High School,West Islip,NY,1.8,2024,Physics,Music Theory,440,430,17,19,19,17,18,450,450,460,510,430,450,450,510,460,1
+ameliaDwaine9665,ameliaDwaine9665,NY,The Stony Brook School,Stony Brook,NY,1.8,2024,History,Music Theory,490,480,21,17,17,19,21,440,490,440,450,460,480,500,440,480,6
+diahannMelisande6667,diahannMelisande6667,NY,Saint Anthonys High School,Huntington Station,NY,2.8,2024,Music Theory,Political Science,560,610,30,28,24,20,22,550,600,570,600,600,580,560,540,620,1
+adalineGodric863,adalineGodric863,NY,Ward Melville Senior High School,East Setauket,NY,2.2,2024,History,Chemistry,550,570,21,17,17,20,24,550,570,470,470,490,570,540,570,520,8
+ronniVig4071,ronniVig4071,NY,Wyandanch Memorial High School,Wyandanch,NY,2.2,2024,Music Theory,Biology,460,470,21,16,24,20,22,520,490,450,520,530,500,470,470,440,0
+lannaDanais8,lannaDanais8,NY,North Babylon High School,North Babylon,NY,2.6,2024,Physics,Computer Science,580,560,30,23,21,16,24,570,560,580,580,570,610,620,570,620,1
+heidiRauch2126,heidiRauch2126,NY,Riverhead Senior High School,Riverhead,NY,3.4,2024,Political Science,Physics,730,760,35,28,36,34,33,800,790,750,790,720,750,750,750,780,3
+jonieHawk5072,jonieHawk5072,NY,Huntington High School,Huntington,NY,2.7,2024,Art History,Geology,640,680,29,26,27,25,23,580,600,570,610,600,650,630,600,530,7
+georgianaCorbet3663,georgianaCorbet3663,NY,Hampton Bays High School,Hampton Bays,NY,2.4,2024,Geology,Mathematics,530,530,20,20,21,22,22,540,520,550,570,480,500,520,520,560,1
+arabelaJard1441,arabelaJard1441,NY,Half Hollow Hills High School West,Dix Hills,NY,2.3,2024,Music Theory,Geology,500,510,23,21,23,19,19,540,490,500,460,480,570,570,530,480,8
+paolinaBiondo1741,paolinaBiondo1741,NY,Mattituck Junior Senior High School,Mattituck,NY,3.0,2024,Computer Science,Physics,580,630,27,25,23,21,20,560,540,520,590,580,590,620,550,530,7
+catinaVial172,catinaVial172,NY,Newfield High School,Selden,NY,3.2,2024,Mathematics,Political Science,700,700,27,34,30,28,30,760,700,720,700,700,690,760,710,690,3
+annadianeLottie7570,annadianeLottie7570,NY,Walter G Oconnell Copiague High School,Copiague,NY,3.5,2024,Mathematics,Art History,740,780,30,33,30,34,30,780,750,750,740,790,760,740,780,730,1
+daelMcClure8636,daelMcClure8636,NY,Smithtown High School   Western Campus,Smithtown,NY,2.0,2024,History,Music Theory,460,500,23,16,11,18,19,460,440,420,520,450,480,460,420,460,0
+catleeDaniele7582,catleeDaniele7582,NY,Sachem High School North,Lake Ronkonkoma,NY,3.3,2024,History,Chemistry,710,770,28,33,29,31,29,660,720,700,770,690,720,680,720,680,6
+persisMacFadyn4162,persisMacFadyn4162,NY,William Floyd High School,Mastic Beach,NY,2.7,2024,Political Science,Physics,670,640,22,25,30,28,21,630,700,710,680,680,740,670,670,660,4
+jolySkyler9484,jolySkyler9484,NY,North Babylon High School,North Babylon,NY,2.7,2024,History,Biology,610,590,19,21,22,17,23,560,580,580,500,600,600,590,560,540,3
+lorneBerkley7144,lorneBerkley7144,NY,Mount Sinai High School,Mount Sinai,NY,3.4,2024,Mathematics,Physics,690,700,28,29,29,31,27,720,630,670,720,730,660,700,720,680,2
+morganaNeisa7002,morganaNeisa7002,NY,Mount Sinai High School,Mount Sinai,NY,2.5,2024,Mathematics,Computer Science,540,520,24,24,25,24,23,590,550,540,520,510,540,550,550,540,3
+maryellenLucrece7406,maryellenLucrece7406,NY,East Hampton High School,East Hampton,NY,3.3,2024,Physics,Chemistry,730,730,32,33,32,36,33,740,740,800,760,780,720,780,750,700,5
+briettaPytlik9532,briettaPytlik9532,NY,Center Moriches High School,Center Moriches,NY,2.2,2024,History,Computer Science,440,500,13,18,14,14,13,430,410,470,470,380,370,420,410,430,8
+kieleDomenic9110,kieleDomenic9110,NY,Northport Senior High School,Northport,NY,1.6,2024,Chemistry,Art History,350,350,4,14,10,10,14,380,430,450,340,400,370,380,390,370,4
+bertiTurk3423,bertiTurk3423,NY,Ross School,East Hampton,NY,3.5,2024,Music Theory,Art History,760,710,32,32,29,33,28,790,700,700,720,710,700,710,770,670,9
+charlotteMazonson4815,charlotteMazonson4815,NY,Sachem High School East,Farmingville,NY,2.4,2024,Art History,Mathematics,530,510,20,26,20,23,14,530,500,520,510,520,500,490,490,520,6
+kylynnMacLaine7070,kylynnMacLaine7070,NY,Half Hollow Hills High School West,Dix Hills,NY,3.1,2024,History,Art History,720,730,25,30,30,33,29,700,660,710,700,740,700,700,740,710,8
+romondaDragelin6670,romondaDragelin6670,NY,Northport Senior High School,Northport,NY,3.0,2024,Mathematics,Physics,640,540,29,28,23,24,24,600,600,580,640,570,540,570,520,540,1
+louiseLustig4672,louiseLustig4672,NY,Commack High School,Commack,NY,3.3,2024,Computer Science,Chemistry,690,730,29,28,31,35,30,720,700,750,700,620,740,700,680,750,1
+georgeannaAlina4055,georgeannaAlina4055,NY,Sachem High School East,Farmingville,NY,3.1,2024,Computer Science,History,670,670,33,29,31,31,24,660,690,670,690,660,680,700,650,660,4
+terzaSiddon9841,terzaSiddon9841,NY,Centereach High School,Centereach,NY,2.2,2024,Biology,Political Science,550,560,17,19,28,23,23,520,540,530,600,550,550,570,510,470,0
+carinSchreck3391,carinSchreck3391,NY,Bridgehampton School,Bridgehampton,NY,3.0,2024,Art History,Computer Science,620,560,21,24,22,21,24,540,550,580,530,590,540,590,560,560,0
+ollieBronwen3845,ollieBronwen3845,NY,Hampton Bays High School,Hampton Bays,NY,3.1,2024,Geology,History,590,560,30,31,26,27,19,630,640,640,570,630,630,570,610,660,0
+maudeMessing65,maudeMessing65,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.4,2024,Art History,Physics,630,710,31,30,28,24,29,660,640,670,710,650,640,640,670,680,7
+tanyaPaxton53,tanyaPaxton53,NY,Half Hollow Hills High School West,Dix Hills,NY,3.4,2024,Geology,Political Science,630,630,27,28,29,28,30,660,620,660,670,660,690,690,670,680,7
+rochellNew9333,rochellNew9333,NY,William Floyd High School,Mastic Beach,NY,1.9,2024,Chemistry,Political Science,410,340,14,10,13,13,13,330,390,400,390,360,410,410,410,400,0
+keriCertie365,keriCertie365,NY,Shoreham Wading River High School,Shoreham,NY,3.2,2024,Geology,Computer Science,680,620,25,32,24,25,23,650,630,670,610,720,670,670,690,690,5
+malissaMarika231,malissaMarika231,NY,Hampton Bays High School,Hampton Bays,NY,3.2,2024,History,Geology,680,670,24,27,28,27,32,670,700,690,710,680,640,670,720,700,2
+neritaKapor2189,neritaKapor2189,NY,The Stony Brook School,Stony Brook,NY,3.1,2024,Art History,Physics,780,780,35,31,31,31,29,760,760,750,750,720,720,740,730,770,6
+robinMeldoh1845,robinMeldoh1845,NY,Pierson Middle High School,Sag Harbor,NY,2.7,2024,History,Art History,590,570,20,24,23,25,21,580,590,660,560,570,580,600,580,530,6
+glynnisTrudi6059,glynnisTrudi6059,NY,Center Moriches High School,Center Moriches,NY,2.7,2024,Geology,Computer Science,570,550,21,23,23,25,21,560,590,610,560,550,600,570,580,550,9
+adelaideJamnis9442,adelaideJamnis9442,NY,John H Glenn High School,Elwood,NY,2.1,2024,Biology,Physics,550,590,22,20,22,23,29,570,590,570,530,520,530,560,580,560,8
+vedaBonnette439,vedaBonnette439,NY,John H Glenn High School,Elwood,NY,2.3,2024,History,Political Science,470,480,19,22,24,22,21,510,480,520,510,470,470,530,510,490,2
+cherylArturo7395,cherylArturo7395,NY,Comsewogue High School,Port Jefferson Sta,NY,2.2,2024,Mathematics,History,460,460,20,24,18,14,17,520,460,520,440,440,460,410,490,470,4
+mandaWoolson5963,mandaWoolson5963,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,3.3,2024,Chemistry,Art History,640,640,27,30,26,31,27,700,670,700,700,640,650,630,660,720,0
+vinBirmingham1300,vinBirmingham1300,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,2.9,2024,Political Science,History,600,570,18,25,20,29,17,530,520,530,570,540,520,530,620,540,9
+jazminArlinda8065,jazminArlinda8065,NY,Greenport High School,Greenport,NY,3.0,2024,Political Science,Mathematics,630,620,26,26,23,29,23,640,620,650,660,600,620,570,640,620,9
+kelleyDorisa1398,kelleyDorisa1398,NY,Smithtown High School East,Saint James,NY,2.7,2024,History,Chemistry,630,660,33,27,27,27,27,680,630,650,610,620,700,650,650,680,4
+annadianeGarland3181,annadianeGarland3181,NY,Shoreham Wading River High School,Shoreham,NY,2.4,2024,Biology,Art History,500,510,24,21,23,25,25,500,570,550,520,500,530,550,610,520,4
+dosiArcher7704,dosiArcher7704,NY,Shoreham Wading River High School,Shoreham,NY,2.7,2024,History,Art History,670,660,27,24,27,29,24,630,610,630,620,640,610,600,600,700,4
+verinaTorosian7253,verinaTorosian7253,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,3.0,2024,Chemistry,History,670,660,24,28,24,26,29,630,700,700,660,650,640,650,680,620,6
+lonnaFollmer1000,lonnaFollmer1000,NY,Comsewogue High School,Port Jefferson Sta,NY,2.2,2024,Mathematics,History,500,550,23,22,21,18,16,500,480,530,510,550,490,530,560,570,3
+samariaBarbara-Anne415,samariaBarbara-Anne415,NY,Islip High School,Islip,NY,2.9,2024,Biology,Chemistry,700,660,25,28,19,23,26,670,670,610,650,600,630,670,670,620,9
+pollyannaTabatha3676,pollyannaTabatha3676,NY,Patchogue Medford High School,Medford,NY,3.6,2024,Physics,Mathematics,800,770,36,33,29,31,34,730,780,710,720,800,760,740,740,730,3
+toriGenny1617,toriGenny1617,NY,Deer Park High School,Deer Park,NY,2.5,2024,Music Theory,History,600,600,26,22,26,23,24,590,630,600,640,570,660,580,590,610,6
+jacquettaDevondra8027,jacquettaDevondra8027,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.6,2024,Geology,Chemistry,590,560,23,21,25,24,22,580,510,550,570,530,520,480,600,550,3
+elinorMilano3247,elinorMilano3247,NY,Miller Place High School,Miller Place,NY,2.0,2024,Physics,Music Theory,480,510,22,21,18,22,18,590,470,520,470,520,530,490,510,520,7
+clairNealey810,clairNealey810,NY,Half Hollow Hills High School West,Dix Hills,NY,2.6,2024,Art History,Political Science,620,580,28,20,25,29,26,630,550,620,570,630,540,620,600,560,5
+haliLabors2403,haliLabors2403,NY,Walt Whitman High School,Huntington Station,NY,2.3,2024,Chemistry,Art History,510,520,17,16,20,17,19,490,550,520,510,500,530,530,550,570,5
+annoraElmore813,annoraElmore813,NY,Southold Junior Senior High School,Southold,NY,2.8,2024,Geology,Chemistry,670,710,25,32,30,26,30,720,690,710,660,740,670,740,680,630,7
+jaynellLalittah9823,jaynellLalittah9823,NY,Southold Junior Senior High School,Southold,NY,3.0,2024,Physics,Mathematics,700,710,25,31,30,23,25,670,750,660,600,660,720,680,700,680,6
+teresinaDoggett2472,teresinaDoggett2472,NY,Ward Melville Senior High School,East Setauket,NY,3.0,2024,Music Theory,Chemistry,580,670,28,23,22,30,22,650,600,600,630,660,580,660,620,610,3
+petronillaRockefeller941,petronillaRockefeller941,NY,Greenport High School,Greenport,NY,3.0,2024,Geology,Biology,670,690,25,24,29,29,25,720,670,670,700,670,680,620,690,630,8
+isabelPich546,isabelPich546,NY,Pierson Middle High School,Sag Harbor,NY,2.9,2024,Political Science,Biology,650,700,29,26,25,26,25,720,730,700,680,700,670,570,700,640,1
+emmiMilda264,emmiMilda264,NY,Comsewogue High School,Port Jefferson Sta,NY,2.0,2024,Geology,Mathematics,480,460,19,11,15,15,13,450,420,430,380,470,410,440,470,460,4
+tootsieFadil7281,tootsieFadil7281,NY,Miller Place High School,Miller Place,NY,2.6,2024,Biology,Mathematics,550,470,25,19,24,20,20,530,530,570,580,480,530,560,470,550,3
+floryHartmunn4659,floryHartmunn4659,NY,Longwood High School,Middle Island,NY,3.7,2024,Geology,Political Science,790,780,31,32,27,33,34,760,720,730,760,790,740,760,710,760,6
+luZollie5339,luZollie5339,NY,Sachem High School North,Lake Ronkonkoma,NY,3.4,2024,History,Biology,710,690,28,28,24,28,27,700,750,750,710,740,710,710,670,720,5
+emelitaHacker4135,emelitaHacker4135,NY,Deer Park High School,Deer Park,NY,3.1,2024,Music Theory,Political Science,690,670,33,30,29,29,30,660,700,610,670,720,720,640,740,680,3
+karolinePallaton1536,karolinePallaton1536,NY,Central Islip Senior High School,Central Islip,NY,2.9,2024,Chemistry,Computer Science,610,520,26,26,27,25,24,590,590,560,590,580,610,640,600,560,3
+jackelynOrmsby483,jackelynOrmsby483,NY,Islip High School,Islip,NY,3.2,2024,Physics,Biology,740,730,26,29,30,26,36,750,740,740,710,750,760,720,710,740,9
+estelleDevol2296,estelleDevol2296,NY,East Islip High School,Islip Terrace,NY,3.1,2024,Mathematics,History,710,720,23,22,24,36,30,670,660,680,710,690,700,680,690,670,7
+elleId3429,elleId3429,NY,William Floyd High School,Mastic Beach,NY,3.4,2024,Mathematics,Physics,740,760,27,30,32,32,36,720,690,730,700,730,730,700,690,720,9
+darrelleDyanne1360,darrelleDyanne1360,NY,The Stony Brook School,Stony Brook,NY,2.9,2024,Computer Science,Geology,630,610,22,27,30,25,24,660,620,630,630,660,700,690,640,610,4
+jilleneGram8304,jilleneGram8304,NY,Shoreham Wading River High School,Shoreham,NY,3.0,2024,Computer Science,Art History,620,660,27,24,23,27,26,660,570,610,640,600,590,630,620,660,2
+orsolaTertia1733,orsolaTertia1733,NY,Hauppauge High School,Hauppauge,NY,3.2,2024,Mathematics,Geology,600,660,32,31,26,29,28,690,680,710,580,700,700,630,640,720,6
+goldieEdla9919,goldieEdla9919,NY,West Islip Senior High School,West Islip,NY,2.1,2024,Biology,Political Science,480,460,18,17,17,20,19,480,450,520,430,500,420,510,470,490,3
+maryjaneFachan9743,maryjaneFachan9743,NY,Earl L Vandermeulen High School,Port Jefferson,NY,2.2,2024,Geology,Biology,480,460,13,17,15,19,18,500,530,490,490,500,470,510,470,470,8
+charmaneSchnapp7448,charmaneSchnapp7448,NY,Centereach High School,Centereach,NY,3.3,2024,History,Biology,700,680,30,29,32,22,20,690,660,670,700,710,660,710,690,710,0
+brooksLucy2603,brooksLucy2603,NY,Walt Whitman High School,Huntington Station,NY,2.0,2024,Physics,Political Science,430,410,13,14,13,15,11,420,390,470,440,400,370,410,440,440,4
+bobinaWoodman6254,bobinaWoodman6254,NY,East Hampton High School,East Hampton,NY,2.5,2024,Chemistry,Art History,620,600,25,20,26,25,22,610,610,610,640,580,590,590,560,580,6
+sophiHamforrd8258,sophiHamforrd8258,NY,Bay Shore Senior High School,Bay Shore,NY,2.6,2024,Chemistry,Computer Science,610,620,27,25,21,20,22,570,600,620,610,630,630,620,540,590,3
+kisseeRice1677,kisseeRice1677,NY,Mount Sinai High School,Mount Sinai,NY,3.2,2024,Art History,Physics,720,690,29,28,29,27,31,700,710,690,720,740,680,690,740,650,2
+violaStanfill7440,violaStanfill7440,NY,Walt Whitman High School,Huntington Station,NY,2.9,2024,Music Theory,Physics,670,690,25,25,26,27,21,680,670,680,700,700,680,650,660,650,9
+cherilynnTerza4060,cherilynnTerza4060,NY,Greenport High School,Greenport,NY,1.7,2024,Computer Science,Music Theory,460,380,17,18,14,14,16,390,450,430,430,370,430,450,430,390,2
+oliyNodarse2415,oliyNodarse2415,NY,William Floyd High School,Mastic Beach,NY,2.8,2024,History,Computer Science,690,620,30,30,28,24,32,660,640,640,620,700,600,700,610,620,2
+odiliaKasper9547,odiliaKasper9547,NY,Smithtown Christian School,Smithtown,NY,2.6,2024,Biology,Political Science,670,640,27,26,26,22,22,540,660,580,630,630,640,600,560,610,1
+lindieShellans5526,lindieShellans5526,NY,Smithtown High School   Western Campus,Smithtown,NY,2.7,2024,Computer Science,Biology,560,560,19,25,19,21,22,550,490,560,550,570,560,520,560,560,1
+josiPammie784,josiPammie784,NY,Amityville Memorial High School,Amityville,NY,3.5,2024,Mathematics,Biology,740,800,36,36,30,34,34,800,770,770,800,800,780,750,790,730,1
+marilinLane2439,marilinLane2439,NY,Southampton High School,Southampton,NY,2.7,2024,Physics,Biology,630,610,24,24,24,29,22,610,590,670,610,620,600,590,670,550,1
+kimberleeDao4198,kimberleeDao4198,NY,Ross School,East Hampton,NY,2.7,2024,Computer Science,Biology,590,580,21,25,21,24,27,610,620,600,630,590,620,630,610,660,5
+jessalynCatima1597,jessalynCatima1597,NY,Wyandanch Memorial High School,Wyandanch,NY,2.8,2024,Music Theory,Mathematics,700,710,27,31,24,33,28,690,690,690,690,670,660,640,680,650,9
+arlenaKaiser6775,arlenaKaiser6775,NY,Commack High School,Commack,NY,3.1,2024,Political Science,Mathematics,750,720,32,28,36,27,26,770,720,700,740,740,700,720,740,730,6
+elfridaManvil3617,elfridaManvil3617,NY,Bay Shore Senior High School,Bay Shore,NY,3.1,2024,Chemistry,Mathematics,640,630,24,28,22,22,27,680,660,660,660,590,640,690,700,630,5
+hyacintheKind6724,hyacintheKind6724,NY,Deer Park High School,Deer Park,NY,2.9,2024,Biology,Computer Science,710,770,31,30,20,23,30,680,730,700,710,670,680,680,680,620,8
+melanthaVogeley4512,melanthaVogeley4512,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.7,2024,Music Theory,Biology,630,580,21,21,21,20,28,600,580,600,540,550,590,540,580,540,9
+joleneHorn2561,joleneHorn2561,NY,Mattituck Junior Senior High School,Mattituck,NY,3.0,2024,Geology,History,780,740,28,34,31,31,28,720,740,760,700,750,720,770,710,700,8
+merrillArtemas7908,merrillArtemas7908,NY,Bayport Blue Point High School,Bayport,NY,2.7,2024,Computer Science,Political Science,560,550,23,23,26,24,24,570,610,580,570,570,590,560,610,600,7
+rosetteSunny2994,rosetteSunny2994,NY,Shoreham Wading River High School,Shoreham,NY,2.2,2024,Computer Science,Biology,550,600,23,22,22,21,19,520,530,540,540,550,610,570,570,570,0
+jodiHumbert5945,jodiHumbert5945,NY,Connetquot High School,Bohemia,NY,3.6,2024,Biology,Computer Science,720,740,29,33,28,33,30,780,760,730,730,700,740,750,780,740,9
+selindaChrisy8995,selindaChrisy8995,NY,Westhampton Beach Senior High School,Westhampton Beach,NY,2.6,2024,Chemistry,Political Science,560,560,24,22,21,19,23,560,630,580,540,520,550,600,590,600,9
+velmaLagasse3765,velmaLagasse3765,NY,St John the Baptist Diocesan High School,West Islip,NY,2.8,2024,Biology,Chemistry,670,630,21,25,26,25,30,640,610,700,640,590,610,600,580,620,0
+estrellaPrimo7177,estrellaPrimo7177,NY,Comsewogue High School,Port Jefferson Sta,NY,2.7,2024,Physics,Political Science,660,690,26,27,30,23,27,690,710,710,730,720,690,710,680,700,0
+darbieHedberg6689,darbieHedberg6689,NY,Eastport South Manor Junior Senior High School,Manorville,NY,1.7,2024,Political Science,Physics,440,470,16,12,15,15,19,350,440,400,380,420,460,420,470,410,6
+britTatiana4853,britTatiana4853,NY,Central Islip Senior High School,Central Islip,NY,2.9,2024,Music Theory,Physics,680,660,22,31,27,22,31,680,660,660,710,660,690,690,660,680,4
+randeneCarry3892,randeneCarry3892,NY,Newfield High School,Selden,NY,3.3,2024,Art History,Biology,770,700,33,29,36,32,36,710,750,740,800,770,770,740,720,790,2
+josyEven7846,josyEven7846,NY,Connetquot High School,Bohemia,NY,3.1,2024,Music Theory,Mathematics,660,650,31,28,26,31,30,660,670,700,670,710,730,650,700,700,4
+ethelineSweeney9950,ethelineSweeney9950,NY,Newfield High School,Selden,NY,2.3,2024,Chemistry,Art History,610,600,23,26,23,25,24,570,580,550,600,570,610,610,580,530,1
+anetteCocks9560,anetteCocks9560,NY,Rocky Point High School,Rocky Point,NY,2.5,2024,Political Science,Music Theory,530,490,19,19,19,15,17,480,510,530,560,560,500,540,560,490,3
+meaganWilona7211,meaganWilona7211,NY,Half Hollow Hills High School West,Dix Hills,NY,3.1,2024,Art History,Biology,720,710,34,26,36,30,31,680,710,690,710,710,720,690,650,720,3
+jeanHartzel8518,jeanHartzel8518,NY,Smithtown High School   Western Campus,Smithtown,NY,2.1,2024,Art History,Chemistry,420,430,8,18,16,20,20,460,450,380,500,410,380,470,450,420,6
+rondaMarie-Ann8308,rondaMarie-Ann8308,NY,Hauppauge High School,Hauppauge,NY,2.4,2024,Chemistry,Music Theory,610,610,24,21,20,24,20,620,590,590,630,640,640,560,610,620,5
+danicaTybie4025,danicaTybie4025,NY,William Floyd High School,Mastic Beach,NY,2.4,2024,Chemistry,Biology,530,600,24,23,25,26,23,620,590,600,540,580,540,580,590,630,7
+deniMassingill6700,deniMassingill6700,NY,Eastport South Manor Junior Senior High School,Manorville,NY,2.7,2024,Physics,Biology,610,600,24,24,24,29,24,660,560,640,590,620,620,610,590,580,3
+maureenShirlee1519,maureenShirlee1519,NY,Comsewogue High School,Port Jefferson Sta,NY,2.8,2024,Art History,Physics,660,700,22,26,26,22,29,670,670,670,640,660,690,660,640,640,9
+pennieMartelle9505,pennieMartelle9505,NY,Earl L Vandermeulen High School,Port Jefferson,NY,3.2,2024,Physics,Mathematics,670,690,28,30,30,29,27,660,670,690,660,660,670,660,690,580,8
+sheila-kathrynLong2825,sheila-kathrynLong2825,NY,St John the Baptist Diocesan High School,West Islip,NY,2.2,2024,Computer Science,History,490,480,13,20,27,19,22,460,450,460,560,550,450,500,530,460,4
+dulceaSears6455,dulceaSears6455,NY,Saint Anthonys High School,Huntington Station,NY,3.3,2024,Physics,Political Science,660,720,29,28,17,30,24,740,660,680,710,700,660,710,690,690,7
+kateQuar6267,kateQuar6267,NY,The Stony Brook School,Stony Brook,NY,2.6,2024,Physics,Art History,520,530,24,23,21,24,22,550,510,500,570,520,560,560,460,540,8
+thaliaManuela351,thaliaManuela351,NY,Harborfields High School,Greenlawn,NY,3.2,2024,Chemistry,Computer Science,790,700,30,31,35,36,31,740,710,710,740,800,750,740,720,770,9
+lavenaDorolice7123,lavenaDorolice7123,NY,Southold Junior Senior High School,Southold,NY,2.3,2024,Mathematics,Computer Science,510,490,24,20,23,13,21,460,440,500,480,500,490,550,550,530,9
+winnaAmoreta4992,winnaAmoreta4992,NY,The Stony Brook School,Stony Brook,NY,2.6,2024,Mathematics,Music Theory,570,560,25,23,22,18,23,550,560,590,580,600,590,490,590,570,2
+olwenKalk1162,olwenKalk1162,NY,Sachem High School East,Farmingville,NY,2.2,2024,Geology,Mathematics,410,420,19,18,16,16,18,460,420,490,440,480,510,480,460,500,4
+michalZed2628,michalZed2628,NY,Westhampton Beach Senior High School,Westhampton Beach,NY,3.5,2024,Art History,Geology,590,610,19,23,21,28,26,600,670,630,650,610,610,630,620,640,1
+aleciaGrady6993,aleciaGrady6993,NY,Longwood High School,Middle Island,NY,2.5,2024,Music Theory,Physics,580,540,19,25,25,25,20,510,550,580,610,520,580,540,550,550,0
+jemmyBlodgett7695,jemmyBlodgett7695,NY,Half Hollow Hills High School West,Dix Hills,NY,3.3,2024,Political Science,Mathematics,720,700,30,34,32,31,31,700,670,700,690,720,710,670,760,710,6
+danetteTopping5984,danetteTopping5984,NY,Pierson Middle High School,Sag Harbor,NY,2.5,2024,History,Geology,540,430,16,21,18,20,20,530,510,490,470,510,500,530,500,490,3
+gabrielaHuda3252,gabrielaHuda3252,NY,William Floyd High School,Mastic Beach,NY,2.5,2024,Biology,Geology,470,500,21,20,18,19,19,570,510,500,530,500,520,510,520,510,8
+adriaZabrina3952,adriaZabrina3952,NY,Amityville Memorial High School,Amityville,NY,2.6,2024,Music Theory,Chemistry,480,570,21,17,20,17,21,550,560,500,550,550,480,500,560,510,3
+joannaGeorgena327,joannaGeorgena327,NY,Rocky Point High School,Rocky Point,NY,2.8,2024,Physics,Computer Science,570,590,26,22,20,22,23,580,560,580,520,580,520,600,580,540,9
+benedictaAilbert2595,benedictaAilbert2595,NY,Sachem High School North,Lake Ronkonkoma,NY,2.7,2024,Chemistry,Geology,650,580,25,25,31,19,28,670,620,640,570,630,590,560,640,600,7
+alexPahl93,alexPahl93,NY,The Knox School,St James,NY,3.2,2024,Political Science,Mathematics,720,620,31,29,33,32,27,710,690,650,690,690,680,750,690,670,5
+dahliaNor2019,dahliaNor2019,NY,Deer Park High School,Deer Park,NY,2.9,2024,History,Geology,650,650,17,31,29,21,21,650,620,620,620,660,680,690,670,660,4
+cheryOrmond4280,cheryOrmond4280,NY,Riverhead Senior High School,Riverhead,NY,2.7,2024,Political Science,Art History,650,640,28,28,25,26,21,630,590,680,610,600,560,570,680,610,9
+delcinaManvil8475,delcinaManvil8475,NY,St John the Baptist Diocesan High School,West Islip,NY,2.3,2024,Physics,Geology,450,530,15,21,16,21,18,510,500,550,480,420,510,530,490,500,0
+carenPalgrave1402,carenPalgrave1402,NY,Smithtown High School   Western Campus,Smithtown,NY,3.0,2024,Political Science,Music Theory,720,590,23,27,30,25,32,630,670,640,610,660,670,690,610,630,6
+dolleyWeisbart3232,dolleyWeisbart3232,NY,Commack High School,Commack,NY,3.0,2024,Computer Science,Art History,680,710,21,28,24,28,23,730,640,640,650,640,680,700,710,690,1
+stormyRozek9944,stormyRozek9944,NY,Mattituck Junior Senior High School,Mattituck,NY,2.5,2024,Geology,History,570,610,25,20,24,20,19,550,560,550,590,500,500,510,560,530,2
+hannaOmer6139,hannaOmer6139,NY,Mattituck Junior Senior High School,Mattituck,NY,3.2,2024,History,Music Theory,710,660,24,27,26,30,30,640,700,640,740,660,780,730,620,720,3
+anicaKancler7120,anicaKancler7120,NY,Bay Shore Senior High School,Bay Shore,NY,2.8,2024,Computer Science,Geology,570,610,26,19,18,26,24,620,570,560,620,610,600,620,610,610,5
+steffiSilda1666,steffiSilda1666,NY,Smithtown High School   Western Campus,Smithtown,NY,3.4,2024,Political Science,Mathematics,720,720,32,30,36,30,23,680,710,740,710,690,720,710,720,720,3
+chereyLiva9987,chereyLiva9987,NY,Comsewogue High School,Port Jefferson Sta,NY,3.2,2024,Chemistry,Computer Science,610,540,22,22,19,28,24,600,620,620,540,540,550,550,550,530,0
+shannaLynsey1219,shannaLynsey1219,NY,Half Hollow Hills High School West,Dix Hills,NY,3.0,2024,Computer Science,Art History,660,610,25,32,33,25,26,680,680,660,670,660,680,620,660,620,8
+amaleeThin3581,amaleeThin3581,NY,Smithtown Christian School,Smithtown,NY,3.2,2024,Physics,Art History,800,750,33,29,26,27,28,740,720,700,720,760,790,740,770,740,8
+christenVoe4216,christenVoe4216,NY,Bellport Senior High School,Brookhaven,NY,2.8,2024,Music Theory,Art History,630,590,25,21,26,22,28,580,640,610,580,610,660,640,640,640,5
+tuesdayBabbette2235,tuesdayBabbette2235,NY,Wyandanch Memorial High School,Wyandanch,NY,2.7,2024,Mathematics,Art History,540,550,22,26,21,20,19,600,480,500,540,540,560,510,610,550,6
+teenaWynny7060,teenaWynny7060,NY,Bellport Senior High School,Brookhaven,NY,2.3,2024,Physics,Political Science,520,530,23,22,23,23,22,590,560,580,550,550,570,570,560,610,2
+nediBary5939,nediBary5939,NY,Westhampton Beach Senior High School,Westhampton Beach,NY,2.0,2024,Biology,Physics,460,520,21,21,18,17,23,460,460,450,440,470,510,460,420,460,2
+mauriziaFairfield7494,mauriziaFairfield7494,NY,Hampton Bays High School,Hampton Bays,NY,1.7,2024,Physics,Chemistry,490,410,17,14,17,18,15,400,410,470,470,420,400,430,500,520,4
+morganaParthen7929,morganaParthen7929,NY,Mount Sinai High School,Mount Sinai,NY,2.8,2024,Biology,Mathematics,540,560,22,26,19,29,20,550,550,560,540,620,570,540,580,580,7
+donnaNeukam5569,donnaNeukam5569,NY,Ross School,East Hampton,NY,2.4,2024,Music Theory,Art History,480,490,16,16,23,19,14,490,490,480,500,500,460,510,500,490,3
+audiElnore164,audiElnore164,NY,Eastport South Manor Junior Senior High School,Manorville,NY,2.6,2024,Music Theory,Art History,600,600,23,22,19,17,24,610,620,570,530,610,650,630,490,590,0
+joanCamm8317,joanCamm8317,NY,Commack High School,Commack,NY,2.5,2024,Geology,Biology,590,590,23,25,27,25,21,590,600,620,590,520,580,650,630,580,9
+myriamFarrington6251,myriamFarrington6251,NY,Riverhead Senior High School,Riverhead,NY,2.2,2024,Chemistry,Geology,520,500,16,25,28,26,24,540,530,530,500,540,540,510,500,490,6
+tessiLissy9877,tessiLissy9877,NY,Huntington High School,Huntington,NY,2.1,2024,Music Theory,Art History,510,530,20,20,15,19,25,510,470,530,530,570,510,550,550,540,1
+harlieBivins8396,harlieBivins8396,NY,Riverhead Senior High School,Riverhead,NY,2.9,2024,Geology,Biology,530,530,24,25,17,17,25,550,610,630,590,550,540,580,580,560,4
+loniSisak6963,loniSisak6963,NY,Comsewogue High School,Port Jefferson Sta,NY,2.4,2024,Geology,Music Theory,600,550,25,21,26,22,21,570,620,610,670,550,600,540,570,610,9
+manyaRafi595,manyaRafi595,NY,Wyandanch Memorial High School,Wyandanch,NY,2.1,2024,History,Physics,490,510,18,20,20,25,17,480,490,520,510,520,500,540,520,540,3
+marysaLiborio3964,marysaLiborio3964,NY,Eastport South Manor Junior Senior High School,Manorville,NY,2.7,2024,Music Theory,Physics,630,650,23,21,26,26,24,620,630,600,610,580,580,610,630,660,3
+bobinetteGertruda4831,bobinetteGertruda4831,NY,Southold Junior Senior High School,Southold,NY,3.3,2024,Political Science,Music Theory,780,740,34,31,32,32,35,770,800,780,800,780,770,800,750,740,2
+fleurKhanna8462,fleurKhanna8462,NY,Commack High School,Commack,NY,2.8,2024,History,Mathematics,580,690,30,24,30,28,25,610,660,700,640,650,700,690,690,670,6
+charlenaUpali6198,charlenaUpali6198,NY,Comsewogue High School,Port Jefferson Sta,NY,2.6,2024,Computer Science,Chemistry,490,530,23,19,21,19,22,570,490,460,570,520,540,560,510,550,8
+faricaCarling117,faricaCarling117,NY,Islip High School,Islip,NY,2.2,2024,Geology,Mathematics,510,510,23,18,22,14,19,470,490,490,420,440,500,530,490,490,0
+floriReedy1253,floriReedy1253,NY,Sachem High School East,Farmingville,NY,2.5,2024,Political Science,History,570,620,23,25,24,19,24,560,600,640,580,630,610,640,580,620,8
+judyCitarella6647,judyCitarella6647,NY,Hampton Bays High School,Hampton Bays,NY,2.5,2024,Computer Science,Art History,540,550,25,21,23,23,26,520,520,590,610,610,520,570,580,530,5
+kalindiLitton9803,kalindiLitton9803,NY,Connetquot High School,Bohemia,NY,2.1,2024,Physics,Geology,580,600,21,24,20,19,25,570,520,510,500,560,580,500,530,490,0
+addiaGoldshlag9419,addiaGoldshlag9419,NY,John H Glenn High School,Elwood,NY,2.1,2024,Computer Science,Art History,640,630,26,25,27,27,26,610,630,590,570,630,640,600,600,640,2
+neileMenides1753,neileMenides1753,NY,Hauppauge High School,Hauppauge,NY,2.8,2024,Computer Science,Physics,630,640,28,33,31,31,28,720,740,710,730,670,700,710,720,730,4
+myrtieEmili7396,myrtieEmili7396,NY,Eastport South Manor Junior Senior High School,Manorville,NY,2.4,2024,Physics,Biology,560,530,21,25,26,22,21,580,580,560,580,530,570,550,590,590,2
+blanchVerras5483,blanchVerras5483,NY,William Floyd High School,Mastic Beach,NY,2.5,2024,Chemistry,Mathematics,510,520,25,20,20,19,16,510,550,470,580,510,480,490,520,530,8
+grataElinor9167,grataElinor9167,NY,Ward Melville Senior High School,East Setauket,NY,3.4,2024,Music Theory,Geology,750,750,29,35,30,25,31,730,730,740,720,700,700,730,720,730,9
+ardellaBoatwright4919,ardellaBoatwright4919,NY,Smithtown High School East,Saint James,NY,2.1,2024,Computer Science,Political Science,500,580,18,21,19,19,21,520,580,470,570,540,500,510,570,480,5
+lucineLucrece5846,lucineLucrece5846,NY,Half Hollow Hills High School West,Dix Hills,NY,2.6,2024,Political Science,Music Theory,620,580,26,22,21,23,27,560,560,590,580,550,530,530,500,570,8
+sheriKorns8001,sheriKorns8001,NY,Commack High School,Commack,NY,3.1,2024,Geology,Art History,720,660,28,23,26,27,27,670,650,650,750,600,710,630,610,700,3
+zondaGunther9951,zondaGunther9951,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,3.3,2024,Art History,History,680,680,29,28,31,27,22,690,680,700,700,670,670,670,670,710,8
+miraHobey8140,miraHobey8140,NY,Connetquot High School,Bohemia,NY,3.1,2024,Geology,Computer Science,570,680,27,24,26,24,24,650,630,600,620,610,590,690,640,600,5
+arletaSmallman7271,arletaSmallman7271,NY,Westhampton Beach Senior High School,Westhampton Beach,NY,2.2,2024,Mathematics,History,490,520,16,21,15,19,18,500,470,430,530,430,520,430,520,520,8
+leonelleLebbie3305,leonelleLebbie3305,NY,Islip High School,Islip,NY,2.3,2024,Computer Science,Biology,630,540,23,22,17,17,22,530,590,580,510,560,570,580,540,560,0
+cassyLacagnia6633,cassyLacagnia6633,NY,Bellport Senior High School,Brookhaven,NY,3.3,2024,Political Science,Computer Science,800,800,28,31,32,28,36,750,770,760,710,750,800,760,780,800,2
+karlottaKatinka994,karlottaKatinka994,NY,Hauppauge High School,Hauppauge,NY,2.7,2024,Political Science,Art History,640,670,34,31,30,27,30,700,740,710,690,740,710,740,700,710,0
+blanchRodolphe6323,blanchRodolphe6323,NY,North Babylon High School,North Babylon,NY,2.7,2024,Physics,Computer Science,640,580,23,22,30,27,28,590,620,630,640,660,660,670,610,590,0
+gaelZwick2810,gaelZwick2810,NY,Newfield High School,Selden,NY,2.1,2024,Art History,History,500,510,17,16,21,19,23,480,490,510,500,470,460,470,520,470,4
+dauneOneil6338,dauneOneil6338,NY,Bellport Senior High School,Brookhaven,NY,2.0,2024,Music Theory,History,440,440,17,18,19,18,21,450,470,460,480,460,520,450,500,410,0
+fredrikaTilla260,fredrikaTilla260,NY,Miller Place High School,Miller Place,NY,2.4,2024,Political Science,Chemistry,530,530,23,19,21,24,16,550,500,550,510,630,570,550,540,500,9
+deenaGolden7551,deenaGolden7551,NY,Ward Melville Senior High School,East Setauket,NY,3.0,2024,Music Theory,Physics,690,700,27,27,30,27,33,720,740,750,740,750,700,730,740,730,2
+donnieSyd1827,donnieSyd1827,NY,Sachem High School East,Farmingville,NY,2.9,2024,Political Science,Physics,740,700,24,27,27,26,29,630,680,680,620,740,630,630,650,660,8
+doloritaWakerly1044,doloritaWakerly1044,NY,John H Glenn High School,Elwood,NY,3.0,2024,Music Theory,History,630,640,24,27,26,31,28,590,740,620,600,630,690,630,660,610,5
+valedaForland4209,valedaForland4209,NY,Sayville High School,West Sayville,NY,2.9,2024,Political Science,Mathematics,680,690,31,29,27,32,27,670,690,690,700,650,670,680,670,670,4
+faustinaMason2212,faustinaMason2212,NY,Bayport Blue Point High School,Bayport,NY,3.4,2024,Music Theory,History,750,800,30,36,30,30,30,800,740,760,710,700,780,800,740,730,3
+robinetteJoyan1929,robinetteJoyan1929,NY,Bridgehampton School,Bridgehampton,NY,3.1,2024,Political Science,Music Theory,590,690,22,23,27,21,31,620,620,630,670,620,620,650,640,630,3
+bernardinaHilliard4908,bernardinaHilliard4908,NY,Sachem High School East,Farmingville,NY,2.7,2024,Political Science,Chemistry,570,610,21,21,27,22,25,570,600,610,630,560,610,600,620,600,9
+larisaSilda1114,larisaSilda1114,NY,Babylon Junior Senior High School,Babylon,NY,2.7,2024,Music Theory,Computer Science,580,540,19,21,20,21,23,570,550,620,530,580,540,550,550,520,1
+fanMatheny4036,fanMatheny4036,NY,Deer Park High School,Deer Park,NY,2.3,2024,Art History,Chemistry,520,530,24,23,18,21,24,580,570,550,560,540,560,550,530,530,3
+rozeSpiro1298,rozeSpiro1298,NY,Longwood High School,Middle Island,NY,3.7,2024,Mathematics,Chemistry,800,730,29,34,31,27,33,800,770,770,730,750,710,750,730,760,6
+elmiraPembrook5413,elmiraPembrook5413,NY,Bellport Senior High School,Brookhaven,NY,2.8,2024,Mathematics,Physics,650,670,28,25,23,30,27,660,680,630,620,630,700,650,680,650,4
+georgetteErvine2217,georgetteErvine2217,NY,Amityville Memorial High School,Amityville,NY,3.4,2024,Chemistry,Political Science,670,670,27,26,33,27,32,700,710,750,680,710,670,670,700,680,2
+chelseaBakki8573,chelseaBakki8573,NY,Smithtown High School   Western Campus,Smithtown,NY,2.5,2024,History,Computer Science,550,520,22,16,24,22,23,590,600,550,540,570,510,570,520,600,3
+edythRankin9075,edythRankin9075,NY,Sachem High School North,Lake Ronkonkoma,NY,2.7,2024,Political Science,Biology,670,590,23,17,20,21,25,650,600,570,580,680,560,600,610,620,8
+odelindaMehta2115,odelindaMehta2115,NY,Huntington High School,Huntington,NY,2.4,2024,Chemistry,Music Theory,570,490,24,25,17,16,18,510,540,530,530,500,510,490,530,510,0
+silvieNessi869,silvieNessi869,NY,Smithtown Christian School,Smithtown,NY,2.9,2024,Art History,Political Science,570,570,20,19,19,22,17,540,590,570,590,520,590,540,560,570,4
+cookieNavarro4151,cookieNavarro4151,NY,Ward Melville Senior High School,East Setauket,NY,2.7,2024,Art History,Computer Science,660,670,24,25,28,29,24,610,620,640,630,650,710,640,620,660,8
+hediMiner5771,hediMiner5771,NY,St John the Baptist Diocesan High School,West Islip,NY,3.0,2024,Computer Science,Chemistry,660,580,30,25,28,23,24,610,680,650,630,630,640,640,600,600,8
+ortensiaAngela8495,ortensiaAngela8495,NY,John H Glenn High School,Elwood,NY,3.1,2024,Physics,Chemistry,760,740,35,27,30,33,28,760,690,650,710,740,700,750,710,750,0
+letaHinson1351,letaHinson1351,NY,Deer Park High School,Deer Park,NY,3.6,2024,Art History,Chemistry,800,800,31,36,36,29,33,760,750,770,800,750,740,770,740,780,1
+philisTommie3374,philisTommie3374,NY,Huntington High School,Huntington,NY,2.7,2024,Geology,Political Science,630,680,23,25,29,24,25,650,630,620,640,660,580,600,650,590,1
+lottaFanestil8770,lottaFanestil8770,NY,Sachem High School East,Farmingville,NY,2.4,2024,Mathematics,Geology,520,590,20,25,23,20,19,510,540,530,530,540,540,510,550,550,0
+julianaPate6997,julianaPate6997,NY,Miller Place High School,Miller Place,NY,2.3,2024,History,Mathematics,520,510,22,23,19,20,23,460,520,490,530,500,500,530,550,530,0
+goldiaAbbate8797,goldiaAbbate8797,NY,Hampton Bays High School,Hampton Bays,NY,2.9,2024,Geology,Music Theory,620,640,24,30,23,26,28,710,640,680,720,640,650,650,660,670,3
+jackquelineFrost6738,jackquelineFrost6738,NY,North Babylon High School,North Babylon,NY,3.3,2024,Mathematics,Geology,670,620,30,19,27,31,31,670,660,660,700,690,660,650,630,620,6
+cleoFredi1508,cleoFredi1508,NY,John H Glenn High School,Elwood,NY,2.8,2024,Political Science,Physics,600,570,17,24,22,21,24,600,610,540,550,610,570,590,530,560,7
+tomiAlberto4914,tomiAlberto4914,NY,Comsewogue High School,Port Jefferson Sta,NY,2.6,2024,Physics,Music Theory,510,490,19,22,18,21,13,530,530,520,500,540,550,510,450,540,5
+nikeHoshi5626,nikeHoshi5626,NY,Southampton High School,Southampton,NY,3.5,2024,Political Science,Music Theory,700,790,28,34,31,36,35,740,760,770,750,790,760,770,770,730,3
+phyllisNic1395,phyllisNic1395,NY,Half Hollow Hills High School West,Dix Hills,NY,3.0,2024,Chemistry,History,700,740,32,27,30,31,28,680,710,710,720,760,740,750,700,710,3
+orelieTews3265,orelieTews3265,NY,Bayport Blue Point High School,Bayport,NY,1.9,2024,Physics,Chemistry,480,420,16,14,21,16,20,490,380,500,420,450,440,430,460,470,3
+wiloneEleni228,wiloneEleni228,NY,Commack High School,Commack,NY,3.0,2024,Computer Science,Physics,790,710,29,33,31,29,30,740,770,750,710,750,750,740,740,790,3
+agrethaBartolome7110,agrethaBartolome7110,NY,Saint Anthonys High School,Huntington Station,NY,2.5,2024,Art History,Chemistry,510,550,24,20,26,22,23,600,550,650,510,620,500,540,600,540,8
+gwennyStock1396,gwennyStock1396,NY,Rocky Point High School,Rocky Point,NY,1.8,2024,Geology,Art History,460,520,22,13,18,17,20,490,570,530,420,540,450,490,500,490,6
+lizbethLohse1343,lizbethLohse1343,NY,East Hampton High School,East Hampton,NY,2.2,2024,Chemistry,Geology,530,530,21,22,29,20,23,540,530,560,520,540,540,600,540,500,6
+cherishTab9677,cherishTab9677,NY,West Babylon Senior High School,West Babylon,NY,2.9,2024,Mathematics,Music Theory,630,660,25,22,20,20,25,630,630,580,620,580,680,590,640,620,0
+candideGarnet1476,candideGarnet1476,NY,Smithtown High School   Western Campus,Smithtown,NY,1.9,2024,Chemistry,History,440,510,21,22,12,14,21,510,490,470,550,500,460,450,490,500,3
+paulinaGertrud6750,paulinaGertrud6750,NY,Shoreham Wading River High School,Shoreham,NY,3.3,2024,Political Science,Art History,660,660,26,27,26,26,28,660,600,670,690,660,660,680,630,640,4
+cindiKarleen2890,cindiKarleen2890,NY,Smithtown High School East,Saint James,NY,3.2,2024,Music Theory,Physics,560,640,23,25,28,24,22,590,620,640,580,610,620,600,550,570,0
+arabelleGodred3058,arabelleGodred3058,NY,Smithtown High School   Western Campus,Smithtown,NY,2.5,2024,Chemistry,Art History,600,600,25,18,25,25,30,570,550,600,520,580,610,590,590,540,1
+danieleJob6026,danieleJob6026,NY,Hauppauge High School,Hauppauge,NY,2.7,2024,Music Theory,Political Science,630,580,19,22,27,24,27,590,590,580,620,580,590,580,550,530,0
+krystynaGrimaldi4264,krystynaGrimaldi4264,NY,Bay Shore Senior High School,Bay Shore,NY,2.8,2024,Geology,Music Theory,630,720,26,30,27,26,31,700,720,680,720,700,700,650,700,710,6
+jacquetteBurnham8982,jacquetteBurnham8982,NY,Bayport Blue Point High School,Bayport,NY,2.5,2024,Chemistry,Art History,540,450,21,23,24,23,21,480,540,490,490,510,540,540,490,540,2
+sherryHaggerty4574,sherryHaggerty4574,NY,Bay Shore Senior High School,Bay Shore,NY,2.1,2024,Biology,Mathematics,450,540,19,12,15,19,18,470,500,460,470,480,480,480,440,470,8
+elvaCarce770,elvaCarce770,NY,Deer Park High School,Deer Park,NY,2.7,2024,Mathematics,Chemistry,590,600,26,21,20,28,27,560,570,540,570,570,590,600,620,600,0
+anne-marieBallard9489,anne-marieBallard9489,NY,Deer Park High School,Deer Park,NY,3.0,2024,History,Computer Science,600,650,25,22,29,25,26,630,620,680,640,650,690,650,640,680,5
+consolataCid5387,consolataCid5387,NY,Smithtown High School   Western Campus,Smithtown,NY,2.8,2024,History,Physics,640,590,27,23,25,21,28,550,560,600,580,530,560,610,570,510,8
+josefinaPaluas9988,josefinaPaluas9988,NY,The Knox School,St James,NY,2.3,2024,Art History,Physics,560,500,14,19,26,23,16,590,550,540,560,560,600,530,540,550,5
+analieseHolden1326,analieseHolden1326,NY,Babylon Junior Senior High School,Babylon,NY,2.8,2024,Geology,Music Theory,670,650,24,22,19,23,25,590,610,620,620,590,620,630,630,580,8
+aubreePaske2925,aubreePaske2925,NY,Sachem High School East,Farmingville,NY,3.3,2024,Political Science,Chemistry,730,700,30,33,30,36,32,720,730,770,790,730,710,760,750,730,7
+adriaButler1804,adriaButler1804,NY,Wyandanch Memorial High School,Wyandanch,NY,2.3,2024,Political Science,Geology,610,590,26,19,22,21,29,620,660,600,630,650,640,570,550,680,3
+ronniHastie2137,ronniHastie2137,NY,Bridgehampton School,Bridgehampton,NY,2.9,2024,History,Mathematics,690,620,26,21,30,23,25,650,660,640,660,640,670,630,660,660,5
+rosamundClaudell9010,rosamundClaudell9010,NY,Bridgehampton School,Bridgehampton,NY,3.2,2024,Chemistry,Biology,710,710,30,29,27,28,30,770,740,680,700,710,740,710,670,710,0
+ursulineBollinger5767,ursulineBollinger5767,NY,Sachem High School North,Lake Ronkonkoma,NY,3.1,2024,Computer Science,Chemistry,640,700,29,30,31,27,25,690,650,720,680,710,670,640,670,640,5
+andraHenrique2058,andraHenrique2058,NY,Southampton High School,Southampton,NY,2.0,2024,Computer Science,Music Theory,460,470,25,15,14,18,20,430,470,520,410,500,520,500,470,450,9
+leoraNap7810,leoraNap7810,NY,Riverhead Senior High School,Riverhead,NY,2.6,2024,Art History,Political Science,660,700,27,23,26,31,23,680,670,650,670,610,640,580,650,620,9
+alysiaWoods8950,alysiaWoods8950,NY,Greenport High School,Greenport,NY,2.1,2024,Geology,History,440,450,13,11,15,15,13,420,400,430,410,480,380,420,450,450,0
+conchitaLenna5194,conchitaLenna5194,NY,Shoreham Wading River High School,Shoreham,NY,3.3,2024,Chemistry,History,640,650,26,21,24,25,25,610,640,610,630,600,660,670,650,600,6
+pennieMeridith4592,pennieMeridith4592,NY,Ward Melville Senior High School,East Setauket,NY,2.8,2024,Mathematics,Political Science,610,670,32,24,27,26,23,640,600,630,720,660,660,640,640,660,9
+luraIbbie7995,luraIbbie7995,NY,Harborfields High School,Greenlawn,NY,2.5,2024,Chemistry,Art History,650,590,27,20,19,28,18,620,590,600,650,560,610,610,540,600,8
+tanaMorgenthaler7158,tanaMorgenthaler7158,NY,Pierson Middle High School,Sag Harbor,NY,3.0,2024,Computer Science,Political Science,690,700,32,30,26,25,31,690,690,690,710,700,630,660,720,680,1
+allynScarface6215,allynScarface6215,NY,Wyandanch Memorial High School,Wyandanch,NY,3.2,2024,Computer Science,Biology,780,740,26,28,33,27,33,730,760,760,680,770,750,800,710,750,0
+mufinellaKone4172,mufinellaKone4172,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,3.2,2024,Mathematics,Art History,700,660,30,29,27,28,25,710,650,660,650,680,670,720,660,700,3
+lurleneWalford5842,lurleneWalford5842,NY,Connetquot High School,Bohemia,NY,2.9,2024,Biology,Mathematics,670,670,27,26,26,27,28,620,630,610,580,630,700,650,710,680,4
+gayleneDiego918,gayleneDiego918,NY,Walter G Oconnell Copiague High School,Copiague,NY,3.2,2024,Computer Science,Geology,710,710,27,30,28,33,32,720,700,690,690,730,740,760,720,710,1
+arlanaGrace7057,arlanaGrace7057,NY,Bridgehampton School,Bridgehampton,NY,3.0,2024,Chemistry,History,540,620,23,26,27,26,23,590,610,570,570,590,640,630,640,630,1
+ettyKeller5445,ettyKeller5445,NY,Smithtown Christian School,Smithtown,NY,2.4,2024,History,Chemistry,520,470,31,25,23,25,19,550,550,560,520,540,540,490,570,530,3
+keeliaRiesman8045,keeliaRiesman8045,NY,Connetquot High School,Bohemia,NY,3.3,2024,Biology,Physics,700,650,27,26,22,28,25,590,600,650,660,700,580,610,670,620,6
+kimmyLianne8202,kimmyLianne8202,NY,Rocky Point High School,Rocky Point,NY,1.9,2024,Physics,Mathematics,460,390,16,19,22,17,19,420,440,510,500,490,480,510,480,470,6
+heddiDevy3620,heddiDevy3620,NY,Mattituck Junior Senior High School,Mattituck,NY,3.1,2024,Physics,Biology,640,660,27,25,27,26,27,690,700,670,650,740,670,690,680,670,7
+rosalineTabor7478,rosalineTabor7478,NY,West Babylon Senior High School,West Babylon,NY,2.9,2024,Art History,Geology,590,610,29,25,22,26,26,610,670,580,600,620,590,610,550,600,2
+cathrineDonoho2674,cathrineDonoho2674,NY,Babylon Junior Senior High School,Babylon,NY,2.5,2024,Chemistry,Music Theory,480,560,18,22,17,11,18,450,460,510,560,460,470,500,540,450,4
+sekaBary8433,sekaBary8433,NY,Earl L Vandermeulen High School,Port Jefferson,NY,3.0,2024,Computer Science,Biology,640,650,24,33,25,33,28,650,640,680,680,730,720,620,680,660,6
+carmelaHewett3084,carmelaHewett3084,NY,Sachem High School North,Lake Ronkonkoma,NY,3.6,2024,Mathematics,Chemistry,690,730,31,35,31,31,32,720,730,730,750,800,740,740,760,720,8
+berryClywd691,berryClywd691,NY,Riverhead Senior High School,Riverhead,NY,3.6,2024,Physics,Music Theory,800,760,28,30,36,36,31,780,740,790,760,790,780,740,800,800,6
+merrileJaddan5746,merrileJaddan5746,NY,Bay Shore Senior High School,Bay Shore,NY,2.4,2024,Biology,History,550,550,24,17,17,16,18,490,490,500,500,530,550,510,580,530,5
+emilyWeismann1900,emilyWeismann1900,NY,Miller Place High School,Miller Place,NY,3.5,2024,Mathematics,Computer Science,750,760,27,33,35,33,30,770,750,720,790,800,690,770,790,700,1
+steffiIntyre2896,steffiIntyre2896,NY,Islip High School,Islip,NY,2.4,2024,Music Theory,Geology,580,540,24,20,23,21,21,540,570,570,550,550,500,570,520,490,3
+maryanneTiemroth6585,maryanneTiemroth6585,NY,Amityville Memorial High School,Amityville,NY,2.9,2024,Geology,Biology,710,700,25,27,31,26,34,700,650,730,670,750,630,640,740,710,8
+janeanDuky8188,janeanDuky8188,NY,Amityville Memorial High School,Amityville,NY,2.2,2024,Physics,Geology,470,520,21,17,15,19,15,540,450,520,450,490,550,510,500,540,3
+madlinRichardo7054,madlinRichardo7054,NY,Huntington High School,Huntington,NY,2.6,2024,Chemistry,Biology,570,560,26,17,21,25,19,590,540,580,540,600,540,560,620,510,5
+christyeUltima9248,christyeUltima9248,NY,Bellport Senior High School,Brookhaven,NY,3.3,2024,Music Theory,Chemistry,680,690,28,23,29,25,32,740,720,770,740,660,730,670,700,700,5
+malindaAmeline7390,malindaAmeline7390,NY,Centereach High School,Centereach,NY,3.2,2024,Geology,History,650,630,25,26,26,28,29,670,600,670,640,620,680,650,610,640,6
+franciscaRanee5459,franciscaRanee5459,NY,Walt Whitman High School,Huntington Station,NY,2.5,2024,Physics,Art History,590,600,27,23,26,26,26,590,630,630,640,600,650,600,670,590,2
+briannaEadwine8596,briannaEadwine8596,NY,Huntington High School,Huntington,NY,3.0,2024,Geology,Political Science,660,700,24,26,30,22,24,700,620,650,680,630,670,660,670,650,9
+vannaMcGrath8577,vannaMcGrath8577,NY,Walt Whitman High School,Huntington Station,NY,2.5,2024,Chemistry,Biology,510,520,27,21,20,21,26,510,580,500,510,550,520,570,500,550,9
+mignonClarice672,mignonClarice672,NY,Half Hollow Hills High School West,Dix Hills,NY,2.6,2024,Mathematics,Music Theory,560,520,22,22,22,24,20,590,570,550,560,550,550,550,520,590,1
+joelynnChrisoula8146,joelynnChrisoula8146,NY,Longwood High School,Middle Island,NY,2.4,2024,Computer Science,Political Science,520,480,13,18,21,20,15,540,500,430,490,510,440,520,490,470,7
+billyHasseman5801,billyHasseman5801,NY,Greenport High School,Greenport,NY,3.0,2024,History,Mathematics,640,630,28,31,26,27,28,620,630,580,620,660,600,650,640,630,2
+ysabelMcGaw7621,ysabelMcGaw7621,NY,Half Hollow Hills High School East,Dix Hills,NY,1.9,2024,Chemistry,Geology,440,430,15,9,17,21,16,420,470,430,450,400,400,400,440,500,9
+taniWey8343,taniWey8343,NY,Pierson Middle High School,Sag Harbor,NY,3.6,2024,Geology,History,780,750,28,31,28,26,34,760,760,770,770,750,760,780,770,740,3
+virginieAlcock6769,virginieAlcock6769,NY,St John the Baptist Diocesan High School,West Islip,NY,3.1,2024,Physics,Political Science,670,710,23,27,33,20,27,610,660,610,630,660,660,670,670,660,3
+vandaRodolphe59,vandaRodolphe59,NY,Walt Whitman High School,Huntington Station,NY,2.7,2024,Political Science,Biology,610,620,30,27,22,26,28,650,680,650,610,610,610,580,660,630,8
+desiraeMehalick7989,desiraeMehalick7989,NY,Newfield High School,Selden,NY,2.7,2024,Political Science,Chemistry,600,560,22,28,25,25,23,540,600,660,540,570,650,630,570,620,0
+celisseJacobine3590,celisseJacobine3590,NY,Northport Senior High School,Northport,NY,2.6,2024,Computer Science,Geology,670,580,24,24,21,20,26,600,630,580,560,650,620,620,550,590,4
+martgueritaRia5541,martgueritaRia5541,NY,Saint Anthonys High School,Huntington Station,NY,2.9,2024,Mathematics,Biology,580,640,30,21,21,24,25,590,640,580,640,570,560,570,630,600,1
+tildieTrillbee1248,tildieTrillbee1248,NY,Half Hollow Hills High School East,Dix Hills,NY,2.7,2024,Chemistry,Art History,710,700,31,31,27,35,24,700,800,700,680,700,710,660,670,750,0
+missieHarrison4405,missieHarrison4405,NY,Westhampton Beach Senior High School,Westhampton Beach,NY,3.0,2024,Physics,History,600,650,28,26,26,27,24,590,640,600,570,600,630,570,620,650,4
+brierMarketa3279,brierMarketa3279,NY,Walter G Oconnell Copiague High School,Copiague,NY,2.1,2024,Art History,Chemistry,500,490,21,16,17,18,21,480,500,470,470,480,470,510,510,510,3
+floriJegar543,floriJegar543,NY,East Hampton High School,East Hampton,NY,3.4,2024,Mathematics,Music Theory,770,790,36,31,35,32,34,740,770,750,780,760,800,750,800,800,8
+haleighSansbury5403,haleighSansbury5403,NY,St John the Baptist Diocesan High School,West Islip,NY,2.6,2024,Music Theory,Physics,580,600,26,26,22,19,23,610,580,570,500,590,580,610,550,590,5
+emmeyAshla9468,emmeyAshla9468,NY,Rocky Point High School,Rocky Point,NY,2.7,2024,Biology,Physics,590,560,24,25,20,24,18,600,600,530,580,570,600,510,580,610,5
+windyHanus9070,windyHanus9070,NY,The Stony Brook School,Stony Brook,NY,3.4,2024,Geology,Chemistry,700,720,31,31,27,35,28,720,720,680,670,750,720,720,670,740,1
+addiMaghutte9773,addiMaghutte9773,NY,Half Hollow Hills High School West,Dix Hills,NY,2.7,2024,Music Theory,Computer Science,580,550,24,25,23,24,22,640,550,610,620,610,520,590,610,580,2
+sunshineDedra8199,sunshineDedra8199,NY,Smithtown High School   Western Campus,Smithtown,NY,2.6,2024,Chemistry,Music Theory,480,530,16,26,20,24,23,550,560,520,530,520,500,560,530,580,9
+livaErfert243,livaErfert243,NY,Babylon Junior Senior High School,Babylon,NY,2.9,2024,Political Science,Mathematics,590,670,27,28,26,23,29,660,660,640,610,670,670,650,680,600,1
+lettieCheshire915,lettieCheshire915,NY,Central Islip Senior High School,Central Islip,NY,1.7,2024,Music Theory,Biology,410,390,15,16,22,10,13,370,420,430,440,400,460,430,420,420,9
+miguelaFayth5270,miguelaFayth5270,NY,Mount Sinai High School,Mount Sinai,NY,3.5,2024,Computer Science,Music Theory,800,790,33,35,32,36,32,730,780,740,760,730,770,760,750,730,9
+chloSchreib9524,chloSchreib9524,NY,West Islip Senior High School,West Islip,NY,3.3,2024,Political Science,Art History,740,620,25,22,27,24,24,690,660,740,650,680,690,660,680,650,3
+meganPhelgon1242,meganPhelgon1242,NY,Greenport High School,Greenport,NY,1.8,2024,Music Theory,Chemistry,320,270,8,9,11,12,6,360,360,310,330,370,350,340,320,290,1
+brinaSorcha8564,brinaSorcha8564,NY,Center Moriches High School,Center Moriches,NY,2.2,2024,Computer Science,Physics,500,420,14,22,14,18,21,460,490,470,450,440,480,480,400,490,9
+opalMcCarthy6471,opalMcCarthy6471,NY,Walt Whitman High School,Huntington Station,NY,2.6,2024,Geology,Biology,550,560,14,20,18,21,23,590,530,570,520,510,540,560,530,550,0
+mabSholom8801,mabSholom8801,NY,Longwood High School,Middle Island,NY,3.2,2024,Art History,Chemistry,680,700,32,27,32,24,30,680,650,690,710,700,760,730,670,660,2
+karoleMae3843,karoleMae3843,NY,Smithtown High School   Western Campus,Smithtown,NY,2.7,2024,Geology,Music Theory,560,580,21,23,21,21,25,600,520,580,580,580,620,600,600,570,0
+libAlister9407,libAlister9407,NY,Ward Melville Senior High School,East Setauket,NY,2.5,2024,Art History,History,500,530,15,20,16,20,21,460,550,470,510,460,570,530,530,460,9
+dinnieVarion6766,dinnieVarion6766,NY,Hauppauge High School,Hauppauge,NY,2.8,2024,Physics,History,590,620,28,21,23,23,24,640,680,590,640,600,630,610,610,590,8
+arlynNonna6308,arlynNonna6308,NY,Pierson Middle High School,Sag Harbor,NY,2.6,2024,Mathematics,Geology,540,610,20,20,23,27,25,580,570,610,570,600,580,590,600,610,6
+barryRemmer3544,barryRemmer3544,NY,Hampton Bays High School,Hampton Bays,NY,2.4,2024,Music Theory,Mathematics,540,540,20,19,20,18,24,530,490,440,500,510,490,500,510,550,7
+tishaBerglund9857,tishaBerglund9857,NY,Newfield High School,Selden,NY,2.4,2024,Art History,Political Science,530,550,18,19,17,20,18,540,470,540,500,530,460,550,530,580,2
+shaniThetos6555,shaniThetos6555,NY,North Babylon High School,North Babylon,NY,3.8,2024,History,Political Science,710,720,34,35,31,32,30,750,780,800,780,800,780,800,780,780,2
+demetriaDhruv4982,demetriaDhruv4982,NY,Huntington High School,Huntington,NY,3.2,2024,Geology,Chemistry,630,660,30,27,27,30,27,690,700,690,660,670,700,710,670,710,0
+karisaMendel1989,karisaMendel1989,NY,North Babylon High School,North Babylon,NY,2.8,2024,History,Computer Science,670,620,22,28,23,27,26,650,720,620,640,680,650,710,730,690,4
+cindelynSecrest1522,cindelynSecrest1522,NY,Islip High School,Islip,NY,3.5,2024,Chemistry,Mathematics,730,660,29,32,36,31,32,720,670,760,730,750,720,740,730,760,4
+guenevereThursby7644,guenevereThursby7644,NY,Greenport High School,Greenport,NY,2.8,2024,Biology,Computer Science,640,590,36,31,29,31,27,640,630,620,670,630,680,680,640,620,3
+arletaGinny6357,arletaGinny6357,NY,Hauppauge High School,Hauppauge,NY,2.0,2024,Mathematics,Art History,440,470,16,15,16,19,15,500,490,480,490,510,490,510,520,520,4
+isisDulcy9113,isisDulcy9113,NY,John H Glenn High School,Elwood,NY,2.3,2024,Biology,Mathematics,510,460,19,16,20,16,21,480,510,550,520,500,480,490,470,500,5
+valAfrika8017,valAfrika8017,NY,William Floyd High School,Mastic Beach,NY,2.3,2024,Computer Science,Mathematics,540,500,16,17,20,17,21,510,530,510,460,500,500,480,500,520,2
+barbara-anneFilide6693,barbara-anneFilide6693,NY,Sachem High School North,Lake Ronkonkoma,NY,2.4,2024,Music Theory,Geology,540,530,18,24,22,23,20,540,580,590,570,560,570,610,550,540,2
+koriHentrich2227,koriHentrich2227,NY,Sachem High School East,Farmingville,NY,2.5,2024,Biology,History,590,580,20,19,22,25,18,590,590,590,590,570,590,600,550,610,4
+therineBock8619,therineBock8619,NY,Greenport High School,Greenport,NY,2.7,2024,Computer Science,Mathematics,540,530,20,15,20,19,22,530,510,500,540,490,500,540,470,570,4
+theadoraKazmirci8751,theadoraKazmirci8751,NY,Newfield High School,Selden,NY,2.7,2024,Art History,Physics,560,650,17,26,26,24,22,610,550,620,610,560,620,580,580,570,2
+lineaBowden4140,lineaBowden4140,NY,Eastport South Manor Junior Senior High School,Manorville,NY,2.7,2024,Computer Science,Art History,640,600,26,22,25,20,21,570,600,610,610,600,600,580,590,600,8
+ronaldaIta547,ronaldaIta547,NY,Ross School,East Hampton,NY,2.1,2024,Chemistry,Political Science,570,520,18,25,21,24,25,530,550,580,590,570,540,550,550,590,3
+marcieFrechette4111,marcieFrechette4111,NY,Comsewogue High School,Port Jefferson Sta,NY,2.2,2024,History,Mathematics,530,490,22,16,22,22,17,580,540,540,560,470,570,520,540,570,5
+amelieRenaldo5101,amelieRenaldo5101,NY,Deer Park High School,Deer Park,NY,2.7,2024,Art History,Chemistry,710,670,25,25,31,28,27,660,720,670,710,690,700,690,700,690,5
+andereaWelton6285,andereaWelton6285,NY,Connetquot High School,Bohemia,NY,2.2,2024,History,Chemistry,480,500,14,18,19,15,20,430,520,450,480,510,480,520,530,500,4
+kiahSeale5539,kiahSeale5539,NY,Smithtown High School East,Saint James,NY,3.0,2024,Music Theory,Mathematics,650,600,29,20,19,25,30,630,690,620,620,580,660,630,650,600,0
+jaimeLucien4047,jaimeLucien4047,NY,Comsewogue High School,Port Jefferson Sta,NY,2.6,2024,Art History,Music Theory,630,600,23,26,20,22,30,630,620,560,630,520,650,620,600,630,7
+blitheBultman6687,blitheBultman6687,NY,St John the Baptist Diocesan High School,West Islip,NY,3.1,2024,Political Science,Biology,690,710,32,27,29,30,27,700,670,690,650,690,720,700,710,690,9
+hestiaGleeson426,hestiaGleeson426,NY,Sachem High School East,Farmingville,NY,2.5,2024,Mathematics,Music Theory,500,530,13,16,23,20,14,490,540,480,540,490,500,530,540,460,4
+corendaSidon1484,corendaSidon1484,NY,North Babylon High School,North Babylon,NY,2.8,2024,Political Science,Music Theory,570,590,24,22,20,21,24,560,540,630,560,630,590,640,610,560,1
+ingeborgCyndie6521,ingeborgCyndie6521,NY,Bridgehampton School,Bridgehampton,NY,2.5,2024,Physics,Art History,590,520,24,22,22,21,23,570,580,490,620,520,560,600,570,610,7
+eileenGerick2395,eileenGerick2395,NY,Hampton Bays High School,Hampton Bays,NY,3.1,2024,Physics,Chemistry,730,660,25,30,30,35,29,700,730,710,700,640,720,630,660,750,9
+caraDeach7631,caraDeach7631,NY,Westhampton Beach Senior High School,Westhampton Beach,NY,2.4,2024,Mathematics,Political Science,520,530,14,22,17,13,19,530,540,540,530,570,460,560,560,490,2
+julissaUlda497,julissaUlda497,NY,West Babylon Senior High School,West Babylon,NY,2.4,2024,Biology,Political Science,460,470,18,17,15,20,11,480,500,550,440,450,460,490,520,500,9
+sheereeOthello4734,sheereeOthello4734,NY,Amityville Memorial High School,Amityville,NY,2.7,2024,Computer Science,Mathematics,590,640,25,27,26,25,33,590,620,560,630,600,580,590,590,620,1
+julianneLarisa8297,julianneLarisa8297,NY,East Hampton High School,East Hampton,NY,3.0,2024,History,Geology,730,670,33,36,36,24,30,700,690,710,740,630,670,690,660,740,7
+karleneOralia8984,karleneOralia8984,NY,Huntington High School,Huntington,NY,3.1,2024,Chemistry,Art History,630,670,26,32,33,27,30,700,680,660,660,650,670,690,670,640,3
+kellyMathre4542,kellyMathre4542,NY,Eastport South Manor Junior Senior High School,Manorville,NY,1.9,2024,Physics,Computer Science,470,480,20,19,12,17,19,450,500,410,430,450,470,520,450,470,9
+camilaCrean1219,camilaCrean1219,NY,Islip High School,Islip,NY,3.0,2024,Biology,Computer Science,720,690,30,26,27,31,26,620,760,650,680,670,670,680,680,710,9
+margitBenedetta2286,margitBenedetta2286,NY,Comsewogue High School,Port Jefferson Sta,NY,2.5,2024,Chemistry,Music Theory,540,560,23,19,23,20,20,520,450,590,610,570,540,520,500,600,1
+trulaCarla5876,trulaCarla5876,NY,Southampton High School,Southampton,NY,2.3,2024,Mathematics,Chemistry,560,540,19,25,29,22,23,540,550,540,540,600,510,540,560,540,3
+benniDusen4954,benniDusen4954,NY,Riverhead Senior High School,Riverhead,NY,2.8,2024,Music Theory,Geology,640,650,32,30,29,24,22,670,670,610,630,650,610,650,650,650,0
+anna-dianeFidelity4300,anna-dianeFidelity4300,NY,Sachem High School East,Farmingville,NY,3.3,2024,History,Art History,720,700,26,24,33,22,21,630,670,700,660,690,690,640,690,680,3
+dorisRabin8419,dorisRabin8419,NY,Connetquot High School,Bohemia,NY,3.3,2024,Geology,Chemistry,650,740,27,30,33,31,26,740,680,650,730,690,770,700,710,680,4
+blissSavil8977,blissSavil8977,NY,Comsewogue High School,Port Jefferson Sta,NY,1.7,2024,Computer Science,Art History,350,360,14,15,14,14,16,360,390,410,410,360,370,410,420,440,0
+diannaGiverin7935,diannaGiverin7935,NY,Northport Senior High School,Northport,NY,2.8,2024,Music Theory,Computer Science,650,650,26,26,29,30,26,700,660,720,670,670,650,630,700,710,2
+winniRoderich9248,winniRoderich9248,NY,Lindenhurst Senior High School,Lindenhurst,NY,3.0,2024,Computer Science,Geology,640,670,24,29,30,30,32,690,660,680,650,670,620,670,630,670,6
+jessiDemodena4170,jessiDemodena4170,NY,Mattituck Junior Senior High School,Mattituck,NY,3.2,2024,Computer Science,Art History,710,750,28,33,30,30,26,730,780,770,720,770,760,760,730,740,0
+zondraEsch6445,zondraEsch6445,NY,West Islip Senior High School,West Islip,NY,3.1,2024,Music Theory,Political Science,630,590,23,20,24,25,20,610,580,620,620,590,560,570,610,620,2
+loletaArad6294,loletaArad6294,NY,Brentwood High School,Brentwood,NY,3.2,2024,Music Theory,Computer Science,700,660,26,23,28,29,31,650,670,620,600,660,670,650,680,650,3
+melamieRow9723,melamieRow9723,NY,Earl L Vandermeulen High School,Port Jefferson,NY,3.2,2024,Biology,Computer Science,710,670,32,29,27,28,33,680,730,690,710,710,720,760,660,680,7
+billTeage1448,billTeage1448,NY,Ward Melville Senior High School,East Setauket,NY,2.8,2024,History,Computer Science,590,640,24,25,24,27,24,650,600,560,620,580,560,620,700,590,4
+dioneRoswald5592,dioneRoswald5592,NY,Islip High School,Islip,NY,2.4,2024,Art History,Computer Science,580,630,27,27,26,22,27,600,530,510,600,590,580,610,630,610,1
+bobetteToulon9654,bobetteToulon9654,NY,Mount Sinai High School,Mount Sinai,NY,2.3,2024,Geology,Political Science,500,510,21,24,15,25,22,520,550,490,470,520,520,510,500,510,7
+estelleDurant4963,estelleDurant4963,NY,Sayville High School,West Sayville,NY,2.4,2024,Biology,Political Science,600,570,22,19,20,27,23,560,530,600,620,540,570,590,570,620,3
+valrySherilyn3600,valrySherilyn3600,NY,Mattituck Junior Senior High School,Mattituck,NY,2.9,2024,Art History,Political Science,590,660,25,23,27,30,26,610,600,640,650,640,660,660,620,630,0
+demetraJacqui2478,demetraJacqui2478,NY,Patchogue Medford High School,Medford,NY,2.6,2024,Art History,Geology,520,500,23,24,19,19,23,580,560,530,560,510,570,510,520,560,6
+anneHaldane4575,anneHaldane4575,NY,Islip High School,Islip,NY,3.0,2024,Physics,Computer Science,610,700,30,24,26,25,24,620,660,640,670,630,640,640,650,630,4
+ermengardeEmmey5632,ermengardeEmmey5632,NY,Half Hollow Hills High School East,Dix Hills,NY,2.7,2024,Mathematics,Chemistry,670,730,25,22,28,22,29,720,640,670,660,640,680,660,670,640,5
+dennyBelva8873,dennyBelva8873,NY,Rocky Point High School,Rocky Point,NY,3.4,2024,Physics,Political Science,720,670,26,27,30,29,29,700,730,730,710,750,740,680,690,680,1
+bonnibelleRichards2251,bonnibelleRichards2251,NY,Riverhead Senior High School,Riverhead,NY,2.0,2024,Mathematics,Music Theory,540,520,20,21,18,20,16,490,560,510,560,520,480,550,480,530,6
+anthiathiaLundin7479,anthiathiaLundin7479,NY,John H Glenn High School,Elwood,NY,3.3,2024,History,Art History,740,710,27,35,31,33,27,710,710,710,740,720,690,720,750,700,1
+binniErrol8093,binniErrol8093,NY,St John the Baptist Diocesan High School,West Islip,NY,2.6,2024,Art History,Geology,510,510,20,15,23,23,21,550,500,580,570,550,540,540,540,570,5
+alaineBobbee6420,alaineBobbee6420,NY,Riverhead Senior High School,Riverhead,NY,3.2,2024,Computer Science,Physics,590,670,25,26,23,26,19,640,650,660,640,660,660,620,690,640,9
+cristaPeper2467,cristaPeper2467,NY,Wyandanch Memorial High School,Wyandanch,NY,2.9,2024,Art History,Political Science,630,660,24,21,25,26,29,610,680,650,680,650,640,570,680,620,9
+bergetFeinleib9769,bergetFeinleib9769,NY,East Hampton High School,East Hampton,NY,2.2,2024,Political Science,Chemistry,560,530,19,23,27,19,21,520,560,590,570,530,540,580,590,510,2
+dannaMcGruter9890,dannaMcGruter9890,NY,Newfield High School,Selden,NY,3.1,2024,Geology,Mathematics,700,710,31,33,28,22,29,680,690,690,710,690,710,700,780,690,1
+caitrinEmeline9235,caitrinEmeline9235,NY,The Stony Brook School,Stony Brook,NY,3.3,2024,History,Art History,760,780,30,28,31,25,36,720,710,780,760,720,710,740,680,700,2
+katherinaWeil1444,katherinaWeil1444,NY,Patchogue Medford High School,Medford,NY,2.3,2024,Mathematics,Computer Science,430,510,19,11,19,17,20,520,470,480,480,450,450,480,480,470,0
+paulineToole5636,paulineToole5636,NY,West Islip Senior High School,West Islip,NY,3.4,2024,History,Chemistry,690,710,33,25,25,25,30,730,700,640,720,680,740,690,670,710,6
+carmenClorinde2909,carmenClorinde2909,NY,John H Glenn High School,Elwood,NY,2.4,2024,Biology,Chemistry,470,480,17,20,20,18,18,460,480,490,470,460,470,470,530,470,9
+kathieDaveen1467,kathieDaveen1467,NY,Harborfields High School,Greenlawn,NY,3.4,2024,Art History,Geology,790,740,30,33,30,33,33,740,770,750,720,690,750,780,750,780,0
+luceSolange2210,luceSolange2210,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.1,2024,Chemistry,Mathematics,530,450,21,17,17,22,18,450,520,490,500,480,500,470,510,520,3
+ingeborgBallinger279,ingeborgBallinger279,NY,Comsewogue High School,Port Jefferson Sta,NY,3.1,2024,Biology,Art History,760,780,26,33,25,35,32,770,760,760,770,740,770,740,740,790,5
+edithBreeze3315,edithBreeze3315,NY,Mattituck Junior Senior High School,Mattituck,NY,2.7,2024,Biology,Music Theory,780,740,31,34,33,31,34,740,750,770,760,790,780,770,720,750,0
+catrinaDickerson7898,catrinaDickerson7898,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,2.9,2024,Physics,Geology,550,580,32,31,22,20,21,590,660,600,530,610,520,570,650,580,4
+nettyHarvard949,nettyHarvard949,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.6,2024,Mathematics,History,640,620,23,26,22,23,22,590,550,590,610,630,570,580,620,610,0
+allynTews6654,allynTews6654,NY,Earl L Vandermeulen High School,Port Jefferson,NY,3.3,2024,Biology,Geology,660,640,26,26,26,28,29,670,700,680,630,750,650,730,640,710,1
+mehetabelOlpe4499,mehetabelOlpe4499,NY,North Babylon High School,North Babylon,NY,1.9,2024,History,Art History,470,430,17,19,19,15,16,420,430,490,560,440,520,480,470,450,4
+pearlaDarrow3256,pearlaDarrow3256,NY,Patchogue Medford High School,Medford,NY,2.7,2024,Geology,Chemistry,700,590,31,32,24,23,28,650,640,610,670,650,600,610,600,630,0
+dauneGirand3714,dauneGirand3714,NY,Harborfields High School,Greenlawn,NY,2.4,2024,Art History,Physics,470,540,22,20,16,23,21,530,550,540,560,580,520,550,520,490,3
+rafaeliaNathaniel7810,rafaeliaNathaniel7810,NY,Longwood High School,Middle Island,NY,2.2,2024,Chemistry,Computer Science,410,460,15,15,18,19,15,470,480,440,370,410,500,460,450,410,2
+noellParadies6221,noellParadies6221,NY,Wyandanch Memorial High School,Wyandanch,NY,2.7,2024,History,Music Theory,640,660,20,25,28,24,26,650,640,650,650,730,640,650,640,600,1
+odessaPolly3893,odessaPolly3893,NY,Smithtown High School   Western Campus,Smithtown,NY,3.5,2024,Music Theory,History,740,720,34,29,32,29,28,720,730,700,800,780,720,740,730,740,4
+cindraKinsler2919,cindraKinsler2919,NY,Longwood High School,Middle Island,NY,2.9,2024,Political Science,Music Theory,570,590,25,29,26,26,22,630,580,660,630,540,580,660,650,560,9
+marieannRosy9401,marieannRosy9401,NY,William Floyd High School,Mastic Beach,NY,3.1,2024,Biology,Physics,700,750,30,28,26,25,26,680,710,700,700,690,690,690,750,690,3
+alviraMartinez925,alviraMartinez925,NY,Northport Senior High School,Northport,NY,3.4,2024,Physics,History,720,760,27,28,28,29,28,700,690,720,720,750,600,720,680,710,4
+evvieSamuelson4223,evvieSamuelson4223,NY,Center Moriches High School,Center Moriches,NY,3.3,2024,Mathematics,Biology,690,720,24,34,25,24,25,680,650,650,650,670,670,640,680,710,5
+tedraBakeman7080,tedraBakeman7080,NY,The Stony Brook School,Stony Brook,NY,2.4,2024,Chemistry,Physics,520,520,19,20,16,18,17,430,500,480,520,470,500,490,500,510,0
+tiphaniZetana2803,tiphaniZetana2803,NY,Deer Park High School,Deer Park,NY,2.7,2024,Chemistry,Mathematics,520,500,25,25,20,16,17,500,510,560,500,560,520,530,520,550,6
+leighPalmore6116,leighPalmore6116,NY,Huntington High School,Huntington,NY,2.2,2024,Chemistry,History,590,560,22,20,20,28,20,550,540,530,590,590,540,550,540,610,1
+ardraMateo7225,ardraMateo7225,NY,The Stony Brook School,Stony Brook,NY,2.1,2024,Music Theory,Biology,480,430,17,10,22,26,17,510,500,460,510,500,510,490,480,480,3
+giudittaSaeger9464,giudittaSaeger9464,NY,Ross School,East Hampton,NY,2.6,2024,Political Science,Geology,590,590,23,20,25,26,29,630,560,590,570,600,600,620,580,610,5
+kassandraBluefarb1248,kassandraBluefarb1248,NY,Ward Melville Senior High School,East Setauket,NY,3.0,2024,Physics,Biology,700,590,31,28,25,23,30,640,630,640,620,640,640,690,610,660,8
+charlenaRush1026,charlenaRush1026,NY,Hauppauge High School,Hauppauge,NY,2.9,2024,Geology,Mathematics,610,540,28,18,19,18,23,530,580,610,520,600,550,590,530,560,1
+judithaLou3607,judithaLou3607,NY,Earl L Vandermeulen High School,Port Jefferson,NY,2.8,2024,History,Art History,610,620,20,20,22,19,29,540,600,530,580,580,550,510,520,550,1
+robinaSheryl5634,robinaSheryl5634,NY,Patchogue Medford High School,Medford,NY,2.3,2024,History,Mathematics,560,550,21,22,22,20,20,590,560,520,560,590,560,520,570,550,7
+margaritaNunci3577,margaritaNunci3577,NY,Comsewogue High School,Port Jefferson Sta,NY,2.2,2024,Music Theory,Chemistry,460,520,18,17,14,13,17,490,470,450,460,520,540,470,500,490,9
+brennGuntar3642,brennGuntar3642,NY,Centereach High School,Centereach,NY,2.1,2024,Computer Science,Chemistry,550,620,25,23,17,27,20,640,580,590,540,570,640,570,540,550,1
+jobeyChilds7815,jobeyChilds7815,NY,Southampton High School,Southampton,NY,2.6,2024,History,Computer Science,570,590,22,27,22,19,25,580,560,550,570,610,600,520,590,590,7
+robinLeitman7908,robinLeitman7908,NY,Connetquot High School,Bohemia,NY,2.9,2024,Chemistry,Computer Science,610,630,27,26,23,24,28,610,600,610,630,590,610,570,590,560,0
+blondellSibby6876,blondellSibby6876,NY,Smithtown High School East,Saint James,NY,2.2,2024,Biology,Physics,580,560,20,23,20,26,23,570,620,580,560,570,590,610,550,570,0
+reneeRianna6803,reneeRianna6803,NY,Pierson Middle High School,Sag Harbor,NY,2.7,2024,Physics,Computer Science,670,700,29,28,26,28,28,660,610,650,700,610,640,610,620,630,3
+kaseyMaddi9649,kaseyMaddi9649,NY,Walter G Oconnell Copiague High School,Copiague,NY,2.0,2024,Music Theory,Geology,480,530,21,25,20,17,23,480,510,550,460,500,500,560,580,560,2
+marjeMaggee2701,marjeMaggee2701,NY,Kings Park High School,Kings Park,NY,2.1,2024,Mathematics,Geology,480,540,23,19,17,20,20,550,490,550,500,550,530,550,520,510,4
+esmaOlenka7938,esmaOlenka7938,NY,Rocky Point High School,Rocky Point,NY,3.3,2024,Chemistry,Geology,770,750,34,35,33,31,36,720,770,770,720,730,750,740,800,770,9
+fiannaKlute9709,fiannaKlute9709,NY,Comsewogue High School,Port Jefferson Sta,NY,2.9,2024,Computer Science,Political Science,650,600,28,27,28,26,24,690,700,720,700,700,720,680,680,690,9
+pearlaKamilah7794,pearlaKamilah7794,NY,Sayville High School,West Sayville,NY,2.3,2024,Biology,Geology,580,590,26,23,27,22,21,620,600,630,580,580,570,620,540,600,0
+ashienPetronilla686,ashienPetronilla686,NY,Kings Park High School,Kings Park,NY,3.3,2024,Art History,Physics,680,720,31,28,32,26,27,720,700,700,730,740,680,730,680,690,6
+miof melaThomey1192,miof melaThomey1192,NY,Connetquot High School,Bohemia,NY,3.5,2024,Biology,Geology,690,760,29,26,27,33,30,710,740,710,710,710,720,760,730,680,4
+cristaChretien1447,cristaChretien1447,NY,Mount Sinai High School,Mount Sinai,NY,3.0,2024,Political Science,Geology,640,610,28,26,28,20,29,610,580,630,650,640,620,630,680,630,7
+estaCaddric696,estaCaddric696,NY,Smithtown Christian School,Smithtown,NY,3.1,2024,Biology,Chemistry,650,610,26,24,28,26,32,620,600,630,580,640,650,650,640,660,5
+lichaTurino2023,lichaTurino2023,NY,Sayville High School,West Sayville,NY,3.4,2024,Chemistry,Physics,740,750,30,34,36,31,36,780,730,780,770,750,800,760,740,720,5
+kyrstinPhelps8968,kyrstinPhelps8968,NY,Walter G Oconnell Copiague High School,Copiague,NY,3.3,2024,Physics,Mathematics,740,740,27,32,32,28,32,770,770,700,770,760,740,770,700,730,6
+desiriTatianas2490,desiriTatianas2490,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.4,2024,Chemistry,Mathematics,520,610,19,18,17,19,21,610,580,520,580,560,580,610,590,580,2
+julissaHedvig899,julissaHedvig899,NY,Harborfields High School,Greenlawn,NY,3.1,2024,Art History,Mathematics,710,740,31,36,27,29,31,670,710,710,670,700,690,750,720,760,4
+emmaMyna6809,emmaMyna6809,NY,Huntington High School,Huntington,NY,2.9,2024,Political Science,Computer Science,590,550,21,21,22,18,23,610,590,630,560,590,590,530,550,540,1
+meridelSibie4893,meridelSibie4893,NY,Half Hollow Hills High School West,Dix Hills,NY,3.1,2024,Geology,Computer Science,680,740,29,34,30,30,33,730,760,770,700,750,740,760,800,640,8
+shawnDonalt9543,shawnDonalt9543,NY,Hampton Bays High School,Hampton Bays,NY,2.7,2024,History,Chemistry,550,560,25,22,18,28,24,560,510,590,610,610,600,610,590,600,3
+terraHelenka5641,terraHelenka5641,NY,Smithtown High School   Western Campus,Smithtown,NY,2.7,2024,Biology,Physics,610,610,22,25,24,32,29,620,650,620,620,610,680,670,630,690,1
+charmianCampney3217,charmianCampney3217,NY,Saint Anthonys High School,Huntington Station,NY,2.8,2024,Biology,History,630,600,25,22,23,27,27,590,580,620,650,660,660,660,640,600,0
+darciBaron7187,darciBaron7187,NY,Islip High School,Islip,NY,2.9,2024,Mathematics,Music Theory,620,570,26,26,26,21,27,610,660,670,600,640,640,640,640,580,0
+mehetabelHayton7023,mehetabelHayton7023,NY,Harborfields High School,Greenlawn,NY,3.1,2024,Physics,Biology,730,700,26,27,30,27,22,630,700,680,720,680,670,700,710,730,3
+julianaCarthy8728,julianaCarthy8728,NY,Kings Park High School,Kings Park,NY,3.7,2024,Political Science,Computer Science,700,730,22,30,25,26,36,730,770,680,740,740,730,730,760,690,7
+kamilaZanze9641,kamilaZanze9641,NY,Shoreham Wading River High School,Shoreham,NY,3.1,2024,Political Science,Biology,770,730,32,31,28,30,30,720,780,750,720,800,750,760,700,720,0
+chelsieGoulden2843,chelsieGoulden2843,NY,Southampton High School,Southampton,NY,2.8,2024,Geology,Chemistry,590,570,30,27,24,19,26,630,630,620,650,600,600,660,600,660,0
+doraliaGrossman3303,doraliaGrossman3303,NY,Northport Senior High School,Northport,NY,3.0,2024,Art History,Chemistry,670,690,27,25,21,24,24,600,610,570,670,630,620,660,600,670,3
+bobbyeTareyn1416,bobbyeTareyn1416,NY,Patchogue Medford High School,Medford,NY,2.5,2024,Art History,Biology,570,600,24,25,24,25,25,580,590,630,650,580,580,580,610,590,0
+ardellaCalmas5768,ardellaCalmas5768,NY,Eastport South Manor Junior Senior High School,Manorville,NY,2.7,2024,Biology,Art History,650,660,27,29,25,24,28,700,660,730,670,630,610,670,570,670,5
+ardineMerle3701,ardineMerle3701,NY,Hauppauge High School,Hauppauge,NY,2.5,2024,Biology,Geology,580,580,21,20,21,26,21,630,580,590,570,600,610,650,610,580,0
+evangelinaPlante3235,evangelinaPlante3235,NY,Earl L Vandermeulen High School,Port Jefferson,NY,3.1,2024,Physics,History,720,690,31,28,30,27,28,690,700,740,690,730,700,710,760,700,8
+eulalieIkkela8002,eulalieIkkela8002,NY,Hauppauge High School,Hauppauge,NY,3.5,2024,Art History,Geology,680,720,29,29,23,27,30,720,690,690,700,740,750,690,710,730,3
+sandyEdea8823,sandyEdea8823,NY,Comsewogue High School,Port Jefferson Sta,NY,2.2,2024,History,Biology,610,520,23,24,21,22,24,530,560,510,560,550,590,600,570,550,4
+sueHound448,sueHound448,NY,Newfield High School,Selden,NY,2.7,2024,Political Science,Biology,620,600,24,25,22,26,25,560,620,610,550,550,570,590,580,620,6
+flssEmory7932,flssEmory7932,NY,Islip High School,Islip,NY,2.9,2024,Physics,Geology,620,590,24,26,25,33,21,640,700,610,660,630,600,680,650,600,3
+nicholViv1849,nicholViv1849,NY,East Hampton High School,East Hampton,NY,2.6,2024,Music Theory,Computer Science,580,600,20,24,24,23,24,580,560,570,600,620,620,560,590,550,0
+lineaHough5772,lineaHough5772,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,2.7,2024,Political Science,Chemistry,570,640,25,27,23,25,25,600,610,590,630,570,590,610,590,630,4
+jeannieTibbetts8023,jeannieTibbetts8023,NY,North Babylon High School,North Babylon,NY,3.2,2024,Art History,Political Science,760,690,35,30,31,34,30,750,730,730,780,760,800,770,730,740,7
+brandiseSwift937,brandiseSwift937,NY,Kings Park High School,Kings Park,NY,2.7,2024,Political Science,History,630,630,21,32,26,28,26,650,610,570,570,630,610,580,580,540,5
+kevynSandie4846,kevynSandie4846,NY,Greenport High School,Greenport,NY,2.4,2024,Mathematics,History,530,480,26,22,17,13,21,470,500,490,540,570,470,480,490,500,7
+dorthyCaesaria6557,dorthyCaesaria6557,NY,Shoreham Wading River High School,Shoreham,NY,3.0,2024,Art History,Computer Science,660,650,22,24,29,25,33,690,680,660,620,640,640,640,690,710,7
+jannelFlossi7884,jannelFlossi7884,NY,William Floyd High School,Mastic Beach,NY,2.9,2024,Physics,Geology,700,650,35,29,27,29,30,720,690,690,650,770,610,740,690,710,3
+branaRoos1274,branaRoos1274,NY,Smithtown High School East,Saint James,NY,2.9,2024,Physics,Biology,650,650,27,27,34,28,27,670,660,680,680,700,700,650,660,710,8
+guillemetteMorvin1568,guillemetteMorvin1568,NY,Hampton Bays High School,Hampton Bays,NY,3.6,2024,Chemistry,Biology,780,790,35,36,32,26,33,750,800,750,750,730,730,780,800,720,5
+flossieLarentia2982,flossieLarentia2982,NY,Kings Park High School,Kings Park,NY,2.4,2024,Computer Science,Biology,560,620,23,24,24,28,28,600,600,580,590,590,600,620,630,570,4
+bernadinaDenman26,bernadinaDenman26,NY,West Islip Senior High School,West Islip,NY,3.9,2024,Geology,Mathematics,760,800,33,34,32,32,33,770,740,760,780,780,770,730,800,770,6
+pamAvrit3036,pamAvrit3036,NY,John H Glenn High School,Elwood,NY,3.6,2024,Chemistry,Computer Science,760,760,33,35,31,30,29,710,750,800,790,800,770,800,690,790,2
+frankyRora5680,frankyRora5680,NY,William Floyd High School,Mastic Beach,NY,2.7,2024,Music Theory,Chemistry,560,590,28,23,26,27,23,560,570,590,570,540,570,580,530,550,1
+laurianneObeng5972,laurianneObeng5972,NY,East Hampton High School,East Hampton,NY,2.8,2024,Art History,Geology,730,610,28,27,28,27,30,700,700,660,660,740,620,680,660,660,6
+madeleineMillford5206,madeleineMillford5206,NY,Saint Anthonys High School,Huntington Station,NY,2.8,2024,Art History,Chemistry,670,710,30,23,24,27,31,650,620,750,710,670,650,600,690,660,2
+sarineJim5679,sarineJim5679,NY,Sayville High School,West Sayville,NY,3.0,2024,Chemistry,Music Theory,600,670,27,27,26,26,27,630,580,630,620,640,650,690,600,640,2
+metaCaine7884,metaCaine7884,NY,Patchogue Medford High School,Medford,NY,2.1,2024,History,Physics,450,490,16,14,15,20,15,450,440,490,420,400,410,460,450,450,3
+tierneyTedder2317,tierneyTedder2317,NY,Huntington High School,Huntington,NY,2.8,2024,Geology,Political Science,610,550,21,21,24,23,26,630,590,550,570,580,520,550,580,580,4
+leonelleHamal9443,leonelleHamal9443,NY,Mount Sinai High School,Mount Sinai,NY,3.0,2024,Music Theory,Chemistry,620,660,24,26,23,23,24,650,650,710,690,680,610,690,620,650,6
+jeaneFreddie1079,jeaneFreddie1079,NY,Half Hollow Hills High School East,Dix Hills,NY,2.6,2024,Art History,Mathematics,510,540,20,22,19,20,21,530,530,520,550,580,520,480,560,580,9
+nessieNaiditch6082,nessieNaiditch6082,NY,Smithtown High School East,Saint James,NY,2.1,2024,Computer Science,Chemistry,440,450,8,19,14,11,17,370,430,470,440,420,430,400,420,460,7
+ninnettaHild8408,ninnettaHild8408,NY,Centereach High School,Centereach,NY,3.6,2024,Chemistry,Mathematics,700,760,26,32,25,29,28,690,730,800,720,740,720,640,760,700,3
+leylaAmaleta2830,leylaAmaleta2830,NY,Comsewogue High School,Port Jefferson Sta,NY,3.6,2024,Music Theory,Political Science,720,780,33,36,32,30,32,750,800,780,740,780,730,740,760,750,7
+amilRosecan4176,amilRosecan4176,NY,Longwood High School,Middle Island,NY,3.5,2024,Political Science,Geology,790,800,31,28,32,32,27,730,800,750,790,760,740,750,740,760,2
+shaineStempien2678,shaineStempien2678,NY,Commack High School,Commack,NY,3.3,2024,Chemistry,History,750,740,31,33,31,33,32,760,740,750,750,740,690,770,720,800,6
+kimbraPhelips1030,kimbraPhelips1030,NY,West Babylon Senior High School,West Babylon,NY,3.0,2024,Mathematics,Physics,650,640,23,25,26,25,21,630,630,620,640,630,700,660,640,640,8
+hindaCam6077,hindaCam6077,NY,Miller Place High School,Miller Place,NY,2.5,2024,Art History,Mathematics,570,540,21,28,20,26,22,550,600,570,620,560,580,510,620,590,1
+catrinaMozart4062,catrinaMozart4062,NY,Bellport Senior High School,Brookhaven,NY,2.6,2024,Computer Science,Political Science,620,610,23,24,22,22,26,610,620,640,570,610,590,580,580,590,5
+codeeVeronike2990,codeeVeronike2990,NY,West Babylon Senior High School,West Babylon,NY,3.0,2024,Physics,Chemistry,690,780,31,33,30,34,26,770,690,700,710,660,750,710,790,720,3
+aledaMatthia5622,aledaMatthia5622,NY,Longwood High School,Middle Island,NY,2.7,2024,Geology,Chemistry,590,580,26,24,19,23,17,590,610,570,570,610,610,620,610,610,2
+georgenaCuyler3990,georgenaCuyler3990,NY,Sachem High School North,Lake Ronkonkoma,NY,2.2,2024,Biology,Physics,490,470,20,21,20,23,20,490,430,530,520,480,540,490,530,510,4
+rubiaPan8448,rubiaPan8448,NY,Walt Whitman High School,Huntington Station,NY,3.2,2024,Physics,History,770,740,30,29,30,32,29,800,740,780,770,800,770,790,720,760,2
+kirbyHeimer7620,kirbyHeimer7620,NY,Bayport Blue Point High School,Bayport,NY,2.3,2024,Art History,Chemistry,460,550,19,19,22,19,19,580,510,510,530,530,560,540,500,530,7
+juanaThorwald9239,juanaThorwald9239,NY,West Islip Senior High School,West Islip,NY,2.2,2024,Chemistry,Political Science,510,540,20,18,19,22,16,510,510,500,530,510,530,500,550,550,7
+remyMouldon3938,remyMouldon3938,NY,Earl L Vandermeulen High School,Port Jefferson,NY,2.3,2024,Computer Science,Physics,500,540,23,17,20,24,19,560,480,510,520,550,530,530,530,580,2
+marielSeamus1740,marielSeamus1740,NY,Shoreham Wading River High School,Shoreham,NY,3.4,2024,Physics,Biology,690,640,26,30,25,25,25,660,730,690,670,650,690,700,700,700,1
+silePhylis28,silePhylis28,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,3.4,2024,Physics,Biology,760,740,35,31,29,32,31,730,770,730,670,800,750,770,760,720,6
+ainsleyAmby365,ainsleyAmby365,NY,Southampton High School,Southampton,NY,3.2,2024,History,Computer Science,630,640,35,18,26,24,28,640,660,680,680,630,610,630,620,670,7
+verenaOctave4121,verenaOctave4121,NY,Islip High School,Islip,NY,3.2,2024,Music Theory,Political Science,730,710,24,27,30,25,26,620,650,630,700,680,690,640,640,690,6
+charisMarquet581,charisMarquet581,NY,Comsewogue High School,Port Jefferson Sta,NY,2.7,2024,Geology,Art History,580,490,21,20,24,21,21,600,630,590,580,590,560,570,520,560,0
+carmenJack9670,carmenJack9670,NY,Rocky Point High School,Rocky Point,NY,3.3,2024,Art History,Physics,740,610,32,26,23,28,28,670,670,620,650,630,670,600,680,650,6
+daveenObrien1749,daveenObrien1749,NY,Walter G Oconnell Copiague High School,Copiague,NY,3.3,2024,Political Science,Physics,750,720,29,32,35,26,27,690,740,720,800,730,780,710,760,710,0
+barrieLambart7732,barrieLambart7732,NY,Riverhead Senior High School,Riverhead,NY,3.1,2024,Chemistry,Music Theory,700,780,33,28,36,34,27,740,750,740,750,770,720,800,740,800,8
+madonnaAndra5970,madonnaAndra5970,NY,West Islip Senior High School,West Islip,NY,3.5,2024,Mathematics,Political Science,770,740,30,25,34,32,36,800,730,790,760,770,800,800,790,740,0
+shelliKnowling9928,shelliKnowling9928,NY,Hauppauge High School,Hauppauge,NY,2.7,2024,Chemistry,Political Science,610,620,27,22,21,23,22,550,620,650,580,610,560,600,600,640,6
+rosalindaBerhley9332,rosalindaBerhley9332,NY,John H Glenn High School,Elwood,NY,3.0,2024,Physics,Geology,740,650,22,28,23,26,25,650,670,670,730,700,650,690,670,680,0
+tarrahBoru7313,tarrahBoru7313,NY,Bellport Senior High School,Brookhaven,NY,2.7,2024,History,Art History,630,620,26,16,23,22,26,570,590,540,610,590,570,600,610,580,9
+meaganLehet5080,meaganLehet5080,NY,West Babylon Senior High School,West Babylon,NY,3.1,2024,Political Science,Art History,660,700,24,24,25,27,24,620,640,680,690,670,690,650,640,620,4
+dawnBoorman8367,dawnBoorman8367,NY,West Islip Senior High School,West Islip,NY,2.1,2024,Mathematics,Chemistry,490,460,18,16,21,17,15,470,440,510,450,500,470,530,470,490,4
+sissyMeit5520,sissyMeit5520,NY,Bayport Blue Point High School,Bayport,NY,2.5,2024,History,Physics,520,520,18,20,21,19,24,530,520,510,530,500,570,540,520,500,6
+hattyBaptlsta7309,hattyBaptlsta7309,NY,Longwood High School,Middle Island,NY,2.8,2024,Art History,Mathematics,560,670,26,21,24,23,27,570,580,590,580,630,570,570,620,630,9
+jeanieLoralee7105,jeanieLoralee7105,NY,Walter G Oconnell Copiague High School,Copiague,NY,3.1,2024,Physics,Art History,680,740,36,28,28,28,33,650,710,700,720,740,690,670,710,720,5
+roxanaHolzman5824,roxanaHolzman5824,NY,Miller Place High School,Miller Place,NY,3.5,2024,History,Music Theory,770,790,28,27,33,31,27,740,770,770,800,730,790,750,780,790,9
+loellaUdell5467,loellaUdell5467,NY,Mattituck Junior Senior High School,Mattituck,NY,2.9,2024,Mathematics,Biology,660,650,26,26,28,30,29,700,660,690,690,630,610,690,680,580,0
+astrixSteele376,astrixSteele376,NY,William Floyd High School,Mastic Beach,NY,2.8,2024,Art History,Mathematics,620,670,25,30,30,25,24,640,620,620,700,700,640,680,680,640,4
+beckyBoardman4498,beckyBoardman4498,NY,Ross School,East Hampton,NY,3.1,2024,Geology,Biology,610,630,27,30,22,28,24,670,640,680,630,710,680,690,640,660,7
+didoEradis2628,didoEradis2628,NY,The Stony Brook School,Stony Brook,NY,2.6,2024,Political Science,Chemistry,590,460,18,19,21,20,15,520,540,540,560,510,490,510,510,500,3
+nessiCristina7841,nessiCristina7841,NY,Central Islip Senior High School,Central Islip,NY,3.1,2024,Mathematics,Music Theory,680,750,30,27,28,28,29,720,720,670,690,650,690,680,750,690,9
+jenelleHarrie7215,jenelleHarrie7215,NY,The Stony Brook School,Stony Brook,NY,3.0,2024,Political Science,Biology,650,660,29,31,29,27,27,670,700,640,710,640,670,630,620,650,9
+xenaLuckett9022,xenaLuckett9022,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,2.8,2024,History,Art History,670,620,27,21,27,24,26,670,600,670,610,620,680,610,640,640,9
+justinnLoriner5615,justinnLoriner5615,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.5,2024,Music Theory,Political Science,560,540,24,24,18,21,17,560,520,570,510,560,580,600,560,530,7
+adoreeAppolonia1477,adoreeAppolonia1477,NY,Smithtown Christian School,Smithtown,NY,3.4,2024,Geology,Physics,750,750,34,28,33,32,29,770,760,760,710,760,740,700,740,750,3
+mabelleJanyte8868,mabelleJanyte8868,NY,East Islip High School,Islip Terrace,NY,2.7,2024,Chemistry,Physics,520,560,25,21,18,25,19,600,540,500,490,550,530,550,530,550,8
+selmaOthilie472,selmaOthilie472,NY,Ward Melville Senior High School,East Setauket,NY,3.1,2024,Chemistry,Geology,650,650,30,26,25,34,26,690,680,690,630,660,680,700,690,650,8
+lesliTillinger7603,lesliTillinger7603,NY,Mount Sinai High School,Mount Sinai,NY,2.7,2024,Geology,Mathematics,610,590,23,26,20,29,22,540,540,600,580,550,620,590,610,590,2
+tamraAeriel8684,tamraAeriel8684,NY,Half Hollow Hills High School East,Dix Hills,NY,2.4,2024,History,Chemistry,540,610,18,22,16,20,20,530,540,550,510,590,540,570,530,560,0
+jodieMelton4054,jodieMelton4054,NY,Walt Whitman High School,Huntington Station,NY,2.4,2024,Computer Science,Geology,510,550,18,20,17,22,19,530,500,480,520,490,540,460,540,510,2
+ilyseLeno6838,ilyseLeno6838,NY,Ross School,East Hampton,NY,2.5,2024,Physics,Chemistry,530,520,16,27,21,20,23,520,500,560,500,550,600,540,580,590,4
+tandySuhail2343,tandySuhail2343,NY,Sachem High School North,Lake Ronkonkoma,NY,2.9,2024,Music Theory,Political Science,720,690,28,30,28,25,24,720,740,700,660,670,700,600,640,680,7
+doralynGustie1142,doralynGustie1142,NY,Walter G Oconnell Copiague High School,Copiague,NY,3.4,2024,Physics,Art History,700,680,33,26,23,27,27,740,760,670,760,660,730,690,740,680,6
+jaquenetteFablan7338,jaquenetteFablan7338,NY,East Islip High School,Islip Terrace,NY,3.2,2024,Political Science,Art History,720,650,23,30,27,29,27,720,680,690,710,730,720,640,720,670,0
+giustinaTade8023,giustinaTade8023,NY,Greenport High School,Greenport,NY,3.5,2024,Physics,Music Theory,770,730,36,29,32,28,30,700,720,770,740,740,720,750,770,740,7
+gustiConlee4619,gustiConlee4619,NY,Pierson Middle High School,Sag Harbor,NY,2.7,2024,Physics,Mathematics,660,670,28,28,23,32,24,700,720,720,660,680,700,710,660,670,4
+giuliaBell1615,giuliaBell1615,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,2.9,2024,Computer Science,Biology,600,620,26,26,26,21,29,600,620,610,610,620,650,630,620,610,0
+katlinPeppard4661,katlinPeppard4661,NY,Bridgehampton School,Bridgehampton,NY,2.5,2024,Political Science,Physics,590,610,22,23,18,21,17,600,570,520,560,590,570,520,550,600,7
+babbPickard3841,babbPickard3841,NY,Centereach High School,Centereach,NY,2.7,2024,Political Science,Physics,580,620,25,21,27,22,20,570,580,620,630,570,640,600,560,550,2
+zarlaPeirce2857,zarlaPeirce2857,NY,East Hampton High School,East Hampton,NY,1.6,2024,Chemistry,Computer Science,380,360,18,13,12,12,17,390,430,430,410,430,430,420,420,430,7
+reginaAlyse3669,reginaAlyse3669,NY,Hauppauge High School,Hauppauge,NY,2.2,2024,Physics,Computer Science,530,460,13,22,19,18,18,560,520,510,500,540,520,500,470,530,1
+tammyBertolde2640,tammyBertolde2640,NY,Smithtown Christian School,Smithtown,NY,2.8,2024,History,Music Theory,590,590,29,27,22,32,22,630,610,650,560,650,580,600,610,600,3
+bonnibelleAllissa5816,bonnibelleAllissa5816,NY,Southampton High School,Southampton,NY,2.6,2024,Political Science,Computer Science,590,520,18,20,18,26,19,580,600,600,590,560,560,530,600,580,7
+fideliaMittel4035,fideliaMittel4035,NY,Hauppauge High School,Hauppauge,NY,1.9,2024,Physics,Geology,490,490,19,16,16,24,13,490,450,450,460,440,460,490,440,450,2
+edeFreberg5735,edeFreberg5735,NY,Walter G Oconnell Copiague High School,Copiague,NY,2.7,2024,Biology,Geology,610,590,30,30,27,25,22,610,620,680,670,630,630,670,620,620,9
+tiffGlenine8142,tiffGlenine8142,NY,Longwood High School,Middle Island,NY,3.5,2024,Music Theory,History,740,720,27,29,25,30,24,660,680,630,680,700,650,690,720,690,0
+whitneyGessner19,whitneyGessner19,NY,Newfield High School,Selden,NY,2.6,2024,Chemistry,Physics,670,620,23,26,24,25,25,600,630,630,570,630,660,650,660,640,2
+helsaWhitcomb9577,helsaWhitcomb9577,NY,Harborfields High School,Greenlawn,NY,3.2,2024,Music Theory,History,730,680,31,29,27,36,21,630,750,760,730,710,750,770,690,720,1
+bobbyMadeline9931,bobbyMadeline9931,NY,Bellport Senior High School,Brookhaven,NY,2.9,2024,History,Chemistry,710,720,34,33,28,34,30,730,690,710,710,720,680,710,740,750,9
+hermineThorner9700,hermineThorner9700,NY,Harborfields High School,Greenlawn,NY,2.0,2024,History,Music Theory,480,510,18,21,23,17,16,470,440,440,490,470,470,500,490,490,3
+editaSafko861,editaSafko861,NY,Newfield High School,Selden,NY,3.7,2024,Chemistry,Political Science,770,750,32,36,36,29,32,770,780,770,780,770,790,730,770,750,7
+nikanikiDoi9913,nikanikiDoi9913,NY,Half Hollow Hills High School East,Dix Hills,NY,2.8,2024,History,Chemistry,630,620,19,17,28,23,28,690,600,600,660,540,600,610,580,620,8
+lexieQuesta1637,lexieQuesta1637,NY,North Babylon High School,North Babylon,NY,3.3,2024,Geology,Art History,650,660,29,29,26,29,29,640,730,670,660,700,690,620,660,680,9
+bernettaLinnette1024,bernettaLinnette1024,NY,Centereach High School,Centereach,NY,3.4,2024,History,Political Science,690,730,28,29,35,28,28,710,660,690,750,740,730,700,700,700,3
+michaelaKeyes1362,michaelaKeyes1362,NY,Rocky Point High School,Rocky Point,NY,3.4,2024,History,Physics,730,740,29,24,31,31,24,690,670,700,730,680,660,680,690,700,3
+fanchonIvie2226,fanchonIvie2226,NY,Comsewogue High School,Port Jefferson Sta,NY,3.1,2024,Mathematics,Art History,700,660,31,25,30,31,29,720,670,670,650,680,680,740,690,710,5
+mellisaWelford3266,mellisaWelford3266,NY,Longwood High School,Middle Island,NY,3.2,2024,Computer Science,Geology,800,780,31,33,32,26,31,780,750,800,730,750,750,710,780,790,8
+alaineSid2103,alaineSid2103,NY,Shoreham Wading River High School,Shoreham,NY,2.6,2024,Geology,Mathematics,530,560,19,18,22,23,21,540,530,580,520,530,520,570,540,550,4
+florenzaStar1738,florenzaStar1738,NY,Earl L Vandermeulen High School,Port Jefferson,NY,3.6,2024,Mathematics,Biology,740,790,29,31,33,35,31,790,780,730,760,730,800,800,730,770,8
+jankaBasham4153,jankaBasham4153,NY,Southampton High School,Southampton,NY,1.9,2024,Chemistry,Geology,450,490,17,11,16,17,19,410,450,420,480,480,530,400,430,420,4
+johannahWiltz3408,johannahWiltz3408,NY,Bay Shore Senior High School,Bay Shore,NY,3.5,2024,Chemistry,Mathematics,760,780,32,34,30,34,31,760,780,770,750,780,780,800,770,720,5
+tiphanieReamonn8582,tiphanieReamonn8582,NY,Sayville High School,West Sayville,NY,3.0,2024,Political Science,History,620,630,22,24,25,31,27,620,620,620,670,590,640,640,590,610,6
+ashlaArondel635,ashlaArondel635,NY,Earl L Vandermeulen High School,Port Jefferson,NY,2.4,2024,Computer Science,Physics,470,490,18,19,23,20,24,460,530,500,520,540,470,520,470,460,8
+genniferHanus5486,genniferHanus5486,NY,Center Moriches High School,Center Moriches,NY,3.1,2024,Music Theory,Mathematics,660,710,29,27,33,33,26,650,730,690,710,740,720,730,650,700,5
+gayleenLotz9987,gayleenLotz9987,NY,Smithtown High School   Western Campus,Smithtown,NY,2.8,2024,Physics,Geology,590,660,28,28,25,27,23,640,660,610,590,640,620,570,570,600,0
+justineTertias9615,justineTertias9615,NY,Central Islip Senior High School,Central Islip,NY,3.7,2024,Art History,Geology,760,770,30,36,35,33,35,770,780,800,720,800,750,770,780,800,3
+cordulaEllora1949,cordulaEllora1949,NY,Lindenhurst Senior High School,Lindenhurst,NY,3.2,2024,Biology,Physics,660,680,25,23,28,25,25,570,660,640,660,700,630,660,650,650,6
+ginniferFeingold6395,ginniferFeingold6395,NY,East Islip High School,Islip Terrace,NY,2.3,2024,Chemistry,Mathematics,520,540,19,24,23,22,24,520,550,530,620,550,610,540,560,540,6
+mayeMotteo3855,mayeMotteo3855,NY,Islip High School,Islip,NY,3.2,2024,Biology,Mathematics,740,700,29,28,28,31,29,720,680,690,720,710,780,750,730,740,6
+loisJulia2337,loisJulia2337,NY,Deer Park High School,Deer Park,NY,3.3,2024,Computer Science,Chemistry,670,720,26,33,32,27,27,690,680,720,690,760,750,670,700,710,7
+bernadeneLowrie136,bernadeneLowrie136,NY,Smithtown High School East,Saint James,NY,3.0,2024,Biology,Art History,660,640,30,32,30,25,34,660,690,700,680,700,670,670,710,670,4
+oliyParthenia2185,oliyParthenia2185,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,2.9,2024,Mathematics,History,640,630,28,27,33,27,22,670,640,730,650,630,620,670,670,660,7
+dannyPorter3047,dannyPorter3047,NY,Kings Park High School,Kings Park,NY,3.1,2024,Geology,Physics,690,630,28,27,26,24,25,650,630,700,650,650,670,690,640,640,4
+celkaKarli3690,celkaKarli3690,NY,Patchogue Medford High School,Medford,NY,2.4,2024,Music Theory,Geology,540,530,17,18,19,24,19,470,510,530,500,450,490,540,540,530,2
+avieCorbett1088,avieCorbett1088,NY,Earl L Vandermeulen High School,Port Jefferson,NY,2.7,2024,History,Geology,740,670,28,27,33,28,28,710,680,630,740,700,720,690,700,690,8
+regineZandra1966,regineZandra1966,NY,William Floyd High School,Mastic Beach,NY,2.1,2024,Art History,Biology,510,470,18,17,17,16,11,470,550,520,450,440,480,460,490,470,0
+brigidaMeyers325,brigidaMeyers325,NY,Brentwood High School,Brentwood,NY,2.6,2024,Mathematics,Computer Science,620,550,26,24,24,21,26,610,550,550,560,610,620,560,650,590,4
+loretteTalbott9032,loretteTalbott9032,NY,Eastport South Manor Junior Senior High School,Manorville,NY,3.1,2024,Chemistry,Art History,720,680,33,28,33,23,31,640,700,690,690,720,730,700,660,730,1
+antoninaKristoffer956,antoninaKristoffer956,NY,William Floyd High School,Mastic Beach,NY,2.7,2024,Chemistry,Music Theory,580,630,30,25,25,22,26,610,600,580,540,590,550,610,580,590,0
+madaGerge3431,madaGerge3431,NY,Connetquot High School,Bohemia,NY,3.5,2024,Art History,Geology,740,730,30,30,35,26,28,760,690,690,650,760,700,770,700,780,3
+perlNoelani2776,perlNoelani2776,NY,Sachem High School East,Farmingville,NY,3.1,2024,Physics,History,740,660,28,29,29,24,28,750,680,700,760,750,670,670,700,700,1
+klarikaPer2320,klarikaPer2320,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,2.7,2024,Political Science,Music Theory,600,630,22,22,28,14,25,570,570,620,610,570,550,560,620,640,8
+lexisEdy8587,lexisEdy8587,NY,Harborfields High School,Greenlawn,NY,2.9,2024,Political Science,Art History,630,630,23,19,23,22,28,520,610,580,620,560,560,620,550,590,7
+sarenaPauletta4345,sarenaPauletta4345,NY,East Islip High School,Islip Terrace,NY,2.3,2024,Computer Science,Biology,460,510,20,21,17,13,15,480,500,470,480,410,450,480,500,490,2
+geraldaTabbatha8577,geraldaTabbatha8577,NY,Kings Park High School,Kings Park,NY,2.5,2024,Physics,Mathematics,590,540,24,21,19,20,20,530,560,580,520,560,570,590,530,530,3
+kippieWhiney3139,kippieWhiney3139,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,2.8,2024,Physics,Computer Science,600,570,23,20,22,25,19,590,540,600,590,600,590,620,610,590,1
+judieAnneliese4746,judieAnneliese4746,NY,Kings Park High School,Kings Park,NY,3.2,2024,Geology,Chemistry,690,740,29,31,27,29,33,720,740,720,700,690,700,700,650,680,4
+lindFreeborn5183,lindFreeborn5183,NY,Bayport Blue Point High School,Bayport,NY,3.0,2024,Music Theory,Art History,650,640,28,25,29,28,30,600,620,660,680,660,630,670,680,660,3
+lynseyDulcinea5743,lynseyDulcinea5743,NY,Hampton Bays High School,Hampton Bays,NY,3.4,2024,Art History,Computer Science,800,740,31,27,30,28,32,770,770,790,790,780,790,780,760,760,5
+luciliaEmeric2746,luciliaEmeric2746,NY,Pierson Middle High School,Sag Harbor,NY,2.2,2024,Physics,Geology,580,540,25,24,24,21,18,480,550,540,530,560,560,460,520,580,6
+robenaXylina8350,robenaXylina8350,NY,Lindenhurst Senior High School,Lindenhurst,NY,2.8,2024,History,Biology,640,600,27,27,23,27,25,630,650,600,600,640,640,620,640,620,8
+ryccaFaunia2886,ryccaFaunia2886,NY,Hampton Bays High School,Hampton Bays,NY,2.6,2024,Biology,Chemistry,640,600,23,24,28,27,29,580,660,620,590,570,580,580,670,590,4
+devonneLion9988,devonneLion9988,NY,Smithtown Christian School,Smithtown,NY,2.5,2024,Geology,Mathematics,560,520,25,19,21,21,25,530,600,580,530,520,520,580,520,550,2
+umekoDoherty7576,umekoDoherty7576,NY,Earl L Vandermeulen High School,Port Jefferson,NY,3.5,2024,Chemistry,Geology,700,670,27,36,33,32,29,690,670,690,720,750,670,670,640,690,5
+shannahTolley1202,shannahTolley1202,NY,Huntington High School,Huntington,NY,2.5,2024,Biology,Chemistry,520,500,22,20,26,16,19,590,550,520,480,540,510,500,540,500,5
+bethinaSari9605,bethinaSari9605,NY,Ward Melville Senior High School,East Setauket,NY,2.3,2024,Biology,Computer Science,580,540,21,23,25,20,21,560,540,520,510,550,560,480,570,550,6
+doloritasBassett1924,doloritasBassett1924,NY,Saint Anthonys High School,Huntington Station,NY,2.6,2024,Physics,Chemistry,520,550,25,24,25,24,20,590,550,520,500,520,490,560,500,550,1
+orelMackey9791,orelMackey9791,NY,Center Moriches High School,Center Moriches,NY,3.2,2024,Mathematics,Physics,650,700,30,29,32,32,26,760,770,710,740,720,720,730,690,740,7
+winonahKacerek1309,winonahKacerek1309,NY,Saint Anthonys High School,Huntington Station,NY,2.7,2024,Art History,Music Theory,640,670,29,28,26,24,28,670,650,680,630,630,640,620,640,700,1
+carrieLachish4548,carrieLachish4548,NY,Bridgehampton School,Bridgehampton,NY,2.5,2024,Geology,Music Theory,600,570,26,17,26,26,26,570,570,610,620,550,600,540,550,570,6
+erinnaAbixah2096,erinnaAbixah2096,NY,East Islip High School,Islip Terrace,NY,2.6,2024,Music Theory,Computer Science,580,590,27,19,22,29,25,550,550,590,620,600,550,590,500,570,2
+raniaPeregrine4554,raniaPeregrine4554,NY,Walter G Oconnell Copiague High School,Copiague,NY,2.0,2024,Art History,Physics,460,480,18,18,15,19,14,530,450,500,520,490,530,530,500,500,2
+doeCulosio5843,doeCulosio5843,NY,Smithtown High School East,Saint James,NY,2.8,2024,Art History,Biology,590,670,30,26,30,22,23,650,660,620,610,610,660,700,650,620,1
+doriaSchwenk5856,doriaSchwenk5856,NY,Bay Shore Senior High School,Bay Shore,NY,2.9,2024,Computer Science,Mathematics,630,660,32,27,27,21,21,710,630,620,600,650,660,660,640,670,6
+rochelleZita3900,rochelleZita3900,NY,Kings Park High School,Kings Park,NY,2.6,2024,Music Theory,Biology,680,640,25,24,25,31,26,630,630,580,630,610,600,610,640,630,6
+tammyNorword7839,tammyNorword7839,NY,William Floyd High School,Mastic Beach,NY,2.8,2024,Chemistry,Art History,590,620,23,24,29,22,24,680,620,660,630,690,630,640,670,570,9
+brineyCesya4610,brineyCesya4610,NY,Smithtown Christian School,Smithtown,NY,3.2,2024,Physics,Chemistry,700,710,26,28,31,35,32,670,680,700,770,720,730,730,650,750,5
+jaquenetteFeinleib2678,jaquenetteFeinleib2678,NY,East Islip High School,Islip Terrace,NY,2.6,2024,Physics,Art History,520,520,21,18,23,24,21,540,530,560,560,540,540,520,540,570,4
+fernandinaSonny8596,fernandinaSonny8596,NY,Newfield High School,Selden,NY,3.2,2024,Computer Science,Political Science,650,630,31,26,28,29,25,730,690,720,700,700,660,680,690,670,7
+konstanzeMelli6603,konstanzeMelli6603,NY,Center Moriches High School,Center Moriches,NY,2.9,2024,Biology,Music Theory,590,570,22,25,26,24,21,630,550,590,560,600,620,590,620,600,1
+augustinaHeyes2635,augustinaHeyes2635,NY,Central Islip Senior High School,Central Islip,NY,3.1,2024,History,Political Science,650,620,27,21,26,26,29,670,650,670,680,670,660,690,660,690,6
+georgeanneMoreno8733,georgeanneMoreno8733,NY,Shoreham Wading River High School,Shoreham,NY,2.6,2024,Biology,Chemistry,560,610,21,19,17,24,18,650,600,580,570,600,590,550,530,570,5
+ashliLeventis953,ashliLeventis953,NY,The Knox School,St James,NY,1.7,2024,Music Theory,History,410,410,12,15,10,20,14,410,380,440,410,380,360,400,390,410,8
+mabelMohl5495,mabelMohl5495,NY,Babylon Junior Senior High School,Babylon,NY,2.3,2024,Art History,Political Science,570,580,21,25,20,15,24,560,600,580,590,610,610,610,570,590,7
+olympeMarlee3829,olympeMarlee3829,NY,Center Moriches High School,Center Moriches,NY,3.2,2024,Art History,Physics,720,770,32,28,30,29,31,800,780,750,760,800,800,690,800,800,1
+tiffiBorchert6462,tiffiBorchert6462,NY,North Babylon High School,North Babylon,NY,2.9,2024,Physics,Music Theory,680,730,30,25,27,25,32,660,700,670,700,680,680,660,620,700,0
+hedvigeChryste4751,hedvigeChryste4751,NY,Wyandanch Memorial High School,Wyandanch,NY,2.5,2024,Biology,Chemistry,540,570,18,19,25,25,19,560,590,510,590,510,550,560,590,570,8
+kirsteniGauthier9592,kirsteniGauthier9592,NY,Babylon Junior Senior High School,Babylon,NY,2.3,2024,Chemistry,Physics,520,490,14,22,22,22,17,510,480,540,470,530,490,540,520,550,3
+rosieMulvihill9105,rosieMulvihill9105,NY,Half Hollow Hills High School East,Dix Hills,NY,2.9,2024,Geology,Biology,660,680,25,26,26,25,27,710,630,650,630,630,630,580,690,660,6
+casiLawton3020,casiLawton3020,NY,Smithtown High School East,Saint James,NY,3.3,2024,Music Theory,Physics,760,770,29,36,36,36,31,770,750,750,800,800,740,750,720,760,6
+tamarahMcGruter3199,tamarahMcGruter3199,NY,Central Islip Senior High School,Central Islip,NY,1.8,2024,Chemistry,Mathematics,380,410,16,11,18,13,14,440,390,360,420,430,390,430,410,380,2
+bonnibelleLonnard8265,bonnibelleLonnard8265,NY,Cold Spring Harbor High School,Cold Spring Harbor,NY,2.1,2024,Art History,Mathematics,520,410,15,18,15,19,22,500,450,480,490,500,480,420,480,490,7
+shawnaSarine8025,shawnaSarine8025,NY,Wyandanch Memorial High School,Wyandanch,NY,2.5,2024,Physics,Geology,590,590,28,17,23,25,18,550,590,590,560,590,600,620,650,560,3

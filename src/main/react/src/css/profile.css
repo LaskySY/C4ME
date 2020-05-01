@@ -1,0 +1,44 @@
+.profileCard {
+  margin: 30px;
+}
+.card-body .profile_edit_button {
+  cursor: pointer;
+  display: none
+}
+.card-body:hover .profile_edit_button {
+  cursor: pointer;
+  display: inline
+}
+.major_tag {
+  display: inline;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 10px;
+  border-radius: 10px;
+  background: linear-gradient(var(--color-bg), #dcd6f7 80%, var(--color-bg));
+}
+.editcard-button {
+  color: var(--color-button);
+  border-color: var(--color-button);
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.editcard-button.disabled:hover {
+  color: var(--color-button);
+  background-color: white;
+}
+.editcard-button:hover {
+  color: white;
+  background-color: var(--color-button);
+}
+.profile-card-title {
+  font-family: Asul;
+  background: linear-gradient(var(--color-bg), var(--color-fillin),var(--color-bg));
+}
+#profile-progress{
+  background-color:  #ffd868;
+}
+
+.profile_textfield.invalid{
+  border-color: red!important;
+}

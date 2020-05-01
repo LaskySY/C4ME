@@ -23,7 +23,7 @@ public class JwtTokenUtils {
     private static final String ISS = "C4meAuth";
     private static final String ROLE_CLAIM = "rol";
     private static final String USE_ID = "uid";
-    
+
 
     // 1 hour token
     private static final long EXPIRATION = 3600L;

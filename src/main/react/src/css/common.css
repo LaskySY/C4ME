@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css?family=Modak");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Asul");
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button{
+-webkit-appearance:none !important;
+}
+input:focus, textarea:focus {
+  outline: none;
+}
+input[type='number']{
+-moz-appearance:textfield;
+}
+
+:root {
+  --color-bg: #ffffff;
+  --color-bar: #99CCFF;
+  --color-bar-text: #00a8cc;
+  --color-bar-text-hover: #1d7ce2;
+  --color-bar-text-active:#1d7ce2;
+
+  --color-button-check: #a3f7bf;
+  --color-button-cancel: #84a9ac;
+  --color-button: #00a8cc;
+  
+  --color-border: #dfe1e5;
+  --color-fillin: #a0ffe6;
+  
+  --box-shadow: 0 .2rem .5rem rgba(0,0,0,.25);
+}
+
+.page {
+  padding: 100px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  min-height:calc(100vh - 45px);
+}
+
+body {
+  font-family: Roboto;
+}
+
+.card {
+  border: none!important;
+  border-width: 0px;
+  box-shadow: var(--box-shadow);
+}
+.form-control.invalid:focus{
+  outline: none;
+  box-shadow: none;
+}

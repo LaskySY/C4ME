@@ -249,6 +249,7 @@ public class TestingDataUtils {
                     if(rand == 1) {
                         Double strength = students.get(user);
                         Double admissionRate = collegeEntities.get(j).getAdmissionRate();
+                        if(admissionRate == null) admissionRate = 1.0;
                         Double rejectionRate = 1-admissionRate;
                         Double y = strength > rejectionRate? admissionRate + Math.pow(strength-rejectionRate,1.5) : admissionRate - Math.pow(rejectionRate-strength, 1.5);
                         Double x = r.nextDouble();

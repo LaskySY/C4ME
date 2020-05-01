@@ -157,6 +157,17 @@ public final class Const {
 
   }
 
+  public final static class StatisticalSummary {
+    public static final String[] FIELDS = {
+            ProfileEntity_.SAT_EBRW,
+            ProfileEntity_.SAT_MATH,
+            ProfileEntity_.ACT_COMPOSITE,
+            ProfileEntity_.GPA,
+            "weightedAvgPercentileScore",
+            "sat"
+    };
+  }
+
   public final static class Types {
     public static final Integer PUBLIC = 1;
     public static final Integer PRIVATE = 2;
@@ -228,7 +239,7 @@ public final class Const {
     public static String LAST_NAMES_FILE = "lastNames.txt";
 
     public static String SEP = File.separator;
-    public static String DATA_DIR = "c4me" + SEP + "src" + SEP + "data" + SEP;
+    public static String DATA_DIR = "src" + SEP + "data" + SEP;
 
     public static String TEST_HIGH_SCHOOL_URL = "https://www.niche.com/k12/east-islip-high-school-islip-terrace-ny";
     public static String TEST_HIGH_SCHOOL_SEARCH_URL = "https://www.niche.com/search/?q=east%20islip%20high%20school";

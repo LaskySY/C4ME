@@ -33,6 +33,7 @@ public class ProfileInfo {
   private String username;
   private Integer schoolYear;
   private Integer schoolId;
+  private String schoolName;
   private Integer numApCourses;
   private Double gpa;
   private Integer satMath;
@@ -64,6 +65,7 @@ public class ProfileInfo {
     username = profileEntity.getUsername();
     schoolYear = profileEntity.getSchoolYear();
     schoolId = profileEntity.getSchoolId();
+    schoolName = profileEntity.getHighschoolBySchoolId().getName();
     numApCourses = profileEntity.getNumApCourses();
     gpa = profileEntity.getGpa();
     satMath = profileEntity.getSatMath();

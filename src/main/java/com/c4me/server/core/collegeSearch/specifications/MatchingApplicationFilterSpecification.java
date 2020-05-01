@@ -15,6 +15,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import static com.c4me.server.config.constant.Const.Questionable.OK;
+
 /**
  * @Description:
  * @Author: Maciej Wlodek
@@ -31,6 +33,9 @@ public class MatchingApplicationFilterSpecification implements Specification<Stu
         this.strict = filter.getStrict();
     }
 
+    private Predicate generateNonQuestionablePredicate(Root<StudentApplicationEntity> root,CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder)  {
+        return criteriaBuilder.equal(root.get(StudentApplicationEntity_.questionable), OK);
+    }
     private Predicate generateStatusPredicate(Root<StudentApplicationEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder)  {
         if(filter.getApplicationInts() == null) return criteriaBuilder.conjunction();
         Predicate requireNull = criteriaBuilder.isNull(root.get(StudentApplicationEntity_.status));
@@ -51,7 +56,8 @@ public class MatchingApplicationFilterSpecification implements Specification<Stu
     public Predicate toPredicate(Root<StudentApplicationEntity> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
         Predicate statusPredicate = generateStatusPredicate(root, criteriaQuery, criteriaBuilder);
         Predicate collegeNamePredicate = generateCollegeNamePredicate(root, criteriaQuery, criteriaBuilder);
+        Predicate nonQuestionablePredicate = generateNonQuestionablePredicate(root, criteriaQuery, criteriaBuilder);
         criteriaQuery.orderBy(criteriaBuilder.asc(root.get(StudentApplicationEntity_.status)));
-        return criteriaBuilder.and(statusPredicate, collegeNamePredicate);
+        return criteriaBuilder.and(statusPredicate, collegeNamePredicate, nonQuestionablePredicate);
     }
 }

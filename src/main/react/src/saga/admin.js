@@ -15,7 +15,7 @@ import { BASE_URL } from '../../src/config/index'
 
 export function * getCollegeInfoAsync () {
   try {
-    const response = yield axios.get(BASE_URL + '/admin/college',
+    const response = yield axios.get(BASE_URL + '/api/v1/admin/college',
       { headers: { Authorization: localStorage.getItem('userToken') } }
     )
     if (response.data.code === 'success') {
@@ -33,7 +33,7 @@ export function * getCollegeInfoAsync () {
 export function * scrapCollegeDataAsync () {
   const token = localStorage.getItem('userToken')
   try {
-    const response = yield axios.post(BASE_URL + '/admin/college/data',
+    const response = yield axios.post(BASE_URL + '/api/v1/admin/college/data',
       {},
       {
         headers: { Authorization: token },
@@ -56,7 +56,7 @@ export function * scrapCollegeDataAsync () {
 export function * scrapCollegeRankingAsync () {
   const token = localStorage.getItem('userToken')
   try {
-    const response = yield axios.post(BASE_URL + '/admin/college/rank',
+    const response = yield axios.post(BASE_URL + '/api/v1/admin/college/rank',
       {},
       {
         headers: { Authorization: token },
@@ -79,7 +79,7 @@ export function * scrapCollegeRankingAsync () {
 export function * importCollegeScorecardAsync () {
   const token = localStorage.getItem('userToken')
   try {
-    const response = yield axios.post(BASE_URL + '/admin/college/scorecard',
+    const response = yield axios.post(BASE_URL + '/api/v1/admin/college/scorecard',
       {},
       {
         headers: { Authorization: token },
@@ -101,7 +101,7 @@ export function * importCollegeScorecardAsync () {
 
 export function * exportCollegeInfoAsync () {
   try {
-    const response = yield axios.post(BASE_URL + '/admin/college/export',
+    const response = yield axios.post(BASE_URL + '/api/v1/admin/college/export',
       { headers: { Authorization: localStorage.getItem('userToken') } }
     )
     if (response.data.code === 'success') {
@@ -118,7 +118,7 @@ export function * exportCollegeInfoAsync () {
 
 export function * getProfileInfoAsync () {
   try {
-    const response = yield axios.get(BASE_URL + '/admin/profile',
+    const response = yield axios.get(BASE_URL + '/api/v1/admin/profile',
       { headers: { Authorization: localStorage.getItem('userToken') } }
     )
     if (response.data.code === 'success') {
@@ -136,7 +136,7 @@ export function * getProfileInfoAsync () {
 export function * importProfileAsync () {
   const token = localStorage.getItem('userToken')
   try {
-    const response = yield axios.post(BASE_URL + '/admin/profile',
+    const response = yield axios.post(BASE_URL + '/api/v1/admin/profile',
       {},
       {
         headers: { Authorization: token },
@@ -159,7 +159,7 @@ export function * importProfileAsync () {
 export function * deleteAllProfilesAsync () {
   const token = localStorage.getItem('userToken')
   try {
-    const response = yield axios.post(BASE_URL + '/admin/profile/delete',
+    const response = yield axios.post(BASE_URL + '/api/v1/admin/profile/delete',
       {},
       {
         headers: { Authorization: token },
@@ -181,7 +181,7 @@ export function * deleteAllProfilesAsync () {
 
 export function * getApplicaitonInfoAsync () {
   try {
-    const response = yield axios.get(BASE_URL + '/admin/application',
+    const response = yield axios.get(BASE_URL + '/api/v1/admin/application',
       { headers: { Authorization: localStorage.getItem('userToken') } }
     )
     if (response.data.code === 'success') {
@@ -200,7 +200,7 @@ export function * getApplicaitonInfoAsync () {
 export function * changeQuestionableDecisionAsync (action) {
   const token = localStorage.getItem('userToken')
   try {
-    const response = yield axios.post(BASE_URL + '/admin/application',
+    const response = yield axios.post(BASE_URL + '/api/v1/admin/application',
       {
         collegeId: action.data.collegeId,
         questionable: action.questionable

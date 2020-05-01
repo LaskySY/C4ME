@@ -7,7 +7,7 @@ import { BASE_URL } from '../config'
 
 export function * getProfileAsync (action) {
   try {
-    const response = yield axios.get(BASE_URL + '/profile',
+    const response = yield axios.get(BASE_URL + '/api/v1/profile',
       {
         headers: { Authorization: localStorage.getItem('userToken') },
         params: { username: action.username }
@@ -27,7 +27,7 @@ export function * getProfileAsync (action) {
 
 export function * updateProfileAsync (action) {
   try {
-    const response = yield axios.post(BASE_URL + '/profile',
+    const response = yield axios.post(BASE_URL + '/api/v1/profile',
       action.data,
       {
         headers: { Authorization: localStorage.getItem('userToken') },

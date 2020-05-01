@@ -22,7 +22,7 @@ class FindSimilarHighSchoolScreen extends Component {
   }
 
   componentDidMount = () => {
-    axios.get(BASE_URL + '/profile/highSchool',
+    axios.get(BASE_URL + '/api/v1/profile/highSchool',
       {
         headers: { Authorization: localStorage.getItem('userToken') }
       }
@@ -46,7 +46,7 @@ class FindSimilarHighSchoolScreen extends Component {
     this.setState({ isFirst: false })
     this.setState({ highSchoolList: [] })
     if (!this.state.isFirst) this.setState({ isSearching: true })
-    axios.post(BASE_URL + '/findSimilarHighSchool',
+    axios.post(BASE_URL + '/api/v1/findSimilarHighSchool',
       {
         highschoolName: this.state.searchInput,
         username: localStorage.getItem('username')

@@ -10,7 +10,7 @@ import {
 export function * searchSimilarHighSchoolAsync (action) {
   const token = localStorage.getItem('userToken')
   try {
-    const response = yield axios.post(BASE_URL + '/admin/finSimilarHighSchool',
+    const response = yield axios.post(BASE_URL + '/api/v1/admin/finSimilarHighSchool',
       {
         highschoolName: action.data
       },

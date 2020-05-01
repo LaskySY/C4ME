@@ -33,7 +33,7 @@ export function * registerUserAsync (action) {
 
 export function * loginUserAsync (action) {
   try {
-    const response = yield axios.post(BASE_URL + '/auth/login',
+    const response = yield axios.post(BASE_URL + '/api/v1/auth/login',
       {
         username: action.data.username,
         password: action.data.password,

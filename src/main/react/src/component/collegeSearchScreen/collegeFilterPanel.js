@@ -39,7 +39,7 @@ class Filter extends Component {
   }
 
   componentDidMount = () => {
-    axios.get(BASE_URL + '/collegeSearch/getmajor',
+    axios.get(BASE_URL + '/api/v1/collegeSearch/getmajor',
       {
         headers: { Authorization: localStorage.getItem('userToken') }
       }

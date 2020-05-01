@@ -13,7 +13,7 @@ class CollegePage extends Component {
   }
 
   componentDidMount = () => {
-    axios.get(BASE_URL + '/college',
+    axios.get(BASE_URL + '/api/v1/college',
       {
         headers: { Authorization: localStorage.getItem('userToken') },
         params: { name: this.props.match.params.collegeName }

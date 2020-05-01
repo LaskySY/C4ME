@@ -23,7 +23,7 @@ class AddingApplicationCard extends Component {
   }
 
   componentDidMount = () => {
-    axios.get(BASE_URL + '/profile/college',
+    axios.get(BASE_URL + '/api/v1/profile/college',
       { headers: { Authorization: localStorage.getItem('userToken') } }
     ).then(res => {
       if (res.data.code === 'success') {

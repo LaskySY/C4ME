@@ -37,12 +37,12 @@ class EditingEducationCard extends Component {
 
   componentDidMount = () => {
     axios.all([
-      axios.get(BASE_URL + '/profile/highSchool',
+      axios.get(BASE_URL + '/api/v1/profile/highSchool',
         {
           headers: { Authorization: localStorage.getItem('userToken') }
         }
       ),
-      axios.get(BASE_URL + '/collegeSearch/getmajor',
+      axios.get(BASE_URL + '/api/v1/collegeSearch/getmajor',
         {
           headers: { Authorization: localStorage.getItem('userToken') }
         }

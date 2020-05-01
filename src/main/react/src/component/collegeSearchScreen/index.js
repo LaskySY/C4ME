@@ -31,7 +31,7 @@ class collegeSearchScreen extends Component {
   handleSearch = () => {
     if (!this.state.isFirst) this.setState({ isLoading: true })
     this.setState({ collegeList: [] })
-    axios.post(BASE_URL + '/collegeSearch',
+    axios.post(BASE_URL + '/api/v1/collegeSearch',
       {
         name: this.state.searchInput !== '' ? this.state.searchInput : null,
         ...this.filterInputs,
@@ -63,7 +63,7 @@ class collegeSearchScreen extends Component {
   handleRecommender = () => {
     this.setState({ isLoading: true })
     this.setState({ collegeList: [] })
-    axios.post(BASE_URL + '/collegeRecommender',
+    axios.post(BASE_URL + '/api/v1/collegeRecommender',
       {
         collegeList: this.state.collegeList.map(college => college.name)
       },

@@ -8,7 +8,7 @@ import { BASE_URL } from '../config'
 
 export function * getApplicationAsync (action) {
   try {
-    const response = yield axios.get(BASE_URL + '/application',
+    const response = yield axios.get(BASE_URL + '/api/v1/application',
       {
         headers: { Authorization: localStorage.getItem('userToken') },
         params: { username: action.username }
@@ -29,7 +29,7 @@ export function * getApplicationAsync (action) {
 
 export function * updateApplicationAsync (action) {
   try {
-    const response = yield axios.post(BASE_URL + '/application',
+    const response = yield axios.post(BASE_URL + '/api/v1/application',
       {
         collegeId: action.data.college.value,
         admissionTerm: action.data.admissionTerm,
@@ -55,7 +55,7 @@ export function * updateApplicationAsync (action) {
 
 export function * deleteApplicationAsync (action) {
   try {
-    const response = yield axios.post(BASE_URL + '/application/delete',
+    const response = yield axios.post(BASE_URL + '/api/v1/application/delete',
       { collegeId: action.data.collegeId },
       {
         headers: { Authorization: localStorage.getItem('userToken') },

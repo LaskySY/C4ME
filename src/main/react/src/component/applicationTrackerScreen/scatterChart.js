@@ -128,106 +128,106 @@ class scatterChart extends Component {
     // construct initial mean dash lines
   }
 
-    handleRadioButton = (e) => {
-      var acceptedData = []
-      var rejectedData = []
-      var otherData = []
-      var dashedLineData = []
-      var basicLine = [
-        {
-          type: 'line',
-          mode: 'horizontal',
-          scaleID: 'y-axis-1',
-          value: 0,
-          borderColor: 'black',
-          borderWidth: 1,
-          borderDash: [3, 3],
-          label: {
-            enabled: false,
-            content: 'mean GPA'
-          }
-        },
-        {
-          type: 'line',
-          mode: 'vertical',
-          scaleID: 'x-axis-1',
-          value: 0,
-          borderColor: 'black',
-          borderWidth: 1,
-          borderDash: [3, 3],
-          label: {
-            enabled: false,
-            content: 'mean SAT'
-          }
+  handleRadioButton = (e) => {
+    var acceptedData = []
+    var rejectedData = []
+    var otherData = []
+    var dashedLineData = []
+    var basicLine = [
+      {
+        type: 'line',
+        mode: 'horizontal',
+        scaleID: 'y-axis-1',
+        value: 0,
+        borderColor: 'black',
+        borderWidth: 1,
+        borderDash: [3, 3],
+        label: {
+          enabled: false,
+          content: 'mean GPA'
         }
-      ]
-      this.props.profileList.forEach(student => {
-        if (e.target.name === 'SAT') {
-          if (student.applicationStatus === 'Accepted') {
-            if (student.satMath === null) { acceptedData.push({ x: student.satEbrw, y: student.gpa }) } else if (student.satEbrw === null) { acceptedData.push({ x: student.satMath, y: student.gpa }) } else if (student.satEbrw !== null && student.satMath !== null) { acceptedData.push({ x: student.satEbrw + student.satMath, y: student.gpa }) }
-          } else if (student.applicationStatus === 'Denied') {
-            if (student.satMath === null) { rejectedData.push({ x: student.satEbrw, y: student.gpa }) } else if (student.satEbrw === null) { rejectedData.push({ x: student.satMath, y: student.gpa }) } else if (student.satEbrw !== null && student.satMath !== null) { rejectedData.push({ x: student.satEbrw + student.satMath, y: student.gpa }) }
-          } else {
-            if (student.satMath === null) { otherData.push({ x: student.satEbrw, y: student.gpa }) } else if (student.satEbrw === null) { otherData.push({ x: student.satMath, y: student.gpa }) } else if (student.satEbrw !== null && student.satMath !== null) { otherData.push({ x: student.satEbrw + student.satMath, y: student.gpa }) }
-          }
-        } else if (e.target.name === 'ACT') {
-          if (student.applicationStatus === 'Accepted') {
-            if (student.actComposite !== null) { acceptedData.push({ x: student.actComposite, y: student.gpa }) }
-          } else if (student.applicationStatus === 'Denied') {
-            if (student.actComposite !== null) { rejectedData.push({ x: student.actComposite, y: student.gpa }) }
-          } else {
-            if (student.actComposite !== null) { otherData.push({ x: student.actComposite, y: student.gpa }) }
-          }
-        } else {
-          if (student.applicationStatus === 'Accepted') {
-            if (student.weightedAvgPercentileScore !== null) { acceptedData.push({ x: student.weightedAvgPercentileScore, y: student.gpa }) }
-          } else if (student.applicationStatus === 'Denied') {
-            if (student.weightedAvgPercentileScore !== null) { rejectedData.push({ x: student.weightedAvgPercentileScore, y: student.gpa }) }
-          } else {
-            if (student.actComposite !== null) { otherData.push({ x: student.weightedAvgPercentileScore, y: student.gpa }) }
-          }
-        }
-      })
-      if (e.target.name === 'SAT') {
-        if ((this.props.meanGpa !== 0 && this.props.meanGpa !== null) && (this.props.meanSat !== 0 && this.props.meanSat !== null)) {
-          basicLine[0].value = this.props.meanGpa
-          basicLine[1].value = this.props.meanSat
-          dashedLineData = basicLine
-        }
-      } else if (e.target.name === 'ACT') {
-        if ((this.props.meanGpa !== 0 && this.props.meanGpa !== null) && (this.props.meanAct !== 0 && this.props.meanAct !== null)) {
-          basicLine[0].value = this.props.meanGpa
-          basicLine[1].value = this.props.meanAct
-          dashedLineData = basicLine
-        }
-      } else {
-        if ((this.props.meanGpa !== 0 && this.props.meanGpa !== null) && (this.props.meanWeightedAvgPercentileScore !== 0 && this.props.meanWeightedAvgPercentileScore !== null)) {
-          console.log('should run', this.props.meanWeightedAvgPercentileScore)
-          basicLine[0].value = this.props.meanGpa
-          basicLine[1].value = this.props.meanWeightedAvgPercentileScore
-          dashedLineData = basicLine
+      },
+      {
+        type: 'line',
+        mode: 'vertical',
+        scaleID: 'x-axis-1',
+        value: 0,
+        borderColor: 'black',
+        borderWidth: 1,
+        borderDash: [3, 3],
+        label: {
+          enabled: false,
+          content: 'mean SAT'
         }
       }
-      var newChartData = this.state.chartData
-      var newOptions = this.state.options
-      newChartData.datasets[0].data = acceptedData
-      newChartData.datasets[1].data = rejectedData
-      newChartData.datasets[2].data = otherData
-      newOptions.annotation.annotations = dashedLineData
-      this.setState({
-        chartData: newChartData,
-        scoreType: e.target.name,
-        options: newOptions
-      })
+    ]
+    this.props.profileList.forEach(student => {
+      if (e.target.name === 'SAT') {
+        if (student.applicationStatus === 'Accepted') {
+          if (student.satMath === null) { acceptedData.push({ x: student.satEbrw, y: student.gpa }) } else if (student.satEbrw === null) { acceptedData.push({ x: student.satMath, y: student.gpa }) } else if (student.satEbrw !== null && student.satMath !== null) { acceptedData.push({ x: student.satEbrw + student.satMath, y: student.gpa }) }
+        } else if (student.applicationStatus === 'Denied') {
+          if (student.satMath === null) { rejectedData.push({ x: student.satEbrw, y: student.gpa }) } else if (student.satEbrw === null) { rejectedData.push({ x: student.satMath, y: student.gpa }) } else if (student.satEbrw !== null && student.satMath !== null) { rejectedData.push({ x: student.satEbrw + student.satMath, y: student.gpa }) }
+        } else {
+          if (student.satMath === null) { otherData.push({ x: student.satEbrw, y: student.gpa }) } else if (student.satEbrw === null) { otherData.push({ x: student.satMath, y: student.gpa }) } else if (student.satEbrw !== null && student.satMath !== null) { otherData.push({ x: student.satEbrw + student.satMath, y: student.gpa }) }
+        }
+      } else if (e.target.name === 'ACT') {
+        if (student.applicationStatus === 'Accepted') {
+          if (student.actComposite !== null) { acceptedData.push({ x: student.actComposite, y: student.gpa }) }
+        } else if (student.applicationStatus === 'Denied') {
+          if (student.actComposite !== null) { rejectedData.push({ x: student.actComposite, y: student.gpa }) }
+        } else {
+          if (student.actComposite !== null) { otherData.push({ x: student.actComposite, y: student.gpa }) }
+        }
+      } else {
+        if (student.applicationStatus === 'Accepted') {
+          if (student.weightedAvgPercentileScore !== null) { acceptedData.push({ x: student.weightedAvgPercentileScore, y: student.gpa }) }
+        } else if (student.applicationStatus === 'Denied') {
+          if (student.weightedAvgPercentileScore !== null) { rejectedData.push({ x: student.weightedAvgPercentileScore, y: student.gpa }) }
+        } else {
+          if (student.actComposite !== null) { otherData.push({ x: student.weightedAvgPercentileScore, y: student.gpa }) }
+        }
+      }
+    })
+    if (e.target.name === 'SAT') {
+      if ((this.props.meanGpa !== 0 && this.props.meanGpa !== null) && (this.props.meanSat !== 0 && this.props.meanSat !== null)) {
+        basicLine[0].value = this.props.meanGpa
+        basicLine[1].value = this.props.meanSat
+        dashedLineData = basicLine
+      }
+    } else if (e.target.name === 'ACT') {
+      if ((this.props.meanGpa !== 0 && this.props.meanGpa !== null) && (this.props.meanAct !== 0 && this.props.meanAct !== null)) {
+        basicLine[0].value = this.props.meanGpa
+        basicLine[1].value = this.props.meanAct
+        dashedLineData = basicLine
+      }
+    } else {
+      if ((this.props.meanGpa !== 0 && this.props.meanGpa !== null) && (this.props.meanWeightedAvgPercentileScore !== 0 && this.props.meanWeightedAvgPercentileScore !== null)) {
+        basicLine[0].value = this.props.meanGpa
+        basicLine[1].value = this.props.meanWeightedAvgPercentileScore
+        dashedLineData = basicLine
+      }
     }
+    var newChartData = this.state.chartData
+    var newOptions = this.state.options
+    newChartData.datasets[0].data = acceptedData
+    newChartData.datasets[1].data = rejectedData
+    newChartData.datasets[2].data = otherData
+    newOptions.annotation.annotations = dashedLineData
+    this.setState({
+      chartData: newChartData,
+      scoreType: e.target.name,
+      options: newOptions
+    })
+  }
 
-    render () {
-      return (
+  render () {
+    return (
         <div style={{ width: '600px', height: '500px' }} className="chart">
-          <h5 style={{
+          <h6 style={{
             fontWeight: 'bold',
-            fontFamily: 'Asul'
-          }}>GPA</h5>
+            fontFamily: 'Asul',
+            marginTop: '20px'
+          }}>GPA</h6>
           <Scatter data={this.state.chartData} options={this.state.options}/>
           <div className="btn-group btn-group-toggle" data-toggle="buttons" style={{ marginLeft: '130px' }}>
             <label className={this.state.scoreType === 'SAT' ? 'btn btn-secondary active' : 'btn btn-secondary'}>
@@ -241,8 +241,8 @@ class scatterChart extends Component {
             </label>
           </div>
         </div>
-      )
-    }
+    )
+  }
 }
 
 export default scatterChart

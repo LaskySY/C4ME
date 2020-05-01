@@ -20,7 +20,7 @@ import static com.c4me.server.config.constant.Const.Filenames.*;
  */
 
 @RestController
-@RequestMapping("/admin/college/data")
+@RequestMapping("/api/v1/admin/college/data")
 public class ScrapeCollegeDataController {
 
   @Autowired

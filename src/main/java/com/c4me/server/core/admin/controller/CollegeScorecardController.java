@@ -25,7 +25,7 @@ import static com.c4me.server.config.constant.Const.Filenames.*;
  */
 
 @RestController
-@RequestMapping("/admin/college/scorecard")
+@RequestMapping("/api/v1/admin/college/scorecard")
 public class CollegeScorecardController {
 
     @Autowired

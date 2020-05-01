@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/admin/application")
+@RequestMapping("/api/v1/admin/application")
 public class QuestionableDecisionsController {
 
     @Autowired

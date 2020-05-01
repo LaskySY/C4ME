@@ -18,7 +18,7 @@ import static com.c4me.server.config.constant.Const.Filenames.DATA_DIR;
  */
 
 @RestController
-@RequestMapping("/createTestStudentsCSV")
+@RequestMapping("/api/v1/createTestStudentsCSV")
 public class CreateTestStudentsController {
 
     @Autowired

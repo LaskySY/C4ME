@@ -19,7 +19,7 @@ import java.util.HashMap;
  */
 
 @RestController
-@RequestMapping("/application")
+@RequestMapping("/api/v1/application")
 public class ApplicationController {
 
     @Autowired

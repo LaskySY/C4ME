@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  */
 
 @RestController
-@RequestMapping("/findSimilarHighSchool")
+@RequestMapping("/api/v1/findSimilarHighSchool")
 public class SimilarHighSchoolController {
 
     @Autowired

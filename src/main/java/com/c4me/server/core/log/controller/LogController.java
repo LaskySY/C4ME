@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @ResponseBody
-@RequestMapping("/log")
+@RequestMapping("/api/v1/log")
 public class LogController {
 
    @Autowired

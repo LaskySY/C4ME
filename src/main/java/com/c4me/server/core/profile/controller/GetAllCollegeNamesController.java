@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  */
 
 @RestController
-@RequestMapping("/profile/college")
+@RequestMapping("/api/v1/profile/college")
 public class GetAllCollegeNamesController {
 
     @Autowired

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/matchStudents")
+@RequestMapping("/api/v1/matchStudents")
 public class GetMatchingStudentsController {
 
   @Autowired

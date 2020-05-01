@@ -20,7 +20,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/profile/highSchool")
+@RequestMapping("/api/v1/profile/highSchool")
 
 public class GetAllHighschoolNamesController {
 

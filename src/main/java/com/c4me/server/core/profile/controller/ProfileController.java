@@ -20,7 +20,7 @@ import java.util.HashMap;
  */
 
 @RestController
-@RequestMapping("/profile")
+@RequestMapping("/api/v1/profile")
 public class ProfileController {
 
     @Autowired

@@ -16,7 +16,7 @@ import java.io.IOException;
  */
 
 @RestController
-@RequestMapping("/admin/college/rank")
+@RequestMapping("/api/v1/admin/college/rank")
 public class ScrapeCollegeRankingsController {
 
     @Autowired

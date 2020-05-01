@@ -36,7 +36,7 @@ public class HighSchoolScraperServiceController {
      * @throws IOException
      * @throws HighSchoolDoesNotExistException
      */
-    @PostMapping("/testHighSchoolScrape")
+    @PostMapping("/api/v1/testHighSchoolScrape")
     public BaseResponse scrapeHighSchool(@RequestParam String hsQuery) throws IOException, HighSchoolDoesNotExistException {
         if(hsQuery == null || hsQuery.equals("")) {
             return BaseResponse.builder().code("failure").message("empty query").data(null).build();
@@ -56,7 +56,7 @@ public class HighSchoolScraperServiceController {
      * @throws IOException
      */
     //this request is for testing purposes only
-    @PostMapping("/testFindHighSchoolURL")
+    @PostMapping("/api/v1/testFindHighSchoolURL")
     public BaseResponse<String> findHighSchoolUrls(@RequestParam String hsQuery) throws IOException {
         if(hsQuery == null || hsQuery.equals("")) {
             return BaseResponse.<String>builder().code("failure").message("empty query").data(null).build();
@@ -69,7 +69,7 @@ public class HighSchoolScraperServiceController {
                 .data(match).build();
     }
 
-    @PostMapping("/testScrapeHSFile")
+    @PostMapping("/api/v1/testScrapeHSFile")
     @LogAndWrap(log="test scrape all")
     public void scrapeHSFile() throws IOException, HighSchoolDoesNotExistException {
         File file = TestingDataUtils.findFile("all_highschools_mirror.txt");

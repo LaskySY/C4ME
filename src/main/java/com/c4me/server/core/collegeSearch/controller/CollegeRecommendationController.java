@@ -18,7 +18,7 @@ import java.util.Map;
  */
 
 @RestController
-@RequestMapping("/collegeRecommender")
+@RequestMapping("/api/v1/collegeRecommender")
 public class CollegeRecommendationController {
 
     @Autowired

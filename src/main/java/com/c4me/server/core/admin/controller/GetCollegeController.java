@@ -20,7 +20,7 @@ import java.util.HashMap;
 
 
 @RestController
-@RequestMapping("/admin/college")
+@RequestMapping("/api/v1/admin/college")
 public class GetCollegeController {
 
     @Autowired

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/college")
+@RequestMapping("/api/v1/college")
 public class GetCollegeInfoController {
 
     @Autowired

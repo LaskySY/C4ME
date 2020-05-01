@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/collegeSearch")
+@RequestMapping("/api/v1/collegeSearch")
 public class CollegeSearchController {
 
     @Autowired

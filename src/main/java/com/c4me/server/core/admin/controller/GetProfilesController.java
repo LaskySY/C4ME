@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  */
 
 @RestController
-@RequestMapping("/admin/profile")
+@RequestMapping("/api/v1/admin/profile")
 public class GetProfilesController {
 
     @Autowired

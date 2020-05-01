@@ -90,7 +90,8 @@ public class ApplicationServiceImpl {
             return false; //only acceptances or rejections can be questionable
         }
 
-        ProfileEntity pe = profileRepository.findByUsername(ue.getUsername());
+        ProfileEntity pe = ue.getProfileByUsername();
+        //ProfileEntity pe = profileRepository.findByUsername(ue.getUsername());
         if(pe == null) return false;
 
         boolean questionable = false;

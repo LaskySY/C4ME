@@ -1,16 +1,20 @@
 package com.c4me.server.core.profile.controller;
 
+import com.c4me.server.config.annotation.LogAndWrap;
 import com.c4me.server.config.exception.HighSchoolDoesNotExistException;
 import com.c4me.server.core.profile.service.HighSchoolScraperServiceImpl;
 import com.c4me.server.domain.BaseResponse;
 import com.c4me.server.utils.SearchHSUtils;
+import com.c4me.server.utils.TestingDataUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @Description:  Test controller for the high school scraper service
@@ -63,5 +67,15 @@ public class HighSchoolScraperServiceController {
                 .code("success")
                 .message("")
                 .data(match).build();
+    }
+
+    @PostMapping("/testScrapeHSFile")
+    @LogAndWrap(log="test scrape all")
+    public void scrapeHSFile() throws IOException, HighSchoolDoesNotExistException {
+        File file = TestingDataUtils.findFile("all_highschools_mirror.txt");
+        List<String> hs = TestingDataUtils.readFile(file);
+        for(String h : hs) {
+            highSchoolScraperService.scrapeHighSchool(h, true);
+        }
     }
 }

@@ -36,7 +36,7 @@ public class GetAllHighschoolNamesServiceImpl {
                 builder.append(word+" ");
             }
             if(i == words.length-1) {
-                word = word.substring(0, word.length()-1);
+                if(word.endsWith("/")) word = word.substring(0, word.length()-1);
                 word=word.toUpperCase();
                 builder.append(word);
             }

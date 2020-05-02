@@ -71,7 +71,7 @@ class applicationTrackerScreen extends Component {
     if (!this.state.isFirst) this.setState({ isSearching: true })
     this.setState({ profileList: [] })
     if (this.state.searchInput !== this.oldSearchInput) { this.filterInputs = {} }
-    axios.post(BASE_URL + '/matchStudents',
+    axios.post(BASE_URL + '/api/v1/matchStudents',
         {
           name: this.state.searchInput !== '' ? this.state.searchInput : null,
           ...this.filterInputs

@@ -8,7 +8,7 @@ import lombok.Setter;
 import static com.c4me.server.config.constant.Const.Status.STATUS_MAP;
 
 /**
- * @Description:
+ * @Description: Student application object that may be safely passed to frontend
  * @Author: Maciej Wlodek
  * @CreateDate: 03-19-2020
  */

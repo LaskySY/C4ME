@@ -1,0 +1,37 @@
+.college-title-box {
+    text-align: center;
+}
+
+.college-title{
+    margin: 0 auto;
+    font-family: Asul;
+    font-size: 3rem;
+}
+
+.application-button{
+    height: 2rem;
+    margin-right: 70px;
+}
+
+.college_list_item {
+    padding: 6px;
+    margin:1px;
+}
+
+.college_list {
+    margin-bottom: 30px;
+    padding-bottom:10px;
+    padding-top:13px;
+    padding-right: 60px;
+    padding-left: 60px;
+}
+
+.college_list_title {
+    height: 40px;
+    text-align: center;
+}
+
+.list-group-fill-color {
+    border-radius: 80px !important;
+    background: linear-gradient(var(--color-bg), var(--color-fillin),var(--color-bg));
+}

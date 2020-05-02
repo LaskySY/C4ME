@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @Description:
+ * @Description: Wrapper around username
  * @Author: Maciej Wlodek
  * @CreateDate: 03-15-2020
  */

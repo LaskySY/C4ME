@@ -10,18 +10,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Description:
+ * @Description: Controller for the collegeInfo service
  * @Author: Maciej Wlodek
  * @CreateDate: 04-13-2020
  */
 
 @RestController
-@RequestMapping("/college")
+@RequestMapping("/api/v1/college")
 public class GetCollegeInfoController {
 
     @Autowired
     CollegeSearchServiceImpl collegeSearchService;
 
+    /**
+     * Get college info for a single college
+     * @param name {@link String} name of the college
+     * @return {@link CollegeInfo}
+     */
     @GetMapping
     @LogAndWrap(log="get college info", wrap=true)
     public CollegeInfo getCollegeInfo(@RequestParam String name) {

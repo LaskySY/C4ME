@@ -10,18 +10,23 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 /**
- * @Description:
+ * @Description: Controller for the scrapeCollegeRankings service
  * @Author: Maciej Wlodek
  * @CreateDate: 03-20-2020
  */
 
 @RestController
-@RequestMapping("/admin/college/rank")
+@RequestMapping("/api/v1/admin/college/rank")
 public class ScrapeCollegeRankingsController {
 
     @Autowired
     ScrapeCollegeRankingsServiceImpl scrapeCollegeRankingsService;
 
+    /**
+     * Controller for the scrapeCollegeRankings service
+     * @return Empty {@link BaseResponse}
+     * @throws IOException
+     */
     @PostMapping
     public BaseResponse scrapeCollegeRankings() throws IOException {
         scrapeCollegeRankingsService.scrapeRankings();

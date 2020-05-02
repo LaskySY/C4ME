@@ -50,11 +50,15 @@ public final class Const {
     public static final Integer ACCEPTED = 1;
     public static final Integer DENIED = 2;
     public static final Integer WAITLISTED = 3;
+    public static final Integer DEFERRED = 4;
+    public static final Integer WITHDRAWN = 5;
 
     public static final String PENDING_STR = "Pending";
     public static final String ACCEPTED_STR = "Accepted";
     public static final String DENIED_STR = "Denied";
     public static final String WAITLISTED_STR = "Waitlisted";
+    public static final String DEFERRED_STR = "Deferred";
+    public static final String WITHDRAWN_STR = "Withdrawn";
 
     public static final Map<Integer, String> STATUS_MAP = new HashMap<Integer, String>() {
       {
@@ -62,6 +66,8 @@ public final class Const {
         put(ACCEPTED, ACCEPTED_STR);
         put(DENIED, DENIED_STR);
         put(WAITLISTED, WAITLISTED_STR);
+        put(DEFERRED, DEFERRED_STR);
+        put(WITHDRAWN, WITHDRAWN_STR);
       }
     };
 
@@ -145,6 +151,23 @@ public final class Const {
     public static final Double SCHOOL_FACTOR_WEIGHT = 0.2;
   }
 
+  public final static class ProfileWeightedPercentileConst {
+
+    public static final Double SUBJECT_TEST_WEIGHT = 0.05;
+
+  }
+
+  public final static class StatisticalSummary {
+    public static final String[] FIELDS = {
+            ProfileEntity_.SAT_EBRW,
+            ProfileEntity_.SAT_MATH,
+            ProfileEntity_.ACT_COMPOSITE,
+            ProfileEntity_.GPA,
+            "weightedAvgPercentileScore",
+            "sat"
+    };
+  }
+
   public final static class Types {
     public static final Integer PUBLIC = 1;
     public static final Integer PRIVATE = 2;
@@ -216,7 +239,7 @@ public final class Const {
     public static String LAST_NAMES_FILE = "lastNames.txt";
 
     public static String SEP = File.separator;
-    public static String DATA_DIR = "c4me" + SEP + "src" + SEP + "data" + SEP;
+    public static String DATA_DIR = "src" + SEP + "data" + SEP;
 
     public static String TEST_HIGH_SCHOOL_URL = "https://www.niche.com/k12/east-islip-high-school-islip-terrace-ny";
     public static String TEST_HIGH_SCHOOL_SEARCH_URL = "https://www.niche.com/search/?q=east%20islip%20high%20school";
@@ -230,6 +253,8 @@ public final class Const {
     public static String NICHE_PREFIX = "https://www.niche.com/k12/";
 
     public static String COLLEGE_DATA_PREFIX = "https://www.collegedata.com/college/";
+
+    public static String PERCENTILES_FILE = "percentiles.csv";
 
     public static void readConfigFile() {
       System.out.println("reading config file");
@@ -251,10 +276,34 @@ public final class Const {
         ALL_HIGH_SCHOOLS_FILE = properties.getProperty("ALL_HIGH_SCHOOLS_FILE", ALL_HIGH_SCHOOLS_FILE);
         NICHE_PREFIX = properties.getProperty("NICHE_PREFIX", NICHE_PREFIX);
         COLLEGE_DATA_PREFIX = properties.getProperty("COLLEGE_DATA_PREFIX", COLLEGE_DATA_PREFIX);
+        PERCENTILES_FILE = properties.getProperty("PERCENTILES_FILE", PERCENTILES_FILE);
       } catch (IOException e) {
         System.out.println("Could not find configuration file; using default values");
       }
     }
+  }
+
+  public final static class Percentiles {
+    public static final String[] SAT_SUBJECT_TESTS = {
+            ProfileEntity_.SAT_CHEMISTRY,
+            ProfileEntity_.SAT_ECO_BIO,
+            ProfileEntity_.SAT_LITERATURE,
+            ProfileEntity_.SAT_MATH_I,
+            ProfileEntity_.SAT_MATH_II,
+            ProfileEntity_.SAT_MOL_BIO,
+            ProfileEntity_.SAT_PHYSICS,
+            ProfileEntity_.SAT_US_HIST,
+            ProfileEntity_.SAT_WORLD_HIST
+    };
+    public static final String[] SAT_MAIN_TESTS = {
+            ProfileEntity_.SAT_MATH,
+            ProfileEntity_.SAT_EBRW
+    };
+    public static final String[] ACT_TESTS = {
+            ProfileEntity_.ACT_COMPOSITE
+    };
+
+    public static final double SAT_SUBJECT_WEIGHT = 0.05;
   }
 
   public final static class CollegeScorecardHeaders {

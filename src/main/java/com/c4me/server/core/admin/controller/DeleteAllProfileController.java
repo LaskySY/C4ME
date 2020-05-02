@@ -17,7 +17,7 @@ import java.io.*;
  */
 
 @RestController
-@RequestMapping("/admin/profile/delete")
+@RequestMapping("/api/v1/admin/profile/delete")
 public class DeleteAllProfileController {
 
   @Autowired

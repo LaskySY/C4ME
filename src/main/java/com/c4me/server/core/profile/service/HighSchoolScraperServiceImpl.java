@@ -53,16 +53,17 @@ public class HighSchoolScraperServiceImpl {
 
     final Random random = new Random(System.currentTimeMillis());
 
+    /**
+     * Scrape the base site of a niche.com high school page
+     * @param webpage {@link String} page to scrape from
+     * @param highschoolEntity {@link HighschoolEntity} the entity to update
+     * @return boolean
+     * @throws IOException
+     */
     public boolean scrapeBaseSite(String webpage, HighschoolEntity highschoolEntity) throws IOException {
         URL url = new URL(webpage);
         Document nicheBaseDoc = openWebpage(url);
         //Document nicheBaseDoc = openWebpage("base_page_test.html");
-
-
-//        Element nameHeader = nicheBaseDoc.selectFirst("h1.postcard__title");
-//        if(nameHeader == null) return false;
-//        highschoolEntity.setName(nameHeader.ownText());
-
 
         Element attributesElement = nicheBaseDoc.selectFirst("ul.postcard__attrs");
         Elements gradeAttribute = attributesElement.select("li.postcard__attr.postcard__attr--has-grade");
@@ -98,6 +99,13 @@ public class HighSchoolScraperServiceImpl {
         return true;
     }
 
+    /**
+     * Scrape the academics site of a niche.com high school
+     * @param webpage {@link String} the url of the page to scrape from
+     * @param highschoolEntity {@link HighschoolEntity} the entity to update
+     * @return {@link HashMap} containing two keys: "majors" with the list of majors, and "colleges" with the list of colleges
+     * @throws IOException
+     */
     //return map with two elements: ("majors", List of major strings), ("colleges", List of college names)
     public HashMap<String, List<String>> scrapeAcademicsSite(String webpage, HighschoolEntity highschoolEntity) throws IOException {
         String suffix = "academics/";
@@ -123,6 +131,11 @@ public class HighSchoolScraperServiceImpl {
         return result;
     }
 
+    /**
+     * Scrape the list of popular colleges at a certain high school
+     * @param collegesElement {@link Element} the colleges card from the niche.com academics site for some high school
+     * @return {@link List} of popular college names
+     */
     public List<String> getPopularColleges(Element collegesElement) {
         if(collegesElement == null) return new ArrayList<String>();
         List<String> popularColleges = new ArrayList<>();
@@ -133,6 +146,12 @@ public class HighSchoolScraperServiceImpl {
         }
         return popularColleges;
     }
+
+    /**
+     * Get a list of popular majors for a certain high school
+     * @param majorsElement {@link Element} the majors card from the niche.com academics site for some high school
+     * @return {@link List} of majors
+     */
     public List<String> getPopularMajors(Element majorsElement) {
         if(majorsElement == null) return new ArrayList<>();
         List<String> popularMajors = new ArrayList<>();
@@ -144,6 +163,11 @@ public class HighSchoolScraperServiceImpl {
         return popularMajors;
     }
 
+    /**
+     * Get the test scores for the current high school
+     * @param scoresElement {@link Element} the scores card on niche.com
+     * @param highschoolEntity {@link HighschoolEntity} the entity to update
+     */
     public void getAllScores(Element scoresElement, HighschoolEntity highschoolEntity) {
         if(scoresElement == null || highschoolEntity == null) return;
         Elements scalars = scoresElement.select("div.scalar__label");
@@ -198,6 +222,11 @@ public class HighSchoolScraperServiceImpl {
         }
     }
 
+    /**
+     * Get a single score for a high school
+     * @param scalarLabel {@link Element} the niche div of a test score
+     * @return {@link Integer} the score
+     */
     public Integer getScore(Element scalarLabel) {
         if(scalarLabel == null || scalarLabel.siblingElements().size() == 0) return -1;
         Element parent = scalarLabel.parent();
@@ -212,6 +241,12 @@ public class HighSchoolScraperServiceImpl {
         }
     }
 
+    /**
+     * Open a webpage and parse it with jsoup
+     * @param url {@link URL} to open
+     * @return {@link Document} parsed html document
+     * @throws IOException
+     */
     public Document openWebpage(URL url) throws IOException {
         URLConnection conn = url.openConnection();
         System.out.println(conn.getRequestProperties());
@@ -252,6 +287,11 @@ public class HighSchoolScraperServiceImpl {
 //        return Jsoup.parse(tmp.toString());
 //    }
 
+    /**
+     * @deprecated
+     * @param matches {@link String}
+     * @return {@link String}
+     */
     //matches earlier in the line are worth more (more likely matching high school and not just accidental city matches)
     public String getBestMatch(HashMap<String, Integer> matches) {
         int min = Integer.MAX_VALUE;
@@ -270,11 +310,21 @@ public class HighSchoolScraperServiceImpl {
 //        return matches.keySet().stream().collect(Collectors.toList());
 //    }
 
+    /** Build a niche.com url from a matched line
+     * @param match {@link String}
+     * @return {@link String} full url
+     */
     public String buildUrl(String match) {
         String url = NICHE_PREFIX + match;
         if(!url.endsWith("/")) url += "/";
         return url;
     }
+
+    /**
+     * Parse a name from all_highschools.txt into name, city and state
+     * @param name {@link String}
+     * @return {@link String} parsed name
+     */
     private String parseHSName(String name) {
         String[] words = name.split("-");
         StringBuilder builder = new StringBuilder();
@@ -287,7 +337,7 @@ public class HighSchoolScraperServiceImpl {
                 builder.append(word+" ");
             }
             if(i == words.length-1) {
-                word = word.substring(0, word.length()-1);
+                if(word.endsWith("/")) word = word.substring(0, word.length()-1);
                 word=word.toUpperCase();
                 builder.append(word);
             }
@@ -295,9 +345,25 @@ public class HighSchoolScraperServiceImpl {
         return builder.toString();
     }
 
+    /**
+     * Scrape a high school, even if it already exists in our database
+     * @param query {@link String}
+     * @return {@link HighschoolEntity} the scraped entity
+     * @throws IOException
+     * @throws HighSchoolDoesNotExistException
+     */
     public HighschoolEntity scrapeHighSchool(String query) throws IOException, HighSchoolDoesNotExistException {
         return scrapeHighSchool(query, true);
     }
+
+    /**
+     * Scrape a high school on Niche.com
+     * @param query {@link String} - optimally, should be name city state. Just name might work as well, though not as accurately
+     * @param scrapeEvenIfFound boolean - if false, will just return the existing entity
+     * @return {@link HighschoolEntity} the found or newly scraped entity
+     * @throws IOException
+     * @throws HighSchoolDoesNotExistException
+     */
     public HighschoolEntity scrapeHighSchool(String query, boolean scrapeEvenIfFound) throws IOException, HighSchoolDoesNotExistException {
         System.out.println("trying to find niche url");
 //        HashMap<String, Integer> matches =  SearchHSUtils.searchForNicheUrl(query);
@@ -400,6 +466,12 @@ public class HighSchoolScraperServiceImpl {
         return entity;
     }
 
+    /**
+     * match a college name from niche.com to one in our database
+     * @param collegeString {@link String}
+     * @param allColleges {@link List} of all college names
+     * @return the index of the best match, or -1 if no match exists
+     */
     //TODO: we need to improve this method (use fuzzy search)
     private int matchCollege(String collegeString, List<String> allColleges) {
         for(int i=0; i < allColleges.size(); i++) {
@@ -409,6 +481,12 @@ public class HighSchoolScraperServiceImpl {
         return -1;
     }
 
+    /**
+     * Match a major from niche.com to one in our database
+     * @param major {@link String}
+     * @param majorsInDatabase {@link List} of all majors
+     * @return the index of the best match, or -1 if no match exists
+     */
     private int matchMajor(String major, List<String> majorsInDatabase) {
         for(int i=0; i < majorsInDatabase.size(); i++) {
             String majorI = majorsInDatabase.get(i);
@@ -417,6 +495,11 @@ public class HighSchoolScraperServiceImpl {
         return -1;
     }
 
+    /**
+     * Truncate a major to at most 45 characters (longest supported by our database)
+     * @param major {@link String}
+     * @return {@link String} the truncated major
+     */
     private String truncateMajor(String major) {
         if(major.length() < 45) return major;
         if(!major.contains(" ")) return major.substring(0,44);

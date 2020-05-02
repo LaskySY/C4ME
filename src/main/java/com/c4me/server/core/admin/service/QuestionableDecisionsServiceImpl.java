@@ -21,7 +21,7 @@ import static com.c4me.server.config.constant.Const.Questionable.OK;
 import static com.c4me.server.config.constant.Const.Questionable.QUESTIONABLE;
 
 /**
- * @Description:
+ * @Description: Implementation of the questionableDecisions service
  * @Author: Maciej Wlodek
  * @CreateDate: 03-24-2020
  */
@@ -36,19 +36,29 @@ public class QuestionableDecisionsServiceImpl {
     @Autowired
     CollegeRepository collegeRepository;
 
+    /**
+     * @return {@link List} of all {@link StudentApplication}'s found in the database
+     */
     public List<StudentApplication> getQuestionableDecisions() {
         List<StudentApplicationEntity> applicationEntities = studentApplicationRepository.findAllByQuestionable(QUESTIONABLE);
         List<StudentApplication> applications = applicationEntities.stream().map(StudentApplication::new).collect(Collectors.toList());
         return applications;
     }
 
+    /**
+     * Change a questionable decision to either {@literal OK} or {@literal DISHONEST}
+     * @param studentApplication the {@link StudentApplication} object to update in the database
+     * @throws UserDoesNotExistException
+     * @throws CollegeDoesNotExistException
+     */
     public void changeQuestionableDecision(StudentApplication studentApplication) throws UserDoesNotExistException, CollegeDoesNotExistException {
         UserEntity ue = userRepository.findByUsername(studentApplication.getUsername());
-        CollegeEntity ce = collegeRepository.findById(studentApplication.getCollegeId()).get();
+        Optional<CollegeEntity> ce_opt = collegeRepository.findById(studentApplication.getCollegeId());
 
         if(ue == null) throw new UserDoesNotExistException("user does not exist");
-        if(ce == null) throw new CollegeDoesNotExistException("college does not exist");
+        if(!ce_opt.isPresent()) throw new CollegeDoesNotExistException("college does not exist");
 
+        CollegeEntity ce = ce_opt.get();
 
         StudentApplicationEntityPK studentApplicationEntityPK = StudentApplicationEntityPK.builder()
                 .collegeId(ce.getId())

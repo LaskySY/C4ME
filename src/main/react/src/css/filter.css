@@ -1,0 +1,113 @@
+.filter_tag:hover {
+  color: orange;
+}
+
+.filter_tag_row, .filter_limit_row {
+  margin-top: 1px;
+  margin-bottom: 8px;
+}
+
+.select {
+  box-shadow: 0 .2rem .5rem rgba(0,0,0,.25);
+}
+
+.filter_tag {
+  display: inline-block;
+  color: black;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: 2px;
+  margin-right: 10px;
+  margin-bottom: 2px;
+}
+
+.filter_textfield {
+  border: 0px;
+  border-bottom: 1px solid rgb(161, 159, 159);
+  display:inline;
+  padding: 5px;
+  height: 32px;
+  width: 50px;
+}
+
+.filter_textfield:focus {
+  border-color: black;
+}
+
+.filter_textfield.invalid,
+.filter_textfield.invalid:focus {
+  border-bottom: 1px solid red;
+}
+
+.filter_tag,
+.list-group-item {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border: 0px;
+  line-height: 32px;
+}
+
+.filter_label, .filter_content {
+  line-height: 32px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.filter_label {
+  margin-right: 25px;
+}
+
+.filter_button:hover {
+  background-color: var(--color-button);
+  color: white;
+}
+
+
+.filter_button {
+  color: var(--color-button);
+  border-color: var(--color-button);
+  margin-left:10px;
+  padding-top: 4px;
+  height:32px;
+}
+.filter_button.disabled:hover {
+  background-color: white;
+}
+
+.filter_button.disabled {
+  opacity: 0.5;
+  color: grey;
+  border-color: grey;
+}
+
+.collapse_panel {
+  word-wrap: break-word;
+  padding: 8px;
+  margin-bottom: 13px;
+}
+
+.filter_menu {
+  margin-bottom: 40px;
+}
+
+.tags-container {
+  margin-top: 6px;
+  position:relative;
+  line-height:1.5em;
+  max-height:6.5em;
+  overflow:auto;
+  overflow-x:hidden;
+}
+
+.filter_multiSelect_bar {
+  word-wrap:break-word;
+  padding-top: 3px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+  padding-left: 5px;
+}
+
+.filter_multiSelect_tag {
+  color: grey;
+  margin-right: 10px;
+}

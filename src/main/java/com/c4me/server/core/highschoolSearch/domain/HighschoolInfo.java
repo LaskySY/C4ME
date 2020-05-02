@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * @Description:
+ * @Description: Domain object representing a high school object that can be passed to the frontend
  * @Author: Maciej Wlodek
  * @CreateDate: 04-10-2020
  */

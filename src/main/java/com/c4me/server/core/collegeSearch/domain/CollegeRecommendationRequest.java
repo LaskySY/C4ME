@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * @Description:
+ * @Description: Request domain object containing a list of college names to
  * @Author: Maciej Wlodek
  * @CreateDate: 04-12-2020
  */

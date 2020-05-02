@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Description:
+ * @Description: Controller for reloading the server configuration file
  * @Author: Maciej Wlodek
  * @CreateDate: 04-12-2020
  */

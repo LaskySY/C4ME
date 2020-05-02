@@ -3,7 +3,7 @@ package com.c4me.server.utils;
 import lombok.AllArgsConstructor;
 
 /**
- * @Description:
+ * @Description: Domain object representing a StudentApplication line from applications.csv
  * @Author: Maciej Wlodek
  * @CreateDate: 03-24-2020
  */

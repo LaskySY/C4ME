@@ -3,7 +3,7 @@ package com.c4me.server.core.highschoolSearch.domain;
 import lombok.*;
 
 /**
- * @Description:
+ * @Description: wrapper around high school name
  * @Author: Maciej Wlodek
  * @CreateDate: 04-10-2020
  */

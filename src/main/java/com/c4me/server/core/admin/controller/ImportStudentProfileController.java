@@ -26,7 +26,7 @@ import static com.c4me.server.config.constant.Const.Filenames.*;
  */
 
 @RestController
-@RequestMapping("/admin/profile")
+@RequestMapping("/api/v1/admin/profile")
 public class ImportStudentProfileController {
 
   @Autowired

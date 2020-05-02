@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * @CreateDate: 02-23-2020
  */
 @RestController
-@RequestMapping("/tasks")
+@RequestMapping("/api/v1/tasks")
 public class Service1Controller {
 
     @GetMapping

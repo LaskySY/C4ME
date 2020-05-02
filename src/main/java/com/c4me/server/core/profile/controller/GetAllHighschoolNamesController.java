@@ -1,5 +1,6 @@
 package com.c4me.server.core.profile.controller;
 
+import com.c4me.server.config.annotation.LogAndWrap;
 import com.c4me.server.core.profile.service.GetAllHighschoolNamesServiceImpl;
 import com.c4me.server.domain.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,27 +14,30 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * @Description:
+ * @Description: Controller for the getHighSchoolNames service (for selecting a high school in frontend)
  * @Author: Maciej Wlodek
  * @CreateDate: 03-26-2020
  */
 
 @RestController
-@RequestMapping("/profile/highSchool")
+@RequestMapping("/api/v1/profile/highSchool")
 
 public class GetAllHighschoolNamesController {
 
     @Autowired
     GetAllHighschoolNamesServiceImpl getAllHighschoolNamesService;
 
+    /**
+     * Controller for getting the list of all high school names available on Niche.com
+     * @return {@link HashMap} with a single key containing the list of high school names
+     * @throws IOException
+     */
     @GetMapping
-    public BaseResponse<HashMap<String, List<String>>> getAllHighschoolNames() throws IOException {
+    @LogAndWrap(log="get high school names", wrap=true)
+    public HashMap<String, List<String>> getAllHighschoolNames() throws IOException {
         List<String> highschools = getAllHighschoolNamesService.getAllHighschoolNames();
         HashMap<String, List<String>> map = new HashMap<>();
         map.put("highSchools", highschools);
-        return BaseResponse.<HashMap<String, List<String>>>builder()
-                .code("success")
-                .message("")
-                .data(map).build();
+        return map;
     }
 }

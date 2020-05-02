@@ -14,13 +14,17 @@ import java.util.List;
 @Repository
 public interface StudentApplicationRepository extends JpaRepository<StudentApplicationEntity, StudentApplicationEntityPK>, JpaSpecificationExecutor<StudentApplicationEntity> {
     //public StudentApplicationEntity findByCollegeByCollegeId(CollegeEntity collegeEntity);
-    public List<StudentApplicationEntity> findAllByUserByUsername(UserEntity userEntity);
+    List<StudentApplicationEntity> findAllByUserByUsername(UserEntity userEntity);
 
-    public StudentApplicationEntity findByUserByUsername(UserEntity userEntity);
+    StudentApplicationEntity findByUserByUsername(UserEntity userEntity);
 
-    public void deleteByStudentApplicationEntityPK(StudentApplicationEntityPK studentApplicationEntityPK);
+    void deleteByStudentApplicationEntityPK(StudentApplicationEntityPK studentApplicationEntityPK);
 
-    public Long countByCollegeByCollegeId(CollegeEntity collegeEntity);
+    Long countByCollegeByCollegeId(CollegeEntity collegeEntity);
 
-    public List<StudentApplicationEntity> findAllByQuestionable(Byte questionable);
+    List<StudentApplicationEntity> findAllByQuestionable(Byte questionable);
+
+//    List<StudentApplicationEntity> getAll();
+
+//    List<StudentApplicationEntity> findAllByCollegeId(CollegeEntity collegeEntity);
 }

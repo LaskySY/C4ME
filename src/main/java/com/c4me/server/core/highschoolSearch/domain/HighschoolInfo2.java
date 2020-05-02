@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * @Description:
+ * @Description: altered highschool info object with different property names
  * @Author: Maciej Wlodek
  * @CreateDate: 04-12-2020
  */
@@ -20,6 +20,8 @@ public class HighschoolInfo2 {
     Integer averageSAT;
     Integer averageACT;
     String academicQuality;
+    String city;
+    String state;
 
     public HighschoolInfo2(HighschoolEntity highschoolEntity) {
         this.highschoolName = highschoolEntity.getName();
@@ -27,5 +29,7 @@ public class HighschoolInfo2 {
         this.averageSAT = highschoolEntity.getSatOverall();
         this.averageACT = highschoolEntity.getActComposite();
         this.academicQuality = highschoolEntity.getAcademicQuality();
+        this.city = highschoolEntity.getCity();
+        this.state = highschoolEntity.getState();
     }
 }

@@ -1,0 +1,25 @@
+.search-card {
+}
+.search-card-title {
+  font-family: Asul;
+  font-size: 30px;
+}
+.search-card-title a {
+  text-decoration: none;
+}
+.search-card-box {
+  border-radius:20px;
+  padding: 10px 5px;
+  margin: 0 auto;
+  width: 80%;
+  border-bottom: 1px solid var(--color-border);
+  transition: 0.6s;
+}
+.search-card-box:hover {
+}
+.search-card-info-icon {
+  margin-right:5px;
+}
+.info-row {
+  line-height: 2.3rem;
+}

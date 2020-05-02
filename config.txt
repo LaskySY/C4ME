@@ -1,11 +1,14 @@
 # this is the file containing url endings  of all high schools supported by our system
-ALL_HIGH_SCHOOLS_FILE = all_highschools_sorted.txt
+#ALL_HIGH_SCHOOLS_FILE = all_highschools_sorted.txt
+ALL_HIGH_SCHOOLS_FILE = all_highschools_mirror.txt
 
 # this is the prefix from which to scrape high school data
-NICHE_PREFIX = https://www.niche.com/k12/
+#NICHE_PREFIX = https://www.niche.com/k12/
+NICHE_PREFIX = http://allv22.all.cs.stonybrook.edu/~stoller/cse416/niche/
 
 # this is the url to scrape THE ranking data from
-THE_RANKINGS_JSON_URL = https://www.timeshighereducation.com/sites/default/files/the_data_rankings/united_states_rankings_2020_0__fe9db1a86587c174feb9fd3820701c93.json
+#THE_RANKINGS_JSON_URL = https://www.timeshighereducation.com/sites/default/files/the_data_rankings/united_states_rankings_2020_0__fe9db1a86587c174feb9fd3820701c93.json
+THE_RANKINGS_JSON_URL = http://allv22.all.cs.stonybrook.edu/~stoller/cse416/WSJ_THE/united_states_rankings_2020_limit0_25839923f8b1714cf54659d4e4af6c3b.json
 
 # this is the file containing user agents to choose from when scraping high schools
 USER_AGENTS = user-agents-small.txt
@@ -19,8 +22,15 @@ COLLEGES = colleges.txt
 # this is the file containing url endings of all colleges on collegedata.com
 COLLEGEDATATXT = college_data_colleges.txt
 
+# this is the prefix of the url to scrape college data
+#COLLEGE_DATA_PREFIX = https://www.collegedata.com/college/
+COLLEGE_DATA_PREFIX = http://allv22.all.cs.stonybrook.edu/~stoller/cse416/collegedata/
+
 # this is the file containing student profiles to import
-STUDENT_PROFILES_FILE = students-random.csv
+STUDENT_PROFILES_FILE = students-2.csv
 
 # this is the file containing student applications to import
-STUDENT_APPLICATIONS_FILE = applications-random.csv
+STUDENT_APPLICATIONS_FILE = applications-2.csv
+
+# this is the file containing sat and act percentile conversion tables
+PERCENTILES_FILE = percentiles.csv

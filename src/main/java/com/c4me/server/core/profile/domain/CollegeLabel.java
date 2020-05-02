@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * @Description:
+ * @Description: Wrapper for a college name and id
  * @Author: Maciej Wlodek
  * @CreateDate: 03-26-2020
  */

@@ -48,7 +48,7 @@ class applicationTrackerScreen extends Component {
       return
     }
 
-    axios.get(BASE_URL + '/profile/college',
+    axios.get(BASE_URL + '/api/v1/profile/college',
         {
           headers: { Authorization: localStorage.getItem('userToken') }
         }

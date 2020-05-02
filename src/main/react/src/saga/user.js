@@ -14,7 +14,7 @@ import {
 
 export function * registerUserAsync (action) {
   try {
-    const response = yield axios.post(BASE_URL + '/auth/register',
+    const response = yield axios.post(BASE_URL + '/api/v1/auth/register',
       {
         username: action.data.username,
         password: action.data.password,

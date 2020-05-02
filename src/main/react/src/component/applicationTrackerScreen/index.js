@@ -48,7 +48,7 @@ class applicationTrackerScreen extends Component {
       return
     }
 
-    axios.get(BASE_URL + '/api/v1/profile/college',
+    axios.get(BASE_URL + '/profile/college',
         {
           headers: { Authorization: localStorage.getItem('userToken') }
         }
@@ -71,7 +71,7 @@ class applicationTrackerScreen extends Component {
     if (!this.state.isFirst) this.setState({ isSearching: true })
     this.setState({ profileList: [] })
     if (this.state.searchInput !== this.oldSearchInput) { this.filterInputs = {} }
-    axios.post(BASE_URL + '/api/v1/matchStudents',
+    axios.post(BASE_URL + '/matchStudents',
         {
           name: this.state.searchInput !== '' ? this.state.searchInput : null,
           ...this.filterInputs
@@ -148,139 +148,139 @@ class applicationTrackerScreen extends Component {
     if (this.state.loading) return <LoadingPage fullScreen={true} color="dark"/>
     return (
         <div className="page">
-        {
-          this.state.isFirst
-              ? <div className="search-title-box">
-        {
-          title.split(',').map((word, index) => {
-            var color = titlecolors[Math.floor(Math.random() * titlecolors.length)]
-            return <span className="search-title" key={index} style={{ color: color }}>{word}</span>
-          })
-        }
+          {
+            this.state.isFirst
+                ? <div className="search-title-box">
+                  {
+                    title.split(',').map((word, index) => {
+                      var color = titlecolors[Math.floor(Math.random() * titlecolors.length)]
+                      return <span className="search-title" key={index} style={{ color: color }}>{word}</span>
+                    })
+                  }
+                </div>
+                : null
+          }
+          <div className="search-search">
+            <div className="search-search-box">
+              <Select id="collegeName" className="search-textfield" options={this.colleges}
+                      components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }}
+                      defaultValue={{ value: this.state.searchInput, label: this.state.searchInput }} styles={customStyles}
+                      onChange={selectedOption => this.setState({ searchInput: selectedOption.label })}/>
+              <div className="search-search-icon">
+                <i className="fas fa-search float-right"
+                   onClick={this.handleSearch}/>
+              </div>
+            </div>
+            {
+              !this.state.isFirst
+                  ? <div className="search-icon-box" style={{ fontSize: '18px' }}
+                         data-toggle="collapse" data-target="#applicationTrackerFilterPanel">
+                    <div className="search-search-icon" >
+                      <i className="fas fa-filter"></i>
+                    </div>
+                  </div>
+                  : null
+            }
+            {
+              // for scatter plot button
+              this.state.profileList && this.state.profileList.length > 0
+                  ? <div className="search-icon-box" style={{ fontSize: '18px' }}
+                         data-toggle="modal" data-target="#scatterModal">
+                    <div className="search-search-icon" >
+                      <i className="fas fa-chart-bar"></i>
+                    </div>
+                  </div>
+                  : null
+            }
+          </div>
+          <div className="row justify-content-center">
+            < Filter className="col-10" id="applicationTrackerFilterPanel"
+                     confirm = {(filter) => this.handleFilterInputs(filter)}
+                     highSchools = {this.highSchools}
+                     cancel = {() => this.setState({ showFilterPanel: false })}/>
+          </div>
+          {
+            this.state.isSearching
+                ? <LoadingPage fullScreen={false} color="dark"/>
+                : null
+          }
+          {
+            this.state.profileList.length === 0 && !this.state.isFirst && !this.state.isSearching
+                ? <SearchCard
+                    key = "no result"
+                    color= {cardColors[Math.floor(Math.random() * cardColors.length)]}
+                    title= "No search result"
+                    type= "application"
+                />
+                : null
+          }
+          {
+            this.state.profileList.map(student =>
+                <SearchCard
+                    color= {cardColors[Math.floor(Math.random() * cardColors.length)]}
+                    title= {student.username}
+                    redirectDetailPage = {() => this.redirectProfilePage(student.username)}
+                    type = "application"
+                    info={{
+                      gpa: student.gpa,
+                      schoolYear: student.schoolYear,
+                      satMath: student.satMath,
+                      satEbrw: student.satEbrw,
+                      actComposite: student.actComposite,
+                      applicationStatus: student.applicationStatus
+                    }}
+                    content = {{
+                      score: student.satEbrw
+                    }}
+                />
+            )
+          }
+          {
+            <div className="modal fade" id="scatterModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="scatterTitle" style={{ fontFamily: 'Asul' }}></h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div className="modal-body" style={{ height: '800px' }} >
+                  <span className='row' style={{ fontFamily: 'Asul', marginLeft: '250px', fontWeight: 'bold' }}>
+                    Average Scores for All Applications
+                  </span>
+                    <div className='row' style={{ fontFamily: 'Asul', marginLeft: '120px' }}>
+                      GPA:&nbsp;{this.state.averageGpa === null ? 'null' :this.state.averageGpa.toFixed(1)}&emsp;
+                      SAT Math:&nbsp;{this.state.averageSatMath === null ? ' null' :this.state.averageSatMath.toFixed(1)}&emsp;
+                      SAT EBRW:&nbsp;{this.state.averageSatEbrw === null ? ' null' :this.state.averageSatEbrw.toFixed(1)}&emsp;
+                      ACT Composite:&nbsp;{this.state.averageActComposite === null ? ' null' :this.state.averageActComposite.toFixed(1)}&emsp;
+                    </div>
+                    <br/>
+                    <span className='row' style={{ fontFamily: 'Asul', marginLeft: '230px', fontWeight: 'bold' }}>
+                    Average Scores for Accepted Applications
+                  </span>
+                    <div className='row' style={{ fontFamily: 'Asul', marginLeft: '120px' }}>
+                      GPA:&nbsp;{this.state.averageGpaAccepted === null ? 'null' :this.state.averageGpaAccepted.toFixed(1)}&emsp;
+                      SAT Math:&nbsp;{this.state.averageSatMathAccepted === null ? 'null' :this.state.averageSatMathAccepted.toFixed(1)}&emsp;
+                      SAT EBRW:&nbsp;{this.state.averageSatEbrwAccepted === null ? 'null' :this.state.averageSatEbrwAccepted.toFixed(1)}&emsp;
+                      ACT Composite:&nbsp;{this.state.averageActCompositeAccepted === null ? 'null' :this.state.averageActCompositeAccepted.toFixed(1)}&emsp;
+                    </div>
+                    <br/>
+                    <div style={{ marginLeft: '83px' }}>
+                      <Scatter profileList = {this.state.profileList}
+                               meanSat = {this.state.averageSat}
+                               meanAct = {this.state.averageActComposite}
+                               meanGpa = {this.state.averageGpa}
+                               meanWeightedAvgPercentileScore = {this.state.averageWeightedAvgPercentile}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
         </div>
-  : null
-  }
-  <div className="search-search">
-        <div className="search-search-box">
-        <Select id="collegeName" className="search-textfield" options={this.colleges}
-    components={{ DropdownIndicator: () => null, IndicatorSeparator: () => null }}
-    defaultValue={{ value: this.state.searchInput, label: this.state.searchInput }} styles={customStyles}
-    onChange={selectedOption => this.setState({ searchInput: selectedOption.label })}/>
-    <div className="search-search-icon">
-        <i className="fas fa-search float-right"
-    onClick={this.handleSearch}/>
-    </div>
-    </div>
-    {
-      !this.state.isFirst
-          ? <div className="search-icon-box" style={{ fontSize: '18px' }}
-      data-toggle="collapse" data-target="#applicationTrackerFilterPanel">
-        <div className="search-search-icon" >
-        <i className="fas fa-filter"></i>
-        </div>
-        </div>
-    : null
-    }
-    {
-      // for scatter plot button
-      this.state.profileList && this.state.profileList.length > 0
-          ? <div className="search-icon-box" style={{ fontSize: '18px' }}
-      data-toggle="modal" data-target="#scatterModal">
-        <div className="search-search-icon" >
-        <i className="fas fa-chart-bar"></i>
-        </div>
-        </div>
-    : null
-    }
-  </div>
-    <div className="row justify-content-center">
-        < Filter className="col-10" id="applicationTrackerFilterPanel"
-    confirm = {(filter) => this.handleFilterInputs(filter)}
-    highSchools = {this.highSchools}
-    cancel = {() => this.setState({ showFilterPanel: false })}/>
-    </div>
-    {
-      this.state.isSearching
-          ? <LoadingPage fullScreen={false} color="dark"/>
-    : null
-    }
-    {
-      this.state.profileList.length === 0 && !this.state.isFirst && !this.state.isSearching
-          ? <SearchCard
-      key = "no result"
-      color= {cardColors[Math.floor(Math.random() * cardColors.length)]}
-      title= "No search result"
-      type= "application"
-          />
-    : null
-    }
-    {
-      this.state.profileList.map(student =>
-      <SearchCard
-      color= {cardColors[Math.floor(Math.random() * cardColors.length)]}
-      title= {student.username}
-      redirectDetailPage = {() => this.redirectProfilePage(student.username)}
-      type = "application"
-      info={{
-      gpa: student.gpa,
-          schoolYear: student.schoolYear,
-          satMath: student.satMath,
-          satEbrw: student.satEbrw,
-          actComposite: student.actComposite,
-          applicationStatus: student.applicationStatus
-    }}
-      content = {{
-      score: student.satEbrw
-    }}
-      />
     )
-    }
-    {
-    <div className="modal fade" id="scatterModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div className="modal-content">
-        <div className="modal-header">
-        <h5 className="modal-title" id="scatterTitle" style={{ fontFamily: 'Asul' }}></h5>
-    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    </div>
-    <div className="modal-body" style={{ height: '800px' }} >
-    <span className='row'  style={{ fontFamily: 'Asul', marginLeft: '250px', fontWeight: 'bold'}}>
-      Average Scores for All Applications
-    </span>
-    <div className='row' style={{ fontFamily: 'Asul', marginLeft: '120px' }}>
-      GPA:&nbsp;{this.state.averageGpa.toFixed(1)}&emsp;
-      SAT Math:&nbsp;{this.state.averageSatMath.toFixed(1)}&emsp;
-      SAT EBRW:&nbsp;{this.state.averageSatEbrw.toFixed(1)}&emsp;
-      ACT Composite:&nbsp;{this.state.averageActComposite.toFixed(1)}
-    </div>
-    <br/>
-    <span className='row' style={{ fontFamily: 'Asul', marginLeft: '230px', fontWeight: 'bold'}}>
-      Average Scores for Accepted Applications
-    </span>
-    <div className='row' style={{ fontFamily: 'Asul', marginLeft: '120px' }}>
-      GPA:&nbsp;{this.state.averageGpaAccepted.toFixed(1)}&emsp;
-      SAT Math:&nbsp;{this.state.averageSatMathAccepted.toFixed(1)}&emsp;
-      SAT EBRW:&nbsp;{this.state.averageSatEbrwAccepted.toFixed(1)}&emsp;
-      ACT Composite:&nbsp;{this.state.averageActCompositeAccepted.toFixed(1)}
-    </div>
-    <br/>
-    <div style={{ marginLeft: '83px' }}>
-    <Scatter profileList = {this.state.profileList}
-      meanSat = {this.state.averageSat}
-      meanAct = {this.state.averageActComposite}
-      meanGpa = {this.state.averageGpa}
-      meanWeightedAvgPercentileScore = {this.state.averageWeightedAvgPercentile}
-      />
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-    }
-  </div>
-  )
   }
 }
 
